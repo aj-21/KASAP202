@@ -13,7 +13,7 @@ public class CharacterBox extends Actor
     List<Character> characters= new ArrayList<Character>();
     Character lastSelected;
     double charScale = 0.8;
-    int numCol = 4;
+    int numCol = 5;
     int numRow = 2;
     int maxNumChar = numCol*numRow;
     int charWidth = getImage().getWidth()/numCol;

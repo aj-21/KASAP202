@@ -23,7 +23,8 @@ public class GuessWho extends World
     private void setup()
     {
         CharacterBox charBox = new CharacterBox(925,460);
-        addObject(charBox,getWidth()/2,getHeight()/2);
+        //addObject(charBox,getWidth()/2,getHeight()/2);
+        addObject(charBox,getWidth()/2,600);
         charBox.addCharacter(new Char1());
         charBox.addCharacter(new Char2());
         charBox.addCharacter(new Char3());
