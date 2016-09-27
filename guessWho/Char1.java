@@ -12,8 +12,13 @@ public class Char1 extends Characters
      * Act - do whatever the Char1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    public Char1()
+    {
+        
+    }
     public void act() 
     {
-        // Add your action code here.
+        
     }    
 }
