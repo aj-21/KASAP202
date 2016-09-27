@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=CharacterCanvas
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CharacterCanvas\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=CharacterCanvas()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ CharacterCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=width\ height
+comment2.target=CharacterCanvas(int,\ int)
+comment3.params=width\ height\ col\ row
+comment3.target=CharacterCanvas(int,\ int,\ int,\ int)
+comment4.params=
+comment4.target=void\ reCalibrate()
+comment5.params=
+comment5.target=void\ act()
+comment6.params=character
+comment6.target=void\ addCharacter(Character)
+comment6.text=public\ void\ addCharList(List<Character>\ characters)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ for\ (Character\ character\ \:\ characters)\r\n\ \ \ \ \ \ \ \ \ \ \ \ this.addCharacter(character);\r\n}
+comment7.params=character
+comment7.target=void\ displayChar(Character)
+comment7.text=private\ void\ autoSetLocation(Character\ character)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ index\ \=\ characters.indexOf(character);\r\n\ \ \ \ \ \ \ \ int\ x\ \=\ (index\ %\ numCol)\ *\ charWidth\ +\ charWidth/2;\r\n\ \ \ \ \ \ \ \ int\ y\ \=\ (index\ /\ numRow)\ *\ charHeight\ +\ charWidth/2;\r\n\ \ \ \ \ \ \ \ character.setLocation(this.getX()\ +\ x,\ this.getY()\ +\ y);\r\n}
+comment8.params=
+comment8.target=void\ selectedCharProcessing()
+comment9.params=character
+comment9.target=void\ unClickIfNotLastSelected(Character)
+numComments=10
