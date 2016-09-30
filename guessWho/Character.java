@@ -10,8 +10,18 @@ public class Character extends Actor
 {   
     int oriWidth = getImage().getWidth();
     int oriHeight =getImage().getHeight();
+     
     boolean selected;
+    boolean check = true;
     double scale = 1.5;
+    
+    
+    double w = oriWidth*scale;
+    double h = oriHeight*scale;
+    
+    double sizeW = 141;// = getImage().getWidth();
+            double sizeH = 192; //= getImage().getHeight();
+          
     
     public Character()
     {
@@ -26,16 +36,70 @@ public class Character extends Actor
     public void act() 
     {
         // Add your action code here.
-        checkClicked();
-        if (selected){
-            
-            double w = oriWidth*scale;
-            double h = oriHeight*scale;
-            getImage().scale((int)w,(int)h);
+       
+        if(getWorld() instanceof GuessWho)
+        {
+            checkClicked();
+            if (selected){
+                
+                double w = oriWidth*scale;
+                double h = oriHeight*scale;
+                getImage().scale((int)w,(int)h);
+            }
+            else 
+                getImage().scale(oriWidth,oriHeight);
         }
-        else 
-            getImage().scale(oriWidth,oriHeight);
-    }    
+        
+        if(getWorld() instanceof chooseCharacterScreen)
+        {
+           //getImage().scale(141,192);
+            // double sizeW = 141;// = getImage().getWidth();
+            // double sizeH = 192; //= getImage().getHeight();
+           // getImage().scale((int)sizeW,(int)sizeH);
+             // getImage().scale((int)sizeW,(int)sizeH);
+            if(Greenfoot.mouseMoved(this) )
+            {
+              
+               sizeW = sizeW*scale;
+               sizeH = sizeH*scale;
+               if(check){
+               getImage().scale((int)sizeW,(int)sizeH);
+               //if(check){
+                   //getImage().scale((int)wi,(int)he);
+                   check = false;
+                }   
+               //}
+               
+            }
+            else {
+                //getImage().scale(sizeW,sizeH);
+                sizeW = 141;
+                sizeH = 192;
+                getImage().scale((int)sizeW,(int)sizeH);
+                check = true;
+               
+            }
+           
+            if(Greenfoot.mousePressed(this))
+            {
+                buttonEnabled enableButton = new buttonEnabled();
+                getWorld().addObject(enableButton,743,774);
+                
+            }
+           // checkClicked();
+           // if(selected)
+           // {
+               
+               // double wi = sizeW*scale;
+               // double he = sizeH*scale;
+               // getImage().scale((int)wi,(int)he);
+           // }else{
+               // getImage().scale(sizeW,sizeH);
+           // }
+        }       
+       
+    }
+
     
     public void resize(int width, int height)
     {
@@ -53,6 +117,7 @@ public class Character extends Actor
                 selected = false;
             else
                 selected = true;
+               
         }     
     }
     
