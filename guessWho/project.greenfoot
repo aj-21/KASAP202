@@ -132,8 +132,13 @@ editor.fx.0.height=700
 editor.fx.0.width=700
 editor.fx.0.x=0
 editor.fx.0.y=0
+<<<<<<< HEAD
 editor.swing.0.height=712
 editor.swing.0.width=1281
+=======
+editor.swing.0.height=709
+editor.swing.0.width=1280
+>>>>>>> origin/master
 editor.swing.0.x=0
 editor.swing.0.y=23
 mainWindow.height=1048
