@@ -121,9 +121,9 @@ public class chooseCharacterScreen extends World implements MyWorld
             buttonConfirm.disableButton();
     }
    
-    public void buttonClicked(String buttonLabel)
+    public void buttonClicked(ButtonConfirm button)
     {
-        if(buttonLabel == "confirm")
+        if(button == buttonConfirm)
             exit();
     }
     

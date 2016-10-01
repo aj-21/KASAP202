@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MyWorld
 comment0.text=\n\ Write\ a\ description\ of\ class\ myWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=buttonLabel
-comment1.target=void\ buttonClicked(java.lang.String)
+comment1.params=button
+comment1.target=void\ buttonClicked(ButtonConfirm)
 numComments=2

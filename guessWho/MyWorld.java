@@ -6,5 +6,5 @@
  */
 public interface MyWorld  
 {
-    public void buttonClicked(String buttonLabel);
+    public void buttonClicked(ButtonConfirm button);
 }

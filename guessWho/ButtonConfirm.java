@@ -48,7 +48,7 @@ public class ButtonConfirm extends Actor
         // Add your action code here.
         if(Greenfoot.mousePressed(this) && enable)
         {
-            myW.buttonClicked(label);
+            myW.buttonClicked(this);
         }
     }    
 }

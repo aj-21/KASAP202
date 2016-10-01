@@ -110,9 +110,10 @@ public class CharacterBox extends Actor
     //set default character scale in this box
     public void setSelectedCharScale(double scale)
     {
+        selectedCharScale = scale;
         for (Character c:characters)
         {
-            c.setSelectedScale(scale);
+            c.setSelectedScale(selectedCharScale);
         }
         
     }
