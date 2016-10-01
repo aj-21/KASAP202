@@ -68,7 +68,7 @@ public class CharacterBox extends Actor
         if (characters.size() < numCol*numRow)
         {
             character.resizeOnScale(charScale);
-            character.setSelectedScale(selectedCharScale);
+            setSelectedScaleOnChar(character);
             characters.add(character);
             if(inWorld)
                 displayChar(character);
@@ -77,6 +77,7 @@ public class CharacterBox extends Actor
     
     //set 4 margin with percentage.
     //Example, 1 = 1% margin of the total box
+    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
     public void setMargin(double left, double right, double top, double bottom)
     {
         int w = getImage().getWidth();
@@ -91,12 +92,14 @@ public class CharacterBox extends Actor
     
     //set 4 margin with percentage. left and right are equal, top and botton are equal. 
     //Example, 1 = 1% margin of the total box
+    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
     public void setMargin(double leftRight,  double topBottom)
     {
         setMargin(leftRight, leftRight, topBottom, topBottom);
     }
     
     //set default character scale in this box
+    //this is where you set the size of your character uniformly
     public void setCharScale(double scale)
     {
         charScale = scale;
@@ -108,14 +111,22 @@ public class CharacterBox extends Actor
     }    
     
     //set default character scale in this box
+    //set this to 1 if you dont want your character zoon when selected
+    //set this to 0 if you want your character zoom by default
     public void setSelectedCharScale(double scale)
     {
         selectedCharScale = scale;
         for (Character c:characters)
         {
-            c.setSelectedScale(selectedCharScale);
+            setSelectedScaleOnChar(c);
         }
         
+    }
+    
+    private void setSelectedScaleOnChar(Character c)
+    {
+        if (selectedCharScale > 0)
+                c.setSelectedScale(selectedCharScale);
     }
     
     private void displayChar(Character character)

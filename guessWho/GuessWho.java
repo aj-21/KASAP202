@@ -39,7 +39,7 @@ public class GuessWho extends World
         
         CharacterBox yourCharBox = new CharacterBox(100,100,1,1);
         yourCharBox.setImage("yourCharacterCanvas.png");
-        yourCharBox.setCharScale(1.6);
+        yourCharBox.setCharScale(1.2);
         yourCharBox.setSelectedCharScale(1);
         addObject(yourCharBox,1400,600);
         yourCharBox.addCharacter(yourChar);

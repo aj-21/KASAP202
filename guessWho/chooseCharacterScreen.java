@@ -90,10 +90,12 @@ public class chooseCharacterScreen extends World implements MyWorld
         //my new implementation
         
         
-        GreenfootImage bg = getBackground();
+        GreenfootImage bg = this.getBackground();
         chooseCharBox.setImage(bg);
         addObject(chooseCharBox,getWidth()/2,getHeight()/2);
-        chooseCharBox.setMargin(15,15,25,15);
+        //try # margin and setCharScale for the best look, left right top bottom
+        chooseCharBox.setMargin(12,12,18,15);
+        chooseCharBox.setCharScale(1.3);
         addObject(new chooseCharTitle(),876,641);
         chooseCharBox.addCharacter(new Char1());
         chooseCharBox.addCharacter(new Char2());
@@ -103,9 +105,7 @@ public class chooseCharacterScreen extends World implements MyWorld
         chooseCharBox.addCharacter(new Char6());
         chooseCharBox.addCharacter(new Char7());
         chooseCharBox.addCharacter(new Char8());
-        chooseCharBox.addCharacter(new Char9());
-        
-        
+        chooseCharBox.addCharacter(new Char9());     
         
         addObject(buttonConfirm,743,774);
         
