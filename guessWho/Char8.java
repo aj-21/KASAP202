@@ -8,8 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Char8 extends Character
 {
-    /**
-     * Act - do whatever the Char8 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */    
+    String hairColor = hairColorOptions[5];
+    String hairLength = hairLengthOptions[2];
+    Boolean hasHat = getHasHat(1);
+    Boolean hasCoat = getHasCoat(1);
+    Boolean hasSpecs = getHasSpectacles(0);   
+    Boolean hasEarings = getHasEarings(1);
 }
