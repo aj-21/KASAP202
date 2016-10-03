@@ -1,14 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  * Write a description of class chooseCharacterScreen here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class chooseCharacterScreen extends World
+public class chooseCharacterScreen extends World implements MyWorld
 {
     
+    List<Character> allChars = new ArrayList<Character>();
+    CharacterBox chooseCharBox = new CharacterBox(getWidth(),getHeight(),5,2);
+    ButtonConfirm buttonConfirm= new ButtonConfirm("confirm");
+    Character choosenChar;
     
     /**
      * Constructor for objects of class chooseCharacterScreen.
@@ -28,7 +33,7 @@ public class chooseCharacterScreen extends World
      */
     private void prepare()
     {
-        chooseCharTitle choosechartitle = new chooseCharTitle();
+        /*chooseCharTitle choosechartitle = new chooseCharTitle();
         addObject(choosechartitle,876,641);
         choosechartitle.setLocation(894,640);
 
@@ -74,24 +79,58 @@ public class chooseCharacterScreen extends World
         char7.setLocation(658,308);
         char8.setLocation(215,595);
         char9.setLocation(1225,302);
-
+        
+        allChars = getObjects(Character.class);
+        
         buttonDisabled buttondisabled = new buttonDisabled();
-        addObject(buttondisabled,794,784);
-        buttondisabled.setLocation(743,774);
+        addObject(buttondisabled,743,774);*/
+        //buttondisabled.setLocation(743,774);
         
         
+        //my new implementation
         
         
+        GreenfootImage bg = this.getBackground();
+        chooseCharBox.setImage(bg);
+        addObject(chooseCharBox,getWidth()/2,getHeight()/2);
+        //try # margin and setCharScale for the best look, left right top bottom
+        chooseCharBox.setMargin(10,10,18,15);
+        chooseCharBox.setCharScale(1.2);
+        addObject(new chooseCharTitle(),876,641);
+        chooseCharBox.addCharacter(new Char1());
+        chooseCharBox.addCharacter(new Char2());
+        chooseCharBox.addCharacter(new Char3());
+        chooseCharBox.addCharacter(new Char4());
+        chooseCharBox.addCharacter(new Char5());
+        chooseCharBox.addCharacter(new Char6());
+        chooseCharBox.addCharacter(new Char7());
+        chooseCharBox.addCharacter(new Char8());
+        chooseCharBox.addCharacter(new Char9());     
+        
+        addObject(buttonConfirm,743,774);
         
         
     }
     
     public void act()
-    {
+    {   
+        choosenChar = chooseCharBox.getSelectedChar();
+        if(choosenChar!=null)
+            buttonConfirm.enableButton();
+        else
+            buttonConfirm.disableButton();
+    }
    
-      
+    public void buttonClicked(ButtonConfirm button)
+    {
+        if(button == buttonConfirm)
+            exit();
     }
     
-   
+    private void exit()
+    {
+        Greenfoot.setWorld(new GuessWho(choosenChar));
+    }
+    
 }
 

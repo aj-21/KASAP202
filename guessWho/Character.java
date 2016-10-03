@@ -54,25 +54,30 @@ public class Character extends Actor
     }
     
     
-    int oriWidth = getImage().getWidth();
-    int oriHeight =getImage().getHeight();
+    int sizeW = 140;
+    int sizeH = 192;
      
-    boolean selected;
-    boolean check = true;
+    boolean selected = false;
+    boolean inWorld = false;
     double scale = 1.5;
-    
-    
-    double w = oriWidth*scale;
-    double h = oriHeight*scale;
-    
-    double sizeW = 141;// = getImage().getWidth();
-            double sizeH = 192; //= getImage().getHeight();
+
           
-    
+            
     public Character()
     {
-        GreenfootImage image = getImage();
-        image.scale(141,192);
+        this(1);
+    }
+    
+    public Character(double scale)
+    {
+        sizeW *= scale;
+        sizeH *= scale;
+        getImage().scale(sizeW,sizeH);
+    }
+    
+    protected void addedToWorld(World world)
+    {
+        inWorld = true;
     }
     
     /**
@@ -81,101 +86,63 @@ public class Character extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
-       
-        if(getWorld() instanceof GuessWho)
-        {
-            checkClicked();
-            if (selected){
-                
-                double w = oriWidth*scale;
-                double h = oriHeight*scale;
-                getImage().scale((int)w,(int)h);
-            }
-            else 
-                getImage().scale(oriWidth,oriHeight);
-        }
-        
-        if(getWorld() instanceof chooseCharacterScreen)
-        {
-           //getImage().scale(141,192);
-            // double sizeW = 141;// = getImage().getWidth();
-            // double sizeH = 192; //= getImage().getHeight();
-           // getImage().scale((int)sizeW,(int)sizeH);
-             // getImage().scale((int)sizeW,(int)sizeH);
-            if(Greenfoot.mouseMoved(this) )
-            {
-              
-               sizeW = sizeW*scale;
-               sizeH = sizeH*scale;
-               if(check){
-               getImage().scale((int)sizeW,(int)sizeH);
-               //if(check){
-                   //getImage().scale((int)wi,(int)he);
-                   check = false;
-                }   
-               //}
-               
-            }
-            else {
-                //getImage().scale(sizeW,sizeH);
-                sizeW = 141;
-                sizeH = 192;
-                getImage().scale((int)sizeW,(int)sizeH);
-                check = true;
-               
-            }
-           
-            if(Greenfoot.mousePressed(this))
-            {
-                World world = new GuessWho();
-                
-                buttonEnabled enableButton = new buttonEnabled();
-                getWorld().addObject(enableButton,743,774);
-                world.addObject(this, 100, 200);
-            }
-           // checkClicked();
-           // if(selected)
-           // {
-               
-               // double wi = sizeW*scale;
-               // double he = sizeH*scale;
-               // getImage().scale((int)wi,(int)he);
-           // }else{
-               // getImage().scale(sizeW,sizeH);
-           // }
-        }       
-       
-    }
-
-    
-    public void resize(int width, int height)
-    {
-        getImage().scale(width,height);
-        oriWidth = getImage().getWidth();
-        oriHeight =getImage().getHeight();
+        checkSelected();   
     }
     
-    private void checkClicked()
+    private void checkSelected()
     {
         if(Greenfoot.mousePressed(this))
         {
-            System.out.println(this.getClass().getName() + " is clicked");
-            if(selected) 
-                selected = false;
-            else
-                selected = true;
-               
+            toggleSelected();
         }     
     }
     
+    private void toggleSelected()
+    {
+        if(selected)
+            unSelect();
+        else
+            select();
+    }
+        
+    //resize the image
+    public void resizeOnScale(double scale)
+    {
+        sizeW *= scale;
+        sizeH *= scale;
+        getImage().scale(sizeW,sizeH);
+    }
+    
+    //this set scale variable when the tile is pressed
+    public void setSelectedScale(double scale)
+    {
+        this.scale = scale;
+    }
+    
+    //unselect the tile
+     public void unSelect()
+    {
+        selected = false;
+        getImage().scale(sizeW,sizeH);
+    }    
+    
+    //select the tile
+    public void select()
+    {
+        selected = true;
+        getImage().scale((int) (sizeW*scale),(int) (sizeH*scale)); 
+        
+    }
+    
+    //return if the tile is selected or not
     public boolean isSelected()
     {
         return selected;
     }
     
-    public void unSelect()
+    //return if the object is added into world
+    public boolean isInWorld()
     {
-        selected = false; 
+        return inWorld;
     }
 }

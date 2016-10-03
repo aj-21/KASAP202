@@ -12,12 +12,13 @@ public class CharacterBox extends Actor
 {
     List<Character> characters= new ArrayList<Character>();
     Character lastSelected;
-    double charScale = 0.8;
+    double charScale = 1;
+    double selectedCharScale = 1.5;
     int numCol = 5;
     int numRow = 2;
-    int maxNumChar = numCol*numRow;
-    int charWidth = getImage().getWidth()/numCol;
-    int charHeight = getImage().getHeight()/numRow;
+    int leftMar, rightMar, topMar, bottomMar;
+    int disX,disY,disW,disH;
+    boolean inWorld = false;
     /**
      * Act - do whatever the CharacterCanvas wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,102 +29,153 @@ public class CharacterBox extends Actor
     
     public CharacterBox(int width, int height)
     {
-        this();
         getImage().scale(width,height); 
-        reCalibrate();
         
     }
-    
     
     public CharacterBox(int width, int height,int col, int row)
     {
         this(width,height);
         this.numCol = col;
         this.numRow = row;
+    }
+    
+    protected void addedToWorld(World world)
+    {
+        inWorld = true;
         reCalibrate();
     }
     
     private void reCalibrate()
     {
-        maxNumChar = numCol*numRow;
-        charWidth = getImage().getWidth()/numCol;
-        charHeight = getImage().getHeight()/numRow;
-        System.out.println ("Canvas Width: " + getImage().getWidth());
-        System.out.println ("Canvas Height: " + getImage().getHeight());
-        System.out.println ("Char Width: " + charWidth);
-        System.out.println ("Char Height: " + charHeight);
+        disW = (getImage().getWidth() - leftMar - rightMar) ;
+        disH = (getImage().getHeight() - topMar - bottomMar) ;
+        disX = getX() - getImage().getWidth()/2;
+        disY = getY() - getImage().getHeight()/2;
+        for(Character c: characters)
+            displayChar(c);
     }
     
+    //characterbox main task is to check if a character is selected. If another is selected, unselect the previous one
     public void act() 
     {
-        // Add your action code here.
         selectedCharProcessing();
     }    
     
-    /*public void addCharList(List<Character> characters)
-    {
-        for (Character character : characters)
-            this.addCharacter(character);
-    }*/
-    
+    //add a new Character
     public void addCharacter(Character character)
     {
-        if (characters.size() < maxNumChar)
+        if (characters.size() < numCol*numRow)
         {
-            character.resize((int)(charScale * charWidth),(int)(charScale * charHeight));
-            this.characters.add(character);
-            this.displayChar(character);
+            character.resizeOnScale(charScale);
+            setSelectedScaleOnChar(character);
+            characters.add(character);
+            if(inWorld)
+                displayChar(character);
         }
     }
     
-    /*public void removeCharacter(Character character)
+    public void removeSelectedChar()
     {
-        this.characters.remove(character);
+        if(lastSelected != null)
+        {
+            characters.remove(lastSelected);
+            removeCharacter(lastSelected);            
+            lastSelected = null;
+        }
     }
     
-    public void clearCharList()
+    public void removeCharacter(Character character)
     {
-        this.characters.clear();
+        if(character != null)
+        {
+            character.unSelect();
+            characters.remove(character);
+            getWorld().removeObject(character);
+        }
     }
     
-    public Character getSelectedCharacter()
+    //set 4 margin with percentage.
+    //Example, 1 = 1% margin of the total box
+    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
+    public void setMargin(double left, double right, double top, double bottom)
     {
-        return selectedCharacter;
+        int w = getImage().getWidth();
+        int h = getImage().getHeight();
+        this.leftMar = (int) (w * left/100);
+        this.rightMar = (int) (w * right/100);
+        this.topMar = (int) (h * top/100);
+        this.bottomMar = (int) (h * bottom / 100 );
+        if(inWorld == true)
+            reCalibrate();
     }
     
-    public int size()
+    //set 4 margin with percentage. left and right are equal, top and botton are equal. 
+    //Example, 1 = 1% margin of the total box
+    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
+    public void setMargin(double leftRight,  double topBottom)
     {
-        return characters.size();
-    }*/
-
-    /*private void autoSetLocation(Character character)
+        setMargin(leftRight, leftRight, topBottom, topBottom);
+    }
+    
+    //set default character scale in this box
+    //this is where you set the size of your character uniformly
+    public void setCharScale(double scale)
     {
-        int index = characters.indexOf(character);
-        int x = (index % numCol) * charWidth + charWidth/2;
-        int y = (index / numRow) * charHeight + charWidth/2;
-        character.setLocation(this.getX() + x, this.getY() + y);
-    }*/
+        charScale = scale;
+        for (Character c:characters)
+        {
+            c.resizeOnScale(charScale);
+        }
+        
+    }    
+    
+    //set default character scale in this box
+    //set this to 1 if you dont want your character zoon when selected
+    //set this to 0 if you want your character zoom by default
+    public void setSelectedCharScale(double scale)
+    {
+        selectedCharScale = scale;
+        for (Character c:characters)
+        {
+            setSelectedScaleOnChar(c);
+        }
+        
+    }
+    
+    private void setSelectedScaleOnChar(Character c)
+    {
+        if (selectedCharScale > 0)
+                c.setSelectedScale(selectedCharScale);
+    }
     
     private void displayChar(Character character)
     {
         int index = characters.indexOf(character);
-        int x = (index % numCol) * charWidth + charWidth/2;
-        x = this.getX() - getImage().getWidth()/2 + x;
-        int y = (index / numCol) * charHeight + charHeight/2;
-        y = this.getY() - getImage().getHeight()/2 + y; 
+        int numColInThisRow = numCol;
+            
+        int x = (index % numCol) * (disW/numCol)+ disX  + (disW/numCol)/2 + leftMar;
+        int y = (index / numCol) * (disH/numRow) + disY + (disH/numRow)/2 + topMar;
         getWorld().addObject(character,x,y);        
     }
     
+    
     private void selectedCharProcessing()
     {
+        boolean noneSelected = true;
         for (Character character:characters)
         {
             if(character.isSelected())
-                unClickIfNotLastSelected(character);
+            {
+                noneSelected = false;
+                unClickLastSelected(character);
+            }
         }
+        if(noneSelected)
+            lastSelected = null;
     }
     
-    private void unClickIfNotLastSelected(Character character)
+    private void unClickLastSelected(Character character)
     {
         if(character != lastSelected)
         {
@@ -132,4 +184,9 @@ public class CharacterBox extends Actor
             lastSelected=character;
         }
     }    
+    
+    public Character getSelectedChar()
+    {
+        return lastSelected;
+    }
 }
