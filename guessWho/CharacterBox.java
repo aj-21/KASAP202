@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -61,6 +62,13 @@ public class CharacterBox extends Actor
     {
         selectedCharProcessing();
     }    
+    
+    //add all Characters in a collection into box
+    public void addAllChars(Collection<Character> characters)
+    {
+        for(Character character : characters)
+            addCharacter(character);       
+    }
     
     //add a new Character
     public void addCharacter(Character character)

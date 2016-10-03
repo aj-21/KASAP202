@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=GameSession
+comment0.text=\n\ Write\ a\ description\ of\ class\ GameSession\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=GameSession()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GameSession\n
+comment2.params=characters
+comment2.target=void\ addAllToFullSet(java.util.Collection)
+comment3.params=
+comment3.target=void\ clearFullSet()
+comment4.params=
+comment4.target=java.util.Set\ getAllFromFullSet()
+comment5.params=characters
+comment5.target=void\ addAllToPlayList(java.util.Collection)
+numComments=6

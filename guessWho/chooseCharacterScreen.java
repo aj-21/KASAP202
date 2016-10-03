@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class chooseCharacterScreen extends World implements MyWorld
 {
-    
+    GameSession gameSession = new GameSession();
     List<Character> allChars = new ArrayList<Character>();
     CharacterBox chooseCharBox = new CharacterBox(getWidth(),getHeight(),5,2);
     ButtonConfirm buttonConfirm= new ButtonConfirm("confirm");
@@ -87,26 +87,37 @@ public class chooseCharacterScreen extends World implements MyWorld
         //buttondisabled.setLocation(743,774);
         
         
+        //testing
+        
+        
+        List<Character> allCharacters = new ArrayList<Character>();
+        allCharacters.add(new Char1());
+        allCharacters.add(new Char2());
+        allCharacters.add(new Char3());
+        allCharacters.add(new Char4());
+        allCharacters.add(new Char5());
+        allCharacters.add(new Char6());
+        allCharacters.add(new Char7());
+        allCharacters.add(new Char8());
+        allCharacters.add(new Char9());
+        
+        
+        gameSession.addAllToFullSet(allCharacters);
+        
+        
         //my new implementation
         
         
         GreenfootImage bg = this.getBackground();
         chooseCharBox.setImage(bg);
         addObject(chooseCharBox,getWidth()/2,getHeight()/2);
+        
         //try # margin and setCharScale for the best look, left right top bottom
         chooseCharBox.setMargin(10,10,18,15);
         chooseCharBox.setCharScale(1.2);
         addObject(new chooseCharTitle(),876,641);
-        chooseCharBox.addCharacter(new Char1());
-        chooseCharBox.addCharacter(new Char2());
-        chooseCharBox.addCharacter(new Char3());
-        chooseCharBox.addCharacter(new Char4());
-        chooseCharBox.addCharacter(new Char5());
-        chooseCharBox.addCharacter(new Char6());
-        chooseCharBox.addCharacter(new Char7());
-        chooseCharBox.addCharacter(new Char8());
-        chooseCharBox.addCharacter(new Char9());     
-        
+
+        chooseCharBox.addAllChars(gameSession.getAllFromFullSet());
         addObject(buttonConfirm,743,774);
         
         
