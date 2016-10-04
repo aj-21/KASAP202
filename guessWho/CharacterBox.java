@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CharacterBox extends Actor
+public class CharacterBox extends Actor implements ButtonCheckable
 {
     List<Character> characters= new ArrayList<Character>();
     Character lastSelected;
@@ -197,5 +197,11 @@ public class CharacterBox extends Actor
     public Character getSelectedChar()
     {
         return lastSelected;
+    }
+    
+    @Override
+    public boolean isChecked()
+    {
+        return (lastSelected != null);
     }
 }

@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Set;
+import java.util.HashSet;
 /**
  * Write a description of class buttonEnabled here.
  * 
@@ -10,9 +11,10 @@ public class ButtonConfirm extends Actor
 {
     GreenfootImage disableImage = new GreenfootImage("buttonDisabled.png");
     GreenfootImage enableImage = new GreenfootImage("buttonEnabled.png");
+    Set<ButtonCheckable> conditionalObjs = new HashSet<ButtonCheckable>();
     boolean enable = false;
     String label;
-    MyWorld myW;
+    ButtonRunnable myRunObj;
     
     /**
      * Act - do whatever the buttonEnabled wants to do. This method is called whenever
@@ -28,27 +30,54 @@ public class ButtonConfirm extends Actor
     
     public void enableButton()
     {
-        enable = true;
-        setImage(enableImage);
+        if(enable == false)
+        {
+            enable = true;
+            setImage(enableImage);
+        }
     }
     
     public void disableButton()
     {
-        enable = false;
-        setImage(disableImage);
+        if(enable == true)
+        {
+            enable = false;
+            setImage(disableImage);
+        }
     }
     
     protected void addedToWorld(World world)
     {
-        myW = (MyWorld) world;
+        myRunObj = (ButtonRunnable) world;
     }
     
     public void act() 
     {
         // Add your action code here.
+        if(conditionalObjs.size() > 0)
+            checkConditions();
+            
         if(Greenfoot.mousePressed(this) && enable)
         {
-            myW.buttonClicked(this);
+            myRunObj.buttonClickedRun(this);
         }
-    }    
+    }
+    
+    private void checkConditions()
+    {
+        for(ButtonCheckable obj:conditionalObjs)
+        {
+            if(!obj.isChecked())
+            {
+                disableButton();
+                return;
+            }
+        }
+        enableButton();
+    }
+    
+    public void addConditionalObj(ButtonCheckable obj)
+    {
+        conditionalObjs.add(obj);
+    }
 }

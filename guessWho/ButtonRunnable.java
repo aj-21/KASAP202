@@ -4,7 +4,7 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface MyWorld  
+public interface ButtonRunnable  
 {
-    public void buttonClicked(ButtonConfirm button);
+    public void buttonClickedRun(ButtonConfirm button);
 }

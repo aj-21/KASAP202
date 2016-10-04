@@ -6,13 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GuessWho extends World implements MyWorld
+public class GuessWho extends World implements ButtonRunnable
 {
     GameSession gameSession;
     CharacterBox charBox = new CharacterBox(925,460,5,2);
     Character myChar;
     Character yourChar;
-    Character guessChar;
+    Character guessedChar;
     ButtonConfirm buttonGuess= new ButtonConfirm("guess");
     
     /**
@@ -46,21 +46,18 @@ public class GuessWho extends World implements MyWorld
         addObject(myCharBox,1400,600);
         myCharBox.addCharacter(myChar);
         
+        buttonGuess.addConditionalObj(charBox);
         addObject(buttonGuess,750,350);
         
     }
     
     public void act()
-    {
-        guessChar = charBox.getSelectedChar();
-        if(guessChar!=null)
-            buttonGuess.enableButton();
-        else
-            buttonGuess.disableButton();   
+    {  
         
     }
     
-    public void buttonClicked(ButtonConfirm button)
+    @Override
+    public void buttonClickedRun(ButtonConfirm button)
     {
         if(button == buttonGuess)
             guessProcessing();
@@ -68,18 +65,17 @@ public class GuessWho extends World implements MyWorld
     
     protected void guessProcessing()
     {
-        Character selectedChar = charBox.getSelectedChar();
-        if(selectedChar != null && selectedChar.getClass() == yourChar.getClass())
+        guessedChar = charBox.getSelectedChar();
+        if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
             System.out.println("Congratulation! You win");
             charBox.removeSelectedChar();
         }
         else
         {
-            System.out.printf("Guess with %s... Wrong guess! Please try again\n", selectedChar.getClass().getName());
+            System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
             System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
             charBox.removeSelectedChar();
         }
-        
     }
 }

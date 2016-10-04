@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class chooseCharacterScreen extends World implements MyWorld
+public class chooseCharacterScreen extends World implements ButtonRunnable
 {
     GameSession gameSession;
     List<Character> allChars = new ArrayList<Character>();
@@ -105,6 +105,10 @@ public class chooseCharacterScreen extends World implements MyWorld
         addObject(new chooseCharTitle(),876,641);
 
         chooseCharBox.addAllChars(gameSession.getAllFromFullSet());
+        
+        
+        //setup button confirm to check condition pass out from chooseCharBox
+        buttonConfirm.addConditionalObj(chooseCharBox); 
         addObject(buttonConfirm,743,774);
         
         
@@ -112,14 +116,10 @@ public class chooseCharacterScreen extends World implements MyWorld
     
     public void act()
     {   
-        myChar = chooseCharBox.getSelectedChar();
-        if(myChar!=null)
-            buttonConfirm.enableButton();
-        else
-            buttonConfirm.disableButton();
     }
    
-    public void buttonClicked(ButtonConfirm button)
+    @Override
+    public void buttonClickedRun(ButtonConfirm button)
     {
         if(button == buttonConfirm)
             exit();
@@ -128,7 +128,7 @@ public class chooseCharacterScreen extends World implements MyWorld
     
     private void exit()
     {
-        gameSession.setMyChar(myChar);  
+        gameSession.setMyChar(chooseCharBox.getSelectedChar());  
         Greenfoot.setWorld(new GuessWho(gameSession));
     }
     
