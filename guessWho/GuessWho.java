@@ -13,7 +13,7 @@ public class GuessWho extends World implements ButtonRunnable
     Character myChar;
     Character yourChar;
     Character guessedChar;
-    ButtonConfirm buttonGuess= new ButtonConfirm("guess");
+    ButtonConfirm buttonGuess= new ButtonConfirm(this, "guess");
     
     /**
      * Constructor for objects of class MyWorld.

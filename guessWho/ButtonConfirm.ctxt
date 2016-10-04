@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=ButtonConfirm
-comment0.text=\n\ Write\ a\ description\ of\ class\ buttonEnabled\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=label
-comment1.target=ButtonConfirm(java.lang.String)
+comment0.text=\n\ ButtonConfirm\ displays\ itself\ as\ either\ disable\ or\ enable.\ It's\ only\ iteractive\ when\ it\ is\ enable.\n\ \n\ Enability\ is\ automated\ with\ ButtonCheckable\ objects\ added\ in\ when\ all\ of\ them\ return\ true\ on\ isChecked\ funtion\ call.\n\ When\ there\ is\ one\ condition\ returning\ false,\ the\ button\ disable\ itself\ automatically.\n\ ButtonCheckable\ objects\ must\ implement\ ButtonCheckale\ interface.\n\ \n\ ButtonConfirm\ will\ call\ buttonClickedRun\ function\ from\ ButtonRunnable\ Object.\n\ ButtonRunnable\ object\ must\ implement\ ButtonRunnable\ interface.\n\n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=obj\ label
+comment1.target=ButtonConfirm(ButtonRunnable,\ java.lang.String)
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ buttonEnabled\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=void\ enableButton()
@@ -16,4 +16,6 @@ comment6.params=
 comment6.target=void\ checkConditions()
 comment7.params=obj
 comment7.target=void\ addConditionalObj(ButtonCheckable)
-numComments=8
+comment8.params=obj
+comment8.target=void\ setRunObj(ButtonRunnable)
+numComments=9

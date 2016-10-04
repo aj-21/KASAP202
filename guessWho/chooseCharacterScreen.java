@@ -12,7 +12,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     GameSession gameSession;
     List<Character> allChars = new ArrayList<Character>();
     CharacterBox chooseCharBox = new CharacterBox(getWidth(),getHeight(),5,2);
-    ButtonConfirm buttonConfirm= new ButtonConfirm("confirm");
+    ButtonConfirm buttonConfirm= new ButtonConfirm(this, "confirm");
     Character myChar;
     
     /**
