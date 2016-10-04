@@ -75,6 +75,7 @@ public class CharacterBox extends Actor
     {
         if (characters.size() < numCol*numRow)
         {
+            System.out.println("adding " + character.getClass().getName());
             character.resizeOnScale(charScale);
             setSelectedScaleOnChar(character);
             characters.add(character);

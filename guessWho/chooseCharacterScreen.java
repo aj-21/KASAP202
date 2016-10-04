@@ -9,11 +9,11 @@ import java.util.ArrayList;
  */
 public class chooseCharacterScreen extends World implements MyWorld
 {
-    GameSession gameSession = new GameSession();
+    GameSession gameSession;
     List<Character> allChars = new ArrayList<Character>();
     CharacterBox chooseCharBox = new CharacterBox(getWidth(),getHeight(),5,2);
     ButtonConfirm buttonConfirm= new ButtonConfirm("confirm");
-    Character choosenChar;
+    Character myChar;
     
     /**
      * Constructor for objects of class chooseCharacterScreen.
@@ -23,6 +23,7 @@ public class chooseCharacterScreen extends World implements MyWorld
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
+        gameSession = new GameSession();
         prepare();
     }
 
@@ -90,21 +91,6 @@ public class chooseCharacterScreen extends World implements MyWorld
         //testing
         
         
-        List<Character> allCharacters = new ArrayList<Character>();
-        allCharacters.add(new Char1());
-        allCharacters.add(new Char2());
-        allCharacters.add(new Char3());
-        allCharacters.add(new Char4());
-        allCharacters.add(new Char5());
-        allCharacters.add(new Char6());
-        allCharacters.add(new Char7());
-        allCharacters.add(new Char8());
-        allCharacters.add(new Char9());
-        
-        
-        gameSession.addAllToFullSet(allCharacters);
-        
-        
         //my new implementation
         
         
@@ -115,6 +101,7 @@ public class chooseCharacterScreen extends World implements MyWorld
         //try # margin and setCharScale for the best look, left right top bottom
         chooseCharBox.setMargin(10,10,18,15);
         chooseCharBox.setCharScale(1.2);
+
         addObject(new chooseCharTitle(),876,641);
 
         chooseCharBox.addAllChars(gameSession.getAllFromFullSet());
@@ -125,8 +112,8 @@ public class chooseCharacterScreen extends World implements MyWorld
     
     public void act()
     {   
-        choosenChar = chooseCharBox.getSelectedChar();
-        if(choosenChar!=null)
+        myChar = chooseCharBox.getSelectedChar();
+        if(myChar!=null)
             buttonConfirm.enableButton();
         else
             buttonConfirm.disableButton();
@@ -136,11 +123,13 @@ public class chooseCharacterScreen extends World implements MyWorld
     {
         if(button == buttonConfirm)
             exit();
+        
     }
     
     private void exit()
     {
-        Greenfoot.setWorld(new GuessWho(choosenChar));
+        gameSession.setMyChar(myChar);  
+        Greenfoot.setWorld(new GuessWho(gameSession));
     }
     
 }

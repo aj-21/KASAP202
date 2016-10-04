@@ -21,7 +21,7 @@ public class buttonEnabled extends Actor
         // Add your action code here.
         if(Greenfoot.mousePressed(this))
         {
-            Greenfoot.setWorld(new GuessWho(new Char1()));
+            Greenfoot.setWorld(new GuessWho(new GameSession()));
         }
     }    
 }

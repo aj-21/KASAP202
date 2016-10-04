@@ -25,6 +25,30 @@ public class GameSession
      */
     public GameSession()
     {
+        //by default, new game session has a new set of all characters
+        allCharacters.add(new Char1());
+        allCharacters.add(new Char2());
+        allCharacters.add(new Char3());
+        allCharacters.add(new Char4());
+        allCharacters.add(new Char5());
+        allCharacters.add(new Char6());
+        allCharacters.add(new Char7());
+        allCharacters.add(new Char8());
+        allCharacters.add(new Char9());
+        
+        // for the purposes of testing, these are created as well
+        playCharacters.add(new Char1());
+        playCharacters.add(new Char2());
+        playCharacters.add(new Char3());
+        playCharacters.add(new Char4());
+        playCharacters.add(new Char5());
+        playCharacters.add(new Char6());
+        playCharacters.add(new Char7());
+        playCharacters.add(new Char8());
+        playCharacters.add(new Char9());
+        //and these
+        myChar = new Char1();
+        yourChar = new Char5();
     }
     
     //add a character into full collection. Duplicate will be ignore
@@ -47,6 +71,36 @@ public class GameSession
     public void addAllToPlayList(Collection<Character> characters)
     {
         playCharacters.addAll(characters);
+    }
+    
+    public List<Character> getAllFromPlayList()
+    {
+        return playCharacters;
+    }
+    
+    public void clearPlayList()
+    {
+        playCharacters.clear();
+    }
+    
+    public void setMyChar(Character myChar)
+    {
+        this.myChar = myChar;
+    }
+    
+    public Character getMyChar()
+    {
+        return myChar;
+    }
+    
+    public void setYourChar(Character yourChar)
+    {
+        this.yourChar = yourChar;
+    }
+    
+    public Character getYourChar()
+    {
+        return yourChar;
     }
     
     
