@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=OptionInfo
+comment0.text=\n\ Write\ a\ description\ of\ class\ OptionInfo\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ OptionInfo()
+comment2.params=option\ subOption
+comment2.target=void\ addSubOption(java.lang.String,\ java.lang.String)
+comment3.params=option
+comment3.target=java.util.Set\ getSubOptions(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

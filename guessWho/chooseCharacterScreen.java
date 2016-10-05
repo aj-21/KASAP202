@@ -15,6 +15,8 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     ButtonConfirm buttonConfirm= new ButtonConfirm(this, "confirm");
     Character myChar;
     
+    OptionInfo optionInfo = new OptionInfo();
+    
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -110,6 +112,17 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         //setup button confirm to check condition pass out from chooseCharBox
         buttonConfirm.addConditionalObj(chooseCharBox); 
         addObject(buttonConfirm,743,774);
+        
+        
+        //Testing option info
+        optionInfo.addSubOption("Hair","Black");
+        optionInfo.addSubOption("Hair","Black");
+        optionInfo.addSubOption("Hair","Red");
+        
+        optionInfo.addSubOption("Hat","Yes");
+        optionInfo.addSubOption("Hat","No");
+        
+        System.out.println(optionInfo);
         
         
     }
