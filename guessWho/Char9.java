@@ -14,4 +14,10 @@ public class Char9 extends Character
     Boolean hasCoat = getHasCoat(0);
     Boolean hasSpecs = getHasSpectacles(0);   
     Boolean hasEarings = getHasEarings(0);
+    public Char9()
+    {
+        putOption("HairColor","Black");
+        putOption("HairLength","Medium");
+        putOption("Hat","No");
+    }
 }

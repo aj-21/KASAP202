@@ -8,11 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Char4 extends Character
 {
-   String hairColor = hairColorOptions[0];
+    String hairColor = hairColorOptions[0];
     String hairLength = hairLengthOptions[4];
     Boolean hasHat = getHasHat(1);
     Boolean hasCoat = getHasCoat(0);
     Boolean hasSpecs = getHasSpectacles(1);   
     Boolean hasEarings = getHasEarings(0);
    
+    public Char4()
+    {
+        putOption("HairColor","Unknown");
+        putOption("HairLength","Unknown");
+        putOption("Hat","Yes");
+    }
 }

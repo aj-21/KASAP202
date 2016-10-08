@@ -15,4 +15,10 @@ public class Char6 extends Character
     Boolean hasSpecs = getHasSpectacles(0);   
     Boolean hasEarings = getHasEarings(1);
     
+    public Char6()
+    {
+        putOption("HairColor","Grey");
+        putOption("HairLength","Long");
+        putOption("Hat","No");
+    }
 }

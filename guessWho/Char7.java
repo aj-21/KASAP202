@@ -14,4 +14,11 @@ public class Char7 extends Character
     Boolean hasCoat = getHasCoat(1);
     Boolean hasSpecs = getHasSpectacles(0);   
     Boolean hasEarings = getHasEarings(1);
+    
+    public Char7()
+    {
+        putOption("HairColor","White");
+        putOption("HairLength","Long");
+        putOption("Hat","Yes");
+    }
 }

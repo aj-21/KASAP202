@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
+import java.util.Collection;
 /**
  * Write a description of class chooseCharacterScreen here.
  * 
@@ -46,8 +47,9 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         chooseCharBox.setCharScale(1.2);
 
         addObject(new chooseCharTitle(),876,641);
-
-        chooseCharBox.addAllChars(gameSession.getAllFromFullSet());
+        
+        Set<Character> fullSet = gameSession.getAllFromFullSet();
+        chooseCharBox.addAllChars(fullSet);
 
         //setup button confirm to check condition pass out from chooseCharBox
         buttonConfirm.addConditionalObj(chooseCharBox); 
@@ -55,6 +57,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         
         
         //Testing option info
+        
         optionInfo.addSubOption("Hair","Black");
         optionInfo.addSubOption("Hair","Black");
         optionInfo.addSubOption("Hair","Red");

@@ -13,4 +13,11 @@ public class Char1 extends Character
     Boolean hasHat = getHasHat(0);
     Boolean hasCoat = getHasCoat(1);
     Boolean hasSpecs = getHasSpectacles(0);   
+    
+    public Char1()
+    {
+        putOption("HairColor","Grey");
+        putOption("HairLength","Short");
+        putOption("Hat","No");
+    }
 }
