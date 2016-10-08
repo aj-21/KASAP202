@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=DisplayBox
+comment0.text=\n\ Write\ a\ description\ of\ class\ DisplayBox\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=DisplayBox()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ CharacterCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment10.params=leftRight\ topBottom
+comment10.target=void\ setMargin(double,\ double)
+comment11.params=object
+comment11.target=void\ displayObject(greenfoot.Actor)
+comment2.params=width\ height
+comment2.target=DisplayBox(int,\ int)
+comment3.params=width\ height\ col\ row
+comment3.target=DisplayBox(int,\ int,\ int,\ int)
+comment4.params=world
+comment4.target=void\ addedToWorld(greenfoot.World)
+comment5.params=
+comment5.target=void\ reCalibrate()
+comment6.params=objects
+comment6.target=void\ addAllObjects(java.util.Collection)
+comment7.params=object
+comment7.target=void\ addObject(greenfoot.Actor)
+comment8.params=object
+comment8.target=void\ removeObject(greenfoot.Actor)
+comment9.params=left\ right\ top\ bottom
+comment9.target=void\ setMargin(double,\ double,\ double,\ double)
+numComments=12
