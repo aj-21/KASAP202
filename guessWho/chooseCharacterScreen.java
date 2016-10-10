@@ -6,7 +6,7 @@ import java.util.Collection;
 /**
  * Write a description of class chooseCharacterScreen here.
  * 
- * @author (your name) 
+ * @SPAAK 
  * @version (a version number or a date)
  */
 public class chooseCharacterScreen extends World implements ButtonRunnable
