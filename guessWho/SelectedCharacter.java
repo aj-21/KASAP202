@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class SelectedCharacter here.
  * 
- * @author (your name) 
+ * @SPAAK 
  * @version (a version number or a date)
  */
 public class SelectedCharacter extends Actor
