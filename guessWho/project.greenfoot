@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Fri Oct 07 21:34:19 PDT 2016
+#Sun Oct 09 21:25:03 PDT 2016
 target16.name=Char6
 class.Char2.superclass=Character
 dependency35.to=Char1
@@ -279,6 +279,7 @@ target19.name=Char9
 target13.typeParameters=
 target5.name=ButtonCheckable
 target24.showInterface=false
+class.Char10.superclass=Character
 class.Char1.superclass=Character
 dependency22.to=chooseCharTitle
 target26.name=chooseCharacterScreen
