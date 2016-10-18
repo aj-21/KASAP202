@@ -89,12 +89,12 @@ public class CharacterBox extends Actor implements ButtonCheckable
         if(lastSelected != null)
         {
             characters.remove(lastSelected);
-            removeCharacter(lastSelected);            
+            removeChar(lastSelected);            
             lastSelected = null;
         }
     }
     
-    public void removeCharacter(Character character)
+    public void removeChar(Character character)
     {
         if(character != null)
         {

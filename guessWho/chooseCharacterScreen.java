@@ -85,6 +85,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     private void exit()
     {
         gameSession.setMyChar(chooseCharBox.getSelectedChar());  
+        System.out.println("my character is: " + gameSession.getMyChar().getClass().getName());
         Greenfoot.setWorld(new GuessWho(gameSession));
     }
     

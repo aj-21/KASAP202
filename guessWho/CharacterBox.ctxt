@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=CharacterBox
-comment0.text=\n\ Write\ a\ description\ of\ class\ CharacterBox\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CharacterBox\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=CharacterBox()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ CharacterCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ CharacterCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment10.params=character
-comment10.target=void\ removeCharacter(Character)
+comment10.target=void\ removeChar(Character)
 comment11.params=left\ right\ top\ bottom
 comment11.target=void\ setMargin(double,\ double,\ double,\ double)
 comment12.params=leftRight\ topBottom

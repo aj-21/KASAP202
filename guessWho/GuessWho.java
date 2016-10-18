@@ -6,28 +6,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GuessWho extends World implements ButtonRunnable
+public class GuessWho extends World
 {
+    GameState interactiveState = new InteractiveState(this);
+    GameState guessingState = new GuessingState(this);
+    GameState filteringState = new FilteringState(this);
+    //GameState interactiveState = new InteractiveState(this);
+    GameState currentState;
     GameSession gameSession;
     CharacterBox charBox = new CharacterBox(925,460,5,2);
-    Character myChar;
-    Character yourChar;
-    Character guessedChar;
-    ButtonConfirm buttonGuess= new ButtonConfirm(this, "guess");
-    
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    ButtonConfirm buttonGuess= new ButtonConfirm((ButtonRunnable)interactiveState, "guessing");
+    ButtonConfirm buttonFilter= new ButtonConfirm((ButtonRunnable)interactiveState, "filtering");
+
     public GuessWho(GameSession gameSession)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
         this.gameSession = gameSession;
-        this.myChar = gameSession.getMyChar();
-        System.out.println("my character is: " + myChar.getClass().getName());
-        this.yourChar = gameSession.getYourChar();
-        System.out.println("your (secret) character is: " + yourChar.getClass().getName());
+        currentState = interactiveState;
         setup();
     }
     
@@ -44,7 +39,7 @@ public class GuessWho extends World implements ButtonRunnable
         myCharBox.setCharScale(1.2);
         myCharBox.setSelectedCharScale(1);
         addObject(myCharBox,1400,600);
-        myCharBox.addCharacter(myChar);
+        myCharBox.addCharacter(gameSession.getMyChar());
         
         buttonGuess.addConditionalObj(charBox);
         addObject(buttonGuess,750,350);
@@ -53,29 +48,32 @@ public class GuessWho extends World implements ButtonRunnable
     
     public void act()
     {  
-        
+        currentState.run();
     }
     
-    @Override
-    public void buttonClickedRun(ButtonConfirm button)
+    public Character getGuessedChar()
     {
-        if(button == buttonGuess)
-            guessProcessing();
+        return charBox.getSelectedChar();
     }
     
-    protected void guessProcessing()
+    public Character getYourChar()
     {
-        guessedChar = charBox.getSelectedChar();
-        if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
-        {
-            System.out.println("Congratulation! You win");
-            charBox.removeSelectedChar();
-        }
-        else
-        {
-            System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
-            System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
-            charBox.removeSelectedChar();
-        }
+        return gameSession.getYourChar();
     }
+    
+    public void removeChar(Character c)
+    {
+        charBox.removeChar(c);
+    }
+    
+    public void setInteractiveState()
+    {
+        currentState = interactiveState;
+    }
+    
+    public void setGuessingState()
+    {
+        currentState = guessingState;
+    }
+    
 }

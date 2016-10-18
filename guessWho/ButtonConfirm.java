@@ -94,4 +94,9 @@ public class ButtonConfirm extends Actor
     {
         this.runObj = obj;
     }
+    
+    public String getLabel()
+    {
+        return label;
+    }
 }

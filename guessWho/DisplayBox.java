@@ -41,19 +41,8 @@ public class DisplayBox extends Actor
         this.numRow = row;
     }
     
-    protected void addedToWorld(World world)
-    {
-        inWorld = true;
-        reCalibrate();
-    }
-    
-    private void reCalibrate()
-    {
-        disW = (getImage().getWidth() - leftMar - rightMar) ;
-        disH = (getImage().getHeight() - topMar - bottomMar) ;
-        disX = getX() - getImage().getWidth()/2;
-        disY = getY() - getImage().getHeight()/2;
-        
+    private void display()
+    {        
         //fixxxxxxxxxxxxxxxxxxxxxxxx
         for(Actor obj: objects)
             displayObject(obj); //***************************
@@ -83,7 +72,6 @@ public class DisplayBox extends Actor
     {
         if(object == null)
             return;
-       
         objects.remove(object);
         if(inWorld)
             getWorld().removeObject(object);
@@ -101,22 +89,16 @@ public class DisplayBox extends Actor
         this.rightMar = (int) (w * right/100);
         this.topMar = (int) (h * top/100);
         this.bottomMar = (int) (h * bottom / 100 );
-        if(inWorld == true)
-            reCalibrate();
-    }
-    
-    //set 4 margin with percentage. left and right are equal, top and botton are equal. 
-    //Example, 1 = 1% margin of the total box
-    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
-    public void setMargin(double leftRight,  double topBottom)
-    {
-        setMargin(leftRight, leftRight, topBottom, topBottom);
+        
+        disW = (getImage().getWidth() - leftMar - rightMar) ;
+        disH = (getImage().getHeight() - topMar - bottomMar) ;
+        disX = getX() - getImage().getWidth()/2;
+        disY = getY() - getImage().getHeight()/2;
     }
 
     private void displayObject(Actor object)
     {
-        int index = objects.indexOf(object);
-        //int numColInThisRow = numCol;            
+        int index = objects.indexOf(object);          
         int x = (index % numCol) * (disW/numCol)+ disX  + (disW/numCol)/2 + leftMar;
         int y = (index / numCol) * (disH/numRow) + disY + (disH/numRow)/2 + topMar;
         getWorld().addObject(object,x,y);        

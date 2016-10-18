@@ -1,15 +1,20 @@
 #BlueJ class context
 comment0.target=GuessWho
-comment0.text=\n\ Write\ a\ description\ of\ class\ GuessWho\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ GuessWho\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=gameSession
 comment1.target=GuessWho(GameSession)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\n\ \n
 comment2.params=
 comment2.target=void\ setup()
 comment3.params=
 comment3.target=void\ act()
-comment4.params=button
-comment4.target=void\ buttonClickedRun(ButtonConfirm)
+comment4.params=
+comment4.target=Character\ getGuessedChar()
 comment5.params=
-comment5.target=void\ guessProcessing()
-numComments=6
+comment5.target=Character\ getYourChar()
+comment6.params=c
+comment6.target=void\ removeChar(Character)
+comment7.params=
+comment7.target=void\ setInteractiveState()
+comment8.params=
+comment8.target=void\ setGuessingState()
+numComments=9
