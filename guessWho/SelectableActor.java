@@ -62,6 +62,7 @@ public class SelectableActor extends Actor
     //resize the image
     public void resizeOnScale(double scale)
     {
+        System.out.println("scale is: " + scale);
         sizeW *= scale;
         sizeH *= scale;
         getImage().scale(sizeW,sizeH);

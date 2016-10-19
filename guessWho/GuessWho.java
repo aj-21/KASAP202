@@ -29,17 +29,19 @@ public class GuessWho extends World
     private void setup()
     {
         //CharBox setting
-        charBox.setMargin(3.5,2.5);
+        charBox.setMargin(3.5,3.5,2.5,2.5);
         addObject(charBox,getWidth()/2,600);
-        charBox.addAllChars(gameSession.getAllFromPlayList());
+        charBox.addAllCharacters(gameSession.getAllFromPlayList());
+        charBox.display();
         
         //myCharBox Setting
         CharacterBox myCharBox = new CharacterBox(100,100,1,1);
         myCharBox.setImage("yourCharacterCanvas.png");
-        myCharBox.setCharScale(1.2);
+        myCharBox.setCharScale(1.3);
         myCharBox.setSelectedCharScale(1);
         addObject(myCharBox,1400,600);
         myCharBox.addCharacter(gameSession.getMyChar());
+        myCharBox.display();
         
         buttonGuess.addConditionalObj(charBox);
         addObject(buttonGuess,750,350);
@@ -63,7 +65,7 @@ public class GuessWho extends World
     
     public void removeChar(Character c)
     {
-        charBox.removeChar(c);
+        charBox.removeObject(c);
     }
     
     public void setInteractiveState()

@@ -1,4 +1,6 @@
 import greenfoot.World;
+import java.util.Map;
+import java.util.HashMap;
 
 public class FilteringState implements GameState 
 {
@@ -11,6 +13,10 @@ public class FilteringState implements GameState
     
     public void run()
     {
+        String filterKey = "Hair";
+        String filterValue = "No";
+        
+        
         
     }
 }

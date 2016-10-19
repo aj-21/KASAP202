@@ -14,7 +14,7 @@ import java.util.HashSet;
  */
 public class DisplayBox extends Actor
 {
-    List<Actor> objects= new ArrayList<Actor>();
+    protected List<Actor> objects= new ArrayList<Actor>();
     int numCol = 5;
     int numRow = 2;
     int leftMar, rightMar, topMar, bottomMar;
@@ -41,8 +41,14 @@ public class DisplayBox extends Actor
         this.numRow = row;
     }
     
-    private void display()
+    public void display()
     {        
+                
+        disW = (getImage().getWidth() - leftMar - rightMar) ;
+        disH = (getImage().getHeight() - topMar - bottomMar) ;
+        disX = getX() - getImage().getWidth()/2;
+        disY = getY() - getImage().getHeight()/2;
+        
         //fixxxxxxxxxxxxxxxxxxxxxxxx
         for(Actor obj: objects)
             displayObject(obj); //***************************
@@ -54,6 +60,11 @@ public class DisplayBox extends Actor
     {
         for(Actor obj : objects)
             addObject(obj); 
+    }
+    
+    public List<Actor> getAllObjects()
+    {
+        return objects;
     }
     
     //add a new Character
@@ -72,9 +83,10 @@ public class DisplayBox extends Actor
     {
         if(object == null)
             return;
+        
         objects.remove(object);
-        if(inWorld)
-            getWorld().removeObject(object);
+        //if(inWorld)
+        getWorld().removeObject(object);
         
     }
     
@@ -89,11 +101,6 @@ public class DisplayBox extends Actor
         this.rightMar = (int) (w * right/100);
         this.topMar = (int) (h * top/100);
         this.bottomMar = (int) (h * bottom / 100 );
-        
-        disW = (getImage().getWidth() - leftMar - rightMar) ;
-        disH = (getImage().getHeight() - topMar - bottomMar) ;
-        disX = getX() - getImage().getWidth()/2;
-        disY = getY() - getImage().getHeight()/2;
     }
 
     private void displayObject(Actor object)

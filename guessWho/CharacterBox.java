@@ -9,52 +9,16 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CharacterBox extends Actor implements ButtonCheckable
+public class CharacterBox extends DisplayBox implements ButtonCheckable
 {
-    List<Character> characters= new ArrayList<Character>();
     Character lastSelected;
     double charScale = 1;
     double selectedCharScale = 1.5;
-    int numCol = 5;
-    int numRow = 2;
-    int leftMar, rightMar, topMar, bottomMar;
-    int disX,disY,disW,disH;
     boolean inWorld = false;
-    /**
-     * Act - do whatever the CharacterCanvas wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public CharacterBox()
-    {
-    }
-    
-    public CharacterBox(int width, int height)
-    {
-        getImage().scale(width,height); 
-        
-    }
     
     public CharacterBox(int width, int height,int col, int row)
     {
-        this(width,height);
-        this.numCol = col;
-        this.numRow = row;
-    }
-    
-    protected void addedToWorld(World world)
-    {
-        inWorld = true;
-        reCalibrate();
-    }
-    
-    private void reCalibrate()
-    {
-        disW = (getImage().getWidth() - leftMar - rightMar) ;
-        disH = (getImage().getHeight() - topMar - bottomMar) ;
-        disX = getX() - getImage().getWidth()/2;
-        disY = getY() - getImage().getHeight()/2;
-        for(Character c: characters)
-            displayChar(c);
+        super(width,height,col,row);
     }
     
     //characterbox main task is to check if a character is selected. If another is selected, unselect the previous one
@@ -63,121 +27,72 @@ public class CharacterBox extends Actor implements ButtonCheckable
         selectedCharProcessing();
     }    
     
-    //add all Characters in a collection into box
-    public void addAllChars(Collection<Character> characters)
+    public void addAllCharacters(Collection<Character> characters)
     {
-        for(Character character : characters)
-            addCharacter(character);       
+        for(Character c: characters)
+            addCharacter(c); 
     }
     
     //add a new Character
     public void addCharacter(Character character)
     {
-        if (characters.size() < numCol*numRow)
-        {
-            System.out.println("adding " + character.getClass().getName());
-            character.resizeOnScale(charScale);
-            setSelectedScaleOnChar(character);
-            characters.add(character);
-            if(inWorld)
-                displayChar(character);
-        }
+        character.resizeOnScale(charScale);
+        character.setSelectedScale(selectedCharScale);
+        character.unSelect();
+        addObject(character);
     }
     
     public void removeSelectedChar()
     {
         if(lastSelected != null)
         {
-            characters.remove(lastSelected);
-            removeChar(lastSelected);            
+            removeObject(lastSelected);            
             lastSelected = null;
         }
     }
     
-    public void removeChar(Character character)
+    public void removeChar(Character c)
     {
-        if(character != null)
-        {
-            character.unSelect();
-            characters.remove(character);
-            getWorld().removeObject(character);
-        }
+        c.unSelect();
+        removeObject(c);
     }
-    
-    //set 4 margin with percentage.
-    //Example, 1 = 1% margin of the total box
-    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
-    public void setMargin(double left, double right, double top, double bottom)
-    {
-        int w = getImage().getWidth();
-        int h = getImage().getHeight();
-        this.leftMar = (int) (w * left/100);
-        this.rightMar = (int) (w * right/100);
-        this.topMar = (int) (h * top/100);
-        this.bottomMar = (int) (h * bottom / 100 );
-        if(inWorld == true)
-            reCalibrate();
-    }
-    
-    //set 4 margin with percentage. left and right are equal, top and botton are equal. 
-    //Example, 1 = 1% margin of the total box
-    //the larger the margin, the smaller the display area for objects, and the gaps between objects get tinier
-    public void setMargin(double leftRight,  double topBottom)
-    {
-        setMargin(leftRight, leftRight, topBottom, topBottom);
-    }
-    
-    //set default character scale in this box
-    //this is where you set the size of your character uniformly
+
     public void setCharScale(double scale)
     {
+        if(scale <=0)
+            return;
+
         charScale = scale;
-        for (Character c:characters)
+        for (Actor c:objects)
         {
-            c.resizeOnScale(charScale);
+            ((Character)c).resizeOnScale(charScale);
         }
         
     }    
     
-    //set default character scale in this box
-    //set this to 1 if you dont want your character zoon when selected
-    //set this to 0 if you want your character zoom by default
     public void setSelectedCharScale(double scale)
     {
+        if (scale <=0 )
+            return;
+            
         selectedCharScale = scale;
-        for (Character c:characters)
+        for (Actor c:objects)
         {
-            setSelectedScaleOnChar(c);
+            ((Character)c).setSelectedScale(selectedCharScale);
         }
         
     }
     
-    private void setSelectedScaleOnChar(Character c)
-    {
-        if (selectedCharScale > 0)
-                c.setSelectedScale(selectedCharScale);
-    }
-    
-    private void displayChar(Character character)
-    {
-        int index = characters.indexOf(character);
-        int numColInThisRow = numCol;
-            
-        int x = (index % numCol) * (disW/numCol)+ disX  + (disW/numCol)/2 + leftMar;
-        int y = (index / numCol) * (disH/numRow) + disY + (disH/numRow)/2 + topMar;
-        getWorld().addObject(character,x,y);        
-    }
-    
-    
     private void selectedCharProcessing()
     {
         boolean noneSelected = true;
-        for (Character character:characters)
+        for (Actor c:objects)
         {
-            if(character.isSelected())
+            Character ch = (Character) c;
+            if(ch.isSelected())
             {
                 noneSelected = false;
-                unClickLastSelected(character);
+                unClickLastSelected(ch);
             }
         }
         if(noneSelected)

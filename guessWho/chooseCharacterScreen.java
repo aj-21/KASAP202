@@ -44,12 +44,14 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         
         //try # margin and setCharScale for the best look, left right top bottom
         chooseCharBox.setMargin(10,10,18,15);
+        System.out.println("setting charScale");
         chooseCharBox.setCharScale(1.2);
 
         addObject(new chooseCharTitle(),876,641);
         
         Set<Character> fullSet = gameSession.getAllFromFullSet();
-        chooseCharBox.addAllChars(fullSet);
+        chooseCharBox.addAllCharacters(fullSet);
+        chooseCharBox.display();
 
         //setup button confirm to check condition pass out from chooseCharBox
         buttonConfirm.addConditionalObj(chooseCharBox); 
