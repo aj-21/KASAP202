@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class GuessWho here.
  * 
@@ -46,6 +46,9 @@ public class GuessWho extends World
         buttonGuess.addConditionalObj(charBox);
         addObject(buttonGuess,750,350);
         
+        buttonFilter.enableButton();
+        addObject(buttonFilter,300,350);
+        
     }
     
     public void act()
@@ -63,6 +66,11 @@ public class GuessWho extends World
         return gameSession.getYourChar();
     }
     
+    public List<Character> getAllChars()
+    {
+        return charBox.getAllCharacters();
+    }
+    
     public void removeChar(Character c)
     {
         charBox.removeObject(c);
@@ -78,4 +86,8 @@ public class GuessWho extends World
         currentState = guessingState;
     }
     
+    public void setFilteringState()
+    {
+        currentState = filteringState;
+    }
 }

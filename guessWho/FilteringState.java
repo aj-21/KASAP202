@@ -1,5 +1,7 @@
 import greenfoot.World;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FilteringState implements GameState 
@@ -13,10 +15,26 @@ public class FilteringState implements GameState
     
     public void run()
     {
-        String filterKey = "Hair";
-        String filterValue = "No";
+        String filterKey = "HairLength";
+        String filterValue = "Short";
         
+        List<Character> characters = ((GuessWho)gameWorld).getAllChars();
+        List<Character> removingChars = new ArrayList<Character>();
+        for(Character c : characters)
+        {
+            System.out.println(c.getClass().getName() + "> " + filterKey + " : " +  c.getSubOpt(filterKey));
+            if(c.getSubOpt(filterKey) != filterValue)
+            {
+                System.out.println("not match. removing");
+                removingChars.add(c);
+            }
+            else
+                System.out.println("match, keep");
+        }
+            
+        for(Character c : removingChars)
+            ((GuessWho)gameWorld).removeChar(c);
         
-        
+        ((GuessWho)gameWorld).setInteractiveState(); 
     }
 }

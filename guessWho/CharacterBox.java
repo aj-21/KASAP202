@@ -114,6 +114,11 @@ public class CharacterBox extends DisplayBox implements ButtonCheckable
         return lastSelected;
     }
     
+    public List<Character> getAllCharacters()
+    {
+        return (List<Character>)(List<?>)getAllObjects();
+    }
+    
     @Override
     public boolean isChecked()
     {

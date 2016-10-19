@@ -16,6 +16,7 @@ public class Char1 extends Character
     
     public Char1()
     {
+        
         putOption("HairColor","Grey");
         putOption("HairLength","Short");
         putOption("Hat","No");

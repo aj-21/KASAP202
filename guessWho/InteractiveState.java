@@ -25,5 +25,7 @@ public class InteractiveState implements GameState,ButtonRunnable
     {
         if(button.getLabel() == "guessing")
             ((GuessWho)gameWorld).setGuessingState();
+        if(button.getLabel() == "filtering")
+            ((GuessWho)gameWorld).setFilteringState();
     }
 }

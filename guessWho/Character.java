@@ -76,4 +76,9 @@ public class Character extends SelectableActor
         return options;
     }
     
+    public String getSubOpt(String key)
+    {
+        return options.get(key);
+    }
+    
 }

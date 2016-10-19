@@ -17,4 +17,6 @@ comment7.params=key\ value
 comment7.target=void\ putOption(java.lang.String,\ java.lang.String)
 comment8.params=
 comment8.target=java.util.Map\ getOptions()
-numComments=9
+comment9.params=key
+comment9.target=java.lang.String\ getSubOpt(java.lang.String)
+numComments=10
