@@ -15,8 +15,8 @@ public class FilteringState implements GameState
     
     public void run()
     {
-        String filterKey = "HairLength";
-        String filterValue = "Short";
+        String filterKey = "HairColor";
+        String filterValue = ((GuessWho)gameWorld).getYourChar().getSubOpt(filterKey);
         
         List<Character> characters = ((GuessWho)gameWorld).getAllChars();
         List<Character> removingChars = new ArrayList<Character>();
