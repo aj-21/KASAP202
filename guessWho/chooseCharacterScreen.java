@@ -70,6 +70,9 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         System.out.println(optionInfo);
         
         
+        Actor myCh = new Character1(0.5);
+        addObject(myCh,300,300);
+        
     }
     
     public void act()

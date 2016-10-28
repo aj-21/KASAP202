@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=SelectableImagesActor
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SelectableImagesActor\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ responseToPress()
+comment2.params=image
+comment2.target=void\ setSelectedImage(greenfoot.GreenfootImage)
+comment3.params=
+comment3.target=greenfoot.GreenfootImage\ getSelectedImage()
+comment4.params=image
+comment4.target=void\ setDeselectedImage(greenfoot.GreenfootImage)
+comment5.params=
+comment5.target=greenfoot.GreenfootImage\ getDeselectedImage()
+numComments=6
