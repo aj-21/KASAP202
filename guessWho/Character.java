@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Character extends SelectableActor
+public class Character extends SelectableAct
 {   
     //Character Properties
     String[] hairColorOptions = {"None", "Red", "Gray", "Black", "White", "Brown"};

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SelectableActor extends Actor
+public class SelectableAct extends Actor
 {   
     int sizeW;
     int sizeH;
@@ -15,13 +15,13 @@ public class SelectableActor extends Actor
     boolean inWorld = false;
     double scale = 1.5;
     
-    public SelectableActor()
+    public SelectableAct()
     {
         sizeW=getImage().getWidth();
         sizeH=getImage().getHeight();
     }
     
-    public SelectableActor(double scale)
+    public SelectableAct(double scale)
     {
         this();
         sizeW *= scale;

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=ZoomActor
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ZoomActor\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=filename\ initScale
+comment1.target=ZoomActor(java.lang.String,\ double)
+comment2.params=image\ scale
+comment2.target=void\ relativeScale(greenfoot.GreenfootImage,\ double)
+comment3.params=scale
+comment3.target=void\ setZoomScale(double)
+comment4.params=scale
+comment4.target=void\ resizeOnScale(double)
+numComments=5
