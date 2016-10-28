@@ -8,36 +8,54 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SelectableImagesActor extends SimpleSelectableActor
 {
-    GreenfootImage deselectedImage = getImage();
-    GreenfootImage selectedImage = getImage();
+    GreenfootImage deselectedImage;
+    GreenfootImage selectedImage;
     
-    
-    @Override
-    protected void responseToPress()
+    public void SelectableImagesActor()
     {
-        if(this.isSelected())
-            setImage(selectedImage);
-        else
-            setImage(deselectedImage);
+        setDeselectedImage(getImage());
+        setSelectedImage(getImage());
     }
+    
     
     public void setSelectedImage(GreenfootImage image)
     {
         selectedImage = image;
+        //Actor should have the latest image if this is a new image
+        if(isSelected())
+            setImage(selectedImage);
     }
     
     public GreenfootImage getSelectedImage()
     {
         return selectedImage;
+
     }
     
     public void setDeselectedImage(GreenfootImage image)
     {
         deselectedImage = image;
+        //Actor should have the latest image if this is a new image
+        if (!isSelected())
+            setImage(deselectedImage);
     }
     
     public GreenfootImage getDeselectedImage()
     {
         return deselectedImage;
+    }
+    
+    @Override
+    public void select()
+    {
+        super.select();
+        setImage(getSelectedImage());
+    }
+    
+    @Override
+    public void deselect()
+    {
+        super.deselect();
+        setImage(getDeselectedImage());
     }
 }

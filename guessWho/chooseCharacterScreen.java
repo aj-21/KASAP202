@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.lang.*;
 import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         //try # margin and setCharScale for the best look, left right top bottom
         chooseCharBox.setMargin(10,10,18,15);
         System.out.println("setting charScale");
-        chooseCharBox.setCharScale(1.2);
+        chooseCharBox.setCharScale(1);
 
         addObject(new chooseCharTitle(),876,641);
         
@@ -68,11 +69,6 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         optionInfo.addSubOption("Hat","No");
         
         System.out.println(optionInfo);
-        
-        
-        Actor myCh = new Character1(0.5);
-        addObject(myCh,300,300);
-        
     }
     
     public void act()

@@ -37,8 +37,8 @@ public class CharacterBox extends DisplayBox implements ButtonCheckable
     public void addCharacter(Character character)
     {
         character.resizeOnScale(charScale);
-        character.setSelectedScale(selectedCharScale);
-        character.unSelect();
+        character.setZoomScale(selectedCharScale);
+        character.deselect();
         addObject(character);
     }
     
@@ -53,15 +53,14 @@ public class CharacterBox extends DisplayBox implements ButtonCheckable
     
     public void removeChar(Character c)
     {
-        c.unSelect();
+        c.deselect();
         removeObject(c);
     }
 
     public void setCharScale(double scale)
     {
-        if(scale <=0)
+        if (scale <=0 )
             return;
-
         charScale = scale;
         for (Actor c:objects)
         {
@@ -78,7 +77,7 @@ public class CharacterBox extends DisplayBox implements ButtonCheckable
         selectedCharScale = scale;
         for (Actor c:objects)
         {
-            ((Character)c).setSelectedScale(selectedCharScale);
+            ((Character)c).setZoomScale(selectedCharScale);
         }
         
     }
@@ -104,7 +103,10 @@ public class CharacterBox extends DisplayBox implements ButtonCheckable
         if(character != lastSelected)
         {
             if(lastSelected!=null)
-                lastSelected.unSelect();
+            {
+                System.out.println("deselecting " + lastSelected.getClass().getName());            
+                lastSelected.deselect();
+            }
             lastSelected=character;
         }
     }    

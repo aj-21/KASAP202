@@ -7,63 +7,13 @@ import java.util.HashMap;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Character extends SelectableAct
-{   
-    //Character Properties
-    String[] hairColorOptions = {"None", "Red", "Gray", "Black", "White", "Brown"};
-    String[] hairLengthOptions = {"Bald", "Semi-Bald", "Short", "Long", "Undefined"};
-    private boolean hasHat = false;
-    private boolean hasEarings = false;
-    private boolean hasCoat = false;
-    private boolean hasSpectacles = false;
+public class Character extends ZoomActor
+{       
+    Map<String,String> options = new HashMap<String,String>();  
     
-    
-    public boolean getHasHat(int x){
-        if(x == 0)
-            hasHat = false;
-        if(x == 1)
-            hasHat = true;
-        
-        return hasHat;
-    }
-    
-    public boolean getHasEarings(int x){
-        if(x == 0)
-            hasEarings = false;
-        if(x == 1)
-            hasEarings = true;
-        
-        return hasEarings;
-    }
-    
-    public boolean getHasCoat(int x){
-        if(x == 0)
-            hasCoat = false;
-        if(x == 1)
-            hasCoat = true;
-        
-        return hasCoat;
-    }
-    
-    public boolean getHasSpectacles(int x){
-        if(x == 0)
-            hasSpectacles = false;
-        if(x == 1)
-            hasSpectacles = true;
-        
-        return hasSpectacles;
-    }
-    
-    Map<String,String> options = new HashMap<String,String>();
-    
-    public Character()
+    public Character(String filename)
     {
-        super(0.4);
-    }
-    
-    public Character(double scale)
-    {
-        super(0.4*scale);
+        super(filename,0.5);
     }
     
     public void putOption(String key,String value)

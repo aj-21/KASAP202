@@ -32,6 +32,7 @@ public class GuessWho extends World
         charBox.setMargin(3.5,3.5,2.5,2.5);
         addObject(charBox,getWidth()/2,600);
         charBox.addAllCharacters(gameSession.getAllFromPlayList());
+        charBox.setCharScale(0.8);
         charBox.display();
         
         //myCharBox Setting
@@ -40,6 +41,7 @@ public class GuessWho extends World
         myCharBox.setCharScale(1.3);
         myCharBox.setSelectedCharScale(1);
         addObject(myCharBox,1400,600);
+        
         myCharBox.addCharacter(gameSession.getMyChar());
         myCharBox.display();
         

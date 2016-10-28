@@ -7,16 +7,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Char2 extends Character
-{
-    String hairColor = hairColorOptions[2];
-    String hairLength = hairLengthOptions[1];
-    Boolean hasHat = getHasHat(0);
-    Boolean hasCoat = getHasCoat(1);
-    Boolean hasSpecs = getHasSpectacles(0);   
-    Boolean hasEarings = getHasEarings(0);
-    
+{   
     public Char2()
     {
+        super("2.png");
         putOption("HairColor","Unknown");
         putOption("HairLength","Bald");
         putOption("Hat","No");

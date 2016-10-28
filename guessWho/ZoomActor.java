@@ -10,14 +10,14 @@ public class ZoomActor extends SelectableImagesActor
 {
     //initial zoom scale is 1.5
     private double zoomScale = 1.5;
+    
+    //a path to picture is requires so that a zoomactor can construct with 2 images
     public ZoomActor(String filename,double initScale)
     {
         setDeselectedImage(new GreenfootImage(filename));
         relativeScale(getDeselectedImage(), initScale);
         setSelectedImage(new GreenfootImage(filename));
         relativeScale(getSelectedImage(), initScale*zoomScale);
-        
-        setImage(getSelectedImage());
     }
     
     private void relativeScale(GreenfootImage image,double scale)
@@ -30,14 +30,14 @@ public class ZoomActor extends SelectableImagesActor
     }
     
     public void setZoomScale(double scale)
-    {
-        zoomScale = scale;
-        relativeScale(getSelectedImage(),zoomScale);
+    {        
+        relativeScale(getSelectedImage(),scale/zoomScale);
+        zoomScale=scale;
     }
     
     public void resizeOnScale(double scale)
     {
         relativeScale(getDeselectedImage(), scale);
-        relativeScale(getSelectedImage(), scale*zoomScale);
+        relativeScale(getSelectedImage(), scale);
     }
 }
