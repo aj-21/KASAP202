@@ -11,7 +11,8 @@ public class SimpleSelectableActor extends Actor implements Selectable
     
     public final void act()
     {
-        detectPress();      
+        detectPress();
+        otherAct();
     }
     
     protected void detectPress()
@@ -19,7 +20,6 @@ public class SimpleSelectableActor extends Actor implements Selectable
         if(Greenfoot.mousePressed(this))
         {
             toggleSelection();
-            responseToPress();
         }
     }
     
@@ -32,7 +32,7 @@ public class SimpleSelectableActor extends Actor implements Selectable
     }
     
     //override this method if you want your actor give visual feedback
-    protected void responseToPress()
+    public void otherAct()
     {
         
     }

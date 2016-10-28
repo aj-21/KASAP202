@@ -69,6 +69,9 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         optionInfo.addSubOption("Hat","No");
         
         System.out.println(optionInfo);
+        
+        List<Actor> hehehe= new ArrayList<Actor>();
+        hehehe.add(new Char1());
     }
     
     public void act()
