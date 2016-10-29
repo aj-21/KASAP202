@@ -40,18 +40,14 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     private void prepare()
     {         
         GreenfootImage bg = this.getBackground();
+        bg.drawImage(new GreenfootImage("Choose_your_character.png"),getWidth()/7,getHeight()/35);
         chooseCharBox.setImage(bg);
         addObject(chooseCharBox,getWidth()/2,getHeight()/2);
         
         //try # margin and setCharScale for the best look, left right top bottom
         chooseCharBox.setMargin(10,10,18,15);
-        System.out.println("setting charScale");
-        chooseCharBox.setCharScale(1);
 
-        addObject(new chooseCharTitle(),876,641);
-        
-        Set<Character> fullSet = gameSession.getAllFromFullSet();
-        chooseCharBox.addAllCharacters(fullSet);
+        chooseCharBox.addAllCharacters(gameSession.getAllFromFullSet());
         chooseCharBox.display();
 
         //setup button confirm to check condition pass out from chooseCharBox
@@ -60,7 +56,6 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         
         
         //Testing option info
-        
         optionInfo.addSubOption("Hair","Black");
         optionInfo.addSubOption("Hair","Black");
         optionInfo.addSubOption("Hair","Red");
