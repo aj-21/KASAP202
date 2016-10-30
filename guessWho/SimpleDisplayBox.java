@@ -13,8 +13,8 @@ public class SimpleDisplayBox
     Set<SimpleSelectableActor> objects;
     World world;
     int numCol, numRow;
-    int disW, disH; 
-    int disX, disY;
+    int width, height; 
+    int x, y;
     /**
      * Constructor for objects of class SimpleDisplayBox
      */
@@ -37,16 +37,16 @@ public class SimpleDisplayBox
         this.objects = objects;
     }
     
-    public void scale(int disW, int disH)
+    public void scale(int width, int height)
     {
-        this.disW = disW;
-        this.disH = disH;
+        this.width = width;
+        this.height = height;
     }
     
-    public void display(int disX, int disY)
+    public void display(int x, int y)
     {
-        this.disX = disX;
-        this.disY = disY;
+        this.x = x;
+        this.y = y;
         int index = 0;
         for(SimpleSelectableActor obj: objects)
         {
@@ -57,9 +57,9 @@ public class SimpleDisplayBox
     
     private void displayObject(SimpleSelectableActor object,int index)
     {        
-        int x = disX + (index % numCol) * (disW/numCol) + (disW/numCol)/2;
-        int y = disY + (index / numCol) * (disH/numRow) + (disH/numRow)/2;
-        world.addObject(object,x,y);       
+        int objectX = x + (index % numCol) * (width/numCol) + (width/numCol)/2;
+        int objectY = y + (index / numCol) * (height/numRow) + (height/numRow)/2;
+        world.addObject(object,objectX,objectY);       
     }
     
     

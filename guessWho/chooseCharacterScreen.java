@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.*;
 import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Collection;
 /**
@@ -20,6 +21,8 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     
     OptionInfo optionInfo = new OptionInfo();
     
+    UniqueSelection uniqueSelection;
+    
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -29,6 +32,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
         gameSession = new GameSession();
+        uniqueSelection = new CheckableUniqueSelection(this);
         prepare();
     }
 
@@ -41,36 +45,58 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     {         
         GreenfootImage bg = this.getBackground();
         bg.drawImage(new GreenfootImage("Choose_your_character.png"),getWidth()/7,getHeight()/35);
-        chooseCharBox.setImage(bg);
-        addObject(chooseCharBox,getWidth()/2,getHeight()/2);
+        //chooseCharBox.setImage(bg);
+        //addObject(chooseCharBox,getWidth()/2,getHeight()/2);
         
         //try # margin and setCharScale for the best look, left right top bottom
-        chooseCharBox.setMargin(10,10,18,15);
+        //chooseCharBox.setMargin(10,10,18,15);
 
-        chooseCharBox.addAllCharacters(gameSession.getAllFromFullSet());
-        chooseCharBox.display();
+        //chooseCharBox.addAllCharacters(gameSession.getAllFromFullSet());
+        //chooseCharBox.display();
 
         //setup button confirm to check condition pass out from chooseCharBox
-        buttonConfirm.addConditionalObj(chooseCharBox); 
-        addObject(buttonConfirm,743,774);
+        //buttonConfirm.addConditionalObj(chooseCharBox); 
+        //addObject(buttonConfirm,743,774);
         
         
         //Testing option info
-        optionInfo.addSubOption("Hair","Black");
-        optionInfo.addSubOption("Hair","Black");
-        optionInfo.addSubOption("Hair","Red");
+        //optionInfo.addSubOption("Hair","Black");
+        //optionInfo.addSubOption("Hair","Black");
+        //optionInfo.addSubOption("Hair","Red");
         
-        optionInfo.addSubOption("Hat","Yes");
-        optionInfo.addSubOption("Hat","No");
+        //optionInfo.addSubOption("Hat","Yes");
+        //optionInfo.addSubOption("Hat","No");
         
         System.out.println(optionInfo);
         
-        List<Actor> hehehe= new ArrayList<Actor>();
-        hehehe.add(new Char1());
+        Set<SimpleSelectableActor> set = new HashSet<SimpleSelectableActor>();
+        set.add(new Char1());
+        set.add(new Char2());
+        set.add(new Char3());
+        set.add(new Char4());
+        set.add(new Char5());
+        set.add(new Char6());
+        set.add(new Char7());
+        set.add(new Char8());
+        set.add(new Char9());
+        
+        DisplayCanvas disCan = new DisplayCanvas(new SimpleDisplayBox(this));
+        disCan.setContainer(set);
+        disCan.setBackground(bg);
+        addObject(disCan,getWidth()/2,getHeight()/2);
+        disCan.setMargin(10,10,18,15);
+        disCan.display();
+        
+        uniqueSelection.setContainer(set);
+        
+        buttonConfirm.addConditionalObj((ButtonCheckable) uniqueSelection); 
+        addObject(buttonConfirm,743,774);
+        
     }
     
     public void act()
     {   
+        uniqueSelection.run();
     }
    
     @Override
@@ -83,10 +109,14 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     
     private void exit()
     {
-        gameSession.setMyChar(chooseCharBox.getSelectedChar());  
+        //gameSession.setMyChar(chooseCharBox.getSelectedChar());
         System.out.println("my character is: " + gameSession.getMyChar().getClass().getName());
         Greenfoot.setWorld(new GuessWho(gameSession));
     }
     
+    public GameSession getGameSession()
+    {
+        return gameSession;
+    }
 }
 

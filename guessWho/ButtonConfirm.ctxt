@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=ButtonConfirm
-comment0.text=\r\n\ ButtonConfirm\ displays\ itself\ as\ either\ disable\ or\ enable.\ It's\ only\ iteractive\ when\ it\ is\ enable.\r\n\ \r\n\ Enability\ is\ automated\ with\ ButtonCheckable\ objects\ added\ in\ when\ all\ of\ them\ return\ true\ on\ isChecked\ funtion\ call.\r\n\ When\ there\ is\ one\ condition\ returning\ false,\ the\ button\ disable\ itself\ automatically.\r\n\ ButtonCheckable\ objects\ must\ implement\ ButtonCheckale\ interface.\r\n\ \r\n\ ButtonConfirm\ will\ call\ buttonClickedRun\ function\ from\ ButtonRunnable\ Object.\r\n\ ButtonRunnable\ object\ must\ implement\ ButtonRunnable\ interface.\r\n\r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ ButtonConfirm\ displays\ itself\ as\ either\ disable\ or\ enable.\ It's\ only\ iteractive\ when\ it\ is\ enable.\n\ \n\ Enability\ is\ automated\ with\ ButtonCheckable\ objects\ added\ in\ when\ all\ of\ them\ return\ true\ on\ isChecked\ funtion\ call.\n\ When\ there\ is\ one\ condition\ returning\ false,\ the\ button\ disable\ itself\ automatically.\n\ ButtonCheckable\ objects\ must\ implement\ ButtonCheckale\ interface.\n\ \n\ ButtonConfirm\ will\ call\ buttonClickedRun\ function\ from\ ButtonRunnable\ Object.\n\ ButtonRunnable\ object\ must\ implement\ ButtonRunnable\ interface.\n\n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=obj\ label
 comment1.target=ButtonConfirm(ButtonRunnable,\ java.lang.String)
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ buttonEnabled\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ buttonEnabled\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=void\ enableButton()
 comment3.params=
