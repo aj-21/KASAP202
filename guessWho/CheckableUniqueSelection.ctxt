@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=CheckableUniqueSelection
+comment0.text=\n\ Write\ a\ description\ of\ class\ CheckableUniqueSelection\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=world
+comment1.target=CheckableUniqueSelection(greenfoot.World)
+comment2.params=
+comment2.target=boolean\ isChecked()
+numComments=3
