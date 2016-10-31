@@ -15,5 +15,13 @@ public class SubOption extends Actor
     public void act() 
     {
         // Add your action code here.
+        
+        //Options are : 
+        //1. hair color
+        //2. hair - yes or no?
+        //3. jacket - yes or no?
+        //4. spectacles - yes or no?
+        //5. hair length - bald, short, long
+        
     }    
 }

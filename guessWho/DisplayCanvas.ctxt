@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=DisplayCanvas
+<<<<<<< HEAD
 comment0.text=\n\ Write\ a\ description\ of\ class\ DisplayCanvas\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=world
 comment1.target=DisplayCanvas(greenfoot.World)
@@ -27,3 +28,20 @@ comment8.target=DisplayCanvas\ setMargin(double,\ double,\ double,\ double)
 comment9.params=
 comment9.target=void\ display()
 numComments=12
+=======
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DisplayCanvas\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=disBox
+comment1.target=DisplayCanvas(SimpleDisplayBox)
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ DisplayCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=image
+comment3.target=void\ setBackground(greenfoot.GreenfootImage)
+comment4.params=left\ right\ top\ bottom
+comment4.target=void\ setMargin(double,\ double,\ double,\ double)
+comment5.params=
+comment5.target=void\ display()
+comment6.params=set
+comment6.target=void\ setContainer(java.util.Set)
+numComments=7
+>>>>>>> 4c0edccb7c5ea5db366516a9edfb8b9fc1312f00
