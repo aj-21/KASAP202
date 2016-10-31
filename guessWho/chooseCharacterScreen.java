@@ -16,7 +16,7 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     GameSession gameSession;
     ButtonConfirm buttonConfirm= new ButtonConfirm(this, "confirm"); 
     UniqueSelection uniqueSelection;
-    
+    SelectionEnablingButton seb;
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -26,7 +26,6 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
         gameSession = new GameSession();
-        uniqueSelection = new CheckableUniqueSelection(this);
         prepare();
     }
 
@@ -45,18 +44,25 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
         DisplayCanvas disCan = new DisplayCanvas(this,fullCon);
         disCan.setBackground(bg).setMargin(10,10,18,15);
         addObject(disCan,getWidth()/2,getHeight()/2);
-        disCan.display();
+        disCan.display();       
         
-        uniqueSelection.setContainer(fullCon);
+        //buttonConfirm.addConditionalObj((ButtonCheckable) uniqueSelection); 
+        //addObject(buttonConfirm,743,774);
         
-        buttonConfirm.addConditionalObj((ButtonCheckable) uniqueSelection); 
-        addObject(buttonConfirm,743,774);
+        EnableButton confirmButton = new EnableButton("confirm");
+        addObject(confirmButton,743,774);
+                
+        uniqueSelection = new CheckableUniqueSelection(fullCon);
+        seb = new SelectionEnablingButton(fullCon,confirmButton);
         
+        confirmButton.addObserver(new ChooseCharacterScreenState(this.getGameSession()));
+
     }
     
     public void act()
     {   
-        uniqueSelection.run();
+        uniqueSelection.processRun();
+        seb.processRun();
     }
    
     @Override

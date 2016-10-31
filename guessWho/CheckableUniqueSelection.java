@@ -8,9 +8,9 @@ import greenfoot.World;
 public class CheckableUniqueSelection extends UniqueSelection implements ButtonCheckable
 {
     // instance variables - replace the example below with your own
-    public CheckableUniqueSelection(World world)
+    public CheckableUniqueSelection(SimpleContainer container)
     {
-        super(world);
+        super(container);
     }
     
     @Override

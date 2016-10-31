@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=EnableButton
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ EnableButton\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=EnableButton()
+comment2.params=label
+comment2.target=EnableButton(java.lang.String)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=o\ arg
+comment4.target=void\ update(java.util.Observable,\ java.lang.Object)
+comment5.params=
+comment5.target=void\ toggle()
+comment6.params=observer
+comment6.target=void\ addObserver(java.util.Observer)
+numComments=7

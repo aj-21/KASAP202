@@ -17,7 +17,8 @@ public class GuessWho extends World
     CharacterBox charBox = new CharacterBox(925,460,5,2);
     ButtonConfirm buttonGuess= new ButtonConfirm((ButtonRunnable)interactiveState, "guessing");
     ButtonConfirm buttonFilter= new ButtonConfirm((ButtonRunnable)interactiveState, "filtering");
-
+    UniqueSelection uniqueSelection;
+    SelectionEnablingButton seb;
     public GuessWho(GameSession gameSession)
     {    
         super(1536, 864, 1); 
@@ -29,9 +30,9 @@ public class GuessWho extends World
     private void setup()
     {
         //charCanvas setting
-        ZoomContainer charCon = new ZoomContainer(gameSession.getPlaySet());
-        charCon.resizeOnScale(0.8);   
-        DisplayCanvas charCanvas = new DisplayCanvas(this,charCon);
+        ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
+        playCon.resizeOnScale(0.8);   
+        DisplayCanvas charCanvas = new DisplayCanvas(this,playCon);
         addObject(charCanvas,getWidth()/2,600);
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
@@ -41,12 +42,18 @@ public class GuessWho extends World
         myCharCon.resizeOnScale(1.5);
         DisplayCanvas myCharCanvas = new DisplayCanvas(this,myCharCon);
         addObject(myCharCanvas,1400,600);
-        myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();                
+        myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();   
+        
+        EnableButton guessButton = new EnableButton("guess");
+        addObject(guessButton,600,600);
+        uniqueSelection = new UniqueSelection(playCon);
+        seb = new SelectionEnablingButton(playCon,guessButton);
     }
     
     public void act()
     {  
         currentState.run();
+        uniqueSelection.processRun();
     }
     
     public Character getGuessedChar()

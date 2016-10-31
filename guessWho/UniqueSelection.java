@@ -7,7 +7,7 @@ import greenfoot.World;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class UniqueSelection
+public class UniqueSelection implements Process
 {
     Set<SimpleSelectableActor> objects;
     protected SimpleSelectableActor lastSelected;
@@ -15,10 +15,10 @@ public class UniqueSelection
     /**
      * Constructor for objects of class UniqueSelection
      */
-    public UniqueSelection(World world)
+    public UniqueSelection(SimpleContainer container)
     {
-        objects = new HashSet<SimpleSelectableActor>();
-        this.world = world;
+        setContainer(container);
+
     }
     
     public void setContainer(SimpleContainer container)
@@ -26,7 +26,8 @@ public class UniqueSelection
         this.objects = container.getAll();
     }
     
-    public void run()
+    @Override
+    public void processRun()
     {
         boolean noneSelected = true;
         for (SimpleSelectableActor a:objects)
