@@ -26,7 +26,7 @@ public class DisplayCanvas extends Actor
     public DisplayCanvas(World world, SimpleContainer container)
     {
         this(world);
-        disBox.setObjects(container.getAll());
+        disBox.setContainer(container);
     }
     
     public DisplayCanvas(SimpleDisplayBox disBox)
@@ -37,7 +37,7 @@ public class DisplayCanvas extends Actor
     public DisplayCanvas(SimpleDisplayBox disBox, SimpleContainer container)
     {
         this(disBox);
-        disBox.setObjects(container.getAll());
+        disBox.setContainer(container);
     }
     
     public void addedToWorld(World world)
@@ -91,13 +91,12 @@ public class DisplayCanvas extends Actor
     
     public void display()
     {
-        
         disBox.display(disX + leftMar,disY + topMar);           
     }
    
     public DisplayCanvas setContainer(SimpleContainer container)
     {
-       disBox.setObjects(container.getAll());
+       disBox.setContainer(container);
        return this;
     }
     
@@ -105,5 +104,10 @@ public class DisplayCanvas extends Actor
     {
         disBox.setColRow(col,row);
         return this;
+    }
+    
+    public SimpleContainer getContainer()
+    {
+        return disBox.getContainer();
     }
 }

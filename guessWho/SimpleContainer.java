@@ -76,7 +76,25 @@ public class SimpleContainer <T extends SimpleSelectableActor>
     {
         return actors;
     }
-   
+    
+    public SimpleSelectableActor getSelected()
+    {
+        return getFirstSelected();
+    }
+    
+    public SimpleSelectableActor getLastSelected()
+    {
+        T selectedActor= null;
+        for (T actor:actors)
+        {
+            if (actor.isSelected())
+            {
+                selectedActor = actor;
+            }
+        }
+        return selectedActor;
+    }
+    
     public SimpleSelectableActor getFirstSelected()
     {
         T selectedActor= null;

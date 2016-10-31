@@ -10,7 +10,7 @@ import java.util.HashSet;
  */
 public class SimpleDisplayBox  
 {
-    Set<SimpleSelectableActor> objects;
+    Set<SimpleSelectableActor> actors;
     World world;
     int numCol, numRow;
     int width, height; 
@@ -23,18 +23,13 @@ public class SimpleDisplayBox
         numCol = 5;
         numRow = 2;
         this.world = world;
-        objects = new HashSet<SimpleSelectableActor>();
+        actors = new HashSet<SimpleSelectableActor>();
         
     }
-
-    public Set<SimpleSelectableActor> getObjects()
-    {
-        return objects;
-    }
     
-    public void setObjects(Set<SimpleSelectableActor> objects)
+    public void setContainer(SimpleContainer container)
     {
-        this.objects = objects;
+        this.actors = container.getAll();
     }
     
     public void scale(int width, int height)
@@ -48,29 +43,33 @@ public class SimpleDisplayBox
         this.x = x;
         this.y = y;
         int index = 0;
-        for(SimpleSelectableActor obj: objects)
+        for(SimpleSelectableActor actor: actors)
         {
-            displayObject(obj,index);  
+            displayActor(actor,index);  
             index++;
         }
     }
     
-    private void displayObject(SimpleSelectableActor object,int index)
+    private void displayActor(SimpleSelectableActor actor,int index)
     {        
         int objectX = x + (index % numCol) * (width/numCol) + (width/numCol)/2;
         int objectY = y + (index / numCol) * (height/numRow) + (height/numRow)/2;
-        if(object.isInWorld() && object.getWorld() == this.world)
+        if(actor.isInWorld() && actor.getWorld() == this.world)
         {
-            System.out.println(object.getClass().getName() + " is in World at: [" + object.getX() + ":" + object.getY() +"]");
-            object.setLocation(x,y);
+            actor.setLocation(x,y);
             return;
         }
-        world.addObject(object,objectX,objectY);     
+        world.addObject(actor,objectX,objectY);     
     }
     
     public void setColRow(int col, int row)
     {
         this.numCol = col;
         this.numRow = row;
+    }
+    
+    public SimpleContainer getContainer()
+    {
+        return new SimpleContainer(actors);
     }
 }
