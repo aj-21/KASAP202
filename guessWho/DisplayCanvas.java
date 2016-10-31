@@ -17,10 +17,27 @@ public class DisplayCanvas extends Actor
     /**
      * Act - do whatever the DisplayCanvas wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+     */  
+    public DisplayCanvas(World world)
+    {
+        this.disBox = new SimpleDisplayBox(world);
+    }
+    
+    public DisplayCanvas(World world, SimpleContainer container)
+    {
+        this(world);
+        disBox.setObjects(container.getAll());
+    }
+    
     public DisplayCanvas(SimpleDisplayBox disBox)
     {
         this.disBox = disBox;
+    }
+    
+    public DisplayCanvas(SimpleDisplayBox disBox, SimpleContainer container)
+    {
+        this(disBox);
+        disBox.setObjects(container.getAll());
     }
     
     public void addedToWorld(World world)
@@ -29,13 +46,36 @@ public class DisplayCanvas extends Actor
         disY = getY() - getImage().getHeight()/2;
     }
     
-    public void setBackground(GreenfootImage image)
+    /*public void setBackground(String filename)
+    {
+        setBackground(new GreenfootImage(filename));
+    }*/
+    
+    public DisplayCanvas setBackground(String filename)
+    {
+        setBackground(new GreenfootImage(filename));
+        return this;
+    }
+    
+    /*public void setBackground(GreenfootImage image)
     {
         setImage(image);
         setMargin(left,right,top,bottom);
+        if(getWorld() != null)
+            addedToWorld(getWorld());
+    }*/
+    
+    public DisplayCanvas setBackground(GreenfootImage image)
+    {
+        setImage(image);
+        setMargin(left,right,top,bottom);
+        if(getWorld() != null)
+            addedToWorld(getWorld());
+        return this;
     }
     
-    public void setMargin(double left, double right, double top, double bottom)
+    
+    public DisplayCanvas setMargin(double left, double right, double top, double bottom)
     {
         this.left = left; this.right = right;this.top=top;this.bottom=bottom;
         int w = getImage().getWidth();
@@ -46,16 +86,24 @@ public class DisplayCanvas extends Actor
         int bottomMar = (int) (h * bottom / 100 );
         
         disBox.scale(w - leftMar - rightMar, h - topMar - bottomMar);
+        return this;
     }    
     
     public void display()
     {
+        
         disBox.display(disX + leftMar,disY + topMar);           
- 
     }
    
-    public void setContainer(Set<SimpleSelectableActor> set)
+    public DisplayCanvas setContainer(SimpleContainer container)
     {
-       disBox.setObjects(set);
+       disBox.setObjects(container.getAll());
+       return this;
+    }
+    
+    public DisplayCanvas setColRow(int col, int row)
+    {
+        disBox.setColRow(col,row);
+        return this;
     }
 }

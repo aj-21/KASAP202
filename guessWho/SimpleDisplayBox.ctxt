@@ -14,4 +14,6 @@ comment5.params=x\ y
 comment5.target=void\ display(int,\ int)
 comment6.params=object\ index
 comment6.target=void\ displayObject(SimpleSelectableActor,\ int)
-numComments=7
+comment7.params=col\ row
+comment7.target=void\ setColRow(int,\ int)
+numComments=8

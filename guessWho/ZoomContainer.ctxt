@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ZoomContainer
+comment0.text=\n\ Write\ a\ description\ of\ class\ ZoomContainer\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=ZoomContainer()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ZoomContainer\n
+comment2.params=actor
+comment2.target=ZoomContainer(ZoomActor)
+comment3.params=actors
+comment3.target=ZoomContainer(java.util.Set)
+comment4.params=actors
+comment4.target=ZoomContainer(java.util.List)
+comment5.params=scale
+comment5.target=void\ resizeOnScale(double)
+comment6.params=scale
+comment6.target=void\ setZoomScale(double)
+numComments=7

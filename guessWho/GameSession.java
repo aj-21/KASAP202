@@ -13,7 +13,7 @@ public class GameSession
 {
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
-    List<Character> playCharacters = new ArrayList<Character>();
+    Set<Character> playCharacters = new HashSet<Character>();
     Character myChar;
     Character yourChar;
     int roomNumber;
@@ -62,7 +62,7 @@ public class GameSession
         allCharacters.clear();
     }
     
-    public Set<Character> getAllFromFullSet()
+    public Set<Character> getFullSet()
     {
         return allCharacters;
     }
@@ -73,12 +73,12 @@ public class GameSession
         playCharacters.addAll(characters);
     }
     
-    public List<Character> getAllFromPlayList()
+    public Set<Character> getPlaySet()
     {
         return playCharacters;
     }
     
-    public void clearPlayList()
+    public void clearPlaySet()
     {
         playCharacters.clear();
     }

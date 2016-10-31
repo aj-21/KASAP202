@@ -59,8 +59,18 @@ public class SimpleDisplayBox
     {        
         int objectX = x + (index % numCol) * (width/numCol) + (width/numCol)/2;
         int objectY = y + (index / numCol) * (height/numRow) + (height/numRow)/2;
-        world.addObject(object,objectX,objectY);       
+        if(object.isInWorld() && object.getWorld() == this.world)
+        {
+            System.out.println(object.getClass().getName() + " is in World at: [" + object.getX() + ":" + object.getY() +"]");
+            object.setLocation(x,y);
+            return;
+        }
+        world.addObject(object,objectX,objectY);     
     }
     
-    
+    public void setColRow(int col, int row)
+    {
+        this.numCol = col;
+        this.numRow = row;
+    }
 }

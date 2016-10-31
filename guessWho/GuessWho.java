@@ -28,29 +28,20 @@ public class GuessWho extends World
     
     private void setup()
     {
-        //CharBox setting
-        charBox.setMargin(3.5,3.5,2.5,2.5);
-        addObject(charBox,getWidth()/2,600);
-        charBox.addAllCharacters(gameSession.getAllFromPlayList());
-        charBox.setCharScale(0.8);
-        charBox.display();
+        //charCanvas setting
+        ZoomContainer charCon = new ZoomContainer(gameSession.getPlaySet());
+        charCon.resizeOnScale(0.8);   
+        DisplayCanvas charCanvas = new DisplayCanvas(this,charCon);
+        addObject(charCanvas,getWidth()/2,600);
+        charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
-        //myCharBox Setting
-        CharacterBox myCharBox = new CharacterBox(100,100,1,1);
-        myCharBox.setImage("yourCharacterCanvas.png");
-        myCharBox.setCharScale(1.3);
-        myCharBox.setSelectedCharScale(1);
-        addObject(myCharBox,1400,600);
-        
-        myCharBox.addCharacter(gameSession.getMyChar());
-        myCharBox.display();
-        
-        buttonGuess.addConditionalObj(charBox);
-        addObject(buttonGuess,750,350);
-        
-        buttonFilter.enableButton();
-        addObject(buttonFilter,300,350);
-        
+        //myCharCanvas setting
+        ZoomContainer myCharCon = new ZoomContainer(gameSession.getMyChar());
+        myCharCon.setZoomScale(1);
+        myCharCon.resizeOnScale(1.5);
+        DisplayCanvas myCharCanvas = new DisplayCanvas(this,myCharCon);
+        addObject(myCharCanvas,1400,600);
+        myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();                
     }
     
     public void act()

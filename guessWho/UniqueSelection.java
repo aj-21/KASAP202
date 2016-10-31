@@ -7,9 +7,8 @@ import greenfoot.World;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class UniqueSelection  
+public class UniqueSelection
 {
-    // instance variables - replace the example below with your own
     Set<SimpleSelectableActor> objects;
     protected SimpleSelectableActor lastSelected;
     World world;
@@ -22,9 +21,9 @@ public class UniqueSelection
         this.world = world;
     }
     
-    public void setContainer(Set<SimpleSelectableActor> objects)
+    public void setContainer(SimpleContainer container)
     {
-        this.objects = objects;
+        this.objects = container.getAll();
     }
     
     public void run()
@@ -39,9 +38,7 @@ public class UniqueSelection
             }
         }
         if(noneSelected)
-            lastSelected = null;
-        ((chooseCharacterScreen) world).getGameSession().setMyChar( (Character)lastSelected);
-        
+            lastSelected = null;        
     }
     
     private void checkWithLastSelected(SimpleSelectableActor a)
@@ -55,7 +52,5 @@ public class UniqueSelection
             }
             lastSelected=a;
         }
-    } 
-    
-    
+    }    
 }

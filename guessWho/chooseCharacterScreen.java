@@ -14,13 +14,7 @@ import java.util.Collection;
 public class chooseCharacterScreen extends World implements ButtonRunnable
 {
     GameSession gameSession;
-    List<Character> allChars = new ArrayList<Character>();
-    CharacterBox chooseCharBox = new CharacterBox(getWidth(),getHeight(),5,2);
-    ButtonConfirm buttonConfirm= new ButtonConfirm(this, "confirm");
-    Character myChar;
-    
-    OptionInfo optionInfo = new OptionInfo();
-    
+    ButtonConfirm buttonConfirm= new ButtonConfirm(this, "confirm"); 
     UniqueSelection uniqueSelection;
     
     /**
@@ -44,50 +38,16 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     private void prepare()
     {         
         GreenfootImage bg = this.getBackground();
-        bg.drawImage(new GreenfootImage("Choose_your_character.png"),getWidth()/7,getHeight()/35);
-        //chooseCharBox.setImage(bg);
-        //addObject(chooseCharBox,getWidth()/2,getHeight()/2);
+        bg.drawImage(new GreenfootImage("Choose_your_character.png"),getWidth()/7,getHeight()/35);;
         
-        //try # margin and setCharScale for the best look, left right top bottom
-        //chooseCharBox.setMargin(10,10,18,15);
-
-        //chooseCharBox.addAllCharacters(gameSession.getAllFromFullSet());
-        //chooseCharBox.display();
-
-        //setup button confirm to check condition pass out from chooseCharBox
-        //buttonConfirm.addConditionalObj(chooseCharBox); 
-        //addObject(buttonConfirm,743,774);
-        
-        
-        //Testing option info
-        //optionInfo.addSubOption("Hair","Black");
-        //optionInfo.addSubOption("Hair","Black");
-        //optionInfo.addSubOption("Hair","Red");
-        
-        //optionInfo.addSubOption("Hat","Yes");
-        //optionInfo.addSubOption("Hat","No");
-        
-        System.out.println(optionInfo);
-        
-        Set<SimpleSelectableActor> set = new HashSet<SimpleSelectableActor>();
-        set.add(new Char1());
-        set.add(new Char2());
-        set.add(new Char3());
-        set.add(new Char4());
-        set.add(new Char5());
-        set.add(new Char6());
-        set.add(new Char7());
-        set.add(new Char8());
-        set.add(new Char9());
-        
-        DisplayCanvas disCan = new DisplayCanvas(new SimpleDisplayBox(this));
-        disCan.setContainer(set);
-        disCan.setBackground(bg);
+        ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
+        fullCon.resizeOnScale(0.9);
+        DisplayCanvas disCan = new DisplayCanvas(this,fullCon);
+        disCan.setBackground(bg).setMargin(10,10,18,15);
         addObject(disCan,getWidth()/2,getHeight()/2);
-        disCan.setMargin(10,10,18,15);
         disCan.display();
         
-        uniqueSelection.setContainer(set);
+        uniqueSelection.setContainer(fullCon);
         
         buttonConfirm.addConditionalObj((ButtonCheckable) uniqueSelection); 
         addObject(buttonConfirm,743,774);
@@ -109,7 +69,8 @@ public class chooseCharacterScreen extends World implements ButtonRunnable
     
     private void exit()
     {
-        //gameSession.setMyChar(chooseCharBox.getSelectedChar());
+        SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
+        gameSession.setMyChar((Character)c.getFirstSelected());
         System.out.println("my character is: " + gameSession.getMyChar().getClass().getName());
         Greenfoot.setWorld(new GuessWho(gameSession));
     }

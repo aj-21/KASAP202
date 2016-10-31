@@ -39,7 +39,7 @@ public class SimpleSelectableActor extends Actor implements Selectable
     
     public boolean isInWorld()
     {
-        return getWorld() == null;
+        return getWorld() != null;
     }
     
     //basic functionality from SimpleSelectable
