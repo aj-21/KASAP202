@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=SelectionEnablingButton
 comment0.text=\n\ Write\ a\ description\ of\ class\ ButtonController\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=container\ button
-comment1.target=SelectionEnablingButton(SimpleContainer,\ EnableButton)
+comment1.params=objects\ button
+comment1.target=SelectionEnablingButton(java.util.Set,\ EnableButton)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ButtonController\n
-comment2.params=container
-comment2.target=void\ setContainer(SimpleContainer)
-comment3.params=
-comment3.target=void\ processRun()
-comment4.params=status
-comment4.target=void\ setStatus(boolean)
-numComments=5
+comment2.params=container\ button
+comment2.target=SelectionEnablingButton(SimpleContainer,\ EnableButton)
+comment3.params=container
+comment3.target=void\ setContainer(SimpleContainer)
+comment4.params=
+comment4.target=void\ processRun()
+comment5.params=status
+comment5.target=void\ setStatus(boolean)
+numComments=6

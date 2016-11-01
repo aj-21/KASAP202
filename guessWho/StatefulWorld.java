@@ -9,12 +9,11 @@ import java.util.Set;
  */
 public abstract class StatefulWorld extends World
 {
-    Set<Process> processes;
     GameState currentState;
+    Object stateRunObj = null;
     
     public StatefulWorld(int width, int height, int size)
     {    
-        
         super(width, height, size); 
     }
     
@@ -22,10 +21,8 @@ public abstract class StatefulWorld extends World
     {   
         if(currentState != null)
         {
-            
-            for(Process process:processes)
-                process.processRun();
-            currentState.stateRun();
+            currentState.stateProcessesRun();
+            currentState.stateRun(stateRunObj);
             return;
         }
         System.out.println("Current State is null");
@@ -33,9 +30,10 @@ public abstract class StatefulWorld extends World
     
     public void setState(GameState nextState)
     {
-        currentState.exit();
+        if(currentState!=null)
+            currentState.exit();
         currentState=nextState;
-        processes = currentState.getProcesses();
+        System.out.println("entered " + currentState.getClass().getName());
         currentState.enter();
     }
     

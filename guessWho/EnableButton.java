@@ -21,7 +21,7 @@ public class EnableButton extends Actor implements Observer
         disableImage.scale(300,80);
         enableImage = new GreenfootImage("buttonEnabled.png");
         enableImage.scale(300,80);
-        setImage(disableImage);
+        disable();
         o = new MyObservable();
     }
     
@@ -33,7 +33,7 @@ public class EnableButton extends Actor implements Observer
     
     public void act()
     {
-        if(getImage() == enableImage && Greenfoot.mouseClicked(this))
+        if(isEnable() && Greenfoot.mouseClicked(this))
         {
             o.setCHANGED();
             o.notifyObservers(this);
@@ -49,12 +49,12 @@ public class EnableButton extends Actor implements Observer
     
     private void toggle()
     {
-        if(getImage() == disableImage)
+        if(isEnable())
         {
-            setImage(enableImage);
+            disable();
             return;
         }
-        setImage(disableImage);
+        enable();
     }
     
     public void addObserver(Observer observer)
@@ -65,5 +65,20 @@ public class EnableButton extends Actor implements Observer
     public String getLabel()
     {
         return label;
+    }
+    
+    public void enable()
+    {
+        setImage(enableImage);
+    }
+    
+    public void disable()
+    {
+        setImage(disableImage);
+    }
+    
+    public boolean isEnable()
+    {
+        return (getImage() == enableImage);
     }
 }

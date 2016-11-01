@@ -8,34 +8,45 @@ import java.util.Observable;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SelectionEnablingButton extends Observable implements Process
+public class SelectionEnablingButton<T extends Selectable> extends Observable implements Process
 {
-    SimpleContainer container;
-    protected SimpleSelectableActor lastSelected;
+    Set<T> objects;
+    protected T lastSelected;
     boolean status = false;
     /**
      * Constructor for objects of class ButtonController
      */
+    public SelectionEnablingButton(Set<T> objects, EnableButton button)
+    {
+        this.objects = objects;
+        addObserver(button);
+    }
+    
     public SelectionEnablingButton(SimpleContainer container, EnableButton button)
     {
-        setContainer(container);
-        addObserver(button);
+        this(container.getAll(),button);
     }
     
     public void setContainer(SimpleContainer container)
     {
-        this.container = container;
+        this.objects = container.getAll();
     }
     
     @Override
     public void processRun()
     {
-        if(container.getSelected() != null && status != true)
+        T firstSelected = null;
+        for(T object:objects)
+        {
+            if (object.isSelected())
+                firstSelected = object;
+        }
+        if(firstSelected != null && status == false)
         {
             setStatus(true);
             return;
         }
-        if(container.getSelected() == null && status == true)
+        if(firstSelected == null && status == true)
         {
             setStatus(false);
             return;

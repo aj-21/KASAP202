@@ -2,8 +2,8 @@
 comment0.target=GameState
 comment1.params=
 comment1.target=void\ enter()
-comment2.params=
-comment2.target=void\ stateRun()
+comment2.params=arg
+comment2.target=void\ stateRun(java.lang.Object)
 comment3.params=
 comment3.target=void\ stateProcessesRun()
 comment4.params=process

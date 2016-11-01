@@ -10,16 +10,14 @@ import java.util.HashSet;
  */
 public class GuessWho extends StatefulWorld
 {
-    Set<GameState> gameStates = new HashSet<GameState>();
     
-    GameState interactiveState;
+    GameSession gameSession;
+    
+    Set<GameState> gameStates = new HashSet<GameState>();
+    GameState guessWhoState;
     GameState guessingState;
     GameState filteringState;
-    //GameState interactiveState = new InteractiveState(this);
-    
-    GameState guessWhoState;
-    GameSession gameSession;
-    CharacterBox charBox = new CharacterBox(925,460,5,2);
+    GameState waitingState;
 
     public GuessWho(GameSession gameSession)
     {    
@@ -27,7 +25,9 @@ public class GuessWho extends StatefulWorld
         this.gameSession = gameSession;
         guessWhoState = new GuessWhoState(this,gameSession);
         guessingState = new GuessingState(this,gameSession);
-        currentState = guessWhoState;
+        filteringState = new FilteringState(this,gameSession);
+        waitingState = new WaitingState(this,gameSession);
+        setState("guessWhoState");
         setup();
     }
     
@@ -36,7 +36,7 @@ public class GuessWho extends StatefulWorld
         //charCanvas setting
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
-        DisplayCanvas charCanvas = new DisplayCanvas(this,playCon);
+        DisplayCanvas charCanvas = new DisplayCanvas(playCon);
         addObject(charCanvas,getWidth()/2,600);
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
@@ -44,12 +44,10 @@ public class GuessWho extends StatefulWorld
         ZoomContainer myCharCon = new ZoomContainer(gameSession.getMyChar());
         myCharCon.setZoomScale(1);
         myCharCon.resizeOnScale(1.5);
-        DisplayCanvas myCharCanvas = new DisplayCanvas(this,myCharCon);
+        DisplayCanvas myCharCanvas = new DisplayCanvas(myCharCon);
         addObject(myCharCanvas,1400,600);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();   
         
-        //EnableButton guessButton = new EnableButton("guess");
-        //addObject(guessButton,600,850);
 
     }
     
@@ -59,6 +57,8 @@ public class GuessWho extends StatefulWorld
         {
             case "guessWhoState": return guessWhoState;
             case "guessingState": return guessingState; 
+            case "filteringState": return filteringState;
+            case "waitingState": return waitingState;
             default: return guessWhoState;
         }
     }
@@ -66,40 +66,5 @@ public class GuessWho extends StatefulWorld
     public void setState(String stateName)
     {
         setState(getState(stateName));
-    }
-    
-    public Character getGuessedChar()
-    {
-        return charBox.getSelectedChar();
-    }
-    
-    public Character getYourChar()
-    {
-        return gameSession.getYourChar();
-    }
-    
-    public List<Character> getAllChars()
-    {
-        return charBox.getAllCharacters();
-    }
-    
-    public void removeChar(Character c)
-    {
-        charBox.removeObject(c);
-    }
-    
-    public void setInteractiveState()
-    {
-        currentState = interactiveState;
-    }
-    
-    public void setGuessingState()
-    {
-        currentState = guessingState;
-    }
-    
-    public void setFilteringState()
-    {
-        currentState = filteringState;
     }
 }

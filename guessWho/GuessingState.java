@@ -10,12 +10,12 @@ public class GuessingState extends SimpleGameState
         this.gameSession = gameSession;
     }
     
-    public void stateRun()
+    public void stateRun(Object arg)
     {
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         Character guessedChar = (Character)ccc.getSelected();
-        Character yourChar = gameSession.getYourChar();
-        //System.out.println(guessedChar.getClass().getName() + " is running");
+        Character yourChar = gameSession.getMyChar();
+        
         if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
             System.out.println("Congratulation! You win");
@@ -29,6 +29,6 @@ public class GuessingState extends SimpleGameState
             world.removeObject(guessedChar);
             gameSession.getPlaySet().remove(guessedChar);
         }
-        world.setState("guessWhoState");
+        world.setState("waitingState");
     }
 }

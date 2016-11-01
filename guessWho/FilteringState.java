@@ -1,40 +1,41 @@
 import greenfoot.World;
 import java.util.Map;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observer;
 
-public class FilteringState extends SimpleGameState 
+public class FilteringState extends SimpleGameState
 {
-    World gameWorld;
-    
-    public FilteringState(World game)
+    GuessWho world;
+    GameSession gameSession;
+    public FilteringState(GuessWho world,GameSession gameSession)
     {
-        this.gameWorld = game;
+        this.world = world;
+        this.gameSession = gameSession;
     }
     
-    public void run()
+    public void stateRun(Object arg)
     {
         String filterKey = "HairColor";
-        String filterValue = ((GuessWho)gameWorld).getYourChar().getSubOpt(filterKey);
+        String filterValue = gameSession.getMyChar().getSubOpt(filterKey);
         
-        List<Character> characters = ((GuessWho)gameWorld).getAllChars();
-        List<Character> removingChars = new ArrayList<Character>();
-        for(Character c : characters)
+        Set<Character> playSet = gameSession.getPlaySet();
+        Set<Character> rmSet = new HashSet<Character>();
+        for(Character c : playSet)
         {
-            System.out.println(c.getClass().getName() + "> " + filterKey + " : " +  c.getSubOpt(filterKey));
             if(c.getSubOpt(filterKey) != filterValue)
-            {
-                System.out.println("not match. removing");
-                removingChars.add(c);
-            }
-            else
-                System.out.println("match, keep");
+                rmSet.add(c);
         }
             
-        for(Character c : removingChars)
-            ((GuessWho)gameWorld).removeChar(c);
+        for(Character c : rmSet)
+        {
+            world.removeObject(c);
+            playSet.remove(c);
+        }
         
-        ((GuessWho)gameWorld).setInteractiveState(); 
+        world.setState("waitingState"); 
     }
+    
 }

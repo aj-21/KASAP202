@@ -7,14 +7,19 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class UniqueSelection implements Process
+public class UniqueSelection<T extends Selectable> implements Process
 {
     //Set<SimpleSelectableActor> objects;
-    Set<Selectable> objects;
-    protected Selectable lastSelected;
+    Set<T> objects;
+    protected T lastSelected;
     /**
      * Constructor for objects of class UniqueSelection
      */
+    public UniqueSelection(Set<T> objects)
+    {
+        this.objects = objects;
+    }
+    
     public UniqueSelection(SimpleContainer container)
     {
         setContainer(container);
@@ -28,7 +33,7 @@ public class UniqueSelection implements Process
     @Override
     public void processRun()
     {
-        for (Selectable a:objects)
+        for (T a:objects)
         {
             if(a.isSelected() && a!=lastSelected)
             {
@@ -39,7 +44,7 @@ public class UniqueSelection implements Process
         //lastSelected = null;
     }
     
-    private void updateLastSelected(Selectable a)
+    private void updateLastSelected(T a)
     {
         if(lastSelected!=null)
         {          

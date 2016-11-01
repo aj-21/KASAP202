@@ -42,7 +42,7 @@ public abstract class SimpleGameState implements GameState
     }
     
     @Override
-    public void stateRun()
+    public void stateRun(Object arg)
     {
     }
     

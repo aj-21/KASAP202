@@ -12,13 +12,4 @@ public final class MyFunc
     {
         
     }
-    
-    public static void addObserverToMyObservables(Observer observer,SimpleContainer container)
-    {
-        Set<MyObservableInterface> ooo = container.getAll();
-        for(MyObservableInterface o : ooo )
-        {
-            o.addObserver(observer);
-        }
-    }
 }

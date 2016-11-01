@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=UniqueSelection
 comment0.text=\n\ Write\ a\ description\ of\ class\ UniqueSelection\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=container
-comment1.target=UniqueSelection(SimpleContainer)
+comment1.params=objects
+comment1.target=UniqueSelection(java.util.Set)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ UniqueSelection\n
 comment2.params=container
-comment2.target=void\ setContainer(SimpleContainer)
-comment3.params=
-comment3.target=void\ processRun()
-comment4.params=a
-comment4.target=void\ updateLastSelected(Selectable)
-numComments=5
+comment2.target=UniqueSelection(SimpleContainer)
+comment3.params=container
+comment3.target=void\ setContainer(SimpleContainer)
+comment4.params=
+comment4.target=void\ processRun()
+comment5.params=a
+comment5.target=void\ updateLastSelected(Selectable)
+numComments=6

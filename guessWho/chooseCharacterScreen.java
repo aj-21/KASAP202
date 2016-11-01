@@ -39,24 +39,22 @@ public class chooseCharacterScreen extends World implements Observer
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
-    {         
-        GreenfootImage bg = this.getBackground();
-        bg.drawImage(new GreenfootImage("Choose_your_character.png"),getWidth()/7,getHeight()/35);;
-        
+    {                 
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
-        DisplayCanvas disCan = new DisplayCanvas(this,fullCon);
-        disCan.setBackground(bg).setMargin(10,10,18,15);
+        DisplayCanvas disCan = new DisplayCanvas(gameSession.getFullSet());
+        disCan.setBackground(getBackground()).setMargin(10,10,18,15);
         addObject(disCan,getWidth()/2,getHeight()/2);
         disCan.display();       
         
         EnableButton confirmButton = new EnableButton("confirm");
         addObject(confirmButton,743,774);
                 
-        processes.add( new UniqueSelection(fullCon));
-        processes.add( new SelectionEnablingButton(fullCon,confirmButton));
-        
+        processes.add( new UniqueSelection(gameSession.getFullSet()));
+        processes.add( new SelectionEnablingButton(gameSession.getFullSet(),confirmButton));
         confirmButton.addObserver(this);
+        
+        addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
 
     }
     

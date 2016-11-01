@@ -2,6 +2,6 @@
 comment0.target=GuessingState
 comment1.params=world\ gameSession
 comment1.target=GuessingState(GuessWho,\ GameSession)
-comment2.params=
-comment2.target=void\ stateRun()
+comment2.params=arg
+comment2.target=void\ stateRun(java.lang.Object)
 numComments=3

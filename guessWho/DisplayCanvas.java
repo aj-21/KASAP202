@@ -8,7 +8,7 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DisplayCanvas extends Actor
+public class DisplayCanvas<T extends SimpleSelectable> extends Actor
 {
     SimpleDisplayBox disBox;
     double left, right, top, bottom;
@@ -18,27 +18,23 @@ public class DisplayCanvas extends Actor
      * Act - do whatever the DisplayCanvas wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */  
-    public DisplayCanvas(World world)
+    public DisplayCanvas()
     {
-        this.disBox = new SimpleDisplayBox(world);
+        this.disBox = new SimpleDisplayBox();
     }
     
-    public DisplayCanvas(World world, SimpleContainer container)
+    public DisplayCanvas(Set<T> actors)
     {
-        this(world);
+        this();
+        disBox.setActors(actors);
+    }
+    
+    public DisplayCanvas(SimpleContainer container)
+    {
+        this();
         disBox.setContainer(container);
     }
     
-    public DisplayCanvas(SimpleDisplayBox disBox)
-    {
-        this.disBox = disBox;
-    }
-    
-    public DisplayCanvas(SimpleDisplayBox disBox, SimpleContainer container)
-    {
-        this(disBox);
-        disBox.setContainer(container);
-    }
     
     public void addedToWorld(World world)
     {
@@ -91,7 +87,8 @@ public class DisplayCanvas extends Actor
     
     public void display()
     {
-        disBox.display(disX + leftMar,disY + topMar);           
+        if(getWorld() != null)
+            disBox.display(getWorld(),disX + leftMar,disY + topMar);           
     }
    
     public DisplayCanvas setContainer(SimpleContainer container)

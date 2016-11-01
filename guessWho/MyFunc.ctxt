@@ -3,6 +3,4 @@ comment0.target=MyFunc
 comment0.text=\n\ Write\ a\ description\ of\ class\ AddObserverToMyObservale\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MyFunc()
-comment2.params=observer\ container
-comment2.target=void\ addObserverToMyObservables(java.util.Observer,\ SimpleContainer)
-numComments=3
+numComments=2

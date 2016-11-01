@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=FilteringState
-comment1.params=game
-comment1.target=FilteringState(greenfoot.World)
-comment2.params=
-comment2.target=void\ run()
+comment1.params=world\ gameSession
+comment1.target=FilteringState(GuessWho,\ GameSession)
+comment2.params=arg
+comment2.target=void\ stateRun(java.lang.Object)
 numComments=3
