@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Character extends ObservableZoomActor
+public class Character extends ZoomActor
 {       
     Map<String,String> options = new HashMap<String,String>();  
     
