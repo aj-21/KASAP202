@@ -7,17 +7,12 @@ import java.util.Observable;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ObservableGameState implements GameState,Observer
+public class ObservableGameState extends SimpleGameState  implements Observer
 {
     @Override
     public void update(Observable o, Object arg)
     {
         System.out.println("???");
     }
-    
-    @Override
-    public void run()
-    {
-        
-    }
+
 }

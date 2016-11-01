@@ -30,12 +30,12 @@ public class SelectionEnablingButton extends Observable implements Process
     @Override
     public void processRun()
     {
-        if(container.getSelected() != null && status == false)
+        if(container.getSelected() != null && status != true)
         {
             setStatus(true);
             return;
         }
-        if(container.getSelected() == null && status != false)
+        if(container.getSelected() == null && status == true)
         {
             setStatus(false);
             return;

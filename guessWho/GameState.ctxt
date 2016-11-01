@@ -1,5 +1,19 @@
 #BlueJ class context
 comment0.target=GameState
 comment1.params=
-comment1.target=void\ run()
-numComments=2
+comment1.target=void\ enter()
+comment2.params=
+comment2.target=void\ stateRun()
+comment3.params=
+comment3.target=void\ stateProcessesRun()
+comment4.params=process
+comment4.target=void\ addProcess(Process)
+comment5.params=
+comment5.target=void\ exit()
+comment6.params=label
+comment6.target=void\ setLabel(java.lang.String)
+comment7.params=
+comment7.target=java.lang.String\ getLabel()
+comment8.params=
+comment8.target=java.util.Set\ getProcesses()
+numComments=9

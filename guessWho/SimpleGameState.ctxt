@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=SimpleGameState
+comment0.text=\n\ Write\ a\ description\ of\ class\ SimpleGameState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=SimpleGameState()
+comment1.text=public\ SimpleGameState(StatefulWorld\ statefulWorld)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ processes\ \=\ new\ HashSet<Process>();\n\ \ \ \ \ \ \ \ this.statefulWorld\ \=\ statefulWorld;\n}
+comment2.params=
+comment2.target=void\ stateProcessesRun()
+comment3.params=process
+comment3.target=void\ addProcess(Process)
+comment4.params=
+comment4.target=void\ enter()
+comment5.params=
+comment5.target=void\ stateRun()
+comment6.params=
+comment6.target=void\ exit()
+comment7.params=label
+comment7.target=void\ setLabel(java.lang.String)
+comment8.params=
+comment8.target=java.lang.String\ getLabel()
+comment9.params=
+comment9.target=java.util.Set\ getProcesses()
+numComments=10

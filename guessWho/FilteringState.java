@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FilteringState implements GameState 
+public class FilteringState extends SimpleGameState 
 {
     World gameWorld;
     

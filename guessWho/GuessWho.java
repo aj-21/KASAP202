@@ -1,29 +1,33 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 /**
  * Write a description of class GuessWho here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GuessWho extends World
+public class GuessWho extends StatefulWorld
 {
-    GameState interactiveState = new InteractiveState(this);
-    GameState guessingState = new GuessingState(this);
-    GameState filteringState = new FilteringState(this);
+    Set<GameState> gameStates = new HashSet<GameState>();
+    
+    GameState interactiveState;
+    GameState guessingState;
+    GameState filteringState;
     //GameState interactiveState = new InteractiveState(this);
-    GameState currentState;
+    
+    GameState guessWhoState;
     GameSession gameSession;
     CharacterBox charBox = new CharacterBox(925,460,5,2);
-    ButtonConfirm buttonGuess= new ButtonConfirm((ButtonRunnable)interactiveState, "guessing");
-    ButtonConfirm buttonFilter= new ButtonConfirm((ButtonRunnable)interactiveState, "filtering");
-    UniqueSelection uniqueSelection;
-    SelectionEnablingButton seb;
+
     public GuessWho(GameSession gameSession)
     {    
         super(1536, 864, 1); 
         this.gameSession = gameSession;
-        currentState = interactiveState;
+        guessWhoState = new GuessWhoState(this,gameSession);
+        guessingState = new GuessingState(this,gameSession);
+        currentState = guessWhoState;
         setup();
     }
     
@@ -44,16 +48,24 @@ public class GuessWho extends World
         addObject(myCharCanvas,1400,600);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();   
         
-        EnableButton guessButton = new EnableButton("guess");
-        addObject(guessButton,600,600);
-        uniqueSelection = new UniqueSelection(playCon);
-        seb = new SelectionEnablingButton(playCon,guessButton);
+        //EnableButton guessButton = new EnableButton("guess");
+        //addObject(guessButton,600,850);
+
     }
     
-    public void act()
-    {  
-        currentState.run();
-        uniqueSelection.processRun();
+    public GameState getState(String stateName)
+    {
+        switch (stateName)
+        {
+            case "guessWhoState": return guessWhoState;
+            case "guessingState": return guessingState; 
+            default: return guessWhoState;
+        }
+    }
+    
+    public void setState(String stateName)
+    {
+        setState(getState(stateName));
     }
     
     public Character getGuessedChar()

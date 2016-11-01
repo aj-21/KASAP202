@@ -18,7 +18,6 @@ public class UniqueSelection implements Process
     public UniqueSelection(SimpleContainer container)
     {
         setContainer(container);
-
     }
     
     public void setContainer(SimpleContainer container)
@@ -29,29 +28,25 @@ public class UniqueSelection implements Process
     @Override
     public void processRun()
     {
-        boolean noneSelected = true;
         for (Selectable a:objects)
         {
-            if(a.isSelected())
+            if(a.isSelected() && a!=lastSelected)
             {
-                noneSelected = false;
-                checkWithLastSelected(a);
+                updateLastSelected(a);
+                return;
             }
         }
-        if(noneSelected)
-            lastSelected = null;        
+        //lastSelected = null;
     }
     
-    private void checkWithLastSelected(Selectable a)
+    private void updateLastSelected(Selectable a)
     {
-        if(a != lastSelected)
-        {
-            if(lastSelected!=null)
-            {
-                System.out.println("deselecting " + lastSelected.getClass().getName());            
-                lastSelected.deselect();
-            }
-            lastSelected=a;
+        if(lastSelected!=null)
+        {          
+            lastSelected.deselect();
         }
-    }    
+        lastSelected=a;
+    }   
+    
+    
 }

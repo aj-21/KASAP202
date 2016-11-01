@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=GuessingState
-comment1.params=game
-comment1.target=GuessingState(greenfoot.World)
+comment1.params=world\ gameSession
+comment1.target=GuessingState(GuessWho,\ GameSession)
 comment2.params=
-comment2.target=void\ run()
+comment2.target=void\ stateRun()
 numComments=3

@@ -1,29 +1,34 @@
 import greenfoot.World;
 
-public class GuessingState implements GameState 
+public class GuessingState extends SimpleGameState 
 {
-    World gameWorld;
-    
-    public GuessingState(World game)
+    GuessWho world;
+    GameSession gameSession;
+    public GuessingState(GuessWho world,GameSession gameSession)
     {
-        this.gameWorld = game;
+        this.world = world;
+        this.gameSession = gameSession;
     }
     
-    public void run()
+    public void stateRun()
     {
-        Character guessedChar = ((GuessWho) gameWorld).getGuessedChar();
-        Character yourChar = ((GuessWho)gameWorld).getYourChar();
+        SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
+        Character guessedChar = (Character)ccc.getSelected();
+        Character yourChar = gameSession.getYourChar();
+        //System.out.println(guessedChar.getClass().getName() + " is running");
         if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
             System.out.println("Congratulation! You win");
-            //((GuessWho)gameWorld).removeSelectedChar();
         }
         else
         {
             System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
             System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
-            ((GuessWho)gameWorld).removeChar(guessedChar);
+            
+            //two step removing
+            world.removeObject(guessedChar);
+            gameSession.getPlaySet().remove(guessedChar);
         }
-        ((GuessWho)gameWorld).setInteractiveState();
+        world.setState("guessWhoState");
     }
 }

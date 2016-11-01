@@ -5,7 +5,7 @@ import greenfoot.World;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class InteractiveState implements GameState,ButtonRunnable
+public class InteractiveState extends SimpleGameState 
 {
     World gameWorld;
     
@@ -15,12 +15,12 @@ public class InteractiveState implements GameState,ButtonRunnable
     }
     
     @Override
-    public void run()
+    public void stateRun()
     {
         
     }
     
-    @Override
+    
     public void buttonClickedRun(ButtonConfirm button)
     {
         if(button.getLabel() == "guessing")

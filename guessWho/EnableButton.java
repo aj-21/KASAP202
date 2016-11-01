@@ -35,11 +35,9 @@ public class EnableButton extends Actor implements Observer
     {
         if(getImage() == enableImage && Greenfoot.mouseClicked(this))
         {
-            System.out.println("notifing Observer - count : " + o.countObservers());
             o.setCHANGED();
-            o.notifyObservers();
+            o.notifyObservers(this);
             o.clearCHANGED();
-            System.out.println("Done!!! - count : " + o.countObservers());
         }
     }
     
@@ -62,5 +60,10 @@ public class EnableButton extends Actor implements Observer
     public void addObserver(Observer observer)
     {
         o.addObserver(observer);
+    }
+    
+    public String getLabel()
+    {
+        return label;
     }
 }
