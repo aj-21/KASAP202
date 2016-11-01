@@ -8,7 +8,7 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SimpleContainer <T extends SimpleSelectableActor> 
+public class SimpleContainer <T extends Selectable> 
 {
     // instance variables - replace the example below with your own
     protected Set<T> actors;
@@ -77,12 +77,12 @@ public class SimpleContainer <T extends SimpleSelectableActor>
         return actors;
     }
     
-    public SimpleSelectableActor getSelected()
+    public T getSelected()
     {
         return getFirstSelected();
     }
     
-    public SimpleSelectableActor getLastSelected()
+    public T getLastSelected()
     {
         T selectedActor= null;
         for (T actor:actors)
@@ -95,7 +95,7 @@ public class SimpleContainer <T extends SimpleSelectableActor>
         return selectedActor;
     }
     
-    public SimpleSelectableActor getFirstSelected()
+    public T getFirstSelected()
     {
         T selectedActor= null;
         for (T actor:actors)

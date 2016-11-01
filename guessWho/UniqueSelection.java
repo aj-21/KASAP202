@@ -1,6 +1,6 @@
 import java.util.Set;
 import java.util.HashSet;
-import greenfoot.World;
+
 /**
  * Write a description of class UniqueSelection here.
  * 
@@ -9,9 +9,9 @@ import greenfoot.World;
  */
 public class UniqueSelection implements Process
 {
-    Set<SimpleSelectableActor> objects;
-    protected SimpleSelectableActor lastSelected;
-    World world;
+    //Set<SimpleSelectableActor> objects;
+    Set<Selectable> objects;
+    protected Selectable lastSelected;
     /**
      * Constructor for objects of class UniqueSelection
      */
@@ -30,7 +30,7 @@ public class UniqueSelection implements Process
     public void processRun()
     {
         boolean noneSelected = true;
-        for (SimpleSelectableActor a:objects)
+        for (Selectable a:objects)
         {
             if(a.isSelected())
             {
@@ -42,7 +42,7 @@ public class UniqueSelection implements Process
             lastSelected = null;        
     }
     
-    private void checkWithLastSelected(SimpleSelectableActor a)
+    private void checkWithLastSelected(Selectable a)
     {
         if(a != lastSelected)
         {

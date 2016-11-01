@@ -9,5 +9,5 @@ comment2.target=void\ setContainer(SimpleContainer)
 comment3.params=
 comment3.target=void\ processRun()
 comment4.params=a
-comment4.target=void\ checkWithLastSelected(SimpleSelectableActor)
+comment4.target=void\ checkWithLastSelected(Selectable)
 numComments=5
