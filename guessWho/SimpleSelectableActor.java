@@ -12,7 +12,7 @@ public class SimpleSelectableActor extends Actor implements Selectable
     public final void act()
     {
         detectPress();
-        otherAct();
+        afterAct();
     }
     
     protected void detectPress()
@@ -32,7 +32,7 @@ public class SimpleSelectableActor extends Actor implements Selectable
     }
     
     //override this method if you want your actor give visual feedback
-    public void otherAct()
+    public void afterAct()
     {
         
     }
