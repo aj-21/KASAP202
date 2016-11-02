@@ -49,9 +49,9 @@ public class UpdateSubOpt implements Observer
         
         for(String subOpt:subOptions)
         {
-            subOptButSet.add(new StringButton(subOpt));
+            subOptButSet.add(new StringButton(subOpt,"subOptionsButton.jpg"));
         }
-        new ZoomContainer(subOptButSet).resizeOnScale(0.7);
+        //new ZoomContainer(subOptButSet).resizeOnScale(0.7);
         return subOptButSet;
     }
 }

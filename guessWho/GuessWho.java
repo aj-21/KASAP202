@@ -61,7 +61,7 @@ public class GuessWho extends StatefulWorld
         Set<String> optionSet = gameSession.getOptionInfo().getOptions();
         Set<StringButton> optButSet = new HashSet<StringButton>();
         for(String option:optionSet)
-            optButSet.add(new StringButton(option));
+            optButSet.add(new StringButton(option,"OptionButton.png"));
         
         //optionButtonCanvas setting
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);

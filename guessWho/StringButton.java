@@ -14,7 +14,7 @@ public class StringButton extends ZoomActor
     
     public StringButton(String label, String fileName)
     {
-        super(fileName,0.5);
+        super(fileName,1);
         this.fileName = fileName;
         setLabel(label);
         drawLabel();
