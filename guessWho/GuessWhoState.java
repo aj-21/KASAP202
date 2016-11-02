@@ -25,15 +25,17 @@ public class GuessWhoState extends SimpleGameState implements Observer
     public void prepare()
     {
         EnableButton guessButton = new EnableButton("guess");
-        world.addObject(guessButton,600,300);
+        world.addObject(guessButton,600,100);
         guessButton.addObserver(this);
         
+        /*
         EnableButton filterButton = new EnableButton("filter");
-        world.addObject(filterButton,300,300);
+        world.addObject(filterButton,300,100);
         filterButton.addObserver(this);
         
         filterButton.enable();
-        
+        */
+       
         addProcess(new UniqueSelection(gameSession.getPlaySet()));
         
         addProcess(new SelectionEnablingButton(gameSession.getPlaySet(),guessButton));

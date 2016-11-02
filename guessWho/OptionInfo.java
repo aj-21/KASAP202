@@ -21,7 +21,18 @@ public class OptionInfo
     {
     }
     
-    public void addSubOption(String option, String subOption)
+    public void putOptions(Map<String,String> options)
+    {
+        for(Map.Entry<String,String> entry:options.entrySet())
+            putOption(entry);
+    }
+    
+    public void putOption(Map.Entry<String,String> option)
+    {
+        putSubOption(option.getKey(),option.getValue());
+    }
+    
+    public void putSubOption(String option, String subOption)
     {
         Set<String> subOptions = options.get(option);
         if(subOptions != null)
@@ -37,6 +48,11 @@ public class OptionInfo
     public Set<String> getSubOptions(String option)
     {
         return options.get(option);
+    }
+    
+    public Set<String> getOptions()
+    {
+        return options.keySet();
     }
     
     public String toString()

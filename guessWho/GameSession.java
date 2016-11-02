@@ -14,6 +14,7 @@ public class GameSession
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
     Set<Character> playCharacters = new HashSet<Character>();
+    OptionInfo optionInfo = new OptionInfo();
     Character myChar;
     Character yourChar;
     int roomNumber;
@@ -25,6 +26,7 @@ public class GameSession
      */
     public GameSession()
     {
+        
         //by default, new game session has a new set of all characters
         allCharacters.add(new Char1());
         allCharacters.add(new Char2());
@@ -47,7 +49,6 @@ public class GameSession
         playCharacters.add(new Char8());
         playCharacters.add(new Char9());
         //and these
-        myChar = new Char1();
         yourChar = new Char5();
     }
     
@@ -103,5 +104,9 @@ public class GameSession
         return yourChar;
     }
     
+    public OptionInfo getOptionInfo()
+    {
+        return optionInfo;
+    }
     
 }

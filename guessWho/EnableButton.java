@@ -14,6 +14,7 @@ public class EnableButton extends Actor implements Observer
     GreenfootImage enableImage; 
     String label;
     MyObservable o;
+    Object passedArg;
     
     private EnableButton ()
     {
@@ -44,6 +45,7 @@ public class EnableButton extends Actor implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
+        passedArg = arg;
         toggle();
     }
     

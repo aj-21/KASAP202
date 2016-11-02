@@ -38,16 +38,18 @@ public class SimpleContainer <T extends Selectable>
         addAll(actors);
     }
     
-    public void addAll(Set<T> actors)
+    public SimpleContainer addAll(Set<T> actors)
     {
         for (T actor:actors)
             add(actor);
+        return this;
     }
     
-    public void addAll(List<T> actors)
+    public SimpleContainer addAll(List<T> actors)
     {
         for (T actor:actors)
             add(actor);
+        return this;
     }
     
     public void add(T actor)

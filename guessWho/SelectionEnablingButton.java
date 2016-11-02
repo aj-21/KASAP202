@@ -39,25 +39,28 @@ public class SelectionEnablingButton<T extends Selectable> extends Observable im
         for(T object:objects)
         {
             if (object.isSelected())
+            {
                 firstSelected = object;
+                break;
+            }
         }
         if(firstSelected != null && status == false)
         {
-            setStatus(true);
+            updateStatus(true,firstSelected);
             return;
         }
         if(firstSelected == null && status == true)
         {
-            setStatus(false);
+            updateStatus(false,firstSelected);
             return;
         }
     }
     
-    public void setStatus(boolean status)
+    private void updateStatus(boolean status,T firstSelected)
     {
         this.status = status;
         setChanged();
-        notifyObservers();
+        notifyObservers(firstSelected);
         clearChanged();        
     }  
 }

@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+
+import java.util.Map;
+import java.util.Observer;
 /**
  * Write a description of class GuessWho here.
  * 
@@ -47,6 +50,44 @@ public class GuessWho extends StatefulWorld
         DisplayCanvas myCharCanvas = new DisplayCanvas(myCharCon);
         addObject(myCharCanvas,1400,600);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();   
+        
+        //create new option buttons
+        Set<String> optionSet = gameSession.getOptionInfo().getOptions();
+        Set<StringButton> optButSet = new HashSet<StringButton>();
+        for(String option:optionSet)
+            optButSet.add(new StringButton(option));
+        
+        //optionButtonCanvas setting
+        ZoomContainer optButCon = new ZoomContainer(optButSet);
+        optButCon.resizeOnScale(1.5);
+        DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
+        addObject(optButCanvas,615,300);
+        optButCanvas.setBackground("optionCanvas.png").setColRow(optButSet.size(),1).display();
+        
+        
+        EnableButton filterButton = new EnableButton("filter");
+        addObject(filterButton,130,700);
+        filterButton.addObserver((Observer)guessWhoState);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //unqine selection process for optionbuttons
+        guessWhoState.addProcess(new SelectionEnablingButton(optButSet,filterButton));
+        guessWhoState.addProcess(new UniqueSelection(optButSet));
+        
+        //keep either filter or guess
+        SimpleContainer testCon = new SimpleContainer(optButSet).addAll(gameSession.getPlaySet());        
+        guessWhoState.addProcess(new UniqueSelection(testCon));
+        
         
 
     }

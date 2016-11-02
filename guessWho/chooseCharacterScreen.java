@@ -67,7 +67,7 @@ public class chooseCharacterScreen extends World implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        if(  ((EnableButton)arg).getLabel() == "confirm")    
+       if(((EnableButton)arg).getLabel() == "confirm")
             exit();
     }
     
@@ -75,9 +75,20 @@ public class chooseCharacterScreen extends World implements Observer
     {
         SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
         gameSession.setMyChar((Character)c.getFirstSelected());
-        System.out.println("my character is: " + gameSession.getMyChar().getClass().getName());
-        
+        updateOptionInfo();
+        System.out.println(gameSession.getOptionInfo());
         Greenfoot.setWorld(new GuessWho(gameSession));
+    }
+    
+    //helper func
+    private void updateOptionInfo()
+    {
+        OptionInfo optionInfo = gameSession.getOptionInfo();
+        Set<Character> playSet = gameSession.getPlaySet();
+        for(Character each:playSet)
+        {
+            optionInfo.putOptions(each.getOptions());
+        }
     }
     
     public GameSession getGameSession()
