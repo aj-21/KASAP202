@@ -51,7 +51,7 @@ public class chooseCharacterScreen extends World implements Observer
         addObject(confirmButton,743,774);
                 
         processes.add( new UniqueSelection(gameSession.getFullSet()));
-        processes.add( new SelectionEnablingButton(gameSession.getFullSet(),confirmButton));
+        processes.add( new SelectionObservable(gameSession.getFullSet(),confirmButton));
         confirmButton.addObserver(this);
         
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);

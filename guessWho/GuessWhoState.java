@@ -38,7 +38,7 @@ public class GuessWhoState extends SimpleGameState implements Observer
        
         addProcess(new UniqueSelection(gameSession.getPlaySet()));
         
-        addProcess(new SelectionEnablingButton(gameSession.getPlaySet(),guessButton));
+        addProcess(new SelectionObservable(gameSession.getPlaySet(),guessButton));
     }
     
     @Override

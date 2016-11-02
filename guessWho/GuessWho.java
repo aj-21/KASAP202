@@ -80,8 +80,9 @@ public class GuessWho extends StatefulWorld
         
         
         
+        //optional
         //unqine selection process for optionbuttons
-        guessWhoState.addProcess(new SelectionEnablingButton(optButSet,filterButton));
+        guessWhoState.addProcess(new SelectionObservable(optButSet,filterButton));
         guessWhoState.addProcess(new UniqueSelection(optButSet));
         
         //keep either filter or guess

@@ -43,7 +43,7 @@ public class StringButton extends Character
         
         int w = image.getWidth();
         int h = image.getHeight(); 
-        GreenfootImage labelImage = new GreenfootImage(label,h/10*8,labelColor,new Color(0,0,0,0));
+        GreenfootImage labelImage = new GreenfootImage(label,h/10*6,labelColor,new Color(0,0,0,0));
         image.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/10*2);
     }
     
