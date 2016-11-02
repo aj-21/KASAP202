@@ -16,4 +16,6 @@ comment6.params=a
 comment6.target=void\ updateLastSelected(Selectable)
 comment7.params=objects
 comment7.target=void\ setObjects(java.util.Set)
-numComments=8
+comment8.params=
+comment8.target=void\ clearObjects()
+numComments=9

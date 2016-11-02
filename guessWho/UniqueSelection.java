@@ -38,6 +38,7 @@ public class UniqueSelection<T extends Selectable> implements Process
     @Override
     public void processRun()
     {
+        System.out.println(objects.size());
         for (T a:objects)
         {
             if(a.isSelected() && a!=lastSelected)
@@ -61,5 +62,10 @@ public class UniqueSelection<T extends Selectable> implements Process
     public void setObjects(Set<T> objects)
     {
         this.objects = objects;
+    }
+    
+    public void clearObjects()
+    {
+        setObjects(new HashSet<T>());
     }
 }

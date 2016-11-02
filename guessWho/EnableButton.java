@@ -46,7 +46,12 @@ public class EnableButton extends Actor implements Observer
     public void update(Observable o, Object arg)
     {
         passedArg = arg;
-        toggle();
+        if(arg != null)
+        {
+            enable();
+            return;
+        }
+        disable();
     }
     
     private void toggle()

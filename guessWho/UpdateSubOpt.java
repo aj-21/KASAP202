@@ -9,18 +9,20 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class UpdateSubOptCanvas implements Observer
+public class UpdateSubOpt implements Observer
 {
     OptionInfo optionInfo;
     DisplayCanvas optDisCan;
     World world;
     UniqueSelection uni;
-    public UpdateSubOptCanvas(World world,OptionInfo optionInfo,DisplayCanvas optDisCan,UniqueSelection uni)
+    SelectionObservable sel;
+    public UpdateSubOpt(World world,OptionInfo optionInfo,DisplayCanvas optDisCan,UniqueSelection uni,SelectionObservable sel)
     {
         this.world = world;
         this.optionInfo = optionInfo;
         this.optDisCan = optDisCan;
         this.uni = uni;
+        this.sel = sel;
     }
     
     @Override
@@ -33,7 +35,11 @@ public class UpdateSubOptCanvas implements Observer
             Set<StringButton> newSet = generateSubOptButSet(((StringButton)arg).getLabel());
             optDisCan.setActors(newSet).display();
             uni.setObjects(newSet);
+            sel.setObjects(newSet);
+            return;
         }
+        uni.clearObjects();
+        sel.clearObjects();
     }
     
     private Set<StringButton> generateSubOptButSet(String option)

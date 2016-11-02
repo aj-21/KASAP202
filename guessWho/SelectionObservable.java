@@ -12,11 +12,17 @@ import java.util.Observer;
 public class SelectionObservable<T extends Selectable> extends Observable implements Process
 {
     Set<T> objects;
-    protected T lastSelected;
+    protected T previous;
+    //status = false means 
     boolean status = false;
     /**
      * Constructor for objects of class ButtonController
      */
+    
+    public SelectionObservable()
+    {
+        this.objects = new HashSet<T>();
+    }
     
     public SelectionObservable(Set<T> objects)
     {
@@ -42,32 +48,60 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
     @Override
     public void processRun()
     {
-        T firstSelected = null;
-        for(T object:objects)
+        T first = null;
+        
+        /*
+        //clearobjects reset size to 0, reset previous status if it stores something
+        if(objects.size() == 0 && previous != null)
         {
-            if (object.isSelected())
-            {
-                firstSelected = object;
-                break;
-            }
-        }
-        if(firstSelected != null && status == false)
-        {
-            updateStatus(true,firstSelected);
-            return;
-        }
-        if(firstSelected == null && status == true)
-        {
+            System.out.println("objects is null");
             updateStatus(false,firstSelected);
             return;
         }
+        */
+
+        for(T object:objects)
+            {
+                if (object.isSelected())
+                {
+                    first = object;
+                    break;
+                }
+        }
+            
+        //if something new is clicked
+        if(first!= null && first != previous)
+        {
+            System.out.println(first.getClass().getName());
+            updateStatus(first);
+            return;
+        }
+        
+        //if nothing is clicked, reset previous if it stores something
+        if(first == null &&  previous != null)
+        {
+                System.out.println("none selected");
+                updateStatus(first);
+                return;
+        }
+        
     }
     
-    private void updateStatus(boolean status,T firstSelected)
+    protected void updateStatus(T first)
     {
-        this.status = status;
+        this.previous = first;
         setChanged();
-        notifyObservers(firstSelected);
+        notifyObservers(first);
         clearChanged();        
     }  
+    
+    public void setObjects(Set<T> objects)
+    {
+        this.objects = objects;
+    }
+    
+    public void clearObjects()
+    {
+        setObjects(new HashSet<T>());
+    }
 }

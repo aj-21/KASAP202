@@ -5,11 +5,13 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observer;
+import java.util.Observable;
 
-public class FilteringState extends SimpleGameState
+public class FilteringState extends SimpleGameState implements Observer
 {
     GuessWho world;
     GameSession gameSession;
+    String option;
     public FilteringState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
@@ -36,6 +38,12 @@ public class FilteringState extends SimpleGameState
         }
         
         world.setState("waitingState"); 
+    }
+    
+    @Override
+    public void update(Observable o, Object arg)
+    {
+        
     }
     
 }
