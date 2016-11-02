@@ -59,7 +59,7 @@ public class GuessWho extends StatefulWorld
         
         //optionButtonCanvas setting
         ZoomContainer optButCon = new ZoomContainer(optButSet);
-        optButCon.resizeOnScale(1.5);
+        //optButCon.resizeOnScale(1.5);
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
         addObject(optButCanvas,615,300);
         optButCanvas.setBackground("optionCanvas.png").setColRow(optButSet.size(),1).display();

@@ -6,17 +6,16 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StringButton extends Character
+public class StringButton extends ZoomActor
 {
     String fileName;
     String label;
-    Color labelColor = Color.BLACK;
+    Color labelColor = Color.RED;
     
     public StringButton(String label, String fileName)
     {
-        super(fileName);
+        super(fileName,0.5);
         this.fileName = fileName;
-        resizeOnScale(0.6);
         setLabel(label);
         drawLabel();
     }
