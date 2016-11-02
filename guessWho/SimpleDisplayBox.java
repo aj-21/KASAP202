@@ -37,6 +37,11 @@ public class SimpleDisplayBox<T extends SimpleSelectableActor>
         this.actors = actors;
     }
     
+    public Set<T> getActors()
+    {
+        return actors;
+    }
+    
     public void scale(int width, int height)
     {
         this.width = width;

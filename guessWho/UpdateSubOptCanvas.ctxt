@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=UpdateSubOptCanvas
+comment0.text=\n\ Write\ a\ description\ of\ class\ UpdateSubOpt\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=world\ optionInfo\ optDisCan\ uni
+comment1.target=UpdateSubOptCanvas(greenfoot.World,\ OptionInfo,\ DisplayCanvas,\ UniqueSelection)
+comment2.params=o\ arg
+comment2.target=void\ update(java.util.Observable,\ java.lang.Object)
+comment3.params=option
+comment3.target=java.util.Set\ generateSubOptButSet(java.lang.String)
+numComments=4

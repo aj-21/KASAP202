@@ -67,7 +67,7 @@ public class chooseCharacterScreen extends World implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-       if(((EnableButton)arg).getLabel() == "confirm")
+       if(((EnableButton)arg).getLabel().equals("confirm"))
             exit();
     }
     

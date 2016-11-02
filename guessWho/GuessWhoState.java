@@ -44,7 +44,7 @@ public class GuessWhoState extends SimpleGameState implements Observer
     @Override
     public void update (Observable o, Object arg)
     {
-        if( ((EnableButton)arg).getLabel() == "guess")
+        if( ((EnableButton)arg).getLabel().equals("guess"))
         {
             world.setState("guessingState");
             return;

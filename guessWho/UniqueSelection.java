@@ -15,6 +15,11 @@ public class UniqueSelection<T extends Selectable> implements Process
     /**
      * Constructor for objects of class UniqueSelection
      */
+    public UniqueSelection()
+    {
+        this.objects = new HashSet<T>();
+    }
+    
     public UniqueSelection(Set<T> objects)
     {
         this.objects = objects;
@@ -53,5 +58,8 @@ public class UniqueSelection<T extends Selectable> implements Process
         lastSelected=a;
     }   
     
-    
+    public void setObjects(Set<T> objects)
+    {
+        this.objects = objects;
+    }
 }

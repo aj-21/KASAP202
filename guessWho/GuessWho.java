@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import java.util.Map;
 import java.util.Observer;
+import java.util.Observable;
 /**
  * Write a description of class GuessWho here.
  * 
@@ -59,23 +60,28 @@ public class GuessWho extends StatefulWorld
         
         //optionButtonCanvas setting
         ZoomContainer optButCon = new ZoomContainer(optButSet);
-        //optButCon.resizeOnScale(1.5);
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
         addObject(optButCanvas,615,300);
         optButCanvas.setBackground("optionCanvas.png").setColRow(optButSet.size(),1).display();
         
-        
+        //filter button
         EnableButton filterButton = new EnableButton("filter");
-        addObject(filterButton,130,700);
-        filterButton.addObserver((Observer)guessWhoState);
+        addObject(filterButton,150,100);
+        filterButton.addObserver((Observer)guessWhoState); 
+        
+        //suboption canvas setup
+        DisplayCanvas subOptButCanvas = new DisplayCanvas();
+        addObject(subOptButCanvas,160,600);
+        subOptButCanvas.setBackground("subOptionsCanvas.png").setColRow(1,5).setMargin(0,0,3,3);
         
         
+        //unique selection for subopt
+        UniqueSelection subOptButSelect = new UniqueSelection();
+        guessWhoState.addProcess(subOptButSelect);
         
-        
-        
-        
-        
-        
+        //update sub option observable
+        UpdateSubOptCanvas updateSub = new UpdateSubOptCanvas(this,gameSession.getOptionInfo(),subOptButCanvas,subOptButSelect);
+        guessWhoState.addProcess(new SelectionObservable(optButSet,updateSub));
         
         
         

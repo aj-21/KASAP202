@@ -31,6 +31,11 @@ public class StringButton extends ZoomActor
         drawLabel();
     }
     
+    public String getLabel()
+    {
+        return label;
+    }
+    
     private void drawLabel()
     {
         drawLabelTo(getDeselectedImage());

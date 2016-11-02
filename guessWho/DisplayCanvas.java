@@ -107,4 +107,16 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
     {
         return disBox.getContainer();
     }
+    
+    public DisplayCanvas setActors(Set<T> actors)
+    {
+        disBox.setActors(actors);
+        return this;
+    }
+    
+    public Set<T> getActors()
+    {
+        return disBox.getActors();
+    }
+    
 }
