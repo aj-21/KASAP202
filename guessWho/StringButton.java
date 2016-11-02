@@ -10,7 +10,7 @@ public class StringButton extends ZoomActor
 {
     String fileName;
     String label;
-    Color labelColor = Color.RED;
+    Color labelColor = Color.BLACK;
     
     public StringButton(String label, String fileName)
     {

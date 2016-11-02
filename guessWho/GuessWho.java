@@ -54,7 +54,7 @@ public class GuessWho extends StatefulWorld
         
         //filter button
         EnableButton filterButton = new EnableButton("filter");
-        addObject(filterButton,150,100);
+        addObject(filterButton,200,100);
         filterButton.addObserver((Observer)guessWhoState);
         
         //create new option buttons (one time)
