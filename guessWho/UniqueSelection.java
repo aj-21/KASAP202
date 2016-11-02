@@ -38,7 +38,6 @@ public class UniqueSelection<T extends Selectable> implements Process
     @Override
     public void processRun()
     {
-        System.out.println(objects.size());
         for (T a:objects)
         {
             if(a.isSelected() && a!=lastSelected)

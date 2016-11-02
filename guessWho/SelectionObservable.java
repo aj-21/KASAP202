@@ -13,8 +13,6 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
 {
     Set<T> objects;
     protected T previous;
-    //status = false means 
-    boolean status = false;
     /**
      * Constructor for objects of class ButtonController
      */
@@ -49,16 +47,6 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
     public void processRun()
     {
         T first = null;
-        
-        /*
-        //clearobjects reset size to 0, reset previous status if it stores something
-        if(objects.size() == 0 && previous != null)
-        {
-            System.out.println("objects is null");
-            updateStatus(false,firstSelected);
-            return;
-        }
-        */
 
         for(T object:objects)
             {
@@ -80,9 +68,9 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
         //if nothing is clicked, reset previous if it stores something
         if(first == null &&  previous != null)
         {
-                System.out.println("none selected");
-                updateStatus(first);
-                return;
+            System.out.println("none selected");
+            updateStatus(first);
+            return;
         }
         
     }

@@ -10,39 +10,91 @@ import java.util.Observable;
 public class FilteringState extends SimpleGameState implements Observer
 {
     GuessWho world;
+    Set<Character> playSet;
     GameSession gameSession;
     String option;
+    String subOption;
     public FilteringState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
+        playSet = gameSession.getPlaySet();
     }
     
     public void stateRun(Object arg)
     {
-        String filterKey = "HairColor";
+        System.out.println(option + " : " +subOption);
+        
+        String filterKey = option;
         String filterValue = gameSession.getMyChar().getSubOpt(filterKey);
         
-        Set<Character> playSet = gameSession.getPlaySet();
-        Set<Character> rmSet = new HashSet<Character>();
-        for(Character c : playSet)
+        if(filterValue.equals(subOption))
         {
-            if(c.getSubOpt(filterKey) != filterValue)
-                rmSet.add(c);
+            System.out.println("Good Guess!!!");
+            correct();
         }
-            
-        for(Character c : rmSet)
+        else
         {
-            world.removeObject(c);
-            playSet.remove(c);
+            System.out.println("Too Bad!!!");
+            incorrect();    
         }
         
         world.setState("waitingState"); 
     }
     
+    public void correct()
+    {
+        Set<Character> rmSet = new HashSet<Character>();
+        for(Character c : playSet)
+        {
+            if(c.getSubOpt(option) != subOption)
+                rmSet.add(c);
+        }    
+        removeSet(rmSet);
+    }
+    
+    public void incorrect()
+    {
+        Set<Character> rmSet = new HashSet<Character>();
+        for(Character c : playSet)
+        {
+            if(c.getSubOpt(option) == subOption)
+                rmSet.add(c);
+        } 
+        removeSet(rmSet);
+    }
+    
+    private void removeSet(Set<Character> rmSet)
+    {
+        for(Character c : rmSet)
+        {
+            world.removeObject(c);
+            playSet.remove(c);
+        }
+    }
+    
     @Override
     public void update(Observable o, Object arg)
     {
+        if (arg != null)
+        {
+            StringButton but = (StringButton)arg;
+            String label = but.getLabel();
+            if(classify(label).equals("option"))
+            {
+                this.option = label;
+                return;
+            }
+            this.subOption = label;
+        }
+    }
+    
+    public String classify(String str)
+    {
+        OptionInfo optionInfo = gameSession.getOptionInfo();
+        if(optionInfo.getOptions().contains(str))
+            return "option";
+        return "subOption";
         
     }
     
