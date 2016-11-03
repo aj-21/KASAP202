@@ -68,7 +68,7 @@ public class GuessWho extends StatefulWorld
         //optionButtonCanvas setting
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
         addObject(optButCanvas,615,300);
-        optButCanvas.setBackground("optionCanvas.png").setColRow(optButSet.size(),1).display();
+        optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
         
         //unqineSelection for optionbuttons
         guessWhoState.addProcess(new UniqueSelection(optButSet));
@@ -80,7 +80,7 @@ public class GuessWho extends StatefulWorld
         //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
         DisplayCanvas subOptButCanvas = new DisplayCanvas();
         addObject(subOptButCanvas,160,600);
-        subOptButCanvas.setBackground("subOptionsCanvas.png").setColRow(1,6).setMargin(0,0,1,1);
+        subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
 
         //initialize unique selection process for subopt
         UniqueSelection subOptButUni = new UniqueSelection();

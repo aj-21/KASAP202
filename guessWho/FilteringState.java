@@ -14,7 +14,7 @@ public class FilteringState extends SimpleGameState implements Observer
     GameSession gameSession;
     String option;
     String subOption;
-    MyObservble o = new MyObservable();
+    MyObservable o = new MyObservable();
     public FilteringState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
@@ -43,7 +43,7 @@ public class FilteringState extends SimpleGameState implements Observer
         }
         
         o.setCHANGED();
-        o.notifyObserver();
+        o.notifyObservers();
         o.clearCHANGED();
         
         world.setState("waitingState"); 

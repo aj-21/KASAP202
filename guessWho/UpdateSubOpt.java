@@ -33,7 +33,8 @@ public class UpdateSubOpt implements Observer
         if(arg != null)
         {
             Set<StringButton> newSet = generateSubOptButSet(((StringButton)arg).getLabel());
-            optDisCan.setActors(newSet).display();
+            System.out.println("subopt canvas: number of button = " + newSet.size());
+            optDisCan.setActors(newSet).setColRow(1,newSet.size()).display();
             uni.setObjects(newSet);
             sel.setObjects(newSet);
             return;
@@ -49,9 +50,8 @@ public class UpdateSubOpt implements Observer
         
         for(String subOpt:subOptions)
         {
-            subOptButSet.add(new StringButton(subOpt,"subOptionsButton.jpg"));
+            subOptButSet.add(new StringButton(subOpt,"subOptionsButton.png"));
         }
-        //new ZoomContainer(subOptButSet).resizeOnScale(0.7);
         return subOptButSet;
     }
 }

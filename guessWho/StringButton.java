@@ -1,5 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+/*import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
+*/
 /**
  * Write a description of class StringButton here.
  * 
@@ -10,13 +14,17 @@ public class StringButton extends ZoomActor
 {
     String fileName;
     String label;
-    Color labelColor = Color.BLACK;
+    
+    Color labelColor = Color.BLUE;
     
     public StringButton(String label, String fileName)
     {
         super(fileName,1);
         this.fileName = fileName;
         setLabel(label);
+        //Random rand = new Random();
+        //labelColor = new Color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat());
+        
         drawLabel();
     }
     
@@ -47,8 +55,8 @@ public class StringButton extends ZoomActor
         
         int w = image.getWidth();
         int h = image.getHeight(); 
-        GreenfootImage labelImage = new GreenfootImage(label,h/10*6,labelColor,new Color(0,0,0,0));
-        image.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/10*2);
+        GreenfootImage labelImage = new GreenfootImage(label,h/10*5,labelColor,new Color(0,0,0,0));
+        image.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/20*6);
     }
     
 }
