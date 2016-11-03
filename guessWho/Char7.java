@@ -11,8 +11,10 @@ public class Char7 extends Character
     public Char7()
     {
         super("7.png");
-        putOption("HairColor","White");
-        putOption("HairLength","Long");
-        putOption("Hat","Yes");
+        putOption("Hair","Grey");
+        putOption("Coat","Yes");
+        putOption("Dress","Green");
+        putOption("Cap","Yes");
+        putOption("Earing","Yes");
     }
 }

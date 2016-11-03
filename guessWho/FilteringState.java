@@ -27,7 +27,7 @@ public class FilteringState extends SimpleGameState implements Observer
         System.out.println(option + " : " +subOption);
         
         String filterKey = option;
-        String filterValue = gameSession.getMyChar().getSubOpt(filterKey);
+        String filterValue = gameSession.getYourChar().getSubOpt(filterKey);
         
         int tileCount;
         

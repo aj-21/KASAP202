@@ -14,7 +14,7 @@ public class GuessingState extends SimpleGameState
     {
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         Character guessedChar = (Character)ccc.getSelected();
-        Character yourChar = gameSession.getMyChar();
+        Character yourChar = gameSession.getYourChar();
         
         if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
