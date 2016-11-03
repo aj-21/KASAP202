@@ -21,6 +21,7 @@ public class GuessWho extends StatefulWorld
     GameState guessWhoState;
     GameState guessingState;
     GameState filteringState;
+    GameState scoringState;
     GameState waitingState;
 
     public GuessWho(GameSession gameSession)
@@ -30,6 +31,7 @@ public class GuessWho extends StatefulWorld
         guessWhoState = new GuessWhoState(this,gameSession);
         guessingState = new GuessingState(this,gameSession);
         filteringState = new FilteringState(this,gameSession);
+        scoringState = new ScoringState(this,gameSession);
         waitingState = new WaitingState(this,gameSession);
         setState("guessWhoState");
         setup();

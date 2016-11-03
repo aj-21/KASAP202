@@ -14,6 +14,7 @@ public class FilteringState extends SimpleGameState implements Observer
     GameSession gameSession;
     String option;
     String subOption;
+    MyObservble o = new MyObservable();
     public FilteringState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
@@ -28,21 +29,27 @@ public class FilteringState extends SimpleGameState implements Observer
         String filterKey = option;
         String filterValue = gameSession.getMyChar().getSubOpt(filterKey);
         
+        int tileCount;
+        
         if(filterValue.equals(subOption))
         {
             System.out.println("Good Guess!!!");
-            correct();
+            tileCount = correct();
         }
         else
         {
             System.out.println("Too Bad!!!");
-            incorrect();    
+            tileCount = incorrect();    
         }
+        
+        o.setCHANGED();
+        o.notifyObserver();
+        o.clearCHANGED();
         
         world.setState("waitingState"); 
     }
     
-    public void correct()
+    public int correct()
     {
         Set<Character> rmSet = new HashSet<Character>();
         for(Character c : playSet)
@@ -50,10 +57,10 @@ public class FilteringState extends SimpleGameState implements Observer
             if(c.getSubOpt(option) != subOption)
                 rmSet.add(c);
         }    
-        removeSet(rmSet);
+        return removeSet(rmSet);
     }
     
-    public void incorrect()
+    public int incorrect()
     {
         Set<Character> rmSet = new HashSet<Character>();
         for(Character c : playSet)
@@ -61,16 +68,17 @@ public class FilteringState extends SimpleGameState implements Observer
             if(c.getSubOpt(option) == subOption)
                 rmSet.add(c);
         } 
-        removeSet(rmSet);
+        return removeSet(rmSet);
     }
     
-    private void removeSet(Set<Character> rmSet)
+    private int removeSet(Set<Character> rmSet)
     {
         for(Character c : rmSet)
         {
             world.removeObject(c);
             playSet.remove(c);
         }
+        return rmSet.size();
     }
     
     @Override
@@ -98,4 +106,9 @@ public class FilteringState extends SimpleGameState implements Observer
         
     }
     
+    
+    public void addObserver(Observer observer)
+    {
+        o.addObserver(observer);
+    }
 }
