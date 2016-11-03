@@ -11,7 +11,7 @@ public class Char9 extends Character
     public Char9()
     {
         super("9.png");
-        
+        setName("Lady Lavender");
         putOption("Hair","Black");
         putOption("Coat","No");
         putOption("Dress","Purple");

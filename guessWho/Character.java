@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Character extends ZoomActor
 {       
     Map<String,String> options = new HashMap<String,String>();  
-    
+    String name;
     public Character(String filename)
     {
         super(filename,0.5);
@@ -31,4 +31,13 @@ public class Character extends ZoomActor
         return options.get(key);
     }
     
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    public String getName()
+    {
+        return this. name;
+    }
 }

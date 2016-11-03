@@ -11,7 +11,7 @@ public class Char6 extends Character
     public Char6()
     {
         super("6.png");
-        
+        setName("Miss Scarlett");
         putOption("Hair","Grey");
         putOption("Coat","No");
         putOption("Dress","Red");

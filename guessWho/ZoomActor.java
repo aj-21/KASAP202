@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ZoomActor extends SelectableImagesActor
 {
     //initial zoom scale is 1.5
-    private double zoomScale = 1.5;
+    private double zoomScale = 1.3;
     
     //a path to picture is requires so that a zoomactor can construct with 2 images
     public ZoomActor(String filename,double initScale)
