@@ -29,9 +29,10 @@ public class GuessWho extends StatefulWorld
         super(1536, 864, 1); 
         this.gameSession = gameSession;
         guessWhoState = new GuessWhoState(this,gameSession);
+        scoringState = new ScoringState(this,gameSession);      
         guessingState = new GuessingState(this,gameSession);
         filteringState = new FilteringState(this,gameSession);
-        scoringState = new ScoringState(this,gameSession);
+        
         waitingState = new WaitingState(this,gameSession);
         setState("guessWhoState");
         setup();
@@ -58,6 +59,7 @@ public class GuessWho extends StatefulWorld
         EnableButton filterButton = new EnableButton("filter");
         addObject(filterButton,200,100);
         filterButton.addObserver((Observer)guessWhoState);
+        //filterButton.addObserver((Observer)scoringState);
         
         //create new option buttons (one time)
         Set<String> optionSet = gameSession.getOptionInfo().getOptions();
@@ -98,8 +100,6 @@ public class GuessWho extends StatefulWorld
         //transfer info from opt selectionObserver to updateSubOption
         optSel.addObserver(updSubOpt);
         
-         
-        
         
         
 
@@ -119,6 +119,7 @@ public class GuessWho extends StatefulWorld
             case "guessWhoState": return guessWhoState;
             case "guessingState": return guessingState; 
             case "filteringState": return filteringState;
+            case "scoringState": return scoringState;
             case "waitingState": return waitingState;
             default: return guessWhoState;
         }

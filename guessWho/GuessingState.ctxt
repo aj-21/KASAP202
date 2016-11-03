@@ -4,4 +4,6 @@ comment1.params=world\ gameSession
 comment1.target=GuessingState(GuessWho,\ GameSession)
 comment2.params=arg
 comment2.target=void\ stateRun(java.lang.Object)
-numComments=3
+comment3.params=observer
+comment3.target=void\ addObserver(java.util.Observer)
+numComments=4

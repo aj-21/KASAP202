@@ -19,6 +19,7 @@ public class GameSession
     Character yourChar;
     int roomNumber;
     String myID;
+    int myScore;
     String yourID;
 
     /**
@@ -26,7 +27,7 @@ public class GameSession
      */
     public GameSession()
     {
-        
+        myScore = 0;
         //by default, new game session has a new set of all characters
         allCharacters.add(new Char1());
         allCharacters.add(new Char2());
@@ -109,4 +110,13 @@ public class GameSession
         return optionInfo;
     }
     
+    public int getMyScore()
+    {
+        return myScore;
+    }
+    
+    public void setMyScore(int score)
+    {
+        this.myScore = score;
+    }
 }

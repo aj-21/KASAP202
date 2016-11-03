@@ -20,6 +20,7 @@ public class FilteringState extends SimpleGameState implements Observer
         this.world = world;
         this.gameSession = gameSession;
         playSet = gameSession.getPlaySet();
+        addObserver((Observer)world.getState("scoringState"));
     }
     
     public void stateRun(Object arg)
@@ -29,21 +30,28 @@ public class FilteringState extends SimpleGameState implements Observer
         String filterKey = option;
         String filterValue = gameSession.getYourChar().getSubOpt(filterKey);
         
+        Map<String,String> filterSession = new HashMap<String,String>();
+        filterSession.put("operationType","filter");
+        
         int tileCount;
         
         if(filterValue.equals(subOption))
         {
             System.out.println("Good Guess!!!");
             tileCount = correct();
+            filterSession.put("correctioness","correct");
         }
         else
         {
             System.out.println("Too Bad!!!");
             tileCount = incorrect();    
+            filterSession.put("correctioness","incorrect");
         }
+
+        filterSession.put("tileCount",Integer.toString(tileCount));
         
         o.setCHANGED();
-        o.notifyObservers();
+        o.notifyObservers(filterSession);
         o.clearCHANGED();
         
         world.setState("waitingState"); 
@@ -105,8 +113,7 @@ public class FilteringState extends SimpleGameState implements Observer
         return "subOption";
         
     }
-    
-    
+   
     public void addObserver(Observer observer)
     {
         o.addObserver(observer);

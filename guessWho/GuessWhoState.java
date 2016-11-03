@@ -27,6 +27,7 @@ public class GuessWhoState extends SimpleGameState implements Observer
         EnableButton guessButton = new EnableButton("guess");
         world.addObject(guessButton,600,100);
         guessButton.addObserver(this);
+        //guessButton.addObserver(new ScoringState(world,gameSession));
         
         /*
         EnableButton filterButton = new EnableButton("filter");

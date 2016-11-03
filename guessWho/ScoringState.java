@@ -14,7 +14,7 @@ public class ScoringState extends SimpleGameState implements Observer
     GuessWho world;
     GameSession gameSession;
     
-    int baseScore;
+    int baseScore = 100;
     
     int turnCount;
     
@@ -24,10 +24,10 @@ public class ScoringState extends SimpleGameState implements Observer
     int tileCount;
     
     int REDUCT_PER_TURN = 2;
-    double GUESS = 1.5;
-    double FILTER = 1;
+    double GUESS = 2;
+    double FILTER = 1.05;
     double CORRECT = 1;
-    double INCORRECT = 0.8;
+    double INCORRECT = 0.9;
     
         
     
@@ -39,7 +39,6 @@ public class ScoringState extends SimpleGameState implements Observer
     {
         this.world = world;
         this.gameSession = gameSession;
-        this.baseScore = 100;
         this.turnCount = 0;
     }
     
@@ -53,36 +52,50 @@ public class ScoringState extends SimpleGameState implements Observer
     {
         //basescore reduce per turn from 100%, 100% for turn 1, 98% for turn 2
         int score = baseScore;
-        score *= (100 - (turnCount-1)*REDUCT_PER_TURN);
+        System.out.println("baseScore is "+ score);
+        score *= (100 - (turnCount-1)*REDUCT_PER_TURN );
+        score /= 100;
+        System.out.println("turn "+turnCount+" - score is "+ score);
         //score depends on correctioness, only 80% if incorrect
         score*= correctioness;
+        System.out.println("correctioness "+correctioness+" - score is "+ score);
         //score change according to number of elimination, the more elimination, the higher score for that turn
         score *= tileCount;
+        System.out.println("tileCount "+tileCount+" - score is "+ score);
         //Score is also affected by operation type.
         //you get higher factor for guessing due to riskiness, but only 1 tile count
         //you can eliminate 2 or more,gfilter is better
         score *= operation;
+        System.out.println("operation "+operation+" - score is "+ score);
         //if you guess the right one, you get double score for this turn;
-        if(operationType.equals("") )
-            score *= 2;
+        if(operation == GUESS && correctioness == CORRECT )
+        {
+            score *= 2.5;
+            System.out.println("correct guess - score is "+ score);
+        }
+        System.out.println("");
         updateScore(score);
     }
     
     @Override
     public void update(Observable o, Object arg)
     {
-        if(arg instanceof EnableButton)
+        /*if(arg instanceof EnableButton)
         {
             operationType = ((EnableButton)arg).getLabel(); 
             operation = computeOp(  operationType );
             //update turnCount
             turnCount ++;
-        }
+        }*/
         if(arg instanceof Map)
         {
             Map<String,String> myMap = ((HashMap)arg);
+            turnCount ++;
+            System.out.println("turn: " + turnCount);
+            operation = computeOp(  myMap.get("operationType") );
             correctioness  = computeCrt( myMap.get("correctioness") );
-            tileCount = computeTileCount (myMap.get("count"));
+            tileCount = computeTileCount (myMap.get("tileCount"));
+            score();
         }
     }
     
@@ -100,24 +113,16 @@ public class ScoringState extends SimpleGameState implements Observer
         return INCORRECT;
     }
     
-    private int computeTileCount(String count)
+    private int computeTileCount(String tileCount)
     {
-        switch (count)
-        {
-            case "2": return 2;
-            case "3": return 3;
-            case "4": return 4;
-            case "5": return 5;
-            case "6": return 6;
-            case "7": return 7;
-            case "8": return 8;
-            
-            default: return 1;
-        }
+        return Integer.parseInt(tileCount);
     }
     
-    protected void updateScore(int Score)
+    protected void updateScore(int score)
     {
-        
+        int myScore = gameSession.getMyScore();
+        myScore += score;
+        gameSession.setMyScore(myScore);
+        System.out.println(" You have gained ["+ score+"] point, your new score is [" + myScore + "]" );
     }
 }
