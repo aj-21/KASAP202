@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UpdateSubOpt
-comment0.text=\n\ Write\ a\ description\ of\ class\ UpdateSubOpt\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ UpdateSubOpt\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=world\ optionInfo\ optDisCan\ uni\ sel
 comment1.target=UpdateSubOpt(greenfoot.World,\ OptionInfo,\ DisplayCanvas,\ UniqueSelection,\ SelectionObservable)
 comment2.params=o\ arg
