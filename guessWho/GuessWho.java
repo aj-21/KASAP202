@@ -44,7 +44,7 @@ public class GuessWho extends StatefulWorld
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
         DisplayCanvas charCanvas = new DisplayCanvas(playCon);
-        addObject(charCanvas,getWidth()/2,600);
+        addObject(charCanvas,780,581);
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
         //myCharCanvas setting
@@ -52,7 +52,7 @@ public class GuessWho extends StatefulWorld
         myCharCon.setZoomScale(1);
         myCharCon.resizeOnScale(1.5);
         DisplayCanvas myCharCanvas = new DisplayCanvas(myCharCon);
-        addObject(myCharCanvas,1400,600);
+        addObject(myCharCanvas,1370,578);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();  
         
         //filter button
@@ -69,7 +69,7 @@ public class GuessWho extends StatefulWorld
         
         //optionButtonCanvas setting
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
-        addObject(optButCanvas,615,300);
+        addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
         
         //unqineSelection for optionbuttons
@@ -81,7 +81,7 @@ public class GuessWho extends StatefulWorld
         
         //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
         DisplayCanvas subOptButCanvas = new DisplayCanvas();
-        addObject(subOptButCanvas,160,600);
+        addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
 
         //initialize unique selection process for subopt
