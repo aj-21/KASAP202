@@ -24,14 +24,14 @@ public class GuessingState extends SimpleGameState
         guessSession.put("operationType","guess");
         if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
-            System.out.println("Congratulation! You win");
+            //System.out.println("Congratulation! You win");
             
             guessSession.put("correctioness","correct");
         }
         else
         {
-            System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
-            System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
+            //System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
+            //System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
             
             guessSession.put("correctioness","incorrect");
             

@@ -76,7 +76,7 @@ public class chooseCharacterScreen extends World implements Observer
         SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
         gameSession.setMyChar((Character)c.getFirstSelected());
         updateOptionInfo();
-        System.out.println(gameSession.getOptionInfo());
+        //System.out.println(gameSession.getOptionInfo());
         Greenfoot.setWorld(new GuessWho(gameSession));
     }
     

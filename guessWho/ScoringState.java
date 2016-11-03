@@ -52,28 +52,33 @@ public class ScoringState extends SimpleGameState implements Observer
     {
         //basescore reduce per turn from 100%, 100% for turn 1, 98% for turn 2
         int score = baseScore;
-        System.out.println("baseScore is "+ score);
+        //System.out.println("baseScore is "+ score);
         score *= (100 - (turnCount-1)*REDUCT_PER_TURN );
         score /= 100;
-        System.out.println("turn "+turnCount+" - score is "+ score);
+        //System.out.println("turn "+turnCount+" - score is "+ score);
+        
         //score depends on correctioness, only 80% if incorrect
         score*= correctioness;
-        System.out.println("correctioness "+correctioness+" - score is "+ score);
+        //System.out.println("correctioness "+correctioness+" - score is "+ score);
+        
         //score change according to number of elimination, the more elimination, the higher score for that turn
         score *= tileCount;
-        System.out.println("tileCount "+tileCount+" - score is "+ score);
+        //System.out.println("tileCount "+tileCount+" - score is "+ score);
+        
         //Score is also affected by operation type.
         //you get higher factor for guessing due to riskiness, but only 1 tile count
         //you can eliminate 2 or more,gfilter is better
         score *= operation;
-        System.out.println("operation "+operation+" - score is "+ score);
+        //System.out.println("operation "+operation+" - score is "+ score);
+        
         //if you guess the right one, you get double score for this turn;
         if(operation == GUESS && correctioness == CORRECT )
         {
             score *= 2.5;
-            System.out.println("correct guess - score is "+ score);
+            //System.out.println("correct guess - score is "+ score);
         }
-        System.out.println("");
+        
+        //System.out.println("");
         updateScore(score);
     }
     
@@ -91,7 +96,7 @@ public class ScoringState extends SimpleGameState implements Observer
         {
             Map<String,String> myMap = ((HashMap)arg);
             turnCount ++;
-            System.out.println("turn: " + turnCount);
+            //System.out.println("turn: " + turnCount);
             operation = computeOp(  myMap.get("operationType") );
             correctioness  = computeCrt( myMap.get("correctioness") );
             tileCount = computeTileCount (myMap.get("tileCount"));
@@ -123,6 +128,6 @@ public class ScoringState extends SimpleGameState implements Observer
         int myScore = gameSession.getMyScore();
         myScore += score;
         gameSession.setMyScore(myScore);
-        System.out.println(" You have gained ["+ score+"] point, your new score is [" + myScore + "]" );
+        System.out.println("You have gained ["+ score+"] point, your new score is [" + myScore + "]" );
     }
 }

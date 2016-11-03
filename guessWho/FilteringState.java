@@ -25,8 +25,7 @@ public class FilteringState extends SimpleGameState implements Observer
     
     public void stateRun(Object arg)
     {
-        System.out.println(option + " : " +subOption);
-        
+        //System.out.println(option + " : " +subOption);
         String filterKey = option;
         String filterValue = gameSession.getYourChar().getSubOpt(filterKey);
         
@@ -37,13 +36,13 @@ public class FilteringState extends SimpleGameState implements Observer
         
         if(filterValue.equals(subOption))
         {
-            System.out.println("Good Guess!!!");
+            //System.out.println("Good Guess!!!");
             tileCount = correct();
             filterSession.put("correctioness","correct");
         }
         else
         {
-            System.out.println("Too Bad!!!");
+            //System.out.println("Too Bad!!!");
             tileCount = incorrect();    
             filterSession.put("correctioness","incorrect");
         }

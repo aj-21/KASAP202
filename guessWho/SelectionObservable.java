@@ -60,7 +60,7 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
         //if something new is clicked
         if(first!= null && first != previous)
         {
-            System.out.println(first.getClass().getName());
+            //System.out.println(first.getClass().getName());
             updateStatus(first);
             return;
         }
@@ -68,7 +68,7 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
         //if nothing is clicked, reset previous if it stores something
         if(first == null &&  previous != null)
         {
-            System.out.println("none selected");
+            //System.out.println("none selected");
             updateStatus(first);
             return;
         }
