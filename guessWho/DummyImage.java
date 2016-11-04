@@ -1,19 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class DummyImage here.
+ * DummyImage is an actor storing only an image and do nothing
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class DummyImage extends Actor
 {
+    //constructor takes in a path to an image file
     public DummyImage(String filename)
     {
         setImage(new GreenfootImage(filename));
     }
     
-    public void act() 
+    public final void act() 
     {
         // Add your action code here.
     }    

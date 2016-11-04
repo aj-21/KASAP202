@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=DummyImage
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DummyImage\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ DummyImage\ is\ an\ actor\ storing\ only\ an\ image\ and\ do\ nothing\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=filename
 comment1.target=DummyImage(java.lang.String)
 comment2.params=
