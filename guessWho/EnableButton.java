@@ -1,40 +1,53 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 import java.util.Observer;
 import java.util.Observable;
 
 /**
- * Write a description of class EnableButton here.
+ * EnableButton is a actor that can be enabled and disabled. 
+ * States of the button are display with 2 different images, usually by a partially transparent image for disable and a transparent image for enable
+ * EnableButton is an observer that will disable itself if object passed from Subject/Observable is null, and enable itself if otherwise.
+ * EnableButton is also an observable Object that accept Observers and notify them when the button is clicked while in enable state. The button pass itself to Observers
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class EnableButton extends Actor implements Observer
 {
+    
     GreenfootImage disableImage;
     GreenfootImage enableImage; 
     String label;
+    
+    //MyObserver is a proxy of Observer to use protected method such as setChange -> setCHANGED, clearChange -> clearCHANGED
     MyObservable o;
-    Object passedArg;
     
     private EnableButton ()
     {
-        disableImage = new GreenfootImage("buttonDisabled.png");
-        disableImage.scale(300,80);
-        enableImage = new GreenfootImage("buttonEnabled.png");
-        enableImage.scale(300,80);
+    }
+    
+    //construction needs a label and optional file to disable image and enable image
+    public EnableButton(String label,String disableFilename, String enableFileName)
+    {
+        disableImage = new GreenfootImage(disableFilename);
+        enableImage = new GreenfootImage(enableFileName);
         disable();
+        this.label = label;
         o = new MyObservable();
     }
     
     public EnableButton(String label)
     {
-        this();
-        this.label = label;
+        this(label,"confirmDisabled.png","confirmEnabled.png");
+        disableImage.scale(300,80);
+        enableImage.scale(300,80);
     }
     
+    /**
+     * button will accept click only when it is enable. then it will notify all Observers if there is one
+     */
     public void act()
     {
-        if(isEnable() && Greenfoot.mouseClicked(this))
+        if(Greenfoot.mouseClicked(this) && isEnable())
         {
             o.setCHANGED();
             o.notifyObservers(this);
@@ -45,7 +58,6 @@ public class EnableButton extends Actor implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        passedArg = arg;
         if(arg != null)
         {
             enable();
@@ -54,6 +66,7 @@ public class EnableButton extends Actor implements Observer
         disable();
     }
     
+    //helper method to toggle state of button
     private void toggle()
     {
         if(isEnable())
@@ -64,26 +77,31 @@ public class EnableButton extends Actor implements Observer
         enable();
     }
     
+    //support add Observer
     public void addObserver(Observer observer)
     {
         o.addObserver(observer);
     }
     
+    //get button's label name
     public String getLabel()
     {
         return label;
     }
     
+    //enable button
     public void enable()
     {
         setImage(enableImage);
     }
     
+    //disable button
     public void disable()
     {
         setImage(disableImage);
     }
     
+    //check if button is enable, true is enable, false is disable
     public boolean isEnable()
     {
         return (getImage() == enableImage);

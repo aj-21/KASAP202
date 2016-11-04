@@ -1,6 +1,7 @@
 import java.util.Observable;
 /**
- * Write a description of class MyObservable here.
+ * MyObservable is a proxy of Observer. this is created for children of other classes wish to use Observer pattern
+ * MyObservable replace protected setChanged method to public setCHANGED method, protected clearChanged method to public clearCHANGED method
  * 
  * @author (your name) 
  * @version (a version number or a date)
