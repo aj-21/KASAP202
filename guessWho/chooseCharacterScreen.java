@@ -87,7 +87,7 @@ public class chooseCharacterScreen extends World implements Observer
         Set<Character> playSet = gameSession.getPlaySet();
         for(Character each:playSet)
         {
-            optionInfo.putOptions(each.getOptions());
+            optionInfo.putOptions(each.getProperties());
         }
     }
     

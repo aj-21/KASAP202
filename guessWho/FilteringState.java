@@ -27,7 +27,7 @@ public class FilteringState extends SimpleGameState implements Observer
     {
         //System.out.println(option + " : " +subOption);
         String filterKey = option;
-        String filterValue = gameSession.getYourChar().getSubOpt(filterKey);
+        String filterValue = gameSession.getYourChar().getPropertyValue(filterKey);
         
         Map<String,String> filterSession = new HashMap<String,String>();
         filterSession.put("operationType","filter");
@@ -61,7 +61,7 @@ public class FilteringState extends SimpleGameState implements Observer
         Set<Character> rmSet = new HashSet<Character>();
         for(Character c : playSet)
         {
-            if(c.getSubOpt(option) != subOption)
+            if(c.getPropertyValue(option) != subOption)
                 rmSet.add(c);
         }    
         return removeSet(rmSet);
@@ -72,7 +72,7 @@ public class FilteringState extends SimpleGameState implements Observer
         Set<Character> rmSet = new HashSet<Character>();
         for(Character c : playSet)
         {
-            if(c.getSubOpt(option) == subOption)
+            if(c.getPropertyValue(option) == subOption)
                 rmSet.add(c);
         } 
         return removeSet(rmSet);
@@ -93,7 +93,7 @@ public class FilteringState extends SimpleGameState implements Observer
     {
         if (arg != null)
         {
-            StringButton but = (StringButton)arg;
+            LabelButton but = (LabelButton)arg;
             String label = but.getLabel();
             if(classify(label).equals("option"))
             {

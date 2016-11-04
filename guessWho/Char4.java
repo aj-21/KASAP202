@@ -12,10 +12,10 @@ public class Char4 extends Character
     {
         super("4.png");
         setName("Rusty");
-        putOption("Hair","Brown");
-        putOption("Coat","No");
-        putOption("Dress","Red");
-        putOption("Cap","Yes");
-        putOption("Earing","No");
+        putProperty("Hair","Brown");
+        putProperty("Coat","No");
+        putProperty("Dress","Red");
+        putProperty("Cap","Yes");
+        putProperty("Earing","No");
     }
 }

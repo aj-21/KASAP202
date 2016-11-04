@@ -28,11 +28,11 @@ public class UpdateSubOpt implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        //Set<StringButton> subOptButSet;
+        //Set<LabelButton> subOptButSet;
         world.removeObjects(optDisCan.getAll());
         if(arg != null)
         {
-            Set<StringButton> newSet = generateSubOptButSet(((StringButton)arg).getLabel());
+            Set<LabelButton> newSet = generateSubOptButSet(((LabelButton)arg).getLabel());
             optDisCan.setActors(newSet).setColRow(1,newSet.size()).display();
             uni.setObjects(newSet);
             sel.setObjects(newSet);
@@ -42,14 +42,14 @@ public class UpdateSubOpt implements Observer
         sel.clearObjects();
     }
     
-    private Set<StringButton> generateSubOptButSet(String option)
+    private Set<LabelButton> generateSubOptButSet(String option)
     {
         Set<String> subOptions = optionInfo.getSubOptions(option);
-        Set<StringButton> subOptButSet = new HashSet<StringButton>();
+        Set<LabelButton> subOptButSet = new HashSet<LabelButton>();
         
         for(String subOpt:subOptions)
         {
-            subOptButSet.add(new StringButton(subOpt,"subOptionsButton.png"));
+            subOptButSet.add(new LabelButton(subOpt,"subOptionsButton.png"));
         }
         return subOptButSet;
     }

@@ -13,10 +13,10 @@ public class Char1 extends Character
         super("1.png");
         setName("Colonel Mustard");
         
-        putOption("Hair","Grey");
-        putOption("Coat","Yes");
-        putOption("Dress","Yellow");
-        putOption("Cap","No");
-        putOption("Earing","No");
+        putProperty("Hair","Grey");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Yellow");
+        putProperty("Cap","No");
+        putProperty("Earing","No");
     }
 }

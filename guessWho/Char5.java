@@ -12,11 +12,11 @@ public class Char5 extends Character
     {
         super("5.png");
         setName("Mrs White");
-        putOption("Hair","Grey");
-        putOption("Coat","Yes");
-        putOption("Dress","Purple");
-        putOption("Cap","No");
-        putOption("Earing","No");
+        putProperty("Hair","Grey");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Purple");
+        putProperty("Cap","No");
+        putProperty("Earing","No");
     }
     
 }

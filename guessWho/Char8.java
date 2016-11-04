@@ -12,10 +12,10 @@ public class Char8 extends Character
     {
         super("8.png");
         setName("Mrs PeaCock");
-        putOption("Hair","Red");
-        putOption("Coat","Yes");
-        putOption("Dress","Yellow");
-        putOption("Cap","Yes");
-        putOption("Earing","Yes");
+        putProperty("Hair","Red");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Yellow");
+        putProperty("Cap","Yes");
+        putProperty("Earing","Yes");
     }
 }

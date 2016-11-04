@@ -12,10 +12,10 @@ public class Char7 extends Character
     {
         super("7.png");
         setName("Mrs Meadow Brook");
-        putOption("Hair","Grey");
-        putOption("Coat","Yes");
-        putOption("Dress","Green");
-        putOption("Cap","Yes");
-        putOption("Earing","Yes");
+        putProperty("Hair","Grey");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Green");
+        putProperty("Cap","Yes");
+        putProperty("Earing","Yes");
     }
 }

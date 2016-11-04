@@ -1,18 +1,20 @@
 #BlueJ class context
 comment0.target=SimpleSelectableActor
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ SelectableActor\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ SelectableActor\ here.\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=
 comment1.target=void\ act()
 comment2.params=
-comment2.target=void\ detectPress()
+comment2.target=boolean\ detectPress()
+comment2.text=\n\ \ detectPress\ works\ with\ Greenfoot.MousePressed\ method\ to\ check\ press\ event\ on\ this\ actor.\n\ \ it\ is\ important\ to\ add\ this\ method\ into\ act\ if\ method\ act\ is\ override,\ or\ two\ other\ helper\ function\ can\ be\ used\n
 comment3.params=
-comment3.target=void\ toggleSelection()
+comment3.target=boolean\ isPressed()
 comment4.params=
-comment4.target=void\ afterAct()
+comment4.target=void\ toggleSelection()
 comment5.params=
 comment5.target=boolean\ isInWorld()
 comment6.params=
 comment6.target=void\ select()
+comment6.text=\n\ \ basic\ functionality\ from\ SimpleSelectable\n
 comment7.params=
 comment7.target=void\ deselect()
 comment8.params=

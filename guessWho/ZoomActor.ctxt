@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=ZoomActor
-comment0.text=\n\ Write\ a\ description\ of\ class\ ZoomActor\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ ZoomActor\ extends\ SimpleImagesActor\n\ ZoomActor\ display\ itself\ with\ the\ same\ pictures\ but\ in\ different\ sizes.\ By\ default\ selected\ image\ size\ is\ 50%\ larger\ than\ deselected\ image\ size\n\ ZoomActor\ supports\ setting\ method\ for\ zooming\ Scale\ image\ when\ deselected\ relative\ to\ selected\ image.\n\ ZoomActor\ also\ provide\ a\ method\ to\ resize\ two\ imaging\ representation\ with\ a\ scale\ (ratio/percentage)\ rather\ than\ pixels\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=filename\ initScale
 comment1.target=ZoomActor(java.lang.String,\ double)
+comment1.text=\n\ Constructor\ takes\ in\ a\ path\ to\ image\ with\ image\ name\ and\ initial\ Scale\ (up\ or\ down)\ for\ both\ images\n
 comment2.params=image\ scale
 comment2.target=void\ relativeScale(greenfoot.GreenfootImage,\ double)
 comment3.params=scale
 comment3.target=void\ setZoomScale(double)
+comment3.text=\n\ set\ zoom\ scale\ when\ this\ actor\ is\ selected.\ it\ can\ be\ biger\ or\ smaller\ than\ deselected\ image,\ \n\ a\ scale\ of\ 1\ means\ no\ different\ in\ sizes\ between\ selected\ and\ deselected\ images.\n\ a\ scale\ greater\ than\ 1\ means\ selected\ image\ will\ be\ larger\ than\ not-selected\ image\n\ a\ scale\ less\ than\ 1\ means\ selected\ image\ will\ be\ smaller\ than\ not-selected\ image\n
 comment4.params=scale
 comment4.target=void\ resizeOnScale(double)
 numComments=5

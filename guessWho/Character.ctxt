@@ -1,14 +1,14 @@
 #BlueJ class context
 comment0.target=Character
-comment0.text=\n\ Write\ a\ description\ of\ class\ Characters\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Character\ is\ a\ ZoomActor\ with\ descriptive\ properties\ and\ a\ name\n\ Character\ is\ the\ main\ class\ for\ this\ game\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=filename
 comment1.target=Character(java.lang.String)
 comment2.params=key\ value
-comment2.target=void\ putOption(java.lang.String,\ java.lang.String)
+comment2.target=void\ putProperty(java.lang.String,\ java.lang.String)
 comment3.params=
-comment3.target=java.util.Map\ getOptions()
-comment4.params=key
-comment4.target=java.lang.String\ getSubOpt(java.lang.String)
+comment3.target=java.util.Map\ getProperties()
+comment4.params=propertyKey
+comment4.target=java.lang.String\ getPropertyValue(java.lang.String)
 comment5.params=name
 comment5.target=void\ setName(java.lang.String)
 comment6.params=

@@ -13,10 +13,10 @@ public class Char2 extends Character
         super("2.png");
         setName("Reverend Green");
         
-        putOption("Hair","NoHair");
-        putOption("Coat","Yes");
-        putOption("Dress","Green");
-        putOption("Cap","No");
-        putOption("Earing","No");
+        putProperty("Hair","NoHair");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Green");
+        putProperty("Cap","No");
+        putProperty("Earing","No");
     }
 }

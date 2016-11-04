@@ -13,10 +13,10 @@ public class Char3 extends Character
         super("3.png");
         setName("Professor Plum");
         
-        putOption("Hair","Red");
-        putOption("Coat","Yes");
-        putOption("Dress","Purple");
-        putOption("Cap","No");
-        putOption("Earing","No");
+        putProperty("Hair","Red");
+        putProperty("Coat","Yes");
+        putProperty("Dress","Purple");
+        putProperty("Cap","No");
+        putProperty("Earing","No");
     }   
 }

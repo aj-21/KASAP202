@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Selectable
+comment0.text=\n\ Selectable\ interface\ requires\ select()\ method\ to\ select\ object,\ deselect\ to\ deselect\ object,\ and\ isSelected\ return\ if\ object\ is\ select\ or\ not\n\ \n\ SPAAK\n\ version\ 1\n
 comment1.params=
 comment1.target=void\ select()
 comment2.params=

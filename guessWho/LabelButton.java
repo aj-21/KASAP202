@@ -1,62 +1,55 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
-/*import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
-*/
+
 /**
- * Write a description of class StringButton here.
+ * LabelButton is a ZoomActor which able to display its label on top of its representational images
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StringButton extends ZoomActor
+public class LabelButton extends ZoomActor
 {
     String fileName;
     String label;
     
     Color labelColor = Color.BLUE;
     
-    public StringButton(String label, String fileName)
+    //construction take in label name and path to image file
+    public LabelButton(String label, String fileName)
     {
         super(fileName,1);
         this.fileName = fileName;
         setLabel(label);
-        //Random rand = new Random();
-        //labelColor = new Color(rand.nextFloat(),rand.nextFloat(),rand.nextFloat());
-        
-        drawLabel();
     }
     
-    public StringButton(String label)
-    {
-        this(label,"buttonEnabled.png");
-    }
-    
+    //set a label for button
     protected void setLabel(String label)
     {
         this.label = label;
         drawLabel();
     }
     
+    //get the current label name
     public String getLabel()
     {
         return label;
     }
     
+    //two private hepler methods to draw label
     private void drawLabel()
     {
         drawLabelTo(getDeselectedImage());
         drawLabelTo(getSelectedImage());
     }
     
-    private void drawLabelTo(GreenfootImage image)
+    //draw String image with transparent background on current images 
+    private GreenfootImage drawLabelTo(GreenfootImage image)
     {
-        
         int w = image.getWidth();
         int h = image.getHeight(); 
         GreenfootImage labelImage = new GreenfootImage(label,h/10*5,labelColor,new Color(0,0,0,0));
         image.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/20*6);
+        return image;
     }
     
 }
