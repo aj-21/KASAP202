@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=AbstractDisplayBox
+comment0.text=\n\ AbstractDisplayBox\ is\ an\ abstract\ class\ implements\ DisplayBox\ interface.\n\ It\ stores\ a\ set\ of\ Actors\ extending\ SimpleSelectableActor\ and\ display\ them\ to\ the\ world\ passed\ in\ when\ function\ display\ is\ called.\n\ display\ function\ takes\ in\ a\ world,\ int\ x\ and\ int\ y\ as\ the\ top\ left\ corner\ to\ display\ stored\ Actors\ using\ the\ world.\ \n\ It\ also\ contain\ other\ setting\ useful\ for\ displaying.\ It\ is\ required\ that\ children\ of\ this\ class\ override\ display\ function\ to\ display\ actors\ on\ their\ own\ logic\n\ \n\ @SPAAK\n\ @version\ 1\n
+comment1.params=
+comment1.target=AbstractDisplayBox()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SimpleDisplayBox\ taking\ no\ argument\ providing\ default\ setting\ for\ all\ fields\n
+comment2.params=world\ x\ y
+comment2.target=void\ display(greenfoot.World,\ int,\ int)
+comment2.text=\n\ this\ function\ need\ to\ be\ call\ for\ the\ box\ to\ display\ its\ contained\ set\ of\ actors\n
+comment3.params=actors
+comment3.target=void\ setActors(java.util.Set)
+comment3.text=\n\ support\ one\ get\ and\ set\ function\ to\ get\ current\ set\ of\ actors\ or\ set\ to\ display\ a\ new\ set\ of\ actors\n
+comment4.params=
+comment4.target=java.util.Set\ getActors()
+comment4.text=\n\ support\ retriving\ current\ set\ of\ actors\ via\ getActors()\ and\n
+comment5.params=actors
+comment5.target=void\ addAll(java.util.Set)
+comment5.text=\n\ addAll\ and\ addActor\ are\ to\ add\ a\ set\ of\ distinct\ actors\ or\ just\ one\ actor\ into\ current\ set,\ respectively\n
+comment6.params=actor
+comment6.target=void\ addActor(SimpleSelectableActor)
+comment7.params=width\ height
+comment7.target=void\ scale(int,\ int)
+comment7.text=\ \n\ A\ setup\ function\ for\ controlling\ how\ actors\ are\ display\ relative\ to\ another.\n\ Resize\ the\ size\ this\ box,\ the\ bigger\ the\ size\ the\ farther\ apart\ actors\ will\ be\ display\n
+comment8.params=col\ row
+comment8.target=void\ setColRow(int,\ int)
+comment8.text=\ \n\ A\ setup\ function\ for\ controlling\ how\ actors\ are\ display\ relative\ to\ another.\n\ set\ maximum\ number\ of\ Col\ and\ Row\ to\ display.\ multiplication\ of\ these\ two\ variable\ is\ the\ maximum\ number\ of\ actors\ it\ will\ display\n
+numComments=9

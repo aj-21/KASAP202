@@ -3,12 +3,12 @@ import java.util.Set;
 import java.util.HashSet;
 
 /**
- * Write a description of class DisplayCanvas here.
+ * DisplayCanvas is an Actor which additionally use SimpleDisplayBox as a core to display
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @SPAAK
+ * @version 1
  */
-public class DisplayCanvas<T extends SimpleSelectable> extends Actor
+public class DisplayCanvas<T extends SimpleSelectableActor> extends Actor
 {
     SimpleDisplayBox disBox;
     double left, right, top, bottom;
@@ -29,12 +29,11 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
         disBox.setActors(actors);
     }
     
-    public DisplayCanvas(SimpleContainer container)
+    public DisplayCanvas(T actor)
     {
         this();
-        disBox.setContainer(container);
+        addActor(actor);
     }
-    
     
     public void addedToWorld(World world)
     {
@@ -42,24 +41,11 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
         disY = getY() - getImage().getHeight()/2;
     }
     
-    /*public void setBackground(String filename)
-    {
-        setBackground(new GreenfootImage(filename));
-    }*/
-    
     public DisplayCanvas setBackground(String filename)
     {
         setBackground(new GreenfootImage(filename));
         return this;
     }
-    
-    /*public void setBackground(GreenfootImage image)
-    {
-        setImage(image);
-        setMargin(left,right,top,bottom);
-        if(getWorld() != null)
-            addedToWorld(getWorld());
-    }*/
     
     public DisplayCanvas setBackground(GreenfootImage image)
     {
@@ -90,12 +76,6 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
         if(getWorld() != null)
             disBox.display(getWorld(),disX + leftMar,disY + topMar);           
     }
-   
-    public DisplayCanvas setContainer(SimpleContainer container)
-    {
-       disBox.setContainer(container);
-       return this;
-    }
     
     public DisplayCanvas setColRow(int col, int row)
     {
@@ -103,9 +83,21 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
         return this;
     }
     
-    public SimpleContainer getContainer()
+    public Set<T> getAll()
     {
-        return disBox.getContainer();
+        return disBox.getActors();
+    }
+    
+    public DisplayCanvas addAll(Set<T> actors)
+    {
+        disBox.addAll(actors);
+        return this;
+    }
+    
+    public DisplayCanvas addActor(T actor)
+    {
+        disBox.addActor(actor);
+        return this;
     }
     
     public DisplayCanvas setActors(Set<T> actors)
@@ -113,10 +105,5 @@ public class DisplayCanvas<T extends SimpleSelectable> extends Actor
         disBox.setActors(actors);
         return this;
     }
-    
-    public Set<T> getActors()
-    {
-        return disBox.getActors();
-    }
-    
+
 }

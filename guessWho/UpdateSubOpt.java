@@ -29,7 +29,7 @@ public class UpdateSubOpt implements Observer
     public void update(Observable o, Object arg)
     {
         //Set<StringButton> subOptButSet;
-        world.removeObjects(optDisCan.getActors());
+        world.removeObjects(optDisCan.getAll());
         if(arg != null)
         {
             Set<StringButton> newSet = generateSubOptButSet(((StringButton)arg).getLabel());

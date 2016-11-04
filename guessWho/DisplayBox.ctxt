@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=DisplayBox
+comment0.text=\n\ DisplayBox\ is\ an\ interface\ supporting\ the\ following\ features\:\n\ \ \ 1.\ display\ stored\ actor\ in\ to\ the\ world\ passed\ in\ to\ display\ function,\ together\ with\ x,\ and\ y\ as\ the\ top\ left\ coordinates\ of\ this\ Box\n\ \ \ 2.\ set\ current\ stored\ set\ of\ actors\ to\ a\ new\ set,\ get\ current\ set\ of\ actors\n\ \ \ 3.\ add\ one\ actor\ to\ current\ list,\ or\ add\ a\ set\ of\ actors\ into\ current\ list\n\ \ \ 4.\ setting\ witdth\ and\ height\ of\ the\ box\ (scale\ function),\ and\ set\ column\ and\ rows\ to\ display\ (setColRow\ row)\n\ \n\ @SPAAK\n\ @version\ 1\n
+comment1.params=world\ x\ y
+comment1.target=void\ display(greenfoot.World,\ int,\ int)
+comment2.params=actors
+comment2.target=void\ setActors(java.util.Set)
+comment3.params=
+comment3.target=java.util.Set\ getActors()
+comment4.params=actors
+comment4.target=void\ addAll(java.util.Set)
+comment5.params=actor
+comment5.target=void\ addActor(greenfoot.Actor)
+comment6.params=width\ height
+comment6.target=void\ scale(int,\ int)
+comment7.params=col\ row
+comment7.target=void\ setColRow(int,\ int)
+numComments=8

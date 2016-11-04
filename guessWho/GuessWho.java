@@ -43,7 +43,7 @@ public class GuessWho extends StatefulWorld
         //charCanvas setting
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
-        DisplayCanvas charCanvas = new DisplayCanvas(playCon);
+        DisplayCanvas charCanvas = new DisplayCanvas(gameSession.getPlaySet());
         addObject(charCanvas,780,581);
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
@@ -51,7 +51,7 @@ public class GuessWho extends StatefulWorld
         ZoomContainer myCharCon = new ZoomContainer(gameSession.getMyChar());
         myCharCon.setZoomScale(1);
         myCharCon.resizeOnScale(1.5);
-        DisplayCanvas myCharCanvas = new DisplayCanvas(myCharCon);
+        DisplayCanvas myCharCanvas = new DisplayCanvas(gameSession.getMyChar());
         addObject(myCharCanvas,1370,578);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();  
         
