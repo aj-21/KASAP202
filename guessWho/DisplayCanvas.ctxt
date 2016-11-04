@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=DisplayCanvas
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DisplayCanvas\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ DisplayCanvas\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=DisplayCanvas()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ DisplayCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ DisplayCanvas\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment10.params=col\ row
 comment10.target=DisplayCanvas\ setColRow(int,\ int)
 comment11.params=
@@ -20,10 +20,10 @@ comment4.params=world
 comment4.target=void\ addedToWorld(greenfoot.World)
 comment5.params=filename
 comment5.target=DisplayCanvas\ setBackground(java.lang.String)
-comment5.text=public\ void\ setBackground(String\ filename)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ setBackground(new\ GreenfootImage(filename));\r\n}
+comment5.text=public\ void\ setBackground(String\ filename)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ setBackground(new\ GreenfootImage(filename));\n}
 comment6.params=image
 comment6.target=DisplayCanvas\ setBackground(greenfoot.GreenfootImage)
-comment6.text=public\ void\ setBackground(GreenfootImage\ image)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ setImage(image);\r\n\ \ \ \ \ \ \ \ setMargin(left,right,top,bottom);\r\n\ \ \ \ \ \ \ \ if(getWorld()\ \!\=\ null)\r\n\ \ \ \ \ \ \ \ \ \ \ \ addedToWorld(getWorld());\r\n}
+comment6.text=public\ void\ setBackground(GreenfootImage\ image)\n\ \ \ \ {\n\ \ \ \ \ \ \ \ setImage(image);\n\ \ \ \ \ \ \ \ setMargin(left,right,top,bottom);\n\ \ \ \ \ \ \ \ if(getWorld()\ \!\=\ null)\n\ \ \ \ \ \ \ \ \ \ \ \ addedToWorld(getWorld());\n}
 comment7.params=left\ right\ top\ bottom
 comment7.target=DisplayCanvas\ setMargin(double,\ double,\ double,\ double)
 comment8.params=
