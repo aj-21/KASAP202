@@ -5,16 +5,17 @@ import java.util.HashSet;
 
 /**
  * SimpleDisplayBox extends AbstractDisplayBox
- * It stores a set of Actors extending SimpleSelectableActor and display them to the world passed in when function display is called.
+ * It stores a set of Actors and display them to the world passed in when function display is called.
  * display function takes in a world, int x and int y as the top left corner to display stored Actors using the world. 
  * It used predefined setting from number of columns and rows, and allowed with and height to evenly compute precise coordiate for each Actors
  * The maximum number of Actors it can display less than or equal number of rows multiplied by number of columns, the two attributes that can be manually set
+ * It is mandatory to recall display function everytime it is setup with new data/setting to reflect newst changes
  * 
  * @SPAAK
  * @version 1
  */
 
-public class SimpleDisplayBox<T extends SimpleSelectableActor> extends AbstractDisplayBox<T>
+public class SimpleDisplayBox<T extends Actor> extends AbstractDisplayBox<T>
 {
         
     /**
@@ -44,12 +45,13 @@ public class SimpleDisplayBox<T extends SimpleSelectableActor> extends AbstractD
     
     /**
      * private display function display one actor at a time according to the index of it.
+     * if actor is already in this world, it will be relocated otherwise adding actor to new world
      */
     private void displayActor(World world,T actor,int index)
     {         
         int objectX = x + (index % numCol) * (width/numCol) + (width/numCol)/2;
         int objectY = y + (index / numCol) * (height/numRow) + (height/numRow)/2;        
-        if(actor.isInWorld() && actor.getWorld() == world)
+        if(actor.getWorld() == world)
         {
             actor.setLocation(x,y);
             return;

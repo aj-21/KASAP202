@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SimpleDisplayBox
-comment0.text=\n\ SimpleDisplayBox\ extends\ AbstractDisplayBox\n\ It\ stores\ a\ set\ of\ Actors\ extending\ SimpleSelectableActor\ and\ display\ them\ to\ the\ world\ passed\ in\ when\ function\ display\ is\ called.\n\ display\ function\ takes\ in\ a\ world,\ int\ x\ and\ int\ y\ as\ the\ top\ left\ corner\ to\ display\ stored\ Actors\ using\ the\ world.\ \n\ It\ used\ predefined\ setting\ from\ number\ of\ columns\ and\ rows,\ and\ allowed\ with\ and\ height\ to\ evenly\ compute\ precise\ coordiate\ for\ each\ Actors\n\ The\ maximum\ number\ of\ Actors\ it\ can\ display\ less\ than\ or\ equal\ number\ of\ rows\ multiplied\ by\ number\ of\ columns,\ the\ two\ attributes\ that\ can\ be\ manually\ set\n\ \n\ @SPAAK\n\ @version\ 1\n
+comment0.text=\n\ SimpleDisplayBox\ extends\ AbstractDisplayBox\n\ It\ stores\ a\ set\ of\ Actors\ and\ display\ them\ to\ the\ world\ passed\ in\ when\ function\ display\ is\ called.\n\ display\ function\ takes\ in\ a\ world,\ int\ x\ and\ int\ y\ as\ the\ top\ left\ corner\ to\ display\ stored\ Actors\ using\ the\ world.\ \n\ It\ used\ predefined\ setting\ from\ number\ of\ columns\ and\ rows,\ and\ allowed\ with\ and\ height\ to\ evenly\ compute\ precise\ coordiate\ for\ each\ Actors\n\ The\ maximum\ number\ of\ Actors\ it\ can\ display\ less\ than\ or\ equal\ number\ of\ rows\ multiplied\ by\ number\ of\ columns,\ the\ two\ attributes\ that\ can\ be\ manually\ set\n\ It\ is\ mandatory\ to\ recall\ display\ function\ everytime\ it\ is\ setup\ with\ new\ data/setting\ to\ reflect\ newst\ changes\n\ \n\ @SPAAK\n\ @version\ 1\n
 comment1.params=
 comment1.target=SimpleDisplayBox()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SimpleDisplayBox\ taking\ no\ argument\ providing\ default\ setting\ for\ all\ fields\n
@@ -8,6 +8,6 @@ comment2.params=world\ x\ y
 comment2.target=void\ display(greenfoot.World,\ int,\ int)
 comment2.text=\n\ this\ function\ need\ to\ be\ call\ for\ the\ box\ to\ display\ its\ contained\ set\ of\ actors\n
 comment3.params=world\ actor\ index
-comment3.target=void\ displayActor(greenfoot.World,\ SimpleSelectableActor,\ int)
-comment3.text=\n\ private\ display\ function\ display\ one\ actor\ at\ a\ time\ according\ to\ the\ index\ of\ it.\n
+comment3.target=void\ displayActor(greenfoot.World,\ greenfoot.Actor,\ int)
+comment3.text=\n\ private\ display\ function\ display\ one\ actor\ at\ a\ time\ according\ to\ the\ index\ of\ it.\n\ if\ actor\ is\ already\ in\ this\ world,\ it\ will\ be\ relocated\ otherwise\ adding\ actor\ to\ new\ world\n
 numComments=4

@@ -11,7 +11,7 @@ import java.util.HashSet;
  * @version 1
  */
 
-public abstract class AbstractDisplayBox<T extends SimpleSelectableActor> implements DisplayBox<T>
+public abstract class AbstractDisplayBox<T extends Actor> implements DisplayBox<T>
 {
     // set of actors to be display
     Set<T> actors;
