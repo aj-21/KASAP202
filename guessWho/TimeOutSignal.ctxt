@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=TimeOutSignal
+comment0.text=\n\ Write\ a\ description\ of\ class\ EnableButtonTimerTask\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=state\ seconds
+comment1.target=TimeOutSignal(GuessWhoState,\ long)
+numComments=2

@@ -22,6 +22,11 @@ public class GuessWhoState extends SimpleGameState implements Observer
         prepare();
     }
     
+    public void enter()
+    {
+        new TimeOutSignal(this,7);
+    }
+    
     public void prepare()
     {
 
@@ -29,6 +34,16 @@ public class GuessWhoState extends SimpleGameState implements Observer
     
     @Override
     public void update (Observable o, Object arg)
+    {
+        autoChangeState();
+    }
+    
+    public void timeout()
+    {
+        autoChangeState();
+    }
+    
+    private void autoChangeState()
     {
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         if(ccc.getSelected() != null)

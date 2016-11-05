@@ -12,8 +12,8 @@ public class FilteringState extends SimpleGameState implements Observer
     GuessWho world;
     Set<Character> playSet;
     GameSession gameSession;
-    String option;
-    String subOption;
+    String option = "";
+    String subOption = "";
     MyObservable o = new MyObservable();
     public FilteringState(GuessWho world,GameSession gameSession)
     {
@@ -32,9 +32,9 @@ public class FilteringState extends SimpleGameState implements Observer
         Map<String,String> filterSession = new HashMap<String,String>();
         filterSession.put("operationType","filter");
         
-        int tileCount;
+        int tileCount = 0;
         
-        if(filterValue.equals(subOption))
+        if(filterValue != null && filterValue.equals(subOption))
         {
             //System.out.println("Good Guess!!!");
             tileCount = correct();
@@ -43,7 +43,11 @@ public class FilteringState extends SimpleGameState implements Observer
         else
         {
             //System.out.println("Too Bad!!!");
-            tileCount = incorrect();    
+            if (filterValue!=null)
+            {
+                tileCount = incorrect();      
+            }
+            
             filterSession.put("correctioness","incorrect");
         }
 
@@ -98,10 +102,22 @@ public class FilteringState extends SimpleGameState implements Observer
             if(classify(label).equals("option"))
             {
                 this.option = label;
+                System.out.println(option+" : "+subOption);
                 return;
             }
             this.subOption = label;
+            System.out.println(option+" : "+subOption);
+            return;
         }
+        if(!subOption.equals(""))
+        {
+            subOption = "";
+            System.out.println(option+" : "+subOption);
+            return;
+            
+        }
+        option = "";
+        System.out.println(option+" : "+subOption);
     }
     
     public String classify(String str)

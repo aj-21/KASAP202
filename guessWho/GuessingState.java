@@ -22,24 +22,28 @@ public class GuessingState extends SimpleGameState
         Character yourChar = gameSession.getYourChar();
         Map<String,String> guessSession = new HashMap<String,String>();
         guessSession.put("operationType","guess");
+        guessSession.put("correctioness","incorrect");
+        guessSession.put("tileCount","0");
         if(guessedChar != null && guessedChar.getClass() == yourChar.getClass())
         {
             //System.out.println("Congratulation! You win");
             
             guessSession.put("correctioness","correct");
+            guessSession.put("tileCount","1");
         }
-        else
+        if(guessedChar != null && guessedChar.getClass() != yourChar.getClass())
         {
             //System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
             //System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
             
-            guessSession.put("correctioness","incorrect");
+            
+            guessSession.put("tileCount","1");
             
             //two step removing
             world.removeObject(guessedChar);
             gameSession.getPlaySet().remove(guessedChar);
         }
-        guessSession.put("tileCount","1");
+        
         
         o.setCHANGED();
         o.notifyObservers(guessSession);

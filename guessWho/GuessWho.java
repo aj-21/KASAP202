@@ -23,6 +23,8 @@ public class GuessWho extends StatefulWorld
     GameState filteringState;
     GameState scoringState;
     GameState waitingState;
+    
+    
 
     public GuessWho(GameSession gameSession)
     {    
@@ -97,7 +99,6 @@ public class GuessWho extends StatefulWorld
         testSel.addObserver(testBut);
         guessWhoState.addProcess(testSel);
         addObject(testBut,1000,100);
-        //testBut.addObserver(new Transition(this,gameSession));
         testBut.addObserver((Observer)guessWhoState);
         testSel.addObserver((Observer)filteringState);
     }
