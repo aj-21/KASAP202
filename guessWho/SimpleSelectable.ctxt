@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=SimpleSelectable
-comment0.text=\n\ Write\ a\ description\ of\ class\ SimpleSelectable\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ a\ simple\ class\ able\ to\ store\ states\ of\ selection\ and\ return\ it.\n\ \n\ @author\ SPAAK\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ select()
 comment1.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\ \n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \n

@@ -1,7 +1,7 @@
 /**
- * Write a description of class SimpleSelectable here.
+ * a simple class able to store states of selection and return it.
  * 
- * @author (your name) 
+ * @author SPAAK
  * @version (a version number or a date)
  */
 public class SimpleSelectable implements Selectable 

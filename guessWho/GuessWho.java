@@ -59,7 +59,6 @@ public class GuessWho extends StatefulWorld
         EnableButton filterButton = new EnableButton("filter");
         addObject(filterButton,200,100);
         filterButton.addObserver((Observer)guessWhoState);
-        //filterButton.addObserver((Observer)scoringState);
         
         //create new option buttons (one time)
         Set<String> optionSet = gameSession.getPropertyInfo().getKeys();
@@ -71,12 +70,11 @@ public class GuessWho extends StatefulWorld
         DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
-        
-        //unqineSelection for optionbuttons
-        guessWhoState.addProcess(new UniqueSelection(optButSet));
+
         //transfer option changes to filteringState (for filter later)
         SelectionObservable optSel = new SelectionObservable(optButSet,(Observer)filteringState);
         guessWhoState.addProcess(optSel);
+        
         
         
         //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
@@ -84,32 +82,25 @@ public class GuessWho extends StatefulWorld
         addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
 
-        //initialize unique selection process for subopt
-        UniqueSelection subOptButUni = new UniqueSelection();
+        //unique selection process for subopt
+        UniqueSelection subOptButUni = new UniqueSelection(subOptButCanvas.getAll());
         guessWhoState.addProcess(subOptButUni);
         
         //initialize selectionObservable process for subOpt, transfering to filteringState (for later filtering), filterButton
-        SelectionObservable subOptSel = new SelectionObservable();
+        SelectionObservable subOptSel = new SelectionObservable(subOptButCanvas.getAll());
         subOptSel.addObserver((Observer)filteringState);
         subOptSel.addObserver(filterButton);
         guessWhoState.addProcess(subOptSel);
         
         //updateSubOption
-        UpdateSubOpt updSubOpt = new UpdateSubOpt(this,gameSession.getPropertyInfo(),subOptButCanvas,subOptButUni,subOptSel);
+        UpdateSubOpt updSubOpt = new UpdateSubOpt(this,gameSession.getPropertyInfo(),subOptButCanvas);
         
         //transfer info from opt selectionObserver to updateSubOption
         optSel.addObserver(updSubOpt);
         
-        
-        
-
-        //optional
         //keep either filter or guess
         SimpleContainer testCon = new SimpleContainer(optButSet).addAll(gameSession.getPlaySet());        
         guessWhoState.addProcess(new UniqueSelection(testCon.getAll()));
-        
-        
-
     }
     
     public GameState getState(String stateName)

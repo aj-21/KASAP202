@@ -61,8 +61,12 @@ public abstract class AbstractDisplayBox<T extends Actor> implements DisplayBox<
      */
     public void addAll(Set<T> actors)
     {
-        for(T actor:actors)
-            addActor(actor);
+        this.actors.addAll(actors);
+    }
+    
+    public void clearAll()
+    {
+        actors.clear();
     }
     
     public void addActor(T actor)

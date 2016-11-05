@@ -14,32 +14,26 @@ public class UpdateSubOpt implements Observer
     PropertyInfo propertyInfo;
     DisplayCanvas optDisCan;
     World world;
-    UniqueSelection uni;
-    SelectionObservable sel;
-    public UpdateSubOpt(World world,PropertyInfo propertyInfo,DisplayCanvas optDisCan,UniqueSelection uni,SelectionObservable sel)
+    
+    public UpdateSubOpt(World world,PropertyInfo propertyInfo,DisplayCanvas optDisCan)
     {
         this.world = world;
         this.propertyInfo = propertyInfo;
         this.optDisCan = optDisCan;
-        this.uni = uni;
-        this.sel = sel;
     }
     
     @Override
     public void update(Observable o, Object arg)
     {
-        //Set<LabelButton> subOptButSet;
         world.removeObjects(optDisCan.getAll());
+        optDisCan.clearAll();
         if(arg != null)
         {
             Set<LabelButton> newSet = generateSubOptButSet(((LabelButton)arg).getLabel());
-            optDisCan.setActors(newSet).setColRow(1,newSet.size()).display();
-            uni.setObjects(newSet);
-            sel.setObjects(newSet);
+            optDisCan.addAll(newSet);
+            optDisCan.setColRow(1,newSet.size()).display();
             return;
         }
-        uni.clearObjects();
-        sel.clearObjects();
     }
     
     private Set<LabelButton> generateSubOptButSet(String option)

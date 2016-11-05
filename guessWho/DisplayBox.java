@@ -22,6 +22,8 @@ public interface DisplayBox<T extends Actor>
 
     public void addAll(Set<T> actors);
     
+    public void clearAll();
+    
     public void addActor(T actor);
 
     public void scale(int width, int height);

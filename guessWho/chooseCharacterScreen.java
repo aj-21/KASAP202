@@ -74,10 +74,18 @@ public class chooseCharacterScreen extends World implements Observer
     private void exit()
     {
         SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
-        gameSession.setMyChar((Character)c.getFirstSelected());
-        updateOptionInfo();
-        //System.out.println(gameSession.getOptionInfo());
-        Greenfoot.setWorld(new GuessWho(gameSession));
+        Character myChar = (Character)c.getFirstSelected();
+        try{
+            gameSession.setMyChar(myChar.getClass().newInstance());
+            updateOptionInfo();
+            Greenfoot.setWorld(new GuessWho(gameSession));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+           
+        }
+        
     }
     
     //helper func

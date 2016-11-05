@@ -121,10 +121,18 @@ public class DisplayCanvas<T extends Actor> extends Actor
         return this;
     }
     
+    public DisplayCanvas clearAll()
+    {
+        disBox.clearAll();
+        return this;
+    }
+    
     public DisplayCanvas setActors(Set<T> actors)
     {
         disBox.setActors(actors);
         return this;
     }
+    
+    
 
 }
