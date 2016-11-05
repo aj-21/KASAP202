@@ -4,19 +4,20 @@ import greenfoot.World;
 import java.util.Observable;
 import java.util.Observer;
 /**
- * Write a description of class ButtonController here.
+ * SelectionObservable is a process that observer a set of Selectable Object to see if there is any selection.
+ * If there is a change in status of have/not have a selection it observers, it will notify Observers with firstSelection/null objects
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class SelectionObservable<T extends Selectable> extends Observable implements Process
 {
     Set<T> objects;
     protected T previous;
-    /**
-     * Constructor for objects of class ButtonController
-     */
     
+    /**
+     * two constructors, either take in an init set of Selectable Objects or None.
+     */
     public SelectionObservable()
     {
         this.objects = new HashSet<T>();
@@ -27,34 +28,29 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
         this.objects = objects;
     }
     
+    //Another constructor takes in Set of Selectable object  and the first Observer.
     public SelectionObservable(Set<T> objects, Observer firstObserver)
     {
         this(objects);
         addObserver(firstObserver);
     }
     
-    public SelectionObservable(SimpleContainer container, EnableButton button)
-    {
-        this(container.getAll(),button);
-    }
     
-    public void setContainer(SimpleContainer container)
-    {
-        this.objects = container.getAll();
-    }
-    
+    /**
+     * main method to check if there is a change is status of having/not having a selection
+     */
     @Override
     public void processRun()
     {
         T first = null;
 
         for(T object:objects)
+        {
+            if (object.isSelected())
             {
-                if (object.isSelected())
-                {
                     first = object;
                     break;
-                }
+            }
         }
             
         //if something new is clicked
@@ -83,11 +79,13 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
         clearChanged();        
     }  
     
+    //set current set of objects to new set of objects
     public void setObjects(Set<T> objects)
     {
         this.objects = objects;
     }
     
+    //clear current set of Objects
     public void clearObjects()
     {
         setObjects(new HashSet<T>());

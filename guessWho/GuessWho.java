@@ -106,7 +106,7 @@ public class GuessWho extends StatefulWorld
         //optional
         //keep either filter or guess
         SimpleContainer testCon = new SimpleContainer(optButSet).addAll(gameSession.getPlaySet());        
-        guessWhoState.addProcess(new UniqueSelection(testCon));
+        guessWhoState.addProcess(new UniqueSelection(testCon.getAll()));
         
         
 

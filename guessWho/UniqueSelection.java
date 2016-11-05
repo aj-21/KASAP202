@@ -2,18 +2,18 @@ import java.util.Set;
 import java.util.HashSet;
 
 /**
- * Write a description of class UniqueSelection here.
+ * UniqueSelection is to maintain a set of Selectable objects so that only 1 last selection will be kept.
+ * UniqueSelection is a process rather than an Actor, so it need to be setup and run by us.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class UniqueSelection<T extends Selectable> implements Process
 {
-    //Set<SimpleSelectableActor> objects;
     Set<T> objects;
     protected T lastSelected;
     /**
-     * Constructor for objects of class UniqueSelection
+     * Constructor for objects of class UniqueSelection either with a paramenter of objects for maintaining one Selection or no paramenter.
      */
     public UniqueSelection()
     {
@@ -25,16 +25,7 @@ public class UniqueSelection<T extends Selectable> implements Process
         this.objects = objects;
     }
     
-    public UniqueSelection(SimpleContainer container)
-    {
-        setContainer(container);
-    }
-    
-    public void setContainer(SimpleContainer container)
-    {
-        this.objects = container.getAll();
-    }
-    
+    //main method to maintain 1 or no selection at a time.
     @Override
     public void processRun()
     {
@@ -46,9 +37,9 @@ public class UniqueSelection<T extends Selectable> implements Process
                 return;
             }
         }
-        //lastSelected = null;
     }
     
+    //helper method to maintain 1 selection
     private void updateLastSelected(T a)
     {
         if(lastSelected!=null)
@@ -58,11 +49,13 @@ public class UniqueSelection<T extends Selectable> implements Process
         lastSelected=a;
     }   
     
+    //set current set of object to a new set of objects
     public void setObjects(Set<T> objects)
     {
         this.objects = objects;
     }
     
+    //clear current set of objects
     public void clearObjects()
     {
         setObjects(new HashSet<T>());
