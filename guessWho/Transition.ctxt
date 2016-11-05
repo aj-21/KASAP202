@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Transition
+comment0.text=\n\ Write\ a\ description\ of\ class\ Transition\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=world\ gameSession
+comment1.target=Transition(GuessWho,\ GameSession)
+comment2.params=o\ arg
+comment2.target=void\ update(java.util.Observable,\ java.lang.Object)
+comment3.params=
+comment3.target=void\ transit()
+numComments=4

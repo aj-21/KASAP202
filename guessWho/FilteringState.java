@@ -91,7 +91,7 @@ public class FilteringState extends SimpleGameState implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        if (arg != null)
+        if (arg instanceof LabelButton)
         {
             LabelButton but = (LabelButton)arg;
             String label = but.getLabel();

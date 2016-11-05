@@ -28,9 +28,6 @@ public class ScoringState extends SimpleGameState implements Observer
     double FILTER = 1.05;
     double CORRECT = 1;
     double INCORRECT = 0.9;
-    
-        
-    
 
     /**
      * Constructor for objects of class ScoringState
@@ -85,13 +82,6 @@ public class ScoringState extends SimpleGameState implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        /*if(arg instanceof EnableButton)
-        {
-            operationType = ((EnableButton)arg).getLabel(); 
-            operation = computeOp(  operationType );
-            //update turnCount
-            turnCount ++;
-        }*/
         if(arg instanceof Map)
         {
             Map<String,String> myMap = ((HashMap)arg);

@@ -86,8 +86,8 @@ public class SelectionObservable<T extends Selectable> extends Observable implem
     }
     
     //clear current set of Objects
-    public void clearObjects()
+    public void clearAll()
     {
-        setObjects(new HashSet<T>());
+        this.objects.clear();
     }
 }

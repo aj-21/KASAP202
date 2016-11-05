@@ -13,11 +13,9 @@ public class UpdateSubOpt implements Observer
 {
     PropertyInfo propertyInfo;
     DisplayCanvas optDisCan;
-    World world;
     
-    public UpdateSubOpt(World world,PropertyInfo propertyInfo,DisplayCanvas optDisCan)
+    public UpdateSubOpt(PropertyInfo propertyInfo,DisplayCanvas optDisCan)
     {
-        this.world = world;
         this.propertyInfo = propertyInfo;
         this.optDisCan = optDisCan;
     }
@@ -25,14 +23,21 @@ public class UpdateSubOpt implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-        world.removeObjects(optDisCan.getAll());
-        optDisCan.clearAll();
-        if(arg != null)
+        try
         {
-            Set<LabelButton> newSet = generateSubOptButSet(((LabelButton)arg).getLabel());
-            optDisCan.addAll(newSet);
-            optDisCan.setColRow(1,newSet.size()).display();
-            return;
+            optDisCan.getWorld().removeObjects(optDisCan.getAll());
+            optDisCan.clearAll();
+            if(arg != null)
+            {
+                Set<LabelButton> newSet = generateSubOptButSet(((LabelButton)arg).getLabel());
+                optDisCan.addAll(newSet);
+                optDisCan.setColRow(1,newSet.size()).display();
+                return;
+            }
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println("suboption display canvas needs to be added in world for use");
         }
     }
     

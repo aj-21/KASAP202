@@ -16,5 +16,5 @@ comment5.target=void\ updateStatus(Selectable)
 comment6.params=objects
 comment6.target=void\ setObjects(java.util.Set)
 comment7.params=
-comment7.target=void\ clearObjects()
+comment7.target=void\ clearAll()
 numComments=8
