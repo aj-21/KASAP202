@@ -106,8 +106,8 @@ public class FilteringState extends SimpleGameState implements Observer
     
     public String classify(String str)
     {
-        OptionInfo optionInfo = gameSession.getOptionInfo();
-        if(optionInfo.getOptions().contains(str))
+        PropertyInfo propertyInfo = gameSession.getPropertyInfo();
+        if(propertyInfo.getKeys().contains(str))
             return "option";
         return "subOption";
         

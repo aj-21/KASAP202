@@ -62,7 +62,7 @@ public class GuessWho extends StatefulWorld
         //filterButton.addObserver((Observer)scoringState);
         
         //create new option buttons (one time)
-        Set<String> optionSet = gameSession.getOptionInfo().getOptions();
+        Set<String> optionSet = gameSession.getPropertyInfo().getKeys();
         Set<LabelButton> optButSet = new HashSet<LabelButton>();
         for(String option:optionSet)
             optButSet.add(new LabelButton(option,"optionButton.png"));
@@ -95,7 +95,7 @@ public class GuessWho extends StatefulWorld
         guessWhoState.addProcess(subOptSel);
         
         //updateSubOption
-        UpdateSubOpt updSubOpt = new UpdateSubOpt(this,gameSession.getOptionInfo(),subOptButCanvas,subOptButUni,subOptSel);
+        UpdateSubOpt updSubOpt = new UpdateSubOpt(this,gameSession.getPropertyInfo(),subOptButCanvas,subOptButUni,subOptSel);
         
         //transfer info from opt selectionObserver to updateSubOption
         optSel.addObserver(updSubOpt);

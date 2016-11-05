@@ -14,7 +14,7 @@ public class GameSession
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
     Set<Character> playCharacters = new HashSet<Character>();
-    OptionInfo optionInfo = new OptionInfo();
+    PropertyInfo propertyInfo = new PropertyInfo();
     Character myChar;
     Character yourChar;
     int roomNumber;
@@ -105,11 +105,6 @@ public class GameSession
         return yourChar;
     }
     
-    public OptionInfo getOptionInfo()
-    {
-        return optionInfo;
-    }
-    
     public int getMyScore()
     {
         return myScore;
@@ -118,5 +113,10 @@ public class GameSession
     public void setMyScore(int score)
     {
         this.myScore = score;
+    }
+    
+    public PropertyInfo getPropertyInfo()
+    {
+        return propertyInfo;
     }
 }

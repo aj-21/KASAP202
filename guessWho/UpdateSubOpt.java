@@ -11,15 +11,15 @@ import java.util.HashSet;
  */
 public class UpdateSubOpt implements Observer
 {
-    OptionInfo optionInfo;
+    PropertyInfo propertyInfo;
     DisplayCanvas optDisCan;
     World world;
     UniqueSelection uni;
     SelectionObservable sel;
-    public UpdateSubOpt(World world,OptionInfo optionInfo,DisplayCanvas optDisCan,UniqueSelection uni,SelectionObservable sel)
+    public UpdateSubOpt(World world,PropertyInfo propertyInfo,DisplayCanvas optDisCan,UniqueSelection uni,SelectionObservable sel)
     {
         this.world = world;
-        this.optionInfo = optionInfo;
+        this.propertyInfo = propertyInfo;
         this.optDisCan = optDisCan;
         this.uni = uni;
         this.sel = sel;
@@ -44,7 +44,7 @@ public class UpdateSubOpt implements Observer
     
     private Set<LabelButton> generateSubOptButSet(String option)
     {
-        Set<String> subOptions = optionInfo.getSubOptions(option);
+        Set<String> subOptions = propertyInfo.getValues(option);
         Set<LabelButton> subOptButSet = new HashSet<LabelButton>();
         
         for(String subOpt:subOptions)

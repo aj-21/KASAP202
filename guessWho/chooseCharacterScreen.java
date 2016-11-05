@@ -83,11 +83,11 @@ public class chooseCharacterScreen extends World implements Observer
     //helper func
     private void updateOptionInfo()
     {
-        OptionInfo optionInfo = gameSession.getOptionInfo();
+        PropertyInfo propertyInfo = gameSession.getPropertyInfo();
         Set<Character> playSet = gameSession.getPlaySet();
         for(Character each:playSet)
         {
-            optionInfo.putOptions(each.getProperties());
+            propertyInfo.putProperties(each.getProperties());
         }
     }
     
