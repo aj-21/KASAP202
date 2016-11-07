@@ -4,10 +4,10 @@ import greenfoot.World;
 import java.util.Set;
 import java.util.HashSet;
 /**
- * Write a description of class UpdateSubOpt here.
+ * This class is used for updating the sub options after selecting the options.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class UpdateSubOpt implements Observer
 {
