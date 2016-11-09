@@ -4,8 +4,9 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observer;
-import java.util.Observable;
+
+//import java.util.Observer;
+//import java.util.Observable;
 
 public class FilteringState extends SimpleGameState implements Observer
 {

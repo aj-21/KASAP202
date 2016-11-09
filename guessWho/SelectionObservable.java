@@ -1,8 +1,8 @@
 import java.util.Set;
 import java.util.HashSet;
 import greenfoot.World;
-import java.util.Observable;
-import java.util.Observer;
+//import java.util.Observable;
+//import java.util.Observer;
 /**
  * SelectionObservable is a process that observer a set of Selectable Object to see if there is any selection.
  * If there is a change in status of have/not have a selection it observers, it will notify Observers with firstSelection/null objects

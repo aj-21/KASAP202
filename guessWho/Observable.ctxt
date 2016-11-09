@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Observable
+comment1.params=
+comment1.target=Observable()
+comment10.params=
+comment10.target=void\ setChanged()
+comment2.params=o
+comment2.target=void\ addObserver(Observer)
+comment3.params=
+comment3.target=void\ clearChanged()
+comment4.params=
+comment4.target=int\ countObservers()
+comment5.params=o
+comment5.target=void\ deleteObserver(Observer)
+comment6.params=
+comment6.target=void\ deleteObservers()
+comment7.params=
+comment7.target=boolean\ hasChanged()
+comment8.params=
+comment8.target=void\ notifyObservers()
+comment9.params=arg
+comment9.target=void\ notifyObservers(java.lang.Object)
+numComments=11

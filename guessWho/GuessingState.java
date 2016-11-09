@@ -1,8 +1,8 @@
 import greenfoot.World;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
+//import java.util.Observable;
+//import java.util.Observer;
 public class GuessingState extends SimpleGameState 
 {
     GuessWho world;

@@ -6,8 +6,8 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import java.util.Observer;
-import java.util.Observable;
+//import java.util.Observer;
+//import java.util.Observable;
 
 /**
  * Write a description of class chooseCharacterScreen here.

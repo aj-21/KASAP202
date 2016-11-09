@@ -4,8 +4,8 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.util.Map;
-import java.util.Observer;
-import java.util.Observable;
+//import java.util.Observer;
+//import java.util.Observable;
 /**
  * Write a description of class GuessWho here.
  * 

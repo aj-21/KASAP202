@@ -1,5 +1,5 @@
-import java.util.Observer;
-import java.util.Observable;
+//import java.util.Observer;
+//import java.util.Observable;
 import greenfoot.World;
 import java.util.Set;
 import java.util.HashSet;

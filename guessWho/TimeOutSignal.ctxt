@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=TimeOutSignal
-comment0.text=\n\ Write\ a\ description\ of\ class\ EnableButtonTimerTask\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ This\ class\ is\ used\ for\ the\ timer\ functionality\ in\ the\ game.\ Used\ to\ setting\ and\ expiring\ the\ time.\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=state\ seconds
 comment1.target=TimeOutSignal(GuessWhoState,\ long)
 numComments=2
