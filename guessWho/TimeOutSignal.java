@@ -1,10 +1,10 @@
 import java.util.Timer;
 import java.util.TimerTask;
 /**
- * Write a description of class EnableButtonTimerTask here.
+ * This class is used for the timer functionality in the game. Used to setting and expiring the time.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class TimeOutSignal
 {
