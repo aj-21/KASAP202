@@ -29,10 +29,11 @@ public class WaitingState extends SimpleGameState implements Observer
     
     public void enter()
     {
-        exitButton.disable();
+        //exitButton.disable();
+        exitButton.enable();
         world.addObject(blockLayer,world.getWidth()/2,world.getHeight()/2);
         world.addObject(exitButton,world.getWidth()/2,world.getHeight()/2);
-        new EnablingButtonTimer(exitButton, 2);
+        //new EnablingButtonTimer(exitButton, 2);
     }
         
     @Override

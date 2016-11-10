@@ -24,7 +24,7 @@ public class GuessWhoState extends SimpleGameState implements Observer
     
     public void enter()
     {
-        new TimeOutSignal(this,7);
+        //new TimeOutSignal(this,7);
     }
     
     public void prepare()
