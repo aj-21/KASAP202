@@ -6,7 +6,7 @@ import java.util.HashSet;
 /**
  * Write a description of class GameSession here.
  * 
- * @author (your name) 
+ * @author SPAAK 
  * @version (a version number or a date)
  */
 public class GameSession  
