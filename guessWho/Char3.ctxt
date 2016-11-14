@@ -3,4 +3,5 @@ comment0.target=Char3
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Char3\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Char3()
+comment1.text=This\ will\ set\ the\ properties\ for\ Characters\ as\ per\ the\ images\ assigned\ to\ the\ classes.
 numComments=2

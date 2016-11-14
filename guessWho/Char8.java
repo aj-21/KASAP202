@@ -10,6 +10,7 @@ public class Char8 extends Character
 {  
     public Char8()
     {
+        /* This will set the properties for Characters as per the images assigned to the classes.*/
         super("8.png");
         setName("Mrs PeaCock");
         putProperty("Hair","Red");

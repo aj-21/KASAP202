@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Char3 extends Character
 {    
+    /* This will set the properties for Characters as per the images assigned to the classes.*/
     public Char3()
     {
         super("3.png");    
