@@ -13,7 +13,7 @@ public class Char1 extends Character
         super("1.png");
         setName("Colonel Mustard");
         
-        putProperty("Hair","Grey");
+        putProperty("Hair","Grey");      
         putProperty("Coat","Yes");
         putProperty("Dress","Yellow");
         putProperty("Cap","No");

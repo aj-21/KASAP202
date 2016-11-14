@@ -10,7 +10,7 @@ public class Char3 extends Character
 {    
     public Char3()
     {
-        super("3.png");
+        super("3.png");    
         setName("Professor Plum");
         
         putProperty("Hair","Red");

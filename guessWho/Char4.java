@@ -10,7 +10,7 @@ public class Char4 extends Character
 {  
     public Char4()
     {
-        super("4.png");
+        super("4.png");     
         setName("Rusty");
         putProperty("Hair","Brown");
         putProperty("Coat","No");
