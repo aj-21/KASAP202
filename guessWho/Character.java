@@ -27,11 +27,13 @@ public class Character extends ZoomActor
         this.properties.put(key,value);
     }
     
+    
     //get all properties
     public Map<String,String> getProperties()
     {
         return properties;
     }
+    
     
     //get only property value, property key is needed
     public String getPropertyValue(String propertyKey)
@@ -39,11 +41,13 @@ public class Character extends ZoomActor
         return properties.get(propertyKey);
     }
     
+    
     //assign a name for character
     public void setName(String name)
     {
         this.name = name;
     }
+    
     
     //retrive name of character
     public String getName()

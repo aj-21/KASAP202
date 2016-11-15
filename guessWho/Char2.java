@@ -8,9 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Char2 extends Character
 {   
+    /* This will set the properties for Characters as per the images assigned to the classes.*/
     public Char2()
     {
-        super("2.png");
+        super("2.png");       
         setName("Reverend Green");
         
         putProperty("Hair","NoHair");

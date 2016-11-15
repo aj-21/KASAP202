@@ -3,8 +3,8 @@
 /**
  * Write a description of class GuessWhoState here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * 
  */
 public class GuessWhoState extends SimpleGameState implements Observer
 {

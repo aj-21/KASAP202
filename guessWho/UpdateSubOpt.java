@@ -12,7 +12,7 @@ import java.util.HashSet;
 public class UpdateSubOpt implements Observer
 {
     PropertyInfo propertyInfo;
-    DisplayCanvas optDisCan;
+    DisplayCanvas optDisCan;      
     
     public UpdateSubOpt(PropertyInfo propertyInfo,DisplayCanvas optDisCan)
     {
