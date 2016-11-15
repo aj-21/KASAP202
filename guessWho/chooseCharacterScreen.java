@@ -39,7 +39,12 @@ public class chooseCharacterScreen extends World implements Observer
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
-    {                 
+    {               
+        //String name = Greenfoot.ask("name please");   
+        //System.out.println(name);
+        
+        
+        
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
         DisplayCanvas disCan = new DisplayCanvas(gameSession.getFullSet());
