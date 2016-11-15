@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=UpdSubOptCmd
+comment0.text=\n\ Write\ a\ description\ of\ class\ ConcreteCommand\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=propertyInfo
+comment1.target=UpdSubOptCmd(PropertyInfo)
+comment2.params=arg
+comment2.target=void\ execute(java.lang.Object)
+comment3.params=receiver
+comment3.target=void\ setReceiver(DisplayReceiver)
+comment4.params=optBut
+comment4.target=java.util.Set\ getButSet(LabelButton)
+numComments=5

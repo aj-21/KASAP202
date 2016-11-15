@@ -4,8 +4,8 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Command  
+public interface DisplayCommand  
 {
-    public void setReceiver(Receiver receiver);
+    public void setReceiver(DisplayReceiver receiver);
     public void execute(Object arg);
 }

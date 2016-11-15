@@ -6,7 +6,7 @@
  */
 public interface Invoker  
 {
-    public void setCommand(Command cmd);
+    public void setCommand(DisplayCommand cmd);
     public void invoke();
     
 }

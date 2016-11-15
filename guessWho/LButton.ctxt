@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=LButton
+comment0.text=\n\ Write\ a\ description\ of\ class\ LButton\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=label\ fileName
+comment1.target=LButton(java.lang.String,\ java.lang.String)
+comment2.params=cmd
+comment2.target=void\ setCommand(DisplayCommand)
+comment3.params=
+comment3.target=void\ invoke()
+comment4.params=
+comment4.target=void\ select()
+comment5.params=
+comment5.target=void\ deselect()
+numComments=6

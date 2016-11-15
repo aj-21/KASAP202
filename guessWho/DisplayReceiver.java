@@ -4,7 +4,8 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public interface Receiver  
+public interface DisplayReceiver  
 {
-    public void doAction(Object arg);
+    public void display(Object arg);
+    public void undisplay(Object arg);
 }

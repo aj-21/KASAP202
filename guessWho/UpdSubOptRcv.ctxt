@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=UpdSubOptRcv
+comment0.text=\n\ This\ class\ is\ used\ for\ updating\ the\ sub\ options\ after\ selecting\ the\ options.\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
+comment1.params=propertyInfo\ subOptCan
+comment1.target=UpdSubOptRcv(PropertyInfo,\ DisplayCanvas)
+comment2.params=arg
+comment2.target=void\ display(java.lang.Object)
+comment3.params=arg
+comment3.target=void\ undisplay(java.lang.Object)
+comment4.params=option
+comment4.target=java.util.Set\ generateSubOptButSet(java.lang.String)
+comment4.text=\n\ generate\ new\ buttons\ if\ the\ set\ is\ null\n
+numComments=5

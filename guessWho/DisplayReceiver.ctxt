@@ -1,6 +1,8 @@
 #BlueJ class context
-comment0.target=Receiver
+comment0.target=DisplayReceiver
 comment0.text=\n\ Write\ a\ description\ of\ class\ Receiver\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=arg
-comment1.target=void\ doAction(java.lang.Object)
-numComments=2
+comment1.target=void\ display(java.lang.Object)
+comment2.params=arg
+comment2.target=void\ undisplay(java.lang.Object)
+numComments=3
