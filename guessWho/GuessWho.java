@@ -68,8 +68,8 @@ public class GuessWho extends StatefulWorld
         guessWhoState.addProcess(subOptButUni);
         
         //updateSubOption
-        UpdateSubOpt updSubOpt = new UpdateSubOpt(gameSession.getPropertyInfo(),subOptButCanvas);
-        UpdSubOptRcv updSubRcv = new UpdSubOptRcv(gameSession.getPropertyInfo(),subOptButCanvas);
+        //UpdateSubOpt updSubOpt = new UpdateSubOpt(gameSession.getPropertyInfo(),subOptButCanvas);
+        UpdSubOptRcv updSubRcv = new UpdSubOptRcv(subOptButCanvas);
         
         
         

@@ -11,12 +11,10 @@ import java.util.HashSet;
  */
 public class UpdSubOptRcv implements DisplayReceiver
 {
-    PropertyInfo propertyInfo;
     DisplayCanvas subOptCan;      
    
-    public UpdSubOptRcv(PropertyInfo propertyInfo,DisplayCanvas subOptCan)
+    public UpdSubOptRcv(DisplayCanvas subOptCan)
     {
-        this.propertyInfo = propertyInfo;
         this.subOptCan = subOptCan;
     }
     
@@ -66,20 +64,5 @@ public class UpdSubOptRcv implements DisplayReceiver
         {
             System.out.println("suboption display canvas needs to be added in world for use");
         }
-    }
-    
-    /***
-     * generate new buttons if the set is null
-     */
-    private Set<LabelButton> generateSubOptButSet(String option)
-    {
-        Set<String> subOptions = propertyInfo.getValues(option);
-        Set<LabelButton> subOptButSet = new HashSet<LabelButton>();
-        
-        for(String subOpt:subOptions)
-        {
-            subOptButSet.add(new LabelButton(subOpt,"subOptionsButton.png"));
-        }
-        return subOptButSet;
     }
 }

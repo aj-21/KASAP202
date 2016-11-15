@@ -12,9 +12,11 @@ public class UndisplayCmd implements DisplayCommand
     {
     }
     
+    @Override
     public void execute(Object arg)
     {
-        receiver.undisplay(arg);
+        if(receiver != null)
+            receiver.undisplay(arg);
     }
     
     @Override

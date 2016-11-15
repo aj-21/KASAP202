@@ -14,7 +14,8 @@ public class DisplayCmd implements DisplayCommand
     
     public void execute(Object arg)
     {
-        receiver.display(arg);
+        if(receiver != null)
+            receiver.display(arg);
     }
     
     @Override
