@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Receiver
+comment0.text=\n\ Write\ a\ description\ of\ class\ Receiver\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=arg
+comment1.target=void\ doAction(java.lang.Object)
+numComments=2

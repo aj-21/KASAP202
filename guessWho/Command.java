@@ -6,6 +6,6 @@
  */
 public interface Command  
 {
-    public void setReceiver();
-    public void execute();
+    public void setReceiver(Receiver receiver);
+    public void execute(Object arg);
 }

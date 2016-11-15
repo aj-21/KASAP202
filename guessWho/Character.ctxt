@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Character
-comment0.text=\r\n\ Character\ is\ a\ ZoomActor\ with\ descriptive\ properties\ and\ a\ name\r\n\ Character\ is\ the\ main\ class\ for\ this\ game\r\n\ \r\n\ @author\ SPAAK\ \r\n\ @version\ 1\r\n
+comment0.text=\n\ Character\ is\ a\ ZoomActor\ with\ descriptive\ properties\ and\ a\ name\n\ Character\ is\ the\ main\ class\ for\ this\ game\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=filename
 comment1.target=Character(java.lang.String)
 comment2.params=key\ value

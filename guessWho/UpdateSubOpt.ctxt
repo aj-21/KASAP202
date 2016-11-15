@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UpdateSubOpt
-comment0.text=\r\n\ This\ class\ is\ used\ for\ updating\ the\ sub\ options\ after\ selecting\ the\ options.\r\n\ \r\n\ @author\ SPAAK\ \r\n\ @version\ 1\r\n
+comment0.text=\n\ This\ class\ is\ used\ for\ updating\ the\ sub\ options\ after\ selecting\ the\ options.\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=propertyInfo\ optDisCan
 comment1.target=UpdateSubOpt(PropertyInfo,\ DisplayCanvas)
 comment2.params=o\ arg
