@@ -75,19 +75,15 @@ public class GuessWho extends StatefulWorld
         UpdSubOptRcv updSubRcv = new UpdSubOptRcv(subOptButCanvas); 
 
         //create new option buttons (one time)
-        Set<LabelButton> optButSet = new HashSet<LabelButton>();
-        for(String option : gameSession.getPropertyInfo().getKeys() )
+        Set<LButton> optButSet = gameSession.getPropertyInfo().getOptButtons();
+        for(LButton button : optButSet )
         {            
-            //use LButton for command pattern
-            LButton button = new LButton(option,"optionButton.png");
             //new command for every button
             DisplayCommand cmd = new UpdSubOptCmd(gameSession.getPropertyInfo());
             //this command work with update sub option receiver
             cmd.setReceiver(updSubRcv);
             //the button invokes command when is pressed (select/deselect)
             button.setCommand(cmd);
-            //add to set
-            optButSet.add(button);
         }
         
         //optionButtonCanvas setting
@@ -101,8 +97,8 @@ public class GuessWho extends StatefulWorld
         mainState.setSuccessor((PressHandler)optButCanvas);
         
         //transfer option changes to filteringState (for filter later) whenever there is a change
-        SelectionObservable optSel = new SelectionObservable(optButSet,(Observer)filteringState);
-        guessWhoState.addProcess(optSel);  
+        //SelectionObservable optSel = new SelectionObservable(optButSet,(Observer)filteringState);
+        //guessWhoState.addProcess(optSel);  
         
         //keep either filter or guess
         IUniqueSelection charOrOpt = new IUniqueSelection();

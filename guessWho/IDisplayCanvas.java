@@ -49,7 +49,6 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
                 }
             }
             
-
         }
         
         if (successor!=null)

@@ -26,14 +26,14 @@ public class UpdSubOptCmd implements DisplayCommand
         if(receiver == null)
             return;
         
-        LabelButton but = (LabelButton)arg;
+        LButton but = (LButton)arg;
         
         if(but.isSelected())
         {
-            displayCmd.execute(getButSet(but));
+            displayCmd.execute(propertyInfo.getSubOptButtons(but));
             return;
         }
-        undisplayCmd.execute(getButSet(but));
+        undisplayCmd.execute(propertyInfo.getSubOptButtons(but));
         
     }
     

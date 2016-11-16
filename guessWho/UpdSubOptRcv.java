@@ -27,7 +27,6 @@ public class UpdSubOptRcv extends Observable implements DisplayReceiver
             subOptCan.clearAll();
             //get the buttons
             Set<LabelButton> buts = (Set<LabelButton>)arg;
-
             
             //add buttons and setup to display
             subOptCan.addAll(buts);

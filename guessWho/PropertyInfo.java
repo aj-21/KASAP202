@@ -16,6 +16,9 @@ public class PropertyInfo
 {
     Map<String,Set<String>> properties = new HashMap<String,Set<String>>();
     
+    Set<LButton> optionButtons;
+    Map<LButton,Set<LButton>> subOptButtons;
+    
     public void PropertyInfo()
     {
     }
@@ -85,4 +88,37 @@ public class PropertyInfo
         return sb.toString();
     }
     
+    
+    public Set<LButton> getOptButtons()
+    {
+        if(optionButtons == null)
+        {
+            optionButtons = new HashSet<LButton>();
+            for(String option : getKeys() )
+            {            
+                //use LButton for command pattern
+                LButton button = new LButton(option,"optionButton.png");
+                optionButtons.add(button);
+            }
+        }
+        return optionButtons;
+    }
+    
+    public Set<LButton> getSubOptButtons(LButton optBut)
+    {
+        if(subOptButtons == null)
+            subOptButtons = new HashMap<LButton,Set<LButton>>();
+        
+        if(subOptButtons.get(optBut) == null)
+        {
+            Set<LButton> butSet = new HashSet<LButton>();
+            for(String subOpt : getValues(optBut.getLabel()) )
+            {
+                LButton button = new LButton(subOpt,"subOptionsButton.png");
+                butSet.add(button);
+            }
+            subOptButtons.put(optBut,butSet);
+        }
+        return subOptButtons.get(optBut);
+    }
 }
