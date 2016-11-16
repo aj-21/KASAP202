@@ -9,7 +9,7 @@ import java.util.HashSet;
  * @author SPAAK 
  * @version 1
  */
-public class UpdSubOptRcv implements DisplayReceiver
+public class UpdSubOptRcv extends Observable implements DisplayReceiver
 {
     DisplayCanvas subOptCan;      
    
@@ -27,19 +27,17 @@ public class UpdSubOptRcv implements DisplayReceiver
             subOptCan.clearAll();
             //get the buttons
             Set<LabelButton> buts = (Set<LabelButton>)arg;
-            //unclick buttons
-            for (LabelButton but:buts)
-            {
-                if(but.isSelected())
-                {
-                    but.deselect();
-                    break;
-                }
-            }
+
             
             //add buttons and setup to display
             subOptCan.addAll(buts);
-            subOptCan.setColRow(1,buts.size()).display();            
+            subOptCan.setColRow(1,buts.size()).display();  
+            
+            //important to send non-selected new set to observer
+            setChanged();
+            notifyObservers(buts);
+            clearChanged();
+            
         }
         catch (NullPointerException e)
         {
@@ -56,9 +54,22 @@ public class UpdSubOptRcv implements DisplayReceiver
             Set<LabelButton> buts = (Set<LabelButton>)arg;
             //remove from world
             subOptCan.getWorld().removeObjects(buts);
+            //unclick buttons
+            for (LabelButton but:buts)
+            {
+                if(but.isSelected())
+                {
+                    but.deselect();
+                    break;
+                }
+            }
             //remove from suboption canvas if there is
             subOptCan.getAll().removeAll(buts);
-            return;
+            
+            //important to send non-selected set to observer
+            setChanged();
+            notifyObservers(buts);
+            clearChanged();
         }
         catch (NullPointerException e)
         {

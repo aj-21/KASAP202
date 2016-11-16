@@ -24,6 +24,8 @@ public class GuessWho extends StatefulWorld
     GameState scoringState;
     GameState waitingState;
     
+    IMainState mainState = new IMainState(this);
+    
     
 
     public GuessWho(GameSession gameSession)
@@ -45,87 +47,82 @@ public class GuessWho extends StatefulWorld
         //charCanvas setting
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
-        DisplayCanvas charCanvas = new DisplayCanvas(gameSession.getPlaySet());
+        //DisplayCanvas charCanvas = new DisplayCanvas(gameSession.getPlaySet());
+        
+        //use this to for chain of responsility
+        DisplayCanvas charCanvas = new IDisplayCanvas(gameSession.getPlaySet());
+        
         addObject(charCanvas,780,581);
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
         //myCharCanvas setting
         Character myChar = gameSession.getMyChar();
-        myChar.setZoomScale(1);
         myChar.resizeOnScale(1.3);
         DisplayCanvas myCharCanvas = new DisplayCanvas(myChar);
         addObject(myCharCanvas,1370,578);
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();  
         
         
-         //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
-        DisplayCanvas subOptButCanvas = new DisplayCanvas();
+        //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
+        DisplayCanvas subOptButCanvas = new IDisplayCanvas();
         addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
+        //enable unique selection for suboption Button Canvas
+        ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
 
-        //unique selection process for subopt
-        UniqueSelection subOptButUni = new UniqueSelection(subOptButCanvas.getAll());
-        guessWhoState.addProcess(subOptButUni);
         
-        //updateSubOption
-        //UpdateSubOpt updSubOpt = new UpdateSubOpt(gameSession.getPropertyInfo(),subOptButCanvas);
-        UpdSubOptRcv updSubRcv = new UpdSubOptRcv(subOptButCanvas);
-        
-        
-        
+        //updateSubOptionReceiver is responsbile for update subOptionButtonCanvas
+        UpdSubOptRcv updSubRcv = new UpdSubOptRcv(subOptButCanvas); 
+
         //create new option buttons (one time)
         Set<LabelButton> optButSet = new HashSet<LabelButton>();
         for(String option : gameSession.getPropertyInfo().getKeys() )
-        {
-            ///////////////////////////////////optButSet.add(new LabelButton(option,"optionButton.png"));
-            
+        {            
             //use LButton for command pattern
             LButton button = new LButton(option,"optionButton.png");
-            //new command
+            //new command for every button
             DisplayCommand cmd = new UpdSubOptCmd(gameSession.getPropertyInfo());
             //this command work with update sub option receiver
             cmd.setReceiver(updSubRcv);
-            //button invokes command when is pressed (select/deselect)
+            //the button invokes command when is pressed (select/deselect)
             button.setCommand(cmd);
             //add to set
             optButSet.add(button);
-            
-            
         }
         
         //optionButtonCanvas setting
-        DisplayCanvas optButCanvas = new DisplayCanvas(optButSet);
+        DisplayCanvas optButCanvas = new IDisplayCanvas(optButSet);
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
 
+        //enable press handler with chain of responsibility
+        mainState.setSuccessor((PressHandler)charCanvas);
+        mainState.setSuccessor((PressHandler)subOptButCanvas);
+        mainState.setSuccessor((PressHandler)optButCanvas);
+        
         //transfer option changes to filteringState (for filter later) whenever there is a change
         SelectionObservable optSel = new SelectionObservable(optButSet,(Observer)filteringState);
         guessWhoState.addProcess(optSel);  
         
-       
-        
-        //transfer info from opt selectionObserver to updateSubOption
-        ////////////////////////optSel.addObserver(updSubOpt);
-        
         //keep either filter or guess
-        SimpleContainer testCon = new SimpleContainer(optButSet).addAll(gameSession.getPlaySet());        
-        guessWhoState.addProcess(new UniqueSelection(testCon.getAll()));
+        IUniqueSelection charOrOpt = new IUniqueSelection();
+        ((IDisplayCanvas)charCanvas).addObserver(charOrOpt);
+        ((IDisplayCanvas)optButCanvas).addObserver(charOrOpt);
+        
   
-        //selection observable for 2 sets character set and subopt button set
-        Set<Set<Selectable>> testSets = new HashSet<Set<Selectable>>();
-        testSets.add(subOptButCanvas.getAll());
-        testSets.add(charCanvas.getAll());
-        SelectionSets testSel = new SelectionSets(testSets);
         //transfer info from this selection observable sets to button
         EnableButton testBut = new EnableButton("confirm");
-        testSel.addObserver(testBut);
-        //rub this selection observable process 
-        guessWhoState.addProcess(testSel);
         addObject(testBut,1000,100);
+        
         //guessWhoState responsible to direct to correct state, whether filter or guess
         testBut.addObserver((Observer)guessWhoState);
-        //selection observable info is sent to filterstate, only filter need to know, guessing state can retrieve info from SessionInfo
-        testSel.addObserver((Observer)filteringState);
+        
+        //create a new IObservableSelection to listen to updaSubRcv + subOptButCanvas + charCanvas, and notify confirm Button
+        IObservableSelection obSel = new IObservableSelection();
+        updSubRcv.addObserver(obSel);
+        ((IDisplayCanvas)subOptButCanvas).addObserver(obSel);
+        ((IDisplayCanvas)charCanvas).addObserver(obSel);
+        obSel.addObserver(testBut);
     }
     
     public GameState getState(String stateName)
@@ -144,5 +141,10 @@ public class GuessWho extends StatefulWorld
     public void setState(String stateName)
     {
         setState(getState(stateName));
+    }
+    
+    public void act()
+    {
+        mainState.run();
     }
 }

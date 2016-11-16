@@ -17,7 +17,7 @@ public abstract class StatefulWorld extends World
         super(width, height, size); 
     }
     
-    public final void act()
+    public void act()
     {   
         if(currentState != null)
         {

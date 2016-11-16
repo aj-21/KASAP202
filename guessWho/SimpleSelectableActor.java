@@ -12,14 +12,14 @@ public class SimpleSelectableActor extends Actor implements Selectable
     //just detect mouse pressed and toggle selection
     public void act()
     {
-        detectPress();
+        //detectPress();
     }
     
     /**
      *  detectPress works with Greenfoot.MousePressed method to check press event on this actor.
      *  it is important to add this method into act if method act is override, or two other helper function can be used
      */
-    protected boolean detectPress()
+    public boolean detectPress()
     {
         if (isPressed())
         {

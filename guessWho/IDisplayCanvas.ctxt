@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=IDisplayCanvas
+comment0.text=\n\ Write\ a\ description\ of\ class\ IDisplayCanvas\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=IDisplayCanvas()
+comment2.params=actors
+comment2.target=IDisplayCanvas(java.util.Set)
+comment3.params=actor
+comment3.target=IDisplayCanvas(SimpleSelectableActor)
+comment4.params=successor
+comment4.target=void\ setSuccessor(PressHandler)
+comment5.params=x\ y
+comment5.target=void\ pressHandle(int,\ int)
+comment6.params=x\ y
+comment6.target=boolean\ isInside(int,\ int)
+comment7.params=observer
+comment7.target=void\ addObserver(Observer)
+numComments=8

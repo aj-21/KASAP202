@@ -6,9 +6,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Collection;
 
-//import java.util.Observer;
-//import java.util.Observable;
-
 /**
  * Write a description of class chooseCharacterScreen here.
  * 
@@ -19,7 +16,7 @@ public class chooseCharacterScreen extends World implements Observer
 {
     Set<Process> processes;
     GameSession gameSession;
-
+    IMainState mainState = new IMainState(this);
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -44,29 +41,37 @@ public class chooseCharacterScreen extends World implements Observer
         //System.out.println(name);
         
         
-        
+        //resize FullSet Character
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
-        DisplayCanvas disCan = new DisplayCanvas(gameSession.getFullSet());
+        //new displayCanvas to display FullSet
+        DisplayCanvas disCan = new IDisplayCanvas(gameSession.getFullSet());
+        //enable unique selection
+        ((IDisplayCanvas)disCan).addObserver(new IUniqueSelection());
+        
         disCan.setBackground(getBackground()).setMargin(10,10,18,15);
         addObject(disCan,getWidth()/2,getHeight()/2);
         disCan.display();       
         
+        //initial confirmButton
         EnableButton confirmButton = new EnableButton("confirm");
         addObject(confirmButton,743,774);
-                
-        processes.add( new UniqueSelection(gameSession.getFullSet()));
-        processes.add( new SelectionObservable(gameSession.getFullSet(),confirmButton));
+        
         confirmButton.addObserver(this);
         
+        //add IObservableSelection  observing disCan to enable confirm button
+        ((IDisplayCanvas)disCan).addObserver(new IObservableSelection(confirmButton));
+        
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
+        
+        //add chain responsibility for press handling
+        mainState.setSuccessor((PressHandler)disCan);
 
     }
     
     public void act()
     {   
-        for(Process process:processes)
-            process.processRun();
+        mainState.run();
     }
    
     @Override
