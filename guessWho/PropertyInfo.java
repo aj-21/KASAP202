@@ -106,6 +106,9 @@ public class PropertyInfo
     
     public Set<LButton> getSubOptButtons(LButton optBut)
     {
+        if (optBut == null)
+            return null;
+            
         if(subOptButtons == null)
             subOptButtons = new HashMap<LButton,Set<LButton>>();
         

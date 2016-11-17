@@ -13,6 +13,7 @@ public class ScoringState extends SimpleGameState implements Observer
     // instance variables - replace the example below with your own
     GuessWho world;
     GameSession gameSession;
+    Character yourChar;
     
     int baseScore = 100;
     
@@ -37,6 +38,7 @@ public class ScoringState extends SimpleGameState implements Observer
         this.world = world;
         this.gameSession = gameSession;
         this.turnCount = 0;
+        yourChar = gameSession.getYourChar();
     }
     
     public void stateRun(Object arg)

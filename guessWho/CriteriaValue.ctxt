@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=CriteriaValue
+comment0.text=\n\ Write\ a\ description\ of\ class\ CriteriaValue\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=gameSession\ filterKey
+comment1.target=CriteriaValue(GameSession,\ java.lang.String)
+comment2.params=characters
+comment2.target=java.util.Set\ meetCriteria(java.util.Set)
+comment3.params=characters
+comment3.target=java.util.Set\ notMeetCriteria(java.util.Set)
+numComments=4

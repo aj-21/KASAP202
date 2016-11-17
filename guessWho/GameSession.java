@@ -53,17 +53,6 @@ public class GameSession
         yourChar = new Char5();
     }
     
-    //add a character into full collection. Duplicate will be ignore
-    public void addAllToFullSet(Collection<Character> characters)
-    {
-        allCharacters.addAll(characters);
-    }
-    
-    public void clearFullSet()
-    {
-        allCharacters.clear();
-    }
-    
     public Set<Character> getFullSet()
     {
         return allCharacters;
@@ -78,11 +67,6 @@ public class GameSession
     public Set<Character> getPlaySet()
     {
         return playCharacters;
-    }
-    
-    public void clearPlaySet()
-    {
-        playCharacters.clear();
     }
     
     public void setMyChar(Character myChar)
@@ -105,6 +89,11 @@ public class GameSession
         return yourChar;
     }
     
+    public PropertyInfo getPropertyInfo()
+    {
+        return propertyInfo;
+    }
+    
     public int getMyScore()
     {
         return myScore;
@@ -115,8 +104,5 @@ public class GameSession
         this.myScore = score;
     }
     
-    public PropertyInfo getPropertyInfo()
-    {
-        return propertyInfo;
-    }
+
 }

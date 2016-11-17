@@ -7,7 +7,7 @@ import greenfoot.*;
  * @author SPAAK 
  * 
  */
-public class IMainState implements PressHandler
+public class IMainState implements IGameState, PressHandler
 {
     PressHandler successor;
     World world;

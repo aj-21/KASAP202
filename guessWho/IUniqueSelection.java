@@ -10,7 +10,6 @@ import java.util.HashSet;
  */
 public class IUniqueSelection<T extends Selectable> implements Observer
 {
-    Set<T> objects;
     protected T lastSelected;
     /**
      * Constructor for objects of class UniqueSelectionMaintainer either with a paramenter of objects for maintaining one Selection or no paramenter.
@@ -25,18 +24,26 @@ public class IUniqueSelection<T extends Selectable> implements Observer
     public void update(Observable o, Object arg)
     {
         
-        objects = (Set<T>)arg;
-            
+        Set<T> objects = (Set<T>)arg;
+        boolean haveSelection = false;
         for (T a:objects)
         {
-            //if something new is clicked
-            if(a.isSelected() && a!=lastSelected)
+            //if something selected
+            if(a.isSelected() )
             {
-                updateLastSelected(a);
-                return;
+                haveSelection = true;
+                //if something new is selected
+                if(a!=lastSelected)
+                {
+                    updateLastSelected(a);
+                    return; 
+                }
             }
             
         }
+        
+        if(haveSelection)
+            return;
         
         //if nothing is selected => deselection
         lastSelected.deselect();
@@ -52,16 +59,5 @@ public class IUniqueSelection<T extends Selectable> implements Observer
         }
         lastSelected=a;
     }   
-    
-    //set current set of object to a new set of objects
-    public void setObjects(Set<T> objects)
-    {
-        this.objects = objects;
-    }
-    
-    //clear current set of objects
-    public void clearObjects()
-    {
-        setObjects(new HashSet<T>());
-    }
+
 }
