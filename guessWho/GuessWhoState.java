@@ -7,15 +7,15 @@ import greenfoot.*;
  * @author SPAAK 
  * 
  */
-public class IMainState extends IGameState
+public class GuessWhoState extends IGameState implements SecondObserver
 {
     PressHandler successor;
-    World world;
+    GuessWho world;
     int stateTime;
-    public IMainState(World world)
+    public GuessWhoState(GuessWho world)
     {
         this.world = world;
-        stateTime = 5;
+        //stateTime = 5;
     }
     
     
@@ -35,8 +35,7 @@ public class IMainState extends IGameState
     
     public void enter()
     {
-        
-        
+        stateTime = 5;        
     }
     
     public void stateRun()
@@ -52,17 +51,20 @@ public class IMainState extends IGameState
     
     public void exit()
     {
-        //world.setState("guessWhoState");
+        if (world.isCurrentState(this))
+            world.setState("scoreState");
     }
     
     public void secondUpdate()
     {
-        stateTime -= 1;
-        System.out.println(stateTime);
-        if(stateTime == 0)
+        if (stateTime>0)
         {
-            stateTime = 5;
-            exit();
+            stateTime -= 1;
+            System.out.println(stateTime);
+            if(stateTime == 0 )
+            {
+                exit();
+            }
         }
     }
     

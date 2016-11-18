@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=SecondObservable
+comment0.text=\n\ Write\ a\ description\ of\ class\ SecondObservable\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=SecondObservable()
+comment2.params=observer
+comment2.target=void\ addObserver(SecondObserver)
+comment3.params=
+comment3.target=void\ run()
+numComments=4

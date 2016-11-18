@@ -15,6 +15,7 @@ public class GameSession
     Set<Character> allCharacters = new HashSet<Character>();
     Set<Character> playCharacters = new HashSet<Character>();
     PropertyInfo propertyInfo = new PropertyInfo(this);
+    GameScore gameScore = new GameScore();
     Character myChar;
     Character yourChar;
     int roomNumber;
@@ -104,5 +105,8 @@ public class GameSession
         this.myScore = score;
     }
     
-
+    public GameScore getGameScore()
+    {
+        return gameScore;
+    }
 }

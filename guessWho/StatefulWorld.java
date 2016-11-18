@@ -9,33 +9,20 @@ import java.util.Set;
  */
 public abstract class StatefulWorld extends World
 {
-    GameState currentState;
-    Object stateRunObj = null;
+    //protected GameState currentState;
     
     public StatefulWorld(int width, int height, int size)
     {    
         super(width, height, size); 
     }
-    
-    public void act()
-    {   
-        if(currentState != null)
-        {
 
-            return;
-        }
-        //System.out.println("Current State is null");
-    }
     
-    public void setState(GameState nextState)
-    {
-        //if(currentState!=null)
-            //currentState.exit();
-        currentState=nextState;
-        //System.out.println("entered " + currentState.getClass().getName());
-        //currentState.enter();
-    }
+    public abstract GameState getState(String stateName);
     
+    public abstract void setState(String stateName);
     
+    public abstract GameState getCurrentState();
+    
+    public abstract boolean isCurrentState(GameState gameState);
     
 }

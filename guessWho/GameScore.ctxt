@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=GameScore
+comment0.text=\n\ Write\ a\ description\ of\ class\ Score\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=GameScore()
+comment2.params=addS
+comment2.target=void\ addScore(int)
+comment3.params=
+comment3.target=int\ getScore()
+comment4.params=
+comment4.target=void\ incrementTurn()
+comment5.params=
+comment5.target=int\ getTurn()
+comment6.params=
+comment6.target=int\ getBaseScoreOnTurn()
+numComments=7

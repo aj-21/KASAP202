@@ -4,8 +4,10 @@ import java.util.Set;
 import java.util.HashSet;
 
 import java.util.Map;
-//import java.util.Observer;
-//import java.util.Observable;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Write a description of class GuessWho here.
  * 
@@ -17,14 +19,10 @@ public class GuessWho extends StatefulWorld
     
     GameSession gameSession;
     
-    Set<GameState> gameStates = new HashSet<GameState>();
-    GameState guessWhoState;
-    GameState guessingState;
-    GameState filteringState;
-    GameState scoringState;
-    GameState waitingState;
     
-    IGameState mainState;
+    GameState currentState;
+    
+    IGameState guessWhoState;
     IGameState scoreState;
     
     
@@ -34,8 +32,10 @@ public class GuessWho extends StatefulWorld
         super(1536, 864, 1); 
         this.gameSession = gameSession;
         
-        mainState = new IMainState(this);
+        guessWhoState = new GuessWhoState(this);
         scoreState = new IScoreState(this,gameSession);
+        
+        setState("guessWhoState");
         setup();
     }
     
@@ -65,7 +65,7 @@ public class GuessWho extends StatefulWorld
         addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
         //enable unique selection for suboption Button Canvas
-        //((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
+        ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
 
         
         //updateSubOptionReceiver is responsbile for update subOptionButtonCanvas
@@ -90,9 +90,9 @@ public class GuessWho extends StatefulWorld
         //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
 
         //enable press handler with chain of responsibility
-        mainState.setSuccessor((PressHandler)charCanvas);
-        mainState.setSuccessor((PressHandler)subOptButCanvas);
-        mainState.setSuccessor((PressHandler)optButCanvas);
+        guessWhoState.setSuccessor((PressHandler)charCanvas);
+        guessWhoState.setSuccessor((PressHandler)subOptButCanvas);
+        guessWhoState.setSuccessor((PressHandler)optButCanvas);
         
         //transfer option changes to filteringState (for filter later) whenever there is a change  
         
@@ -106,35 +106,56 @@ public class GuessWho extends StatefulWorld
         //Confirm button
         EnableButton conBut = new EnableButton("confirm");
         addObject(conBut,1000,100);
-        
-        //guessWhoState responsible to direct to correct state, whether filter or guess
-        conBut.addObserver((Observer)guessWhoState);
-        
+      
         //create a new IObservableSelection to listen to updaSubRcv + subOptButCanvas + charCanvas, and notify confirm Button
         IObservableSelection obSel = new IObservableSelection();
         updSubRcv.addObserver(obSel);
         ((IDisplayCanvas)subOptButCanvas).addObserver(obSel);
         ((IDisplayCanvas)charCanvas).addObserver(obSel);
         obSel.addObserver(conBut);
+
+        
+        
+        Timer t= new Timer();
+        SecondObservable secOb = new SecondObservable();
+        secOb.addObserver(guessWhoState);
+        secOb.addObserver(scoreState);
+        
+        //t.schedule(secOb,0,1000);
+        
     }
     
     public GameState getState(String stateName)
     {
-        /*switch (stateName)
+        switch (stateName)
         {
-
+            case "guessWhoState": return guessWhoState;
+            case "scoreState": return scoreState;
+            
             default: return guessWhoState;
-        }*/
-        return null;
+        }
+        
     }
     
     public void setState(String stateName)
     {
-        setState(getState(stateName));
+        
+        currentState = getState(stateName);
+        currentState.enter();
+    }
+    
+    public GameState getCurrentState()
+    {
+        return currentState;
+    }
+    
+    public boolean isCurrentState(GameState gameState)
+    {
+        return currentState == gameState;
     }
     
     public void act()
     {
-        mainState.stateRun();
+        guessWhoState.stateRun();
     }
 }
