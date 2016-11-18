@@ -14,13 +14,15 @@ import java.util.Iterator;
  */
 public class PropertyInfo  
 {
+    GameSession gameSession;
     Map<String,Set<String>> properties = new HashMap<String,Set<String>>();
     
     Set<LButton> optionButtons;
     Map<LButton,Set<LButton>> subOptButtons;
     
-    public void PropertyInfo()
+    public PropertyInfo(GameSession gameSession)
     {
+        this.gameSession = gameSession;
     }
     
     /**
@@ -55,39 +57,37 @@ public class PropertyInfo
         }
         values.add(value);
     }
-    
-    /**
-     * get only value info mapped with an option key. Optionkey is required
-     */
-    public Set<String> getValues(String key)
-    {
-        return properties.get(key);
-    }
-    
+        
     /**
      * get all property Info
      */
     public Set<String> getKeys()
     {
-        return properties.keySet();
-    }
-    
-    /**
-     * method to for printing info
-     */
-    public String toString()
-    {
-        StringBuffer sb = new StringBuffer();
-        for(Map.Entry<String,Set<String>> prop:properties.entrySet())
+        if(gameSession.getPlaySet() == null || gameSession.getPlaySet().size() == 0 )
         {
-            String key = prop.getKey();
-            sb.append(key).append(" has: ");
-            sb.append(prop.getValue().toString()).append("\n");
+            System.out.println("Play set is not initialized");
+            return null;
         }
         
-        return sb.toString();
+        if(properties.size() == 0)
+        {
+            for(Character each:gameSession.getPlaySet())
+                putProperties(each.getProperties());
+        }
+        
+        return properties.keySet();
+    }   
+
+    /**
+     * get only value info mapped with an option key. Optionkey is required
+     */
+    public Set<String> getValues(String key)
+    {
+        if(properties.size() == 0)
+            getKeys();
+            
+        return properties.get(key);
     }
-    
     
     public Set<LButton> getOptButtons()
     {
@@ -107,7 +107,7 @@ public class PropertyInfo
     public Set<LButton> getSubOptButtons(LButton optBut)
     {
         if (optBut == null)
-            return null;
+            getOptButtons();
             
         if(subOptButtons == null)
             subOptButtons = new HashMap<LButton,Set<LButton>>();

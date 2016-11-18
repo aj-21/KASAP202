@@ -7,7 +7,7 @@ import greenfoot.*;
  * @author SPAAK 
  * 
  */
-public class IMainState implements IGameState, PressHandler
+public class IMainState extends IGameState
 {
     PressHandler successor;
     World world;
@@ -30,7 +30,7 @@ public class IMainState implements IGameState, PressHandler
             successor.pressHandle(x,y);
     }
     
-    public void run()
+    public void stateRun()
     {
         if(Greenfoot.mousePressed(null))
         {

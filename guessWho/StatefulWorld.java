@@ -21,8 +21,7 @@ public abstract class StatefulWorld extends World
     {   
         if(currentState != null)
         {
-            currentState.stateProcessesRun();
-            currentState.stateRun(stateRunObj);
+
             return;
         }
         //System.out.println("Current State is null");
@@ -30,11 +29,11 @@ public abstract class StatefulWorld extends World
     
     public void setState(GameState nextState)
     {
-        if(currentState!=null)
-            currentState.exit();
+        //if(currentState!=null)
+            //currentState.exit();
         currentState=nextState;
         //System.out.println("entered " + currentState.getClass().getName());
-        currentState.enter();
+        //currentState.enter();
     }
     
     

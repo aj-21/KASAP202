@@ -14,7 +14,7 @@ public class GameSession
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
     Set<Character> playCharacters = new HashSet<Character>();
-    PropertyInfo propertyInfo = new PropertyInfo();
+    PropertyInfo propertyInfo = new PropertyInfo(this);
     Character myChar;
     Character yourChar;
     int roomNumber;

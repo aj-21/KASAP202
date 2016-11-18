@@ -71,7 +71,7 @@ public class chooseCharacterScreen extends World implements Observer
     
     public void act()
     {   
-        mainState.run();
+        mainState.stateRun();
     }
    
     @Override
@@ -85,33 +85,17 @@ public class chooseCharacterScreen extends World implements Observer
     {
         SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
         Character myChar = (Character)c.getFirstSelected();
+  
         try{
             gameSession.setMyChar(myChar.getClass().newInstance());
-            updateOptionInfo();
             Greenfoot.setWorld(new GuessWho(gameSession));
         }
         catch (Exception e)
         {
             System.out.println(e);
-           
         }
         
     }
     
-    //helper func
-    private void updateOptionInfo()
-    {
-        PropertyInfo propertyInfo = gameSession.getPropertyInfo();
-        Set<Character> playSet = gameSession.getPlaySet();
-        for(Character each:playSet)
-        {
-            propertyInfo.putProperties(each.getProperties());
-        }
-    }
-    
-    public GameSession getGameSession()
-    {
-        return gameSession;
-    }
 }
 

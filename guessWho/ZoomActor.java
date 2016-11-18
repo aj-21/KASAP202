@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author SPAAK 
  * @version 1
  */
-public class ZoomActor extends SelectableImagesActor
+public class ZoomActor<T extends ZoomActor> extends SelectableImagesActor
 {
     //by default zoom scale when selected is 1.5 
     private double zoomScale = 1.5;

@@ -7,15 +7,14 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class IScoringState  
+public class IScoreState extends IGameState
 {
     World world;
     GameSession gameSession;
     Character yourChar;
+    
     int turnCount = 0;
     int baseScore = 100;
-
-    int tileCount;
     
     int REDUCT_PER_TURN = 2;
     double GUESS = 2;
@@ -23,47 +22,50 @@ public class IScoringState
     double CORRECT = 1;
     double INCORRECT = 0.9;
     double WIN = 2.5;
-    public void IScoringState(World world,GameSession gameSession)
+    
+    public IScoreState(World world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
         yourChar = gameSession.getYourChar();
     }
     
-    public void run()
+    public void pressHandle(int x, int y)
     {
-        for(Character c:gameSession.getPlaySet())
-        {
-            if(c.isSelected())
-            {
-                guess();
-                break;
-            }
-            filter();
-        }
     }
     
-    public void guess()
+    public void setSuccessor(PressHandler successor)
     {
+        
+    }
+    
+    public void stateRun()
+    {
+        //send message to the next state?????????????????????????
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         Character guessedChar = (Character)ccc.getSelected();
-        
-        if(guessedChar.getClass() == yourChar.getClass())
+        if(guessedChar!=null)
         {
-            System.out.printf("winnnnnnnnnnnnnnnnnn");
-            updateScore(GUESS,CORRECT,1);
+            guess(guessedChar);
+            return;
         }
-        if(guessedChar != null && guessedChar.getClass() != yourChar.getClass())
+        filter();
+
+    }
+    
+    public void guess(Character guessedChar)
+    {
+        if(guessedChar.getClass() != yourChar.getClass())
         {
-            System.out.printf("Guess with %s... Wrong guess! Please try again\n", guessedChar.getClass().getName());
-            System.out.printf("The right Char should be %s\n", yourChar.getClass().getName());
-            
             //two step removing
             world.removeObject(guessedChar);
             gameSession.getPlaySet().remove(guessedChar);
             
             updateScore(GUESS,INCORRECT,1);
+            return;
         }
+        //else win 
+        updateScore(GUESS,CORRECT,1);
         
     }
     

@@ -24,7 +24,8 @@ public class GuessWho extends StatefulWorld
     GameState scoringState;
     GameState waitingState;
     
-    IMainState mainState = new IMainState(this);
+    IGameState mainState;
+    IGameState scoreState;
     
     
 
@@ -32,13 +33,9 @@ public class GuessWho extends StatefulWorld
     {    
         super(1536, 864, 1); 
         this.gameSession = gameSession;
-        guessWhoState = new GuessWhoState(this,gameSession);
-        scoringState = new ScoringState(this,gameSession);      
-        guessingState = new GuessingState(this,gameSession);
-        filteringState = new FilteringState(this,gameSession);
         
-        waitingState = new WaitingState(this,gameSession);
-        setState("guessWhoState");
+        mainState = new IMainState(this);
+        scoreState = new IScoreState(this,gameSession);
         setup();
     }
     
@@ -68,7 +65,7 @@ public class GuessWho extends StatefulWorld
         addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
         //enable unique selection for suboption Button Canvas
-        ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
+        //((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
 
         
         //updateSubOptionReceiver is responsbile for update subOptionButtonCanvas
@@ -90,48 +87,45 @@ public class GuessWho extends StatefulWorld
         DisplayCanvas optButCanvas = new IDisplayCanvas(optButSet);
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
+        //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
 
         //enable press handler with chain of responsibility
         mainState.setSuccessor((PressHandler)charCanvas);
         mainState.setSuccessor((PressHandler)subOptButCanvas);
         mainState.setSuccessor((PressHandler)optButCanvas);
         
-        //transfer option changes to filteringState (for filter later) whenever there is a change
-        //SelectionObservable optSel = new SelectionObservable(optButSet,(Observer)filteringState);
-        //guessWhoState.addProcess(optSel);  
+        //transfer option changes to filteringState (for filter later) whenever there is a change  
         
         //keep either filter or guess
-        IUniqueSelection charOrOpt = new IUniqueSelection();
-        ((IDisplayCanvas)charCanvas).addObserver(charOrOpt);
-        ((IDisplayCanvas)optButCanvas).addObserver(charOrOpt);
+        IUniqueSelection guessOrFilter = new IUniqueSelection();
+        ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
+        ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
+        //((IDisplayCanvas)subOptButCanvas).addObserver(guessOrFilter);
         
   
-        //transfer info from this selection observable sets to button
-        EnableButton testBut = new EnableButton("confirm");
-        addObject(testBut,1000,100);
+        //Confirm button
+        EnableButton conBut = new EnableButton("confirm");
+        addObject(conBut,1000,100);
         
         //guessWhoState responsible to direct to correct state, whether filter or guess
-        testBut.addObserver((Observer)guessWhoState);
+        conBut.addObserver((Observer)guessWhoState);
         
         //create a new IObservableSelection to listen to updaSubRcv + subOptButCanvas + charCanvas, and notify confirm Button
         IObservableSelection obSel = new IObservableSelection();
         updSubRcv.addObserver(obSel);
         ((IDisplayCanvas)subOptButCanvas).addObserver(obSel);
         ((IDisplayCanvas)charCanvas).addObserver(obSel);
-        obSel.addObserver(testBut);
+        obSel.addObserver(conBut);
     }
     
     public GameState getState(String stateName)
     {
-        switch (stateName)
+        /*switch (stateName)
         {
-            case "guessWhoState": return guessWhoState;
-            case "guessingState": return guessingState; 
-            case "filteringState": return filteringState;
-            case "scoringState": return scoringState;
-            case "waitingState": return waitingState;
+
             default: return guessWhoState;
-        }
+        }*/
+        return null;
     }
     
     public void setState(String stateName)
@@ -141,6 +135,6 @@ public class GuessWho extends StatefulWorld
     
     public void act()
     {
-        mainState.run();
+        mainState.stateRun();
     }
 }

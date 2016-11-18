@@ -2,5 +2,7 @@
 comment0.target=IGameState
 comment0.text=\n\ Write\ a\ description\ of\ class\ IGameState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
-comment1.target=void\ run()
-numComments=2
+comment1.target=void\ stateRun()
+comment2.params=x\ Y
+comment2.target=void\ pressHandle(int,\ int)
+numComments=3

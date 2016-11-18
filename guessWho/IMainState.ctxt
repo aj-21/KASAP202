@@ -8,5 +8,5 @@ comment2.target=void\ setSuccessor(PressHandler)
 comment3.params=x\ y
 comment3.target=void\ pressHandle(int,\ int)
 comment4.params=
-comment4.target=void\ run()
+comment4.target=void\ stateRun()
 numComments=5
