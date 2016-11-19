@@ -19,7 +19,4 @@ public class GuessWhoServer extends Application {
         router.attach("/GuessWho", GuessWhoResource.class);        
         return router;
     }
-
-
 }
-

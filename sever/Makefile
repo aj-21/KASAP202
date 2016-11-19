@@ -1,4 +1,3 @@
-
 all: clean compile 
 
 clean:
@@ -10,20 +9,19 @@ app: compile
 	cd build ; jar -cvfe ../dist/app.jar GuessWhoServer .
 
 test: compile app
-	java -cp dist/restlet.jar:dist/restlet-json.jar:dist/json.jar:dist/app.jar api.GuessWhoServer
+	java -cp dist/restlet.jar:dist/restlet-json.jar:dist/restlet-jackson.jar:dist/jackson-core-2.8.3.jar:dist/jackson-annotations-2.8.3.jar:dist/jackson-dataformat-smile-2.8.3.jar:dist/jackson-databind-2.8.3.jar:dist/jackson-dataformat-xml-2.8.3.jar:dist/jackson-dataformat-yaml-2.8.3.jar:dist/jackson-dataformat-csv-2.8.3.jar:dist/app.jar api.GuessWhoServer
 
 compile: 
-	javac -cp dist/restlet.jar:dist/restlet-json.jar:dist/json.jar -d build \
+	javac -cp \
+	dist/json.jar:\
+	dist/restlet.jar:\
+	dist/restlet-json.jar:\
+	dist/restlet-jackson.jar:\
+	dist/jackson-core-2.8.3.jar:\
+	dist/jackson-annotations-2.8.3.jar \
+	-d build \
 	src/GuessWhoClasses/*.java \
 	src/api/*.java
-
-run:
-	echo Starting Service at:  http://localhost:8080
-	java -cp build:dist/restlet.jar:dist/restlet-json.jar:dist/json.jar api.GuessWhoServer
-
-loadtest:
-	echo Starting Load Test on localhost
-	java -cp build:dist/restlet.jar:dist/restlet-json.jar:dist/json.jar RunLoadTest 5
 
 docker-build: app
 	docker build -t guesswho .
@@ -56,4 +54,9 @@ docker-stop:
 
 docker-shell:
 	docker exec -it guesswho bash 
-	
+
+run:
+	echo Starting Service at:  http://localhost:8080
+	java -cp build:dist/restlet.jar:dist/restlet-json.jar:dist/json.jar:dist/restlet-jackson.jar:dist/jackson-core-2.8.3.jar:dist/jackson-annotations-2.8.3.jar:dist/jackson-dataformat-smile-2.8.3.jar:dist/jackson-databind-2.8.3.jar:dist/jackson-dataformat-xml-2.8.3.jar:dist/jackson-dataformat-yaml-2.8.3.jar:dist/jackson-dataformat-csv-2.8.3.jar api.GuessWhoServer
+
+
