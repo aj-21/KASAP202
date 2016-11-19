@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.awt.Color;
 //import java.util.Observer;
 //import java.util.Observable;
 /**
@@ -12,10 +13,18 @@ public class GuessWhoState extends IGameState implements SecondObserver
     PressHandler successor;
     GuessWho world;
     int stateTime;
+    
+    //...............
+    DummyImage timeDisplay;
+    
     public GuessWhoState(GuessWho world)
     {
+        
         this.world = world;
-        //stateTime = 5;
+        timeDisplay = new DummyImage("optionButton.png");
+        world.addObject(timeDisplay,100,100);
+        stateTime = 5;
+        printTime(stateTime);
     }
     
     
@@ -36,6 +45,7 @@ public class GuessWhoState extends IGameState implements SecondObserver
     public void enter()
     {
         stateTime = 5;        
+        printTime(stateTime);
     }
     
     public void stateRun()
@@ -60,12 +70,23 @@ public class GuessWhoState extends IGameState implements SecondObserver
         if (stateTime>0)
         {
             stateTime -= 1;
-            System.out.println(stateTime);
+            printTime(stateTime);
             if(stateTime == 0 )
             {
                 exit();
             }
         }
+    }
+    
+    public void printTime(int time)
+    {
+        GreenfootImage timeImg = new GreenfootImage("optionButton.png");
+        int w = timeImg.getWidth();
+        int h = timeImg.getHeight(); 
+        GreenfootImage labelImage = new GreenfootImage(String.valueOf(time),h/10*5,Color.BLUE,new Color(0,0,0,0));
+        timeImg.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/20*6);
+        timeDisplay.setImage(timeImg);
+        
     }
     
 }

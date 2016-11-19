@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=void\ exit()
 comment7.params=
 comment7.target=void\ secondUpdate()
-numComments=8
+comment8.params=time
+comment8.target=void\ printTime(int)
+numComments=9
