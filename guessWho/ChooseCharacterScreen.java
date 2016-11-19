@@ -1,10 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.lang.*;
-import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Write a description of class chooseCharacterScreen here.
@@ -12,21 +8,20 @@ import java.util.Collection;
  * @SPAAK 
  * @version (a version number or a date)
  */
-public class chooseCharacterScreen extends World implements Observer
+public class ChooseCharacterScreen extends World implements Observer
 {
-    Set<Process> processes;
     GameSession gameSession;
-    GameState mainState = new EmptyState(this);
+    GameState mainState;
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
      */
-    public chooseCharacterScreen()
+    public ChooseCharacterScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
-        processes = new HashSet<Process>();
         gameSession = new GameSession();
+        mainState = new ChooseMyCharState(this,gameSession);
         prepare();
     }
 
@@ -39,8 +34,6 @@ public class chooseCharacterScreen extends World implements Observer
     {               
         //String name = Greenfoot.ask("name please");   
         //System.out.println(name);
-        
-        
         //resize FullSet Character
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
@@ -63,6 +56,8 @@ public class chooseCharacterScreen extends World implements Observer
         ((IDisplayCanvas)disCan).addObserver(new IObservableSelection(confirmButton));
         
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
+        
+        
         
         //add chain responsibility for press handling
         mainState = new PressHandlerState(mainState);

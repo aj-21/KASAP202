@@ -45,10 +45,19 @@ public class ScoreState implements GameState
     
     public void exit()
     {
+        SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
+        Character guessedChar = (Character)ccc.getSelected();
+        if(guessedChar!=null)
+        {
+            Greenfoot.setWorld(new ResultScreen(gameSession));
+            return;
+        }
         world.removeObject(blockImg);
         world.setState("guessWhoState");
         
     }
+    
+
     
        
     public void guess(Character guessedChar)
@@ -63,7 +72,6 @@ public class ScoreState implements GameState
             return;
         }
         //else win 
-
         
     }
     

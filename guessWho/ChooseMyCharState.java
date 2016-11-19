@@ -7,12 +7,20 @@ import greenfoot.*;
  * @author SPAAK 
  * 
  */
-public class EmptyState implements GameState
+public class ChooseMyCharState implements GameState
 {
     World world;
-    public EmptyState(World world)
+    GameSession gameSession;
+    public ChooseMyCharState(World world,GameSession gameSession)
     {
         this.world = world;
+        this.gameSession = gameSession;
+        prepare();
+    }
+    
+    private void prepare()
+    {
+
     }
     
     public void enter()

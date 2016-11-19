@@ -16,7 +16,6 @@ public class TimeoutTask extends TimerTask
     @Override
     public void run()
     {
-        System.out.println("timer is running");
         observer.timeout();
     }
 }

@@ -41,7 +41,7 @@ public class TimeState extends GameStateDecorator implements TimeObserver
     @Override 
     public void timeout()
     {
-        timer.cancel();
+        timer.purge();
         super.exit();
     }
     

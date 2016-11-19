@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ResultScreen
+comment0.text=\n\ Write\ a\ description\ of\ class\ ResultScreen\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=gameSession
+comment1.target=ResultScreen(GameSession)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ResultScreen.\n\ \n
+comment2.params=
+comment2.target=void\ prepare()
+numComments=3
