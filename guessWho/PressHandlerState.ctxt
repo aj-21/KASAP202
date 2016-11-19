@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PressHandlerState
+comment0.text=\n\ Write\ a\ description\ of\ class\ PressHandlerState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=gameState
+comment1.target=PressHandlerState(GameState)
+comment2.params=successor
+comment2.target=void\ setSuccessor(PressHandler)
+comment3.params=x\ y
+comment3.target=void\ pressHandle(int,\ int)
+comment4.params=
+comment4.target=void\ stateRun()
+numComments=5

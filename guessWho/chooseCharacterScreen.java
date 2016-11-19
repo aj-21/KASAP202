@@ -16,7 +16,7 @@ public class chooseCharacterScreen extends World implements Observer
 {
     Set<Process> processes;
     GameSession gameSession;
-    IMainState mainState = new IMainState(this);
+    GameState mainState = new EmptyState(this);
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -65,7 +65,8 @@ public class chooseCharacterScreen extends World implements Observer
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
         
         //add chain responsibility for press handling
-        mainState.setSuccessor((PressHandler)disCan);
+        mainState = new PressHandlerState(mainState);
+        ((PressHandlerState)mainState).setSuccessor((PressHandler)disCan);
 
     }
     

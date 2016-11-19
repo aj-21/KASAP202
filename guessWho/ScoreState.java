@@ -7,37 +7,26 @@ import java.util.HashSet;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class IScoreState extends IGameState
+public class ScoreState implements GameState
 {
     GuessWho world;
     GameSession gameSession;
     Character yourChar;
     DummyImage blockImg;
-       
-    int stateTime;
     
-    public IScoreState(GuessWho world,GameSession gameSession)
+    public ScoreState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
         yourChar = gameSession.getYourChar();
-        stateTime = 10;
+
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
-    }
-    
-    public void pressHandle(int x, int y)
-    {
-    }
-    
-    public void setSuccessor(PressHandler successor)
-    {
-        
     }
     
     public void enter()
     {
         world.addObject(blockImg,blockImg.getImage().getWidth()/2,blockImg.getImage().getHeight()/2);
-        //send message to the next state?????????????????????????
+     
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         Character guessedChar = (Character)ccc.getSelected();
         if(guessedChar!=null)
@@ -50,33 +39,18 @@ public class IScoreState extends IGameState
     
     public void stateRun()
     {
-        
-
+        //update info
+        //display result
     }
     
     public void exit()
     {
-        if (world.isCurrentState(this))
-        {
-            world.setState("guessWhoState");
-            stateTime = 10;
-            world.removeObject(blockImg);
-        }
+        world.removeObject(blockImg);
+        world.setState("guessWhoState");
+        
     }
     
-    public void secondUpdate()
-    {
-        if(stateTime >0)
-        {
-            stateTime -= 1;
-            System.out.println(stateTime);
-            if (stateTime ==0)
-            {
-                exit();
-            }
-        }
-    }
-    
+       
     public void guess(Character guessedChar)
     {
         System.out.println("guessing");

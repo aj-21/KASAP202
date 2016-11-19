@@ -1,7 +1,4 @@
 import greenfoot.*;
-import java.awt.Color;
-import java.util.Timer;
-import java.util.TimerTask;
 //import java.util.Observer;
 //import java.util.Observable;
 /**
@@ -10,35 +7,27 @@ import java.util.TimerTask;
  * @author SPAAK 
  * 
  */
-public class GuessWhoState implements GameState
+public class EmptyState implements GameState
 {
-    PressHandler successor;
-    GuessWho world;
-
-    
-    public GuessWhoState(GuessWho world)
+    World world;
+    public EmptyState(World world)
     {
-        
         this.world = world;
-
     }
- 
-
     
     public void enter()
     {
-
+        
+        
     }
     
     public void stateRun()
     {
-
     }
     
     public void exit()
     {
-        world.setState("scoreState");
+        //world.setState("guessWhoState");
     }
-
     
 }

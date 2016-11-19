@@ -22,8 +22,8 @@ public class GuessWho extends StatefulWorld
     
     GameState currentState;
     
-    IGameState guessWhoState;
-    IGameState scoreState;
+    GameState guessWhoState;
+    GameState scoreState;
     
     
 
@@ -33,9 +33,9 @@ public class GuessWho extends StatefulWorld
         this.gameSession = gameSession;
         
         guessWhoState = new GuessWhoState(this);
-        scoreState = new IScoreState(this,gameSession);
+        scoreState = new ScoreState(this,gameSession);
         
-        setState("guessWhoState");
+        
         setup();
     }
     
@@ -90,38 +90,24 @@ public class GuessWho extends StatefulWorld
         //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
 
         //enable press handler with chain of responsibility
-        guessWhoState.setSuccessor((PressHandler)charCanvas);
-        guessWhoState.setSuccessor((PressHandler)subOptButCanvas);
-        guessWhoState.setSuccessor((PressHandler)optButCanvas);
-        
-        //transfer option changes to filteringState (for filter later) whenever there is a change  
+        PressHandlerState pressState = new PressHandlerState(guessWhoState);
+        pressState.setSuccessor((PressHandler)charCanvas);
+        pressState.setSuccessor((PressHandler)subOptButCanvas);
+        pressState.setSuccessor((PressHandler)optButCanvas);
+        guessWhoState = pressState;
         
         //keep either filter or guess
         IUniqueSelection guessOrFilter = new IUniqueSelection();
         ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
         ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
         //((IDisplayCanvas)subOptButCanvas).addObserver(guessOrFilter);
-        
-  
-        //Confirm button
-        EnableButton conBut = new EnableButton("confirm");
-        addObject(conBut,1000,100);
-      
-        //create a new IObservableSelection to listen to updaSubRcv + subOptButCanvas + charCanvas, and notify confirm Button
-        IObservableSelection obSel = new IObservableSelection();
-        updSubRcv.addObserver(obSel);
-        ((IDisplayCanvas)subOptButCanvas).addObserver(obSel);
-        ((IDisplayCanvas)charCanvas).addObserver(obSel);
-        obSel.addObserver(conBut);
 
+        scoreState= new TimeState( scoreState);
+        ((TimeState)scoreState).setTimer(5);
         
-        
-        Timer t= new Timer();
-        SecondObservable secOb = new SecondObservable();
-        secOb.addObserver(guessWhoState);
-        secOb.addObserver(scoreState);
-        
-        //t.schedule(secOb,0,1000);
+        guessWhoState = new TimeState( guessWhoState);
+        ((TimeState)guessWhoState).setTimer(25);
+        setState("guessWhoState");
         
     }
     
@@ -156,6 +142,6 @@ public class GuessWho extends StatefulWorld
     
     public void act()
     {
-        guessWhoState.stateRun();
+        currentState.stateRun();
     }
 }

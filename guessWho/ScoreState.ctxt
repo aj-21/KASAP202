@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=ScoreState
+comment0.text=\n\ Write\ a\ description\ of\ class\ IScoringState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=world\ gameSession
+comment1.target=ScoreState(GuessWho,\ GameSession)
+comment2.params=
+comment2.target=void\ enter()
+comment3.params=
+comment3.target=void\ stateRun()
+comment4.params=
+comment4.target=void\ exit()
+comment5.params=guessedChar
+comment5.target=void\ guess(Character)
+comment6.params=
+comment6.target=void\ filter()
+numComments=7
