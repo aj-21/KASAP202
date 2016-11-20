@@ -101,11 +101,12 @@ public class GuessWho extends StatefulWorld
         ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
         ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
         //((IDisplayCanvas)subOptButCanvas).addObserver(guessOrFilter);
-
+        
         scoreState= new TimeState( scoreState);
         ((TimeState)scoreState).setTimer(3);
         
         guessWhoState = new TimeState( guessWhoState);
+        ((TimeState)guessWhoState).setTimeBoxLoc(this,600,100);
         ((TimeState)guessWhoState).setTimer(10);
         setState("guessWhoState");
         

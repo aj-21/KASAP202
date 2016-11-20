@@ -47,7 +47,10 @@ public class LabelButton extends ZoomActor
     {
         int w = image.getWidth();
         int h = image.getHeight(); 
-        GreenfootImage labelImage = new GreenfootImage(label,h/10*5,labelColor,new Color(0,0,0,0));
+        //GreenfootImage labelImage = new GreenfootImage(label,h/10*5,labelColor,new Color(0,0,0,0));
+        StringImageFactory strImgFac = new StringImageFactory();
+        strImgFac.setTextColor(labelColor);
+        GreenfootImage labelImage = strImgFac.createImage(label,h/10*5);
         image.drawImage(labelImage,(w - labelImage.getWidth())/2 ,h/20*6);
         return image;
     }

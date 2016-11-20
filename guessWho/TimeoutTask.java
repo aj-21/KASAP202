@@ -1,4 +1,6 @@
 import java.util.TimerTask;
+import java.util.Set;
+import java.util.HashSet;
 /**
  * Write a description of class TimeouTask here.
  * 
@@ -7,15 +9,22 @@ import java.util.TimerTask;
  */
 public class TimeoutTask extends TimerTask
 {
-    TimeObserver observer;
+    Set<TimeObserver> observers;
     public TimeoutTask(TimeObserver observer)
     {
-        this.observer = observer;
+        observers = new HashSet<TimeObserver>();
+        this.observers.add(observer);
+    }
+    
+    public void addObserver(TimeObserver observer)
+    {
+        observers.add(observer);
     }
     
     @Override
     public void run()
     {
-        observer.timeout();
+        for(TimeObserver observer:observers)
+            observer.timeout();
     }
 }

@@ -9,20 +9,21 @@ import java.util.HashSet;
  */
 public class SecondObservable extends TimerTask
 {
-    Set<SecondObserver> observers;
-    public SecondObservable()
+    Set<TimeObserver> observers;
+    public SecondObservable(TimeObserver observer)
     {
-        observers = new HashSet<SecondObserver>();
+        observers = new HashSet<TimeObserver>();
+        observers.add(observer);
     }
     
-    public void addObserver(SecondObserver observer)
+    public void addObserver(TimeObserver observer)
     {
         observers.add(observer);
     }
     
     public void run()
     {
-        for(SecondObserver o:observers)
+        for(TimeObserver o:observers)
             o.secondUpdate();
     }
 }

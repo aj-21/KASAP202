@@ -14,6 +14,11 @@ public class DummyImage extends Actor
         setImage(new GreenfootImage(filename));
     }
     
+    public DummyImage()
+    {
+        //setImage(new GreenfootImage(1,1));
+    }
+    
     public final void act() 
     {
         // Add your action code here.

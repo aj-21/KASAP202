@@ -6,7 +6,7 @@
  */
 public interface TimeObserver  
 {
-    public void updateSecond();
+    public void secondUpdate();
     
     public void timeout();
 }

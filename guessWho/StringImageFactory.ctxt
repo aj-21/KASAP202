@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=StringImageFactory
+comment0.text=\n\ Write\ a\ description\ of\ class\ StringImage\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=StringImageFactory()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ StringImage\n
+comment2.params=text\ size
+comment2.target=greenfoot.GreenfootImage\ createImage(java.lang.String,\ int)
+comment3.params=color
+comment3.target=void\ setTextColor(java.awt.Color)
+comment4.params=color
+comment4.target=void\ setBackgroundColor(java.awt.Color)
+comment5.params=size
+comment5.target=void\ setSize(int)
+numComments=6
