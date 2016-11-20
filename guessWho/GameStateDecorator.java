@@ -1,8 +1,8 @@
 /**
  * Write a description of class GameStateDecorator here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @SPAAK
+ * @latest version
  */
 public class GameStateDecorator implements GameState
 {
