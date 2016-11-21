@@ -17,7 +17,7 @@ public class CriteriaValue implements PropertyCriteria
         this.filterKey = filterKey;
         // this.gameSession = gameSession;
         //this.yourChar = gameSession.getYourChar();
-        this.filterValue = gameSession.getYourChar().getPropertyValue(filterKey);
+        this.filterValue = gameSession.getYou().getChosenChar().getPropertyValue(filterKey);
     }
     
     public Set<Character> meetCriteria(Set<Character> characters)

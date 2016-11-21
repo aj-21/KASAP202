@@ -8,7 +8,7 @@ import java.util.HashSet;
  * @SPAAK 
  * @version (a version number or a date)
  */
-public class ChooseCharacterScreen extends World implements Observer
+public class ChooseCharacterScreen extends StatefulWorld implements Observer
 {
     GameSession gameSession;
     GameState mainState;
@@ -83,7 +83,7 @@ public class ChooseCharacterScreen extends World implements Observer
         Character myChar = (Character)c.getFirstSelected();
   
         try{
-            gameSession.setMyChar(myChar.getClass().newInstance());
+            gameSession.getMe().setChosenChar(myChar.getClass().newInstance());
             Greenfoot.setWorld(new GuessWho(gameSession));
         }
         catch (Exception e)
@@ -91,6 +91,26 @@ public class ChooseCharacterScreen extends World implements Observer
             System.out.println(e);
         }
         
+    }
+    
+    public GameState getState(String stateName)
+    {
+        return null;
+    }
+    
+    public void setState(String stateName)
+    {
+        return;
+    }
+    
+    public GameState getCurrentState()
+    {
+        return null;
+    }
+    
+    public boolean isCurrentState(GameState gameState)
+    {
+        return false;
     }
     
 }

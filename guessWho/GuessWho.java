@@ -18,10 +18,8 @@ public class GuessWho extends StatefulWorld
 {
     
     GameSession gameSession;
-    
-    
-    GameState currentState;
-    
+
+    GameState currentState; 
     GameState guessWhoState;
     GameState scoreState;
     
@@ -44,7 +42,6 @@ public class GuessWho extends StatefulWorld
         //charCanvas setting
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
-        //DisplayCanvas charCanvas = new DisplayCanvas(gameSession.getPlaySet());
         
         //use this to for chain of responsility
         DisplayCanvas charCanvas = new IDisplayCanvas(gameSession.getPlaySet());
@@ -53,7 +50,7 @@ public class GuessWho extends StatefulWorld
         charCanvas.setBackground("characterCanvas.png").setMargin(3.5,3.5,2.5,2.5).display();     
         
         //myCharCanvas setting
-        Character myChar = gameSession.getMyChar();
+        Character myChar = gameSession.getMe().getChosenChar();
         myChar.resizeOnScale(1.3);
         DisplayCanvas myCharCanvas = new DisplayCanvas(myChar);
         addObject(myCharCanvas,1370,578);

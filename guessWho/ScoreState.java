@@ -18,7 +18,7 @@ public class ScoreState implements GameState
     {
         this.world = world;
         this.gameSession = gameSession;
-        yourChar = gameSession.getYourChar();
+        yourChar = gameSession.getYou().getChosenChar();
 
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
     }

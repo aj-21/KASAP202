@@ -11,20 +11,16 @@ import java.util.HashSet;
  */
 public class GameSession  
 {
+    int sessionID;
+    
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
     Set<Character> playCharacters = new HashSet<Character>();
     
     PropertyInfo propertyInfo = new PropertyInfo(this);
     
-    
-    
-    Character myChar;
-    Character yourChar;
-    int roomNumber;
-    String myID;
-
-    String yourID;
+    Player me;
+    Player you;
 
     /**
      * Constructor for objects of class GameSession
@@ -52,8 +48,12 @@ public class GameSession
         playCharacters.add(new Char7());
         playCharacters.add(new Char8());
         playCharacters.add(new Char9());
+        
+        me = new Player();
+        you = new Player();
+            
         //and these
-        yourChar = new Char5();
+        you.setChosenChar(new Char5());
     }
     
     public Set<Character> getFullSet()
@@ -61,35 +61,9 @@ public class GameSession
         return allCharacters;
     }
     
-    ////add a character into full collection. Duplicate is accepted
-    public void addAllToPlayList(Collection<Character> characters)
-    {
-        playCharacters.addAll(characters);
-    }
-    
     public Set<Character> getPlaySet()
     {
         return playCharacters;
-    }
-    
-    public void setMyChar(Character myChar)
-    {
-        this.myChar = myChar;
-    }
-    
-    public Character getMyChar()
-    {
-        return myChar;
-    }
-    
-    public void setYourChar(Character yourChar)
-    {
-        this.yourChar = yourChar;
-    }
-    
-    public Character getYourChar()
-    {
-        return yourChar;
     }
     
     public PropertyInfo getPropertyInfo()
@@ -97,4 +71,23 @@ public class GameSession
         return propertyInfo;
     }
     
+    public Player getMe()
+    {
+        return me;
+    }
+    
+    public Player getYou()
+    {
+        return you;
+    }
+    
+    public int getSessionID()
+    {
+        return sessionID;
+    }
+    
+    public void setSessionID(int sessionID)
+    {
+        this.sessionID = sessionID;
+    }
 }

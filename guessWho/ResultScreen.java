@@ -23,7 +23,7 @@ public class ResultScreen extends World
     
     private void prepare()
     {
-        Character yourChar = gameSession.getYourChar();
+        Character yourChar = gameSession.getYou().getChosenChar();
         yourChar.resizeOnScale(2);
         addObject(yourChar,getWidth()/2,getHeight()/2);
     }
