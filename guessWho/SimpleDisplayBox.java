@@ -32,12 +32,13 @@ public class SimpleDisplayBox<T extends Actor> extends AbstractDisplayBox<T>
     @Override
     public void display(World world,int x, int y)
     {
+        this.world = world;
         this.x = x;
         this.y = y;
         int index = 0;
         for(T actor: actors)
         {
-            displayActor(world,actor,index);  
+            displayActor(actor,index);  
             if(index++ >  numCol*numRow)
                 return;
         }
@@ -47,15 +48,16 @@ public class SimpleDisplayBox<T extends Actor> extends AbstractDisplayBox<T>
      * private display function display one actor at a time according to the index of it.
      * if actor is already in this world, it will be relocated otherwise adding actor to new world
      */
-    private void displayActor(World world,T actor,int index)
+    private void displayActor(T actor,int index)
     {         
-        int objectX = x + (index % numCol) * (width/numCol) + (width/numCol)/2;
-        int objectY = y + (index / numCol) * (height/numRow) + (height/numRow)/2;        
-        if(actor.getWorld() == world)
+        int objectX = this.x + (index % numCol) * (width/numCol) + (width/numCol)/2;
+        int objectY = this.y + (index / numCol) * (height/numRow) + (height/numRow)/2;        
+        if(actor.getWorld() == this.world)
         {
-            actor.setLocation(x,y);
-            return;
+            //actor.setLocation(objectX,objectY);
+            //return;
+            world.removeObject(actor);
         }
-        world.addObject(actor,objectX,objectY);     
+        this.world.addObject(actor,objectX,objectY);     
     }
 }

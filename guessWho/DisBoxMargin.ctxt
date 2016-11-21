@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=DisBoxMargin
+comment0.text=\n\ Write\ a\ description\ of\ class\ DisBoxMargin\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=disBox
+comment1.target=DisBoxMargin(DisplayBox)
+comment2.params=left\ right\ top\ bottom
+comment2.target=void\ setMargin(double,\ double,\ double,\ double)
+numComments=3

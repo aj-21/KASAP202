@@ -15,6 +15,7 @@ public abstract class AbstractDisplayBox<T extends Actor> implements DisplayBox<
 {
     // set of actors to be display
     Set<T> actors;
+    World world;
     //numCol = number of actors per row, num Row = number of row.
     int numCol, numRow;
     //width and height of this box
@@ -32,7 +33,13 @@ public abstract class AbstractDisplayBox<T extends Actor> implements DisplayBox<
         width = 100;
         height = 100;
         actors = new HashSet<T>();
-        
+    }
+    
+    public void display()
+    {
+        if(world == null)
+            throw new NullPointerException("need to call display(World world,int X,int Y) for the 1st time to set up");
+        display(world,x,y);
     }
     
     /**
@@ -92,5 +99,25 @@ public abstract class AbstractDisplayBox<T extends Actor> implements DisplayBox<
     {
         this.numCol = col;
         this.numRow = row;
+    }
+    
+    public int getX()
+    {
+        return x;
+    }
+    
+    public int getY()
+    {
+        return y;
+    }
+    
+    public int getWidth()
+    {
+        return width;
+    }
+    
+    public int getHeight()
+    {
+        return height;
     }
 }

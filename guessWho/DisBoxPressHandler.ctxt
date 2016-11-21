@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=DisBoxPressHandler
+comment0.text=\n\ Write\ a\ description\ of\ class\ DisBoxPressHandler\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=disBox
+comment1.target=DisBoxPressHandler(DisplayBox)
+comment2.params=successor
+comment2.target=void\ setSuccessor(PressHandler)
+comment3.params=x\ y
+comment3.target=void\ pressHandle(int,\ int)
+comment4.params=observer
+comment4.target=void\ addObserver(Observer)
+numComments=5

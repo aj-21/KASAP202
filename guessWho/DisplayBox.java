@@ -14,6 +14,8 @@ import java.util.HashSet;
 
 public interface DisplayBox<T extends Actor>  
 {   
+    public void display();
+    
     public void display(World world,int x, int y);
 
     public void setActors(Set<T> actors );
@@ -29,4 +31,12 @@ public interface DisplayBox<T extends Actor>
     public void scale(int width, int height);
 
     public void setColRow(int col, int row);
+    
+    public int getX();
+    
+    public int getY();
+    
+    public int getWidth();
+    
+    public int getHeight();
 }

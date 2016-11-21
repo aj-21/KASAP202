@@ -37,14 +37,18 @@ public class ChooseCharacterScreen extends StatefulWorld implements Observer
         //resize FullSet Character
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
+
         //new displayCanvas to display FullSet
-        DisplayCanvas disCan = new IDisplayCanvas(gameSession.getFullSet());
-        //enable unique selection
-        ((IDisplayCanvas)disCan).addObserver(new IUniqueSelection());
+       
+        DisplayBox disBox = new SimpleDisplayBox();
+        disBox.setActors(fullCon.getAll());
+        disBox.scale(getWidth(),getHeight());
         
-        disCan.setBackground(getBackground()).setMargin(10,10,18,15);
-        addObject(disCan,getWidth()/2,getHeight()/2);
-        disCan.display();       
+        disBox = new DisBoxBackground(disBox,getBackground());
+        ((DisBoxBackground)disBox).setMargin(10,10,18,15);
+        disBox.display(this,0,0);
+        
+        disBox = new DisBoxPressHandler(disBox); 
         
         //initial confirmButton
         EnableButton confirmButton = new EnableButton("confirm");
@@ -53,16 +57,15 @@ public class ChooseCharacterScreen extends StatefulWorld implements Observer
         confirmButton.addObserver(this);
         
         //add IObservableSelection  observing disCan to enable confirm button
-        ((IDisplayCanvas)disCan).addObserver(new IObservableSelection(confirmButton));
+        ((DisBoxPressHandler)disBox).addObserver(new IObservableSelection(confirmButton));
+        ((DisBoxPressHandler)disBox).addObserver(new IUniqueSelection());
         
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
         
         
-        
         //add chain responsibility for press handling
-        mainState = new PressHandlerState(mainState);
-        ((PressHandlerState)mainState).setSuccessor((PressHandler)disCan);
-
+        mainState = new PressHandlerState(mainState);       
+        ((PressHandlerState)mainState).setSuccessor((PressHandler)disBox);
     }
     
     public void act()
