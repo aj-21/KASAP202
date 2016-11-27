@@ -10,7 +10,7 @@ public class ConcreteHandlerIntro implements IntroHandler {
     private IntroHandler successor = null;
 
 	public boolean handleIntroRequest( int x, int y) {
-        System.out.println( "Inside Introduction Class");
+        //System.out.println( "Inside Introduction Class");
         if (x>726 && x<853 && y>809 &y<851 )
         {
             //System.out.println( "Intro");

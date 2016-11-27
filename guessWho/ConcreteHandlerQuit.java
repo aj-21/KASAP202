@@ -7,10 +7,11 @@
 public class ConcreteHandlerQuit implements IntroHandler {
     private IntroHandler successor = null;
     public boolean handleIntroRequest( int x, int y ) {
-        System.out.println( "Inside Quit");
+        //System.out.println( "Inside Quit");
         if ( x>1421 && x<1518 && y>807 &y<851)
         {
-            System.out.println("Quit");
+            //System.out.println("Quit");
+            System.exit(0);
         }
         else
         {
