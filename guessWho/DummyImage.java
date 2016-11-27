@@ -19,6 +19,14 @@ public class DummyImage extends Actor
         setImage(img);
     }
     
+    public DummyImage(GifImage gImg, boolean resetGif)
+    {
+        if(resetGif){
+            gImg.resetFrame();
+        }
+        setImage(gImg.getCurrentImage());
+    }
+    
     public DummyImage()
     {
         //setImage(new GreenfootImage(1,1));

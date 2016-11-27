@@ -8,10 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WelcomeScreen extends World
 {
-    GameSession gameSession;
-    Handler h1 = new ConcreteHandlerIntro() ; //Introduction
-    Handler h2 = new ConcreteHandlerSkip() ; //Skip Introduction
-    Handler h3 = new ConcreteHandlerQuit() ; //Quit Game
+    GifImage gImg = new GifImage("Introduction.gif");
+    DummyImage di = new DummyImage(gImg, false);
+    //GameSession gameSession;
+    IntroHandler h1 = new ConcreteHandlerIntro() ; //Introduction
+    IntroHandler h2 = new ConcreteHandlerSkip() ; //Skip Introduction
+    IntroHandler h3 = new ConcreteHandlerQuit() ; //Quit Game
+    boolean isShowIntro = false, isFirst = false;
 
     public WelcomeScreen()
     {    
@@ -23,22 +26,31 @@ public class WelcomeScreen extends World
     private void prepare()
     {   
         //addobject();
-        h1.setSuccessor(h2);
-        h2.setSuccessor(h3);
+        h1.setIntroSuccessor(h2);
+        h2.setIntroSuccessor(h3);
     }
     
     public void act()
     {
         int mouseX, mouseY ;
-             
+        
+        di = new DummyImage(gImg, isFirst);
+        
+        if(isShowIntro){
+            if(isFirst){
+                isFirst = false;
+            }
+            addObject(di, 761, 545);
+        }
+        
         if(Greenfoot.mousePressed(this)) 
         {  
             MouseInfo mouse = Greenfoot.getMouseInfo();  
             mouseX=mouse.getX();  
             mouseY=mouse.getY();  
-            System.out.println( "sendingcoordinates. x: "+mouseX+" y: "+ mouseY); 
-            h1.handleRequest(mouseX, mouseY);
-
-        } 
+            //System.out.println( "sendingcoordinates. x: "+mouseX+" y: "+ mouseY); 
+            isShowIntro = isFirst = h1.handleIntroRequest(mouseX, mouseY);
+            
+        }
     }
 }

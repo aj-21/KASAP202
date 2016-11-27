@@ -2,7 +2,7 @@
 comment0.target=ConcreteHandlerQuit
 comment0.text=\n\ Write\ a\ description\ of\ class\ ConcreteHandlerQuit\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=x\ y
-comment1.target=void\ handleRequest(int,\ int)
+comment1.target=boolean\ handleIntroRequest(int,\ int)
 comment2.params=next
-comment2.target=void\ setSuccessor(Handler)
+comment2.target=void\ setIntroSuccessor(IntroHandler)
 numComments=3

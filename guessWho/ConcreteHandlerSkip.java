@@ -5,26 +5,27 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ConcreteHandlerSkip implements Handler {
+public class ConcreteHandlerSkip implements IntroHandler {
 
-    private Handler successor = null;
+    private IntroHandler successor = null;
 
-    public void handleRequest( int x, int y) {
+    public boolean handleIntroRequest( int x, int y) {
         System.out.println( "Inside Skip Introduction");
-        if (x>1202 && x<1394 && y>740 &y<768)
+        if (x>23 && x<257 && y>808 &y<850)
         {
-            System.out.println("Skip");
+            //System.out.println("Skip");
             Greenfoot.setWorld(new ChooseCharacterScreen());
         }
         else
         {
             if ( successor != null )
-                successor.handleRequest(x,y);
+                successor.handleIntroRequest(x,y);
         }
+        return false;
 
     }
 
-    public void setSuccessor(Handler next) {
+    public void setIntroSuccessor(IntroHandler next) {
         this.successor = next ;
     }
 

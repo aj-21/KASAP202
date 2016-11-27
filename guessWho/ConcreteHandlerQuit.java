@@ -4,22 +4,23 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ConcreteHandlerQuit implements Handler {
-    private Handler successor = null;
-    public void handleRequest( int x, int y ) {
+public class ConcreteHandlerQuit implements IntroHandler {
+    private IntroHandler successor = null;
+    public boolean handleIntroRequest( int x, int y ) {
         System.out.println( "Inside Quit");
-        if ( x>169 && x<278 && y>749 &y<773)
+        if ( x>1421 && x<1518 && y>807 &y<851)
         {
             System.out.println("Quit");
         }
         else
         {
             if ( successor != null )
-                successor.handleRequest(x,y);
+                successor.handleIntroRequest(x,y);
         }
+        return false;
     }
 
-    public void setSuccessor(Handler next) {
+    public void setIntroSuccessor(IntroHandler next) {
         this.successor = next ;
     }
 }

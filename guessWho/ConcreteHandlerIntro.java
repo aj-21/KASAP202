@@ -1,28 +1,31 @@
+import greenfoot.*;
 /**
  * Write a description of class ConcreteHandlerIntro here.
  * 
- * @SPAAK
- * @latest version
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class ConcreteHandlerIntro implements Handler {
+public class ConcreteHandlerIntro implements IntroHandler {
 
-    private Handler successor = null;
+    private IntroHandler successor = null;
 
-	public void handleRequest( int x, int y) {
+	public boolean handleIntroRequest( int x, int y) {
         System.out.println( "Inside Introduction Class");
-        if (x>713 && x<800 && y>441 &y<466 )
+        if (x>726 && x<853 && y>809 &y<851 )
         {
-            System.out.println( "Intro");
+            //System.out.println( "Intro");
+            return true;
         }
         else
         {
             if ( successor != null )
-                successor.handleRequest(x,y);
+                successor.handleIntroRequest(x,y);
+            return false;
         }
 
 	}
 
-	public void setSuccessor(Handler next) {
+	public void setIntroSuccessor(IntroHandler next) {
         this.successor = next ;
 	}
 
