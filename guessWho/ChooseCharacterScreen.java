@@ -8,10 +8,10 @@ import java.util.HashSet;
  * @SPAAK 
  * @version (a version number or a date)
  */
-public class ChooseCharacterScreen extends StatefulWorld implements Observer
+public class ChooseCharacterScreen extends StatefulWorld
 {
     GameSession gameSession;
-    GameState mainState;
+    GameState chooseCharState;
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -21,7 +21,7 @@ public class ChooseCharacterScreen extends StatefulWorld implements Observer
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1536, 864, 1); 
         gameSession = new GameSession();
-        mainState = new ChooseMyCharState(this,gameSession);
+        chooseCharState = new ChooseCharState(this,gameSession);
         prepare();
     }
 
@@ -32,68 +32,44 @@ public class ChooseCharacterScreen extends StatefulWorld implements Observer
      */
     private void prepare()
     {               
-        //String name = Greenfoot.ask("name please");   
-        //System.out.println(name);
+        String name = Greenfoot.ask("name please"); 
+        gameSession.getMe().setName(name);
+        System.out.println(gameSession.getMe().getName());
+              
         //resize FullSet Character
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
         fullCon.resizeOnScale(0.9);
 
         //new displayCanvas to display FullSet
-       
-        DisplayBox disBox = new SimpleDisplayBox();
-        disBox.setActors(fullCon.getAll());
-        disBox.scale(getWidth(),getHeight());
-        
-        disBox = new DisBoxBackground(disBox,getBackground());
-        ((DisBoxBackground)disBox).setMargin(10,10,18,15);
-        disBox.display(this,0,0);
-        
-        disBox = new DisBoxPressHandler(disBox); 
+        IDisplayCanvas disCan = new IDisplayCanvas(gameSession.getFullSet());
+        addObject(disCan,getWidth()/2,getHeight()/2);
+        disCan.setBackground(getBackground()).setMargin(10,10,15,15).display();
         
         //initial confirmButton
         EnableButton confirmButton = new EnableButton("confirm");
         addObject(confirmButton,743,774);
         
-        confirmButton.addObserver(this);
+        confirmButton.addObserver((Observer)chooseCharState);
         
         //add IObservableSelection  observing disCan to enable confirm button
-        ((DisBoxPressHandler)disBox).addObserver(new IObservableSelection(confirmButton));
-        ((DisBoxPressHandler)disBox).addObserver(new IUniqueSelection());
+        disCan.addObserver(new IObservableSelection(confirmButton));
+        disCan.addObserver(new IUniqueSelection());
         
         addObject(new DummyImage("Choose_your_character.png"),getWidth()/2,getHeight()/10);
         
-        
         //add chain responsibility for press handling
-        mainState = new PressHandlerState(mainState);       
-        ((PressHandlerState)mainState).setSuccessor((PressHandler)disBox);
+        chooseCharState = new PressHandlerState(chooseCharState);       
+        ((PressHandlerState)chooseCharState).setSuccessor(disCan);
     }
     
     public void act()
     {   
-        mainState.stateRun();
-    }
-   
-    @Override
-    public void update(Observable o, Object arg)
-    {
-       if(((EnableButton)arg).getLabel().equals("confirm"))
-            exit();
+        chooseCharState.stateRun();
     }
     
     private void exit()
     {
-        SimpleContainer c = new SimpleContainer(gameSession.getFullSet());
-        Character myChar = (Character)c.getFirstSelected();
-  
-        try{
-            gameSession.getMe().setChosenChar(myChar.getClass().newInstance());
-            Greenfoot.setWorld(new GuessWho(gameSession));
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-        
+                
     }
     
     public GameState getState(String stateName)
