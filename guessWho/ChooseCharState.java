@@ -40,7 +40,8 @@ public class ChooseCharState implements GameState,Observer
   
         try{
             gameSession.getMe().setChosenChar(myChar.getClass().newInstance());
-            Greenfoot.setWorld(new GuessWho(gameSession));
+            //Greenfoot.setWorld(new GuessWho(gameSession));
+            ((ChooseCharacterScreen)world).setState("matchingState");
         }
         catch (Exception e)
         {

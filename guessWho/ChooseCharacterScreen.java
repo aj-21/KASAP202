@@ -11,7 +11,10 @@ import java.util.HashSet;
 public class ChooseCharacterScreen extends StatefulWorld
 {
     GameSession gameSession;
+    GameState currentState;
     GameState chooseCharState;
+    GameState matchingState;
+    GameState startingState;
     /**
      * Constructor for objects of class chooseCharacterScreen.
      * 
@@ -22,6 +25,10 @@ public class ChooseCharacterScreen extends StatefulWorld
         super(1536, 864, 1); 
         gameSession = new GameSession();
         chooseCharState = new ChooseCharState(this,gameSession);
+        matchingState = new MatchingState(this,gameSession);
+        startingState = new TimeState(new StartingState(this,gameSession));
+        
+
         prepare();
     }
 
@@ -32,9 +39,12 @@ public class ChooseCharacterScreen extends StatefulWorld
      */
     private void prepare()
     {               
-        String name = Greenfoot.ask("name please"); 
-        gameSession.getMe().setName(name);
-        System.out.println(gameSession.getMe().getName());
+        if(gameSession.getMe().getName() == "")
+        {
+            String name = Greenfoot.ask("Please choose a name for yourself"); 
+            gameSession.getMe().setName(name);
+        }
+        //System.out.println(gameSession.getMe().getName());
               
         //resize FullSet Character
         ZoomContainer fullCon = new ZoomContainer(gameSession.getFullSet());
@@ -59,27 +69,41 @@ public class ChooseCharacterScreen extends StatefulWorld
         
         //add chain responsibility for press handling
         chooseCharState = new PressHandlerState(chooseCharState);       
-        ((PressHandlerState)chooseCharState).setSuccessor(disCan);
+        ((PressHandler)chooseCharState).setSuccessor(disCan);
+        
+        currentState = chooseCharState;
+        //set timer for startingState
+        ((TimeState)startingState).setTimer(5);
+        ((TimeState)startingState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
+        String text = "Hi " + gameSession.getMe().getName() + ", game starts in\n %d second(s)";
+        ((TimeState)startingState).setTimeBoxText(text);
+        ((TimeState)startingState).setTimeBoxSize(100);
     }
     
     public void act()
     {   
-        chooseCharState.stateRun();
-    }
-    
-    private void exit()
-    {
-                
+        currentState.stateRun();
     }
     
     public GameState getState(String stateName)
     {
-        return null;
+        String sName = stateName.toLowerCase().replace(" ","");
+        switch(sName)
+        {
+            case "matchingstate": return matchingState;
+            case "startingstate": return startingState;
+            default: return chooseCharState;
+        }
     }
     
     public void setState(String stateName)
     {
-        return;
+        
+        currentState = getState(stateName);
+        currentState.enter();
+        
+        //for debug
+        System.out.println(currentState.getClass().getName());
     }
     
     public GameState getCurrentState()

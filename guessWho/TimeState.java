@@ -19,10 +19,11 @@ public class TimeState extends GameStateDecorator implements TimeObserver
     int textSize;
     int timeBoxX;
     int timeBoxY;
+    World world;
     public TimeState(GameState gameState)
     {
         super(gameState);
-        timeText = "State will end in %d second(s)";
+        timeText = "State will end \n in %d second(s)";
         textSize = 50;
     }
     
@@ -53,15 +54,23 @@ public class TimeState extends GameStateDecorator implements TimeObserver
         if(timeBox == null)
         {
             timeBox = new DummyImage();
-            world.addObject(timeBox,x,y);
+            //world.addObject(timeBox,x,y);
+            this.timeBoxX = x;
+            this.timeBoxY = y;
+            this.world = world;
             return;
         }
         timeBox.setLocation(x,y);
     }
     
-    public void setTextSize(int size)
+    public void setTimeBoxSize(int size)
     {
         this.textSize = size;
+    }
+    
+    public void setTimeBoxText(String text)
+    {
+        this.timeText= text;
     }
     
     @Override 
@@ -88,7 +97,9 @@ public class TimeState extends GameStateDecorator implements TimeObserver
         //cancel timer and tasks
         timer.cancel();
         updateTimeBox();
+        world.removeObject(timeBox);
         super.exit();
+        
     }
     
     @Override 
@@ -96,5 +107,6 @@ public class TimeState extends GameStateDecorator implements TimeObserver
     {
         schedule();
         super.enter();
+        world.addObject(this.timeBox,timeBoxX,timeBoxY);
     }
 }

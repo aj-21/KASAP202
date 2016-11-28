@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=MatchingState
+comment0.text=\n\ Write\ a\ description\ of\ class\ IGuessWhoState\ here.\n\ \n\ @author\ SPAAK\ \n\ \n
+comment1.params=world\ gameSession
+comment1.target=MatchingState(greenfoot.World,\ GameSession)
+comment2.params=
+comment2.target=void\ prepare()
+comment3.params=
+comment3.target=void\ enter()
+comment4.params=
+comment4.target=void\ stateRun()
+comment5.params=
+comment5.target=void\ exit()
+comment6.params=o\ arg
+comment6.target=void\ update(Observable,\ java.lang.Object)
+numComments=7

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=AAAAdapter
+comment0.text=\n\ Write\ a\ description\ of\ class\ AAAAdapter\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=AAAAdapter()
+comment2.params=me
+comment2.target=java.lang.String\ register(Player)
+comment3.params=
+comment3.target=Player\ getOpponent()
+comment4.params=sessionID
+comment4.target=void\ deRegister(java.lang.String)
+numComments=5

@@ -101,12 +101,14 @@ public class GuessWho extends StatefulWorld
         
         scoreState= new TimeState( scoreState);
         ((TimeState)scoreState).setTimer(3);
+        ((TimeState)scoreState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
+        ((TimeState)scoreState).setTimeBoxText("%d");
+        ((TimeState)scoreState).setTimeBoxSize(100);
         
         guessWhoState = new TimeState( guessWhoState);
         ((TimeState)guessWhoState).setTimeBoxLoc(this,600,100);
         ((TimeState)guessWhoState).setTimer(10);
         setState("guessWhoState");
-        
     }
     
     public GameState getState(String stateName)

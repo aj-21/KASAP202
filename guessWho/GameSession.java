@@ -11,7 +11,7 @@ import java.util.HashSet;
  */
 public class GameSession  
 {
-    int sessionID;
+    String sessionID;
     
     // instance variables - replace the example below with your own
     Set<Character> allCharacters = new HashSet<Character>();
@@ -50,10 +50,10 @@ public class GameSession
         playCharacters.add(new Char9());
         
         me = new Player();
-        you = new Player();
+        //you = new Player();
             
         //and these
-        you.setChosenChar(new Char5());
+        //you.setChosenChar(new Char5());
     }
     
     public Set<Character> getFullSet()
@@ -81,12 +81,17 @@ public class GameSession
         return you;
     }
     
-    public int getSessionID()
+    public void setYou(Player you)
+    {
+        this.you = you;
+    }
+    
+    public String getSessionID()
     {
         return sessionID;
     }
     
-    public void setSessionID(int sessionID)
+    public void setSessionID(String sessionID)
     {
         this.sessionID = sessionID;
     }
