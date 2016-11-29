@@ -1,28 +1,16 @@
 package GuessWhoClasses ;
 
-/**
- * Write a description of class GuessWho here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.ArrayList;
+
 public class GuessWho
 {
-    // instance variables - replace the example below with your own
     public static GuessWho GuessWhoInstance ;
-    public Player player1;
-    public Player player2;
+    public ArrayList<GameSession> gameSessions = new ArrayList<GameSession>();
+    public GameSession currentSession;
 
-    /**
-     * Constructor for objects of class GuessWho
-     */
     public GuessWho()
     {
-        // initialise instance variables
-        player1 = new Player();
-        player1.name = "Player1";
-        player2 = new Player();
-        player2.name = "Player2";
+        gameSessions = new ArrayList<GameSession>();
     }
     
     public static GuessWho getInstance() {

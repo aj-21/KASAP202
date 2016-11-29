@@ -13,6 +13,7 @@ public class MatchingState implements GameState,Observer
     GameSession gameSession;
     DummyImage blockImg;
     EnableButton rt;
+    PlayerAdapter pa;
     public MatchingState(World world,GameSession gameSession)
     {
         this.world = world;
@@ -24,7 +25,7 @@ public class MatchingState implements GameState,Observer
     {
         //blocking image
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
-        
+        pa = new PlayerAdapter();
         //return button
         rt = new EnableButton("return");
         rt.enable();
@@ -39,11 +40,13 @@ public class MatchingState implements GameState,Observer
         
         world.addObject(blockImg, world.getWidth()/2,world.getHeight()/2);
         world.addObject(rt,world.getWidth()/2,world.getHeight()/4*3);
-        String sessionID = AAAAdapter.register(gameSession.getMe());
+        
+        String sessionID = pa.registerMe(gameSession.getMe());
         //if valid ID
         if(sessionID != "")
         {
             gameSession.setSessionID(sessionID);
+            System.out.println("GameSessionID " + gameSession.getSessionID());
             return;
         }
         //if not valid ID
@@ -53,11 +56,12 @@ public class MatchingState implements GameState,Observer
     public void stateRun()
     {
         //get player back every second
-        Player you = AAAAdapter.getOpponent();
+        Player you = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
         // and check if valid player update Opponent(you), and auto exit (start game);
-        if (you.getName() != "")
+        if (you != null && you.getName() != "")
         {
             gameSession.setYou(you);
+            System.out.println("GameSessionID " + gameSession.getSessionID());
             exit();
         }
         //

@@ -77,7 +77,7 @@ public class ScoreState implements GameState
     
     public void filter()
     {
-        System.out.println("filter");
+        //System.out.println("filter");
         SimpleContainer o = new SimpleContainer(gameSession.getPropertyInfo().getOptButtons());
         LButton filterOptBut = (LButton)o.getSelected();
         

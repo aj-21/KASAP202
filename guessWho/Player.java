@@ -10,6 +10,7 @@ public class Player
     Character chosenChar;
     boolean isFinished;
     String lastAction;
+    String lastUpdated;
     
     public Player()
     {
@@ -52,5 +53,15 @@ public class Player
     public void setLastAction(String lastAction)
     {
         this.lastAction = lastAction;
+    }
+    
+    public void setLastUpdated(String lastUpdated)
+    {
+        this.lastUpdated = lastUpdated;
+    }
+    
+    public String getLastUpdated()
+    {
+        return this.lastUpdated;
     }
 }
