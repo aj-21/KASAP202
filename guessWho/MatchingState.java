@@ -58,6 +58,9 @@ public class MatchingState implements GameState,Observer
         //get player back every second
         Player you = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
         // and check if valid player update Opponent(you), and auto exit (start game);
+        System.out.println("you is null: " + (you == null));
+        if(you != null)
+            System.out.println("you name is:" + you.getName());
         if (you != null && you.getName() != "")
         {
             gameSession.setYou(you);
