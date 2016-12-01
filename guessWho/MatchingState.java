@@ -61,7 +61,8 @@ public class MatchingState implements GameState,Observer
         if (you != null && you.getName() != "")
         {
             gameSession.setYou(you);
-            System.out.println("GameSessionID " + gameSession.getSessionID());
+            System.out.println("GameSessionID: " + gameSession.getSessionID());
+            System.out.println("Opponent name:  " + you.getName());
             exit();
         }
         //
