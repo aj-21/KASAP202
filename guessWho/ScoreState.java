@@ -1,6 +1,8 @@
 import greenfoot.*;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  * Write a description of class IScoringState here.
  * 
@@ -14,6 +16,8 @@ public class ScoreState implements GameState
     Character yourChar;
     DummyImage blockImg;
     
+    PlayerAdapter pa;
+    long startTime;
     public ScoreState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
@@ -21,6 +25,7 @@ public class ScoreState implements GameState
         yourChar = gameSession.getYou().getChosenChar();
 
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
+        startTime = System.nanoTime();
     }
     
     public void enter()
@@ -33,22 +38,71 @@ public class ScoreState implements GameState
         if(guessedChar!=null)
         {
             guess(guessedChar);
+            //pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
             return;
         }
         filter();
+        //pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
         return;
     }
     
     public void stateRun()
     {
         //exchange info, detect player disconnection
+        /*if(System.nanoTime() - startTime >= 1000*1000000){
+            //get player back every second
+            Player you = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
+            // and check if valid player update Opponent(you), and auto exit (start game);
+            if (you != null && you.getName() != "")
+            {
+                gameSession.setYou(you);
+                System.out.println("GameSessionID: " + gameSession.getSessionID());
+                System.out.println("Opponent name:  " + gameSession.getYou().getName());
+                System.out.println("secret Char: " + gameSession.getYou().getChosenChar().getClass().getName());
+                System.out.println("secret Char name: " + gameSession.getYou().getChosenChar().getName());
+                exit();
+            }
+            startTime = System.nanoTime();
+        }*/
         
     }
     
     public void exit()
     {
-        SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
-        Character guessedChar = (Character)ccc.getSelected();
+        Player you = pa.getPlayer(gameSession.getMe(),gameSession.getSessionID());
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        //SimpleDateFormat format = new SimpleDateFormat("ss S");
+        Date old = null;
+        try
+        {
+            old = format.parse(gameSession.getYou().getLastUpdated());
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        //debug
+        System.out.println("time old: " + gameSession.getYou().getLastUpdated());
+        System.out.println("time new: " + you.getLastUpdated());
+        
+        long diff = 0;
+        try{
+            diff = (format.parse(you.getLastUpdated()).getTime() - old.getTime())/1000;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+        
+        
+        System.out.println("time diff: " + diff);
+        if (diff >= 30)
+        {
+            Greenfoot.setWorld(new ResultScreen(gameSession));
+            return;
+        }
+        
+        gameSession.setYou(you);
         //if either player win display result
         if(gameSession.getMe().isFinished() || gameSession.getYou().isFinished())
         {

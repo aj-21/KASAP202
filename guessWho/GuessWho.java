@@ -107,7 +107,7 @@ public class GuessWho extends StatefulWorld
         
         guessWhoState = new TimeState( guessWhoState);
         ((TimeState)guessWhoState).setTimeBoxLoc(this,600,100);
-        ((TimeState)guessWhoState).setTimer(20);
+        ((TimeState)guessWhoState).setTimer(10);
         setState("guessWhoState");
     }
     

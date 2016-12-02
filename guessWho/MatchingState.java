@@ -42,6 +42,8 @@ public class MatchingState implements GameState,Observer
         //for debug 
         System.out.println(gameSession.getMe().getChosenChar().getClass().getName());
         
+        
+        
         world.addObject(blockImg, world.getWidth()/2,world.getHeight()/2);
         world.addObject(returnBut,world.getWidth()/2,world.getHeight()/4*3);
         
@@ -51,6 +53,7 @@ public class MatchingState implements GameState,Observer
         {
             gameSession.setSessionID(sessionID);
             System.out.println("GameSessionID " + gameSession.getSessionID());
+            
             
             return;
         }
@@ -72,6 +75,7 @@ public class MatchingState implements GameState,Observer
                 System.out.println("Opponent name:  " + gameSession.getYou().getName());
                 System.out.println("secret Char: " + gameSession.getYou().getChosenChar().getClass().getName());
                 System.out.println("secret Char name: " + gameSession.getYou().getChosenChar().getName());
+                System.out.println("time stamp: " + gameSession.getYou().getLastUpdated());
                 exit();
             }
             startTime = System.nanoTime();
@@ -89,7 +93,7 @@ public class MatchingState implements GameState,Observer
         {
             System.out.println("no player");
             ((ChooseCharacterScreen)world).setState("chooseCharState");
-            AAAAdapter.deRegister(gameSession.getSessionID());
+            //pa.deleteSession(gameSession.getSessionID());
             return;
         }
         
