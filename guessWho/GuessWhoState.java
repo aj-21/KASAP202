@@ -32,8 +32,8 @@ public class GuessWhoState implements GameState
     public void enter()
     {
         if (myMsg.getWorld() == null)
-            world.addObject(myMsg,world.getWidth()/2,300);
-            world.addObject(yourMsg,world.getWidth()/2,400);
+            world.addObject(myMsg,world.getWidth()/2,200);
+            world.addObject(yourMsg,world.getWidth()/2,250);
         
         updateMessages();
     }
@@ -55,14 +55,14 @@ public class GuessWhoState implements GameState
         if(msg != "")
             msg = "You " + msg;
         System.out.println(msg);
-        myMsg.setImage(a.createImage(msg,20));
+        myMsg.setImage(a.createImage(msg,30));
         
         msg = gameSession.getYou().getLastAction();
         if(msg != "")
             msg = "Your opponent, " + gameSession.getYou().getName()+ ", " + msg;
             
         System.out.println(msg);
-        yourMsg.setImage(a.createImage(msg,20));
+        yourMsg.setImage(a.createImage(msg,30));
     }
     
 }

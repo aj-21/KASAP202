@@ -23,7 +23,7 @@ public class TimeState extends GameStateDecorator implements TimeObserver
     public TimeState(GameState gameState)
     {
         super(gameState);
-        timeText = "State will end \n in %d second(s)";
+        timeText = "Time left\n  %d";
         textSize = 50;
     }
     

@@ -42,7 +42,8 @@ public class ChooseCharacterScreen extends StatefulWorld
         if(gameSession.getMe().getName() == "")
         {
             String name = Greenfoot.ask("Please choose a name for yourself"); 
-            gameSession.getMe().setName(name);
+            //capilize the first letter
+            gameSession.getMe().setName(name.substring(0,1).toUpperCase()+name.substring(1));
         }
         //System.out.println(gameSession.getMe().getName());
               
