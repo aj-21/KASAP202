@@ -11,5 +11,5 @@ comment3.target=void\ setTextColor(java.awt.Color)
 comment4.params=color
 comment4.target=void\ setBackgroundColor(java.awt.Color)
 comment5.params=size
-comment5.target=void\ setSize(int)
+comment5.target=void\ setTextSize(int)
 numComments=6

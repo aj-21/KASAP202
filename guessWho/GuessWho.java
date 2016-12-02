@@ -63,6 +63,7 @@ public class GuessWho extends StatefulWorld
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
         //enable unique selection for suboption Button Canvas
         ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
+        
 
         
         //updateSubOptionReceiver is responsbile for update subOptionButtonCanvas
@@ -84,6 +85,7 @@ public class GuessWho extends StatefulWorld
         DisplayCanvas optButCanvas = new IDisplayCanvas(optButSet);
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
+        ((IDisplayCanvas)optButCanvas).addObserver(new ShowProperty(this,gameSession));
         //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
 
         //enable press handler with chain of responsibility
@@ -97,16 +99,15 @@ public class GuessWho extends StatefulWorld
         IUniqueSelection guessOrFilter = new IUniqueSelection();
         ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
         ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
-        //((IDisplayCanvas)subOptButCanvas).addObserver(guessOrFilter);
         
         scoreState= new TimeState( scoreState);
         ((TimeState)scoreState).setTimer(3);
         ((TimeState)scoreState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
-        ((TimeState)scoreState).setTimeBoxText("%d");
+        ((TimeState)scoreState).setTimeBoxText("Please wait\n%d");
         ((TimeState)scoreState).setTimeBoxSize(100);
         
         guessWhoState = new TimeState( guessWhoState);
-        ((TimeState)guessWhoState).setTimeBoxLoc(this,1000,100);
+        ((TimeState)guessWhoState).setTimeBoxLoc(this,1360,250);
         ((TimeState)guessWhoState).setTimer(10);
         setState("guessWhoState");
     }

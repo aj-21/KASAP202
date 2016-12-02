@@ -74,10 +74,10 @@ public class ChooseCharacterScreen extends StatefulWorld
         
         currentState = chooseCharState;
         //set timer for startingState
-        ((TimeState)startingState).setTimer(5);
+        ((TimeState)startingState).setTimer(3);
         ((TimeState)startingState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
         
-        String text = "Hi " + gameSession.getMe().getName() + ", game starts in\n %d second(s)";
+        String text = "Hi " + gameSession.getMe().getName() + ", game starts in\n%d second(s)";
         ((TimeState)startingState).setTimeBoxText(text);
         ((TimeState)startingState).setTimeBoxSize(100);
         

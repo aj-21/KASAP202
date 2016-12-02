@@ -20,7 +20,6 @@ public class GuessWhoState implements GameState
     
     public GuessWhoState(GuessWho world,GameSession gameSession)
     {
-        
         this.world = world;
         this.gameSession = gameSession;
         myMsg = new DummyImage();
@@ -32,8 +31,10 @@ public class GuessWhoState implements GameState
     public void enter()
     {
         if (myMsg.getWorld() == null)
-            world.addObject(myMsg,world.getWidth()/2,200);
-            world.addObject(yourMsg,world.getWidth()/2,250);
+        {
+            world.addObject(myMsg,550,130);
+            world.addObject(yourMsg,550,170);
+        }
         
         updateMessages();
     }

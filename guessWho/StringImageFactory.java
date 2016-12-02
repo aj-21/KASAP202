@@ -39,7 +39,7 @@ public class StringImageFactory
         this.backgroundColor = color;
     }
     
-    public void setSize(int size)
+    public void setTextSize(int size)
     {
         this.textSize = size;
     }

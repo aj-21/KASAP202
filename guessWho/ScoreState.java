@@ -1,8 +1,6 @@
 import greenfoot.*;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 /**
  * Write a description of class IScoringState here.
  * 
@@ -61,8 +59,9 @@ public class ScoreState implements GameState
             Greenfoot.setWorld(new ResultScreen(gameSession));
             return;
         }
-        
+        //else update You
         gameSession.setYou(you);
+        
         //if either player win display result
         if(gameSession.getMe().isFinished() || gameSession.getYou().isFinished())
         {
@@ -88,17 +87,10 @@ public class ScoreState implements GameState
         System.out.println("yourChar: " + yourChar.getClass().getName());
         System.out.println("guessing correct: " + guessedChar.getClass().getName().equals(yourChar.getClass().getName()));
         if(guessedChar.getClass().getName().equals(yourChar.getClass().getName()))
-        {
         
             gameSession.getMe().setIsFinished(true);
-            
-        }
         
-        gameSession.getMe().setLastAction("has a WRONG guess, and eliminate 1 tile");
-            
-        
-        
-        
+        gameSession.getMe().setLastAction("had a WRONG guess, and eliminate 1 tile");     
     }
     
     public void filter()
@@ -109,7 +101,7 @@ public class ScoreState implements GameState
         SimpleContainer o = new SimpleContainer(gameSession.getPropertyInfo().getOptButtons());
         LButton filterOptBut = (LButton)o.getSelected();
         
-        gameSession.getMe().setLastAction("has a INCCORECT filter, and eliminate 0 tile");
+        gameSession.getMe().setLastAction("was thinking and chose not to act");
         //if no option is currently selected >> no guess no filter
         if(filterOptBut == null)
             return;
@@ -129,7 +121,9 @@ public class ScoreState implements GameState
         if(filterValue.equals(yourChar.getPropertyValue(filterKey)))
         {
             rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet());
-            String msg = "has a CCORECT filter, and eliminate " + rmSet.size()+" tile";
+            String msg = "had a CORRECT filter, and eliminate " + rmSet.size()+" tile";
+            if(rmSet.size() >1)
+                msg+="s";
             gameSession.getMe().setLastAction( msg);
             //the above equals to
             //rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet(),yourChar.getPropertyValue(filterKey));
@@ -137,9 +131,10 @@ public class ScoreState implements GameState
         //if filterValue doesn't match secrete value -> inccorect filter, remove only those who matches selected filter suboption
         else
         {
-            
             rmSet = valueFilter.meetCriteria(gameSession.getPlaySet(),filterValue);
-            String msg = "has a INCCORECT filter, and eliminate " + rmSet.size()+" tile";
+            String msg = "had an INCCORECT filter, and eliminate " + rmSet.size()+" tile";
+            if(rmSet.size() >1)
+                msg+="s";
             gameSession.getMe().setLastAction( msg);
         }
 

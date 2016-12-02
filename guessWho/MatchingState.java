@@ -51,19 +51,16 @@ public class MatchingState implements GameState,Observer
         {
             gameSession.setSessionID(sessionID);
             System.out.println("GameSessionID " + gameSession.getSessionID());
-            
-            
             return;
         }
+        //else ??
         exit();
-        //if not valid ID
-        //handle not connected or sever not available
     }
     
     public void stateRun()
     {
-        //check every 300 ms
-        if(System.nanoTime() - startTime >= 300*1000000){
+        //check every 500 ms
+        if(System.nanoTime() - startTime >= 500*1000000){
             //get player back every second
             Player you = pa.getYou(gameSession.getMe(), gameSession.getSessionID());
             // and check if valid player update Opponent(you), and auto exit (start game);
@@ -79,8 +76,6 @@ public class MatchingState implements GameState,Observer
             }
             startTime = System.nanoTime();
         }
-        
-        //
     }
     
     public void exit()
@@ -99,7 +94,6 @@ public class MatchingState implements GameState,Observer
         //else go to game after 5 seconds
         ((ChooseCharacterScreen)world).setState("startingState");
         System.out.println("game starts");
-        
     }
     
     public void update(Observable o, Object arg)
