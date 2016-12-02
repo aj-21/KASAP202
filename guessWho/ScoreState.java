@@ -23,7 +23,7 @@ public class ScoreState implements GameState
         this.world = world;
         this.gameSession = gameSession;
         yourChar = gameSession.getYou().getChosenChar();
-
+        pa = new PlayerAdapter();
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
         startTime = System.nanoTime();
     }
@@ -41,6 +41,7 @@ public class ScoreState implements GameState
             pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
             return;
         }
+        
         filter();
         pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
         return;
