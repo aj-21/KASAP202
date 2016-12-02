@@ -37,9 +37,9 @@ public class GuessWhoState implements GameState
     {
         if (myMsg.getWorld() == null)
         {
-            world.addObject(myMsg,550,120);
-            world.addObject(yourMsg,550,150);
-            world.addObject(insMsg,550,180);
+            world.addObject(myMsg,630,120);
+            world.addObject(yourMsg,630,150);
+            world.addObject(insMsg,630,180);
         }
         
         updateMessages();

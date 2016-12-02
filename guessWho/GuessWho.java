@@ -5,9 +5,8 @@ import java.util.HashSet;
 
 import java.util.Map;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
+import java.awt.Color;
 /**
  * Write a description of class GuessWho here.
  * 
@@ -39,6 +38,11 @@ public class GuessWho extends StatefulWorld
     
     private void setup()
     {
+        StringImageFactory a = new StringImageFactory();
+        a.setTextColor(new Color(128,0,128));
+        DummyImage text = new DummyImage(a.createImage("Guess Who",100));
+        addObject(text,getWidth()/2,50);
+        
         //charCanvas setting
         ZoomContainer playCon = new ZoomContainer(gameSession.getPlaySet());
         playCon.resizeOnScale(0.8);   
