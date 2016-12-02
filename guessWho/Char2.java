@@ -14,7 +14,7 @@ public class Char2 extends Character
         super("2.png");       
         setName("Reverend Green");
         
-        putProperty("Hair","NoHair");
+        putProperty("Hair","No");
         putProperty("Coat","Yes");
         putProperty("Dress","Green");
         putProperty("Cap","No");

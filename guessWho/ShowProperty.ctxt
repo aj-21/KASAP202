@@ -7,4 +7,6 @@ comment2.params=o\ arg
 comment2.target=void\ update(Observable,\ java.lang.Object)
 comment3.params=
 comment3.target=void\ refresh()
-numComments=4
+comment4.params=value
+comment4.target=java.lang.String\ refine(java.lang.String)
+numComments=5
