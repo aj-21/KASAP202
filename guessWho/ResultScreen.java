@@ -41,10 +41,10 @@ public class ResultScreen extends World implements Observer
         text = new DummyImage(a.createImage("YoUr ReSuLt",100));
         addObject(text,getWidth()/2,80);
         
-        EnableButton rt = new EnableButton("return");
-        rt.enable();
-        rt.addObserver(this);
-        addObject(rt,getWidth()/2,720);
+        EnableButton rtBut = new EnableButton("return");
+        rtBut.enable();
+        rtBut.addObserver(this);
+        addObject(rtBut,1200,750);
         
         if(gameSession.getMe().isFinished() && gameSession.getYou().isFinished()){
             drawResult();//Draw Screen
@@ -106,12 +106,12 @@ public class ResultScreen extends World implements Observer
     
     public void disconnectedResult(){
         StringImageFactory a = new StringImageFactory();
-        a.setTextColor(Color.LIGHT_GRAY);
-        DummyImage text = new DummyImage(a.createImage("Hmm,ask if your friend has just fleed away\n or he has power outage!!!",40));
+        a.setTextColor(Color.CYAN);
+        DummyImage text = new DummyImage(a.createImage("Your rival is disconected,\nask if your friend has just fleed away!!!",40));
         addObject(text,550,250);
         
         DummyImage dis = new DummyImage(new GreenfootImage("disconnect.png"));        
-        addObject(dis, 761, 545);
+        addObject(dis, 550,550);
         System.out.println("Player was disconnected!!");
     }
     
