@@ -69,7 +69,9 @@ public class MatchingState implements GameState,Observer
             {
                 gameSession.setYou(you);
                 System.out.println("GameSessionID: " + gameSession.getSessionID());
-                System.out.println("Opponent name:  " + you.getName());
+                System.out.println("Opponent name:  " + gameSession.getYou().getName());
+                System.out.println("secret Char: " + gameSession.getYou().getChosenChar().getClass().getName());
+                System.out.println("secret Char name: " + gameSession.getYou().getChosenChar().getName());
                 exit();
             }
             startTime = System.nanoTime();
