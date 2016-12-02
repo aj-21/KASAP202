@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.Color;
 
 /**
  * Write a description of class ResultScreen here.
@@ -6,21 +7,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ResultScreen extends World
+public class ResultScreen extends World implements Observer
 {
     
     GameSession gameSession;
-    GifImage winImg = new GifImage("Congrats-You-Win.gif");
-    GifImage loseImg = new GifImage("you-lose.gif");
-    GifImage drawImg = new GifImage("draw.gif");
-    GifImage disImg = new GifImage("disconnect.gif");
-    
-    DummyImage wi = new DummyImage(winImg, false);
-    DummyImage lo = new DummyImage(loseImg, false);
-    DummyImage draw = new DummyImage(drawImg, false);
-    DummyImage dis = new DummyImage(disImg, false);
-    boolean isShowIntro = false, isFirst = false;
-    //GifImage gImg = new GifImage("Introduction.gif");
+    GifImage currentGif;
+    DummyImage currentImg;
     /**
      * Constructor for objects of class ResultScreen.
      * 
@@ -36,80 +28,92 @@ public class ResultScreen extends World
     {
         Character yourChar = gameSession.getYou().getChosenChar();
         yourChar.resizeOnScale(2);
-        addObject(yourChar,getWidth()/2,getHeight()/2);
+        addObject(yourChar,1200,getHeight()/2);
+        
+        StringImageFactory a = new StringImageFactory();
+        DummyImage text = new DummyImage(a.createImage("Secret Character",60));
+        addObject(text,1200,150);
+        
+        a.setTextColor(Color.BLUE);
+        text = new DummyImage(a.createImage("YoUr ReSuLt",100));
+        addObject(text,getWidth()/2,80);
+        
+        EnableButton rt = new EnableButton("return");
+        rt.enable();
+        rt.addObserver(this);
+        addObject(rt,getWidth()/2,720);
+        
+        if(gameSession.getMe().isFinished() && gameSession.getYou().isFinished()){
+            drawResult();//Draw Screen
+            return;
+        }
+        
+        if(gameSession.getMe().isFinished()){
+            winResult();//Me wins
+            return;
+        }
+        
+        if(gameSession.getYou().isFinished()){
+            loseResult();//Me lose
+            return;
+        }
+        
+        disconnectedResult();
+ 
     }
     
     public void act(){
-        if(gameSession.getMe().isFinished() && gameSession.getYou().isFinished()){
-            drawResult();//Draw Screen
-        }else if(gameSession.getMe().isFinished()){
-            winResult();//Me wins
-        }else if(gameSession.getYou().isFinished()){
-            loseResult();//Me lose        
-        }else if(!gameSession.getMe().isFinished() && !gameSession.getYou().isFinished()){
-            disconnectedResult();
+        if (currentGif != null){
+            //remove old frame b4 add the next frame
+            removeObject(currentImg);
+            currentImg = new DummyImage(currentGif,false);
+            addObject(currentImg,550,550);
         }
     }
+    
     public void drawResult(){
-        draw = new DummyImage(drawImg, isFirst);
+        StringImageFactory a = new StringImageFactory();
+        DummyImage text = new DummyImage(a.createImage("You got it,\nand your friend is as smart as you!!!",40));
+        addObject(text,550,250);
         
-        //if(isShowIntro){
-            if(isFirst){
-                isFirst = false;
-            }
-            addObject(draw, 761, 545);
-        //}
-        
-        //addObject(di, 761, 545);
+        currentGif  = new GifImage("draw.gif");
         System.out.println("The game resulted in a draw!");
     }
     
     public void winResult(){
-        wi = new DummyImage(winImg, isFirst);
-        
-        //if(isShowIntro){
-            if(isFirst){
-                isFirst = false;
-            }
-            addObject(wi, 761, 545);
-        //}
-        
-        //addObject(di, 761, 545);
+        StringImageFactory a = new StringImageFactory();
+        DummyImage text = new DummyImage(a.createImage("You are one step\nor perhaps two steps ahead of your friend!!!",40));
+        a.setTextColor(Color.RED);
+        addObject(text,550,250);
+        currentGif  = new GifImage("Congrats-You-Win.gif");
         System.out.println("You win");
     }
     
     public void loseResult(){
-        lo = new DummyImage(loseImg, isFirst);
+        StringImageFactory a = new StringImageFactory();
+        a.setTextColor(Color.RED);
+        String sss = "Your friend correctly guess your character before you!!!";
+        sss += "\nAsk him for his strategy if he has one";
+        DummyImage text = new DummyImage(a.createImage(sss,40));
+        addObject(text,550,250);
         
-        //if(isShowIntro){
-            if(isFirst){
-                isFirst = false;
-            }
-            addObject(lo, 761, 545);
-        //}
-        
-        //addObject(di, 761, 545);
+        currentGif  = new GifImage("you-lose.gif");;
         System.out.println("You Lose");
     }
     
     public void disconnectedResult(){
-        dis = new DummyImage(disImg, isFirst);
+        StringImageFactory a = new StringImageFactory();
+        a.setTextColor(Color.LIGHT_GRAY);
+        DummyImage text = new DummyImage(a.createImage("Hmm,ask if your friend has just fleed away\n or he has power outage!!!",40));
+        addObject(text,550,250);
         
-        //if(isShowIntro){
-            if(isFirst){
-                isFirst = false;
-            }
-            addObject(dis, 761, 545);
-        //}
-        
-        //addObject(di, 761, 545);
+        DummyImage dis = new DummyImage(new GreenfootImage("disconnect.png"));        
+        addObject(dis, 761, 545);
         System.out.println("Player was disconnected!!");
-    
     }
     
-    public void addedToWorld(World world)
+    public void update(Observable o, Object arg)
     {
-        
-        
+        Greenfoot.setWorld(new WelcomeScreen());
     }
 }

@@ -1,4 +1,4 @@
-import org.restlet.representation.Representation ;
+import org.restlet.representation.Representation;
 import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.ext.jackson.* ;
 import org.restlet.resource.* ;

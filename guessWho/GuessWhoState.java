@@ -17,6 +17,7 @@ public class GuessWhoState implements GameState
     GameSession gameSession;
     DummyImage myMsg;
     DummyImage yourMsg;
+    DummyImage updMsg;
     
     public GuessWhoState(GuessWho world,GameSession gameSession)
     {
@@ -24,6 +25,7 @@ public class GuessWhoState implements GameState
         this.gameSession = gameSession;
         myMsg = new DummyImage();
         yourMsg = new DummyImage();
+        updMsg = new DummyImage();
     }
  
 
@@ -55,7 +57,7 @@ public class GuessWhoState implements GameState
         String msg = gameSession.getMe().getLastAction();
         if(msg != "")
             msg = "You " + msg;
-        System.out.println(msg);
+        
         myMsg.setImage(a.createImage(msg,30));
         
         msg = gameSession.getYou().getLastAction();

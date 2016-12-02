@@ -28,12 +28,15 @@ public class WelcomeScreen extends World
         //addobject();
         h1.setIntroSuccessor(h2);
         h2.setIntroSuccessor(h3);
+        
+        Greenfoot.start();
     }
     
     public void act()
     {
         int mouseX, mouseY ;
         
+        removeObject(di);
         di = new DummyImage(gImg, isFirst);
         
         if(isShowIntro){

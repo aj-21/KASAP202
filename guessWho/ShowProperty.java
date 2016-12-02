@@ -41,15 +41,12 @@ public class ShowProperty implements Observer
             return;
         
         String key = selectedBut.getLabel();
-        
         for(Character c:gameSession.getPlaySet())
         {
-            int x = c.getX();
-            int y = c.getY();
             String value = c.getPropertyValue(key);
             value = "  "+refine(value)+"  ";
             DummyImage img = new DummyImage(sif.createImage(value,30));
-            world.addObject(img,x,y-90);
+            world.addObject(img,c.getX(),c.getY()-90);
             labels.add(img);
         }
     }
@@ -61,7 +58,6 @@ public class ShowProperty implements Observer
         {
             case "YES": {sif.setTextColor(Color.RED);return "X";}
             case "NO": {sif.setTextColor(Color.GREEN);return "V";}
-            
             case "GREY": {sif.setTextColor(Color.LIGHT_GRAY);return value;}
             case "YELLOW": {sif.setTextColor(Color.YELLOW);return value;}
             case "GREEN": {sif.setTextColor(Color.GREEN);return value;}
