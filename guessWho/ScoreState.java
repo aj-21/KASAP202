@@ -38,11 +38,11 @@ public class ScoreState implements GameState
         if(guessedChar!=null)
         {
             guess(guessedChar);
-            //pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
+            pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
             return;
         }
         filter();
-        //pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
+        pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
         return;
     }
     
@@ -69,7 +69,7 @@ public class ScoreState implements GameState
     
     public void exit()
     {
-        Player you = pa.getPlayer(gameSession.getMe(),gameSession.getSessionID());
+        Player you = pa.getYou(gameSession.getMe(),gameSession.getSessionID());
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         //SimpleDateFormat format = new SimpleDateFormat("ss S");
         Date old = null;

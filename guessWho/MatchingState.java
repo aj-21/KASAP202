@@ -66,7 +66,7 @@ public class MatchingState implements GameState,Observer
         //check every 300 ms
         if(System.nanoTime() - startTime >= 300*1000000){
             //get player back every second
-            Player you = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
+            Player you = pa.getYou(gameSession.getMe(), gameSession.getSessionID());
             // and check if valid player update Opponent(you), and auto exit (start game);
             if (you != null && you.getName() != "")
             {
@@ -93,7 +93,7 @@ public class MatchingState implements GameState,Observer
         {
             System.out.println("no player");
             ((ChooseCharacterScreen)world).setState("chooseCharState");
-            //pa.deleteSession(gameSession.getSessionID());
+            pa.delete(gameSession.getSessionID());
             return;
         }
         
