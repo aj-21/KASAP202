@@ -40,7 +40,7 @@ public class Player
         return chosenChar;
     }
     
-    public void setIsFinished(boolean isFinised)
+    public void setIsFinished(boolean isFinished)
     {
         this.isFinished = isFinished;
     }

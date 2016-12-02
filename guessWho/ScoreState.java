@@ -70,8 +70,17 @@ public class ScoreState implements GameState
         gameSession.getPlaySet().remove(guessedChar);
         
         //if same class -> win
-        if(guessedChar.getClass() == yourChar.getClass())
+        System.out.println("guessedChar: " + guessedChar.getClass().getName());
+        System.out.println("yourChar: " + yourChar.getClass().getName());
+        System.out.println("guessing correct: " + guessedChar.getClass().getName().equals(yourChar.getClass().getName()));
+        if(guessedChar.getClass().getName().equals(yourChar.getClass().getName()))
+        {
+            System.out.println("I am finishing this game");
             gameSession.getMe().setIsFinished(true);
+            System.out.println("I am finished: " + gameSession.getMe().isFinished());
+        }
+            
+        
         
         
     }
