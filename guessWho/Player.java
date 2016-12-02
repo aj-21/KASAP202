@@ -55,6 +55,11 @@ public class Player
         this.lastAction = lastAction;
     }
     
+    public String getLastAction()
+    {
+        return this.lastAction;
+    }
+    
     public void setLastUpdated(String lastUpdated)
     {
         this.lastUpdated = lastUpdated;

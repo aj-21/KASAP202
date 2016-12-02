@@ -80,23 +80,6 @@ public class ChooseCharacterScreen extends StatefulWorld
         ((TimeState)startingState).setTimeBoxText(text);
         ((TimeState)startingState).setTimeBoxSize(100);
         
-        // PlayerAdapter pa = new PlayerAdapter();
-        // gameSession.setSessionID(pa.registerMe(gameSession.getMe()));
-        // System.out.println("GameSessionID " + gameSession.getSessionID());
-        // Player player2 = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
-        // if(!player2.getName().equals(""))
-        // {
-            // String text = "Hi " + gameSession.getMe().getName() + ", game starts in\n %d second(s)";
-            // ((TimeState)startingState).setTimeBoxText(text);
-            // ((TimeState)startingState).setTimeBoxSize(100);
-        // }
-        // else
-        // {
-            // String text = "Hi " + gameSession.getMe().getName() + ", waiting for player 2.";
-            // ((TimeState)startingState).setTimeBoxText(text);
-            // ((TimeState)startingState).setTimeBoxSize(100);
-        // }
-        
     }
     
     public void act()

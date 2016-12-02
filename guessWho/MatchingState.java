@@ -41,9 +41,7 @@ public class MatchingState implements GameState,Observer
     {
         //for debug 
         System.out.println(gameSession.getMe().getChosenChar().getClass().getName());
-        
-        
-        
+
         world.addObject(blockImg, world.getWidth()/2,world.getHeight()/2);
         world.addObject(returnBut,world.getWidth()/2,world.getHeight()/4*3);
         
@@ -57,6 +55,7 @@ public class MatchingState implements GameState,Observer
             
             return;
         }
+        exit();
         //if not valid ID
         //handle not connected or sever not available
     }
@@ -93,7 +92,7 @@ public class MatchingState implements GameState,Observer
         {
             System.out.println("no player");
             ((ChooseCharacterScreen)world).setState("chooseCharState");
-            pa.delete(gameSession.getSessionID());
+            //pa.delete(gameSession.getSessionID());
             return;
         }
         

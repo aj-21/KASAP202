@@ -30,7 +30,7 @@ public class GuessWho extends StatefulWorld
         super(1536, 864, 1); 
         this.gameSession = gameSession;
         
-        guessWhoState = new GuessWhoState(this);
+        guessWhoState = new GuessWhoState(this,gameSession);
         scoreState = new ScoreState(this,gameSession);
         
         

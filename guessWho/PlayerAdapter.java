@@ -108,6 +108,7 @@ public class PlayerAdapter implements PlayerOperations
         returnPlayer.setName(playerWrapper.name);
         returnPlayer.setIsFinished(playerWrapper.isfinished);
         returnPlayer.setLastUpdated(playerWrapper.lastUpdated);
+        returnPlayer.setLastAction(playerWrapper.lastAction);
         
         //String file = playerWrapper.name.charAt(4) + ".png";
         switch(playerWrapper.myChar) {
@@ -150,7 +151,7 @@ public class PlayerAdapter implements PlayerOperations
         PlayerWrapper returnPlayer = new PlayerWrapper();
         returnPlayer.name = player.getName();
         
-        
+        returnPlayer.lastAction = player.getLastAction();
         returnPlayer.myChar = player.getChosenChar().getClass().getName();
         returnPlayer.isfinished = player.isFinished();
         returnPlayer.lastUpdated = player.getLastUpdated();

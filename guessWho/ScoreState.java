@@ -130,10 +130,12 @@ public class ScoreState implements GameState
         System.out.println("guessing correct: " + guessedChar.getClass().getName().equals(yourChar.getClass().getName()));
         if(guessedChar.getClass().getName().equals(yourChar.getClass().getName()))
         {
-            System.out.println("I am finishing this game");
+        
             gameSession.getMe().setIsFinished(true);
-            System.out.println("I am finished: " + gameSession.getMe().isFinished());
+            
         }
+        
+        gameSession.getMe().setLastAction("has a WRONG guess, and eliminate 1 tile");
             
         
         
@@ -147,6 +149,8 @@ public class ScoreState implements GameState
         
         SimpleContainer o = new SimpleContainer(gameSession.getPropertyInfo().getOptButtons());
         LButton filterOptBut = (LButton)o.getSelected();
+        
+        gameSession.getMe().setLastAction("has a INCCORECT filter, and eliminate 0 tile");
         //if no option is currently selected >> no guess no filter
         if(filterOptBut == null)
             return;
@@ -166,13 +170,18 @@ public class ScoreState implements GameState
         if(filterValue.equals(yourChar.getPropertyValue(filterKey)))
         {
             rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet());
+            String msg = "has a CCORECT filter, and eliminate " + rmSet.size()+" tile";
+            gameSession.getMe().setLastAction( msg);
             //the above equals to
             //rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet(),yourChar.getPropertyValue(filterKey));
         }
         //if filterValue doesn't match secrete value -> inccorect filter, remove only those who matches selected filter suboption
         else
         {
+            
             rmSet = valueFilter.meetCriteria(gameSession.getPlaySet(),filterValue);
+            String msg = "has a INCCORECT filter, and eliminate " + rmSet.size()+" tile";
+            gameSession.getMe().setLastAction( msg);
         }
 
         //two step remove

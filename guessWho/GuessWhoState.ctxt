@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=GuessWhoState
 comment0.text=\n\ Write\ a\ description\ of\ class\ IGuessWhoState\ here.\n\ \n\ @author\ SPAAK\ \n\ \n
-comment1.params=world
-comment1.target=GuessWhoState(GuessWho)
+comment1.params=world\ gameSession
+comment1.target=GuessWhoState(GuessWho,\ GameSession)
 comment2.params=
 comment2.target=void\ enter()
 comment3.params=
 comment3.target=void\ stateRun()
 comment4.params=
 comment4.target=void\ exit()
-numComments=5
+comment5.params=
+comment5.target=void\ updateMessages()
+numComments=6
