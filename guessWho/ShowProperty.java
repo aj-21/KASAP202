@@ -71,8 +71,8 @@ public class ShowProperty implements Observer
         value = value.toUpperCase();
         switch(value)
         {
-            case "YES": {sif.setTextColor(Color.RED);return "X";}
-            case "NO": {sif.setTextColor(Color.GREEN);return "V";}
+            case "YES": {sif.setTextColor(Color.GREEN);return "V";}
+            case "NO": {sif.setTextColor(Color.RED);return "X";}
             case "GREY": {sif.setTextColor(Color.LIGHT_GRAY);return value;}
             case "YELLOW": {sif.setTextColor(Color.YELLOW);return value;}
             case "GREEN": {sif.setTextColor(Color.GREEN);return value;}
