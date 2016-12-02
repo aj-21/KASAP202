@@ -19,7 +19,7 @@ public class PlayerAdapter implements PlayerOperations
     String url = "http://35.164.41.209/GuessWho";
     //String url = "http://localhost:8080/GuessWho";
     
-    public Player getYou(Player player, String SessionId)
+    public Player getPlayer(Player player, String SessionId)
     {
         GameSessionWrapper response = new GameSessionWrapper();
 
@@ -30,21 +30,26 @@ public class PlayerAdapter implements PlayerOperations
         
         try {
             response = gameSession.getObject() ;
+            
             if(!response.player1.name.equals(player.getName())){
+                System.out.println("you are player 2, returning player 1");
+                System.out.println("player1 name is: "+ response.player1.name);
                 return mapPlayerWrapperToPlayer(response.player1);
             }
             else
             {
                 if(response.player2 != null)
                 {
+                    System.out.println("you are player 1, returning player 2");
+                    System.out.println("player2 name is: " + response.player2.name);
                     return mapPlayerWrapperToPlayer(response.player2);
                 }
-                else
-                {
-                    return null;
-                }
+                
+                System.out.println("looking for a player");
+                return null;
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println("Exception : " + e);            
         }
         
@@ -73,33 +78,9 @@ public class PlayerAdapter implements PlayerOperations
         return "";
     }
     
-    public void updateMe(Player player, String SessionId)
+    public Player updateMe(Player player)
     {
-        GameSessionWrapper response = new GameSessionWrapper();
-        ClientResource cr = new ClientResource(url + "?gameId=" + SessionId);
-        ObjectMapper mapper = new ObjectMapper();
-        
-        try {
-            PlayerWrapper playerWrapperRequest = mapPlayerToPlayerWrapper(player);
-            String requestString = mapper.writeValueAsString(playerWrapperRequest);
-            Representation rep = cr.put(new JsonRepresentation(requestString));
-            Representation responseEntity = cr.getResponseEntity();
-            
-        } catch (Exception e) {
-            System.out.println("Exception : " + e);
-        }
-    }
-    
-    public void delete(String SessionId)
-    {
-        try {
-            GameSessionWrapper response = new GameSessionWrapper();
-    
-            ClientResource cr = new ClientResource(url + "?gameId=" + SessionId);
-            Representation repr = cr.delete();
-        } catch (Exception e) {
-            System.out.println("Exception : " + e);
-        }
+        return new Player();
     }
     
     public Player mapPlayerWrapperToPlayer(PlayerWrapper playerWrapper)
@@ -110,6 +91,7 @@ public class PlayerAdapter implements PlayerOperations
         returnPlayer.setLastUpdated(playerWrapper.lastUpdated);
         
         //String file = playerWrapper.name.charAt(4) + ".png";
+        
         switch(playerWrapper.myChar) {
              case "Char1" :
                 returnPlayer.setChosenChar(new Char1()); 

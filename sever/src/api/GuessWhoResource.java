@@ -35,14 +35,11 @@ public class GuessWhoResource extends ServerResource {
 
         GameSession returnSession = new GameSession();
         JacksonRepresentation<Player> playerRep = new JacksonRepresentation<Player> ( rep, Player.class ) ;
-		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        Date date = new Date();
-		
+
         try {
             
             Player request = playerRep.getObject() ;            
-			request.lastUpdated = dateFormat.format(date);
-			
+
             if(gameInstance.currentSession == null) {
                 gameInstance.currentSession = new GameSession();
                 if(gameInstance.currentSession.player1 == null) {
@@ -97,23 +94,5 @@ public class GuessWhoResource extends ServerResource {
 
         return new JacksonRepresentation<GameSession>(returnSession) ;
 
-    }
-
-    @Delete
-    public Representation delete() {
-        
-        String currentGameId = getQueryValue("gameId");
-		GameSession rm = null;
-		for (GameSession session : gameInstance.gameSessions) {
-			if(session.gameId.equals(currentGameId))
-				rm = session;
-		}
-		gameInstance.gameSessions.remove(rm);
-		
-		if(gameInstance.currentSession != null)
-            if(gameInstance.currentSession.gameId.equals(currentGameId))
-                gameInstance.currentSession = null;
-		
-       return null ;
     }
 }
