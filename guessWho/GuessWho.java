@@ -61,6 +61,8 @@ public class GuessWho extends StatefulWorld
         myCharCanvas.setBackground("yourCharacterCanvas.png").setColRow(1,1).display();  
         
         
+        
+        
         //suboption canvas setup without any set for display. the display will be handled by UpdateSubOpt class
         DisplayCanvas subOptButCanvas = new IDisplayCanvas();
         addObject(subOptButCanvas,175,580);
@@ -89,7 +91,11 @@ public class GuessWho extends StatefulWorld
         DisplayCanvas optButCanvas = new IDisplayCanvas(optButSet);
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
-        ((IDisplayCanvas)optButCanvas).addObserver(new ShowProperty(this,gameSession));
+        
+        //showProperty setup
+        ShowProperty showProperty = new ShowProperty(this,gameSession);
+        ((IDisplayCanvas)optButCanvas).addObserver(showProperty);
+        ((IDisplayCanvas)subOptButCanvas).addObserver(showProperty);
         //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
 
         //enable press handler with chain of responsibility

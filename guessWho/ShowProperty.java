@@ -39,15 +39,30 @@ public class ShowProperty implements Observer
         LabelButton selectedBut = (LabelButton)ccc.getSelected();
         if(selectedBut == null)
             return;
-        
         String key = selectedBut.getLabel();
+        
+        ccc = new SimpleContainer(gameSession.getPropertyInfo().getSubOptButtons(  (LButton)selectedBut));
+        selectedBut = (LabelButton)ccc.getSelected();
+        String subValue = "";
+        if(selectedBut != null)
+        {
+            
+            subValue = selectedBut.getLabel();
+        }
+            
+        
+        System.out.println("Sub: " + (selectedBut == null) +  " - " +subValue);
+        
         for(Character c:gameSession.getPlaySet())
         {
             String value = c.getPropertyValue(key);
-            value = "  "+refine(value)+"  ";
-            DummyImage img = new DummyImage(sif.createImage(value,30));
-            world.addObject(img,c.getX(),c.getY()-90);
-            labels.add(img);
+            if(value.equals(subValue) || subValue.equals( "") )
+            {
+                value = "  "+refine(value)+"  ";
+                DummyImage img = new DummyImage(sif.createImage(value,30));
+                world.addObject(img,c.getX(),c.getY()-90);
+                labels.add(img);
+            }
         }
     }
     
