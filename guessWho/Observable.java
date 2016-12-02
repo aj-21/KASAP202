@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class Observable  
 {
@@ -8,7 +9,7 @@ public class Observable
     
     public Observable()
     {
-        observers = new HashSet<Observer>();
+        observers = new LinkedHashSet<Observer>();
     }
     
     public void addObserver(Observer o)

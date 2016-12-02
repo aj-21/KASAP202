@@ -32,6 +32,7 @@ public class ShowProperty implements Observer
     
     public void refresh()
     {
+        //remove all labels
         world.removeObjects(labels);
         labels.clear();
         
@@ -56,6 +57,7 @@ public class ShowProperty implements Observer
         for(Character c:gameSession.getPlaySet())
         {
             String value = c.getPropertyValue(key);
+            //only add if no subOpt is selected or character value is equals selected subOpt
             if(value.equals(subValue) || subValue.equals( "") )
             {
                 value = "  "+refine(value)+"  ";

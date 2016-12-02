@@ -68,6 +68,7 @@ public class GuessWho extends StatefulWorld
         addObject(subOptButCanvas,175,580);
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
         //enable unique selection for suboption Button Canvas
+        
         ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
         
 
@@ -92,17 +93,15 @@ public class GuessWho extends StatefulWorld
         addObject(optButCanvas,630,255);
         optButCanvas.setBackground("optionCanvas.png").setMargin(2.5,2.5,0,0).setColRow(optButSet.size(),1).display();
         
-        //showProperty setup
-        ShowProperty showProperty = new ShowProperty(this,gameSession);
-        ((IDisplayCanvas)optButCanvas).addObserver(showProperty);
-        ((IDisplayCanvas)subOptButCanvas).addObserver(showProperty);
-        //((IDisplayCanvas)optButCanvas).addObserver(new IUniqueSelection());
+        
+        
 
         //enable press handler with chain of responsibility
         PressHandlerState pressState = new PressHandlerState(guessWhoState);
         pressState.setSuccessor((PressHandler)charCanvas);
         pressState.setSuccessor((PressHandler)subOptButCanvas);
         pressState.setSuccessor((PressHandler)optButCanvas);
+        
         guessWhoState = pressState;
         
         //keep either filter or guess
@@ -110,8 +109,15 @@ public class GuessWho extends StatefulWorld
         ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
         ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
         
+        //showProperty setup
+        ShowProperty showProperty = new ShowProperty(this,gameSession);
+        ((IDisplayCanvas)optButCanvas).addObserver(showProperty);
+        ((IDisplayCanvas)subOptButCanvas).addObserver(showProperty);
+        ((IDisplayCanvas)charCanvas).addObserver(showProperty);
+        
+        
         scoreState= new TimeState( scoreState);
-        ((TimeState)scoreState).setTimer(3);
+        ((TimeState)scoreState).setTimer(5);
         ((TimeState)scoreState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
         ((TimeState)scoreState).setTimeBoxText("Please wait\n%d");
         ((TimeState)scoreState).setTimeBoxSize(100);

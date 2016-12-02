@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MyObservable
-comment0.text=\n\ MyObservable\ is\ a\ proxy\ of\ Observer.\ this\ is\ created\ for\ children\ of\ other\ classes\ wish\ to\ use\ Observer\ pattern\n\ M\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ MyObservable\ is\ a\ proxy\ of\ Observer.\ this\ is\ created\ for\ children\ of\ other\ classes\ wish\ to\ use\ Observer\ pattern\n\ MyObservable\ replace\ protected\ setChanged\ method\ to\ public\ setCHANGED\ method,\ protected\ clearChanged\ method\ to\ public\ clearCHANGED\ method\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ setCHANGED()
 comment2.params=
