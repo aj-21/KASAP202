@@ -92,7 +92,7 @@ public class MatchingState implements GameState,Observer
         {
             System.out.println("no player");
             ((ChooseCharacterScreen)world).setState("chooseCharState");
-            //pa.delete(gameSession.getSessionID());
+            pa.delete(gameSession.getSessionID());
             return;
         }
         
