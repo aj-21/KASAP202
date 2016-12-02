@@ -49,55 +49,14 @@ public class ScoreState implements GameState
     
     public void stateRun()
     {
-        //exchange info, detect player disconnection
-        /*if(System.nanoTime() - startTime >= 1000*1000000){
-            //get player back every second
-            Player you = pa.getPlayer(gameSession.getMe(), gameSession.getSessionID());
-            // and check if valid player update Opponent(you), and auto exit (start game);
-            if (you != null && you.getName() != "")
-            {
-                gameSession.setYou(you);
-                System.out.println("GameSessionID: " + gameSession.getSessionID());
-                System.out.println("Opponent name:  " + gameSession.getYou().getName());
-                System.out.println("secret Char: " + gameSession.getYou().getChosenChar().getClass().getName());
-                System.out.println("secret Char name: " + gameSession.getYou().getChosenChar().getName());
-                exit();
-            }
-            startTime = System.nanoTime();
-        }*/
         
     }
     
     public void exit()
     {
         Player you = pa.getYou(gameSession.getMe(),gameSession.getSessionID());
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        //SimpleDateFormat format = new SimpleDateFormat("ss S");
-        Date old = null;
-        try
-        {
-            old = format.parse(gameSession.getYou().getLastUpdated());
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-        //debug
-        System.out.println("time old: " + gameSession.getYou().getLastUpdated());
-        System.out.println("time new: " + you.getLastUpdated());
-        
-        long diff = 0;
-        try{
-            diff = (format.parse(you.getLastUpdated()).getTime() - old.getTime())/1000;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-        
-        
-        System.out.println("time diff: " + diff);
-        if (diff >= 30)
+        //if timestamp remains the same => no update => disconnected
+        if(gameSession.getYou().getLastUpdated().equals(you.getLastUpdated()))
         {
             Greenfoot.setWorld(new ResultScreen(gameSession));
             return;
