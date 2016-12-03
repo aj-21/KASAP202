@@ -10,8 +10,7 @@ public class CriteriaValue implements PropertyCriteria
 {
     String filterKey;
     String secretValue;
-    //Character yourChar;
-    //GameSession gameSession;
+
     public CriteriaValue(GameSession gameSession, String filterKey) 
     {
         this.filterKey = filterKey;

@@ -7,46 +7,32 @@ import java.util.TimerTask;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TimeState extends GameStateDecorator implements TimeObserver
-{
-    Timer timer;
-    TimerTask timeoutTask;
-    TimerTask secondTask;
-    int secRemaining;
-    int delay;
+public class TimeState extends GameStateDecorator
+{  
     DummyImage timeBox;
     String timeText;
     int textSize;
     int timeBoxX;
     int timeBoxY;
     World world;
+    
+    long startTime;
+    long elapsedTime;
+    long remainingTime=0;
+    int secRemaining;
+    long delay;
     public TimeState(GameState gameState)
     {
         super(gameState);
         timeText = "Time left\n  %d";
         textSize = 50;
+        setTimer(30);
     }
     
     public void setTimer(int seconds)
     {
-        delay = seconds;
-    }
-    
-    private void schedule()
-    {
-        if (delay <= 0)
-            return;
-        //reset secRemaining
-        secRemaining = delay;
-        //setup new Timer and tasks
-        timer = new Timer();
-        timeoutTask = new TimeoutTask(this);
-        secondTask = new SecondObservable(this);
-        
-        //start timer
-        timer.schedule(secondTask,0,1000);
-        timer.schedule(timeoutTask,delay*1000);
-        
+        if(seconds > 0)
+            delay = seconds*1000;
     }
     
     public void setTimeBoxLoc(World world,int x, int y)
@@ -54,7 +40,7 @@ public class TimeState extends GameStateDecorator implements TimeObserver
         if(timeBox == null)
         {
             timeBox = new DummyImage();
-            //world.addObject(timeBox,x,y);
+            
             this.timeBoxX = x;
             this.timeBoxY = y;
             this.world = world;
@@ -73,14 +59,6 @@ public class TimeState extends GameStateDecorator implements TimeObserver
         this.timeText= text;
     }
     
-    @Override 
-    public void secondUpdate()
-    {
-        updateTimeBox();
-        if(secRemaining >0)
-            secRemaining --;
-    }
-    
     private void updateTimeBox()
     {
         if(timeBox != null)
@@ -92,21 +70,38 @@ public class TimeState extends GameStateDecorator implements TimeObserver
     }
     
     @Override 
-    public void timeout()
-    {
-        //cancel timer and tasks
-        timer.cancel();
-        updateTimeBox();
-        world.removeObject(timeBox);
-        super.exit();
-        
-    }
-    
-    @Override 
     public void enter()
     {
-        schedule();
+        //get new timestamp
+        startTime = System.nanoTime()/1000000; 
         super.enter();
         world.addObject(this.timeBox,timeBoxX,timeBoxY);
+    }
+    
+    @Override
+    public void stateRun()
+    {
+        //keep getting elapsed time
+        elapsedTime = System.nanoTime()/1000000 - startTime;
+        //detect second        
+        remainingTime = delay - elapsedTime;
+        if(secRemaining != (int)(remainingTime/1000)+1){
+            secRemaining = (int)(remainingTime/1000)+1;
+            updateTimeBox();
+        }
+        
+        //detect timeout
+        if(remainingTime <=0){
+            exit();
+            return;
+        }
+        super.stateRun();
+    }
+    
+    @Override
+    public void exit()
+    {
+        world.removeObject(timeBox);
+        super.exit();
     }
 }
