@@ -44,8 +44,11 @@ public class UniqueSelection<T extends Selectable> implements Observer
             return;
         
         //if nothing is selected => deselection
-        lastSelected.deselect();
-        lastSelected = null;
+        if (lastSelected != null)
+        {
+            lastSelected.deselect();
+            lastSelected = null;
+        }
     }
     
     //helper method to maintain 1 selection

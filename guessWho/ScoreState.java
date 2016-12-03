@@ -70,7 +70,7 @@ public class ScoreState implements GameState
     {
         //get opponent from server
         Player you = pa.getYou(gameSession.getMe(),gameSession.getSessionID());
-        //if timestamp remains the same => no update => disconnected
+        //if session is deleted or timestamp remains the same => no update => disconnected
         if(gameSession.getYou().getLastUpdated().equals(you.getLastUpdated()))
         {
             Greenfoot.setWorld(new ResultScreen(gameSession));
