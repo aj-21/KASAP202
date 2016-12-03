@@ -26,7 +26,9 @@ public class ResultScreen extends World implements Observer
     
     private void prepare()
     {
-                
+        //delete playSet to free memory
+        gameSession.getPlaySet().clear();
+        
         Character yourChar = gameSession.getYou().getChosenChar();
         yourChar.resizeOnScale(2);
         addObject(yourChar,1200,getHeight()/2);
