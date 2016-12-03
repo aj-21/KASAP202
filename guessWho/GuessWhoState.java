@@ -1,13 +1,11 @@
 import greenfoot.*;
 import java.awt.Color;
-import java.util.Timer;
-import java.util.TimerTask;
-//import java.util.Observer;
-//import java.util.Observable;
+
 /**
- * Write a description of class IGuessWhoState here.
+ * responsible for display latest messages of action from both players and display hint
  * 
- * @author SPAAK 
+ * @author: SPAAK 
+ * @version: 1
  * 
  */
 public class GuessWhoState implements GameState
@@ -59,18 +57,21 @@ public class GuessWhoState implements GameState
     {
         StringImageFactory a = new StringImageFactory();
         
+        //update my message
         String msg = gameSession.getMe().getLastAction();
         if(msg != "")
             msg = "You " + msg;  
         a.setTextColor(Color.BLUE);
         myMsg.setImage(a.createImage(msg,30));
         
+        //update your message
         msg = gameSession.getYou().getLastAction();
         if(msg != "")
             msg = "Your opponent, " + gameSession.getYou().getName()+ ", " + msg;     
         a.setTextColor(Color.GRAY);
         yourMsg.setImage(a.createImage(msg,30));
         
+        //update hint message
         if(insIter.hasNext())
         {
             msg = "Hint: " + (String)insIter.next();

@@ -1,23 +1,21 @@
-//import java.util.Observer;
-//import java.util.Observable;
-import greenfoot.World;
 import java.util.Set;
-import java.util.HashSet;
 /**
- * This class is used for updating the sub options after selecting the options.
+ * This class is a displayReceiver which performs display and undisplay on a DisplayCanvas (suboption Canvas this case) 
  * 
  * @author SPAAK 
  * @version 1
  */
-public class UpdSubOptRcv extends Observable implements DisplayReceiver
+public class UpdSubOptRcv implements DisplayReceiver
 {
     DisplayCanvas subOptCan;      
-   
+    
+    //constructors requries subOption canvas (DisplayCanvas) to call methods
     public UpdSubOptRcv(DisplayCanvas subOptCan)
     {
         this.subOptCan = subOptCan;
     }
     
+    //display new suboption buttons
     @Override
     public void display(Object arg)
     {
@@ -28,15 +26,9 @@ public class UpdSubOptRcv extends Observable implements DisplayReceiver
             //get the buttons
             Set<LabelButton> buts = (Set<LabelButton>)arg;
             
-            //add buttons and setup to display
+            //add new buttons and setup to display
             subOptCan.addAll(buts);
-            subOptCan.setColRow(1,buts.size()).display();  
-            
-            //important to send non-selected new set to observer
-            setChanged();
-            notifyObservers(buts);
-            clearChanged();
-            
+            subOptCan.setColRow(1,buts.size()).display();              
         }
         catch (NullPointerException e)
         {
@@ -44,31 +36,22 @@ public class UpdSubOptRcv extends Observable implements DisplayReceiver
         }
     }
     
+    //remove old suboption buttons
     @Override
     public void undisplay(Object arg)
     {
         try
         {
-            //get the button
+            //get the suboption buttons
             Set<LabelButton> buts = (Set<LabelButton>)arg;
             //remove from world
             subOptCan.getWorld().removeObjects(buts);
             //unclick buttons
-            for (LabelButton but:buts)
-            {
-                if(but.isSelected())
-                {
-                    but.deselect();
-                    break;
-                }
-            }
-            //remove from suboption canvas if there is
+            SimpleContainer sc = new SimpleContainer(buts);
+            sc.getSelected().deselect();
+
+            //remove old buttons from suboption canvas if there is
             subOptCan.getAll().removeAll(buts);
-            
-            //important to send non-selected set to observer
-            setChanged();
-            notifyObservers(buts);
-            clearChanged();
         }
         catch (NullPointerException e)
         {

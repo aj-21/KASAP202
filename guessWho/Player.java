@@ -1,8 +1,9 @@
 /**
- * Write a description of class PlayerInfo here.
+ * Player class stores data for a player in game
+ * it provides a basic pair of get and set methods for each internal variable
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class Player 
 {

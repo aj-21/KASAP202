@@ -1,4 +1,3 @@
-
 /**
  * Selectable interface requires select() method to select object, deselect to deselect object, and isSelected return if object is select or not
  * 

@@ -1,3 +1,10 @@
+/**
+ * interface for GameState, implement state design pattern
+ * 
+ * @author SPAAK 
+ * 
+ */
+
 public interface GameState  
 {
     public void enter();

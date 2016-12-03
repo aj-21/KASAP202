@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=GameState
+comment0.text=\n\ interface\ for\ GameState,\ implement\ state\ design\ pattern\n\ \n\ @author\ SPAAK\ \n\ \n
 comment1.params=
 comment1.target=void\ enter()
 comment2.params=

@@ -1,10 +1,10 @@
 import java.util.Set;
-import java.util.HashSet;
 /**
- * Write a description of class ConcreteCommand here.
+ * a DisplayCommand class that wraps around DisplayCmd and UndisplayCmd to decide when to call one instead the other
+ * constructor requires PropertyInfo for singleton SubOptionButtons
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class UpdSubOptCmd implements DisplayCommand 
 {
@@ -13,6 +13,8 @@ public class UpdSubOptCmd implements DisplayCommand
     UndisplayCmd undisplayCmd;
     Set<LabelButton> butSet;
     PropertyInfo propertyInfo;
+    
+    //constructor requires PropertyInfo for singleton SubOptionButtons
     public UpdSubOptCmd (PropertyInfo propertyInfo)
     {
         this.propertyInfo = propertyInfo;
@@ -27,39 +29,24 @@ public class UpdSubOptCmd implements DisplayCommand
             return;
         
         LButton but = (LButton)arg;
-        
+        // call displayCmd to display  suboption buttons when a new option button is selected
         if(but.isSelected())
         {
             displayCmd.execute(propertyInfo.getSubOptButtons(but));
             return;
         }
+        // call displayCmd to remove  suboption buttons when a new option button is deselected
         undisplayCmd.execute(propertyInfo.getSubOptButtons(but));
         
     }
     
+    //receiver will be set for nested display command also
     @Override
     public void setReceiver(DisplayReceiver receiver)
     {
         this.receiver = receiver;
         displayCmd.setReceiver(receiver);
         undisplayCmd.setReceiver(receiver);
-    }
-    
-    private Set<LabelButton> getButSet(LabelButton optBut)
-    {
-        if (butSet==null)
-        {
-            
-            Set<String> subOptions = propertyInfo.getValues(optBut.getLabel());
-            butSet = new HashSet<LabelButton>();
-            
-            for(String subOpt:subOptions)
-            {
-                butSet.add(new LabelButton(subOpt,"subOptionsButton.png"));
-            }
-            
-        }
-        return butSet;
     }
     
 }

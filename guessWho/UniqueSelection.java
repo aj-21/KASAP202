@@ -1,20 +1,18 @@
 import java.util.Set;
-import java.util.HashSet;
-
 /**
- * UniqueSelectionMaintainer is to maintain a set of Selectable objects so that only 1 last selection will be kept.
- * UniqueSelectionMaintainer is a process rather than an Actor, so it need to be setup and run by us.
+ * UniqueSelectionMaintainer is an observer to maintain a set of Selectable objects so that only 1 last selection will be kept.
+ * Observable subject need to pass in the set it wished to maintain the unique as the second parameter in update method
  * 
  * @author SPAAK
  * @version 1
  */
-public class IUniqueSelection<T extends Selectable> implements Observer
+public class UniqueSelection<T extends Selectable> implements Observer
 {
     protected T lastSelected;
     /**
      * Constructor for objects of class UniqueSelectionMaintainer either with a paramenter of objects for maintaining one Selection or no paramenter.
      */
-    public IUniqueSelection()
+    public UniqueSelection()
     {
         
     }

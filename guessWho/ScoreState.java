@@ -1,11 +1,10 @@
 import greenfoot.*;
 import java.util.Set;
-import java.util.HashSet;
 /**
- * Write a description of class IScoringState here.
+ * ScoreState performs guess and filter tasks as well and exchanges info with restlet server
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class ScoreState implements GameState
 {
@@ -16,6 +15,10 @@ public class ScoreState implements GameState
     
     PlayerAdapter pa;
     long startTime;
+    
+    /**
+     * constructor requires a world which state resides and gameSession for accessing info
+     */
     public ScoreState(GuessWho world,GameSession gameSession)
     {
         this.world = world;
@@ -26,6 +29,10 @@ public class ScoreState implements GameState
         startTime = System.nanoTime();
     }
     
+    /**
+     * when enter, displaying a block image on top, and investigate to see if player choose to guess or filter
+     * then update Me to server
+     */
     public void enter()
     {
         //display dim image (background)
@@ -33,25 +40,35 @@ public class ScoreState implements GameState
      
         SimpleContainer ccc = new SimpleContainer(gameSession.getPlaySet());
         Character guessedChar = (Character)ccc.getSelected();
+        //if there exists a selection in playset -> guess
         if(guessedChar!=null)
         {
             guess(guessedChar);
+            //update after guess
             pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
             return;
         }
-        
+        //else filter
         filter();
+        //update after filter
         pa.updateMe(gameSession.getMe(),gameSession.getSessionID());
-        return;
     }
     
+    //do nothing in run
     public void stateRun()
     {
         
     }
     
+    /**
+     * remove the block image
+     * when exits, get updated opponent, and investigate if game is finished (either player isfinished) or disconnected then go to result screen
+     * else go back to guesswho state to continue the game
+     * 
+     */
     public void exit()
     {
+        //get opponent from server
         Player you = pa.getYou(gameSession.getMe(),gameSession.getSessionID());
         //if timestamp remains the same => no update => disconnected
         if(gameSession.getYou().getLastUpdated().equals(you.getLastUpdated()))
@@ -59,6 +76,7 @@ public class ScoreState implements GameState
             Greenfoot.setWorld(new ResultScreen(gameSession));
             return;
         }
+        
         //else update You
         gameSession.setYou(you);
         
@@ -68,6 +86,8 @@ public class ScoreState implements GameState
             Greenfoot.setWorld(new ResultScreen(gameSession));
             return;
         }
+        
+        //else continue the game
         world.removeObject(blockImg);
         world.setState("guessWhoState");
         
@@ -93,6 +113,12 @@ public class ScoreState implements GameState
         gameSession.getMe().setLastAction("had a WRONG guess, and eliminate 1 tile");     
     }
     
+    /**
+     * Three cases:
+     * 1. not even filter
+     * 2. correct filter
+     * 3. incorrect filter
+     */
     public void filter()
     {
         //debug
@@ -125,8 +151,6 @@ public class ScoreState implements GameState
             if(rmSet.size() >1)
                 msg+="s";
             gameSession.getMe().setLastAction( msg);
-            //the above equals to
-            //rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet(),yourChar.getPropertyValue(filterKey));
         }
         //if filterValue doesn't match secrete value -> inccorect filter, remove only those who matches selected filter suboption
         else
@@ -137,7 +161,6 @@ public class ScoreState implements GameState
                 msg+="s";
             gameSession.getMe().setLastAction( msg);
         }
-
         //two step remove
         if(rmSet != null)
         {

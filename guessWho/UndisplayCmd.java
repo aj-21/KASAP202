@@ -1,8 +1,8 @@
 /**
- * Write a description of class CopyOfSubOptUndisplayCmd here.
+ * call receiver to undisplay
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class UndisplayCmd implements DisplayCommand
 {

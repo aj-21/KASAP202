@@ -1,10 +1,9 @@
-//import java.util.Observable;
 /**
- * MyObservable is a proxy of Observer. this is created for children of other classes wish to use Observer pattern
+ * MyObservable is a proxy of Observer. this is created for a derived class of other classes to use Observer pattern
  * MyObservable replace protected setChanged method to public setCHANGED method, protected clearChanged method to public clearCHANGED method
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class MyObservable extends Observable 
 {

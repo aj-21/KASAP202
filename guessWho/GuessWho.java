@@ -69,7 +69,7 @@ public class GuessWho extends StatefulWorld
         subOptButCanvas.setBackground("subOptionsCanvas.png").setMargin(0,0,2,2);
         //enable unique selection for suboption Button Canvas
         
-        ((IDisplayCanvas)subOptButCanvas).addObserver(new IUniqueSelection());
+        ((IDisplayCanvas)subOptButCanvas).addObserver(new UniqueSelection());
         
 
         
@@ -105,7 +105,7 @@ public class GuessWho extends StatefulWorld
         guessWhoState = pressState;
         
         //keep either filter or guess
-        IUniqueSelection guessOrFilter = new IUniqueSelection();
+        UniqueSelection guessOrFilter = new UniqueSelection();
         ((IDisplayCanvas)charCanvas).addObserver(guessOrFilter);
         ((IDisplayCanvas)optButCanvas).addObserver(guessOrFilter);
         

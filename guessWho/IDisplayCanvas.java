@@ -1,10 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Set;
 /**
- * Write a description of class IDisplayCanvas here.
+ * extends DisplayCanvas with ability to handle press event
+ * also support notifying observer, added via method addObserver, if there is a press
+ * support setSuccessor 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanvas<T> implements PressHandler
 {
@@ -12,8 +13,7 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
     MyObservable myOb = new MyObservable();
     public IDisplayCanvas()
     {
-        super();
-        
+        super();   
     }
     
     public IDisplayCanvas(Set<T> actors)
@@ -28,6 +28,9 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
     
     public void setSuccessor(PressHandler successor)
     {
+        if (this.successor != null)
+            successor.setSuccessor(this.successor);
+        
         this.successor = successor;
     }
     
@@ -39,22 +42,18 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
             for(T each:charSet)
             {
                 if(each.detectPress() == true)
-                {
-                    //only notify if something is pressed (select, deselect)
-                    myOb.setCHANGED();
-                    myOb.notifyObservers(getAll());
-                    myOb.clearCHANGED();
-                    
                     break;
-                }
             }
-            
+            myOb.setCHANGED();
+            myOb.notifyObservers(getAll());
+            myOb.clearCHANGED();
         }
         
         if (successor!=null)
             successor.pressHandle(x,y);
     }
     
+    //helper function to determine if a press is inside this
     protected boolean isInside(int x, int y)
     {
         if(getWorld() != null)
@@ -70,8 +69,8 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
             return xInside && yInside;
         }
         return false;
-        
     }
+    
     
     public void addObserver(Observer observer)
     {

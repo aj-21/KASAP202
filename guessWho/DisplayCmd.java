@@ -1,8 +1,8 @@
 /**
- * Write a description of class SubOptDisplayCmd here.
+ * call receiver to display
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class DisplayCmd implements DisplayCommand
 {

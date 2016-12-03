@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UndisplayCmd
-comment0.text=\n\ Write\ a\ description\ of\ class\ CopyOfSubOptUndisplayCmd\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ call\ receiver\ to\ undisplay\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=
 comment1.target=UndisplayCmd()
 comment2.params=arg

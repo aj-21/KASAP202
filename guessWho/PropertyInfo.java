@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 /**
  * PropertyInfo is a class to store Characters' Proteries Info
+ * it store and return only one set of properties key-value, and properties Buttons for optionButton and subOptionButton
+ * it is important to access option and sub option buttons from one place here to have singleton sets of button for checking selection
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class PropertyInfo  
 {
@@ -17,6 +19,7 @@ public class PropertyInfo
     Set<LButton> optionButtons;
     Map<LButton,Set<LButton>> subOptButtons;
     
+    //constructor need gameSession to initialize properties from all character in play set
     public PropertyInfo(GameSession gameSession)
     {
         this.gameSession = gameSession;
@@ -66,6 +69,7 @@ public class PropertyInfo
             return null;
         }
         
+        //if no property keys yet, get from playSet
         if(properties.size() == 0)
         {
             for(Character each:gameSession.getPlaySet())
@@ -80,17 +84,24 @@ public class PropertyInfo
      */
     public Set<String> getValues(String key)
     {
+        //check if propery keys is initialized
         if(properties.size() == 0)
             getKeys();
             
         return properties.get(key);
     }
     
+    /**
+     * get current singleton Option Buttons
+     */
     public Set<LButton> getOptButtons()
     {
+        
+        //if no option button yet, initialize
         if(optionButtons == null)
         {
             optionButtons = new HashSet<LButton>();
+            //get String keys
             for(String option : getKeys() )
             {            
                 //use LButton for command pattern
@@ -101,15 +112,20 @@ public class PropertyInfo
         return optionButtons;
     }
     
+    /**
+     * get current singleton Suboption Buttons given an Option Button
+     */
     public Set<LButton> getSubOptButtons(LButton optBut)
     {
+        //passed in optBut needs to be valid
         if (optBut == null)
             return null;
-            
-            
+        
+        //initialize subOptButtons Map
         if(subOptButtons == null)
             subOptButtons = new HashMap<LButton,Set<LButton>>();
         
+        //if subOptButtons for a certain OptButton is not yet created, create them
         if(subOptButtons.get(optBut) == null)
         {
             Set<LButton> butSet = new HashSet<LButton>();

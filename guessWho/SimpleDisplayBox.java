@@ -1,7 +1,5 @@
 import greenfoot.*;
 import java.util.Set;
-import java.util.List;
-import java.util.HashSet;
 
 /**
  * SimpleDisplayBox extends AbstractDisplayBox

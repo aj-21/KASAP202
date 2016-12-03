@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PropertyCriteria
-comment0.text=\n\ Write\ a\ description\ of\ class\ Criteria\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ interface\ for\ filtering\ CriteriaValue,\ implements\ Filter\ pattern\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=characters
 comment1.target=java.util.Set\ meetCriteria(java.util.Set)
 comment2.params=characters\ filterValue

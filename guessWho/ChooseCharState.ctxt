@@ -1,16 +1,14 @@
 #BlueJ class context
 comment0.target=ChooseCharState
-comment0.text=\n\ Write\ a\ description\ of\ class\ IGuessWhoState\ here.\n\ \n\ @author\ SPAAK\ \n\ \n
+comment0.text=\n\ waiting\ for\ confirm\ button\ to\ be\ clicked\ and\ set\ MyChar\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n\ \n
 comment1.params=world\ gameSession
 comment1.target=ChooseCharState(greenfoot.World,\ GameSession)
 comment2.params=
-comment2.target=void\ prepare()
+comment2.target=void\ enter()
 comment3.params=
-comment3.target=void\ enter()
+comment3.target=void\ stateRun()
 comment4.params=
-comment4.target=void\ stateRun()
-comment5.params=
-comment5.target=void\ exit()
-comment6.params=o\ arg
-comment6.target=void\ update(Observable,\ java.lang.Object)
-numComments=7
+comment4.target=void\ exit()
+comment5.params=o\ arg
+comment5.target=void\ update(Observable,\ java.lang.Object)
+numComments=6

@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.GreenfootImage; 
 
 /**
  * an abstract extends SimpleSelectableActor with ablility

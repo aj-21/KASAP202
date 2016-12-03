@@ -1,11 +1,9 @@
 import greenfoot.*;
-import java.util.Set;
-import java.util.HashSet;
 /**
- * Write a description of class IScoringState here.
+ * serves as a state for TimeState decorator
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class StartingState implements GameState
 {

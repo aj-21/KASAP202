@@ -1,6 +1,4 @@
 import greenfoot.*; 
-//import java.util.Observer;
-//import java.util.Observable;
 
 /**
  * EnableButton is a actor that can be enabled and disabled. 

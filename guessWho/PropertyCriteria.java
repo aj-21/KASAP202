@@ -1,9 +1,9 @@
 import java.util.Set;
 /**
- * Write a description of class Criteria here.
+ * interface for filtering CriteriaValue, implements Filter pattern
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public interface PropertyCriteria  
 {

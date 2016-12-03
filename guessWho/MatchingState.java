@@ -1,10 +1,11 @@
 import greenfoot.*;
-//import java.util.Observer;
-//import java.util.Observable;
 /**
- * Write a description of class IGuessWhoState here.
+ * matching state will register Me to server to get session ID, and keep checking every 0.5 second to see if there is a valid player joining the room
+ * matching state allow return to chooseCharState if do not want to wait
+ * 
  * 
  * @author SPAAK 
+ * @version 1
  * 
  */
 public class MatchingState implements GameState,Observer
@@ -12,6 +13,7 @@ public class MatchingState implements GameState,Observer
     World world;
     GameSession gameSession;
     DummyImage blockImg;
+    
     //need an image for return button
     EnableButton returnBut;
     PlayerAdapter pa;
@@ -23,6 +25,7 @@ public class MatchingState implements GameState,Observer
         this.gameSession = gameSession;
         prepare();
     }
+    
     
     private void prepare()
     {
@@ -37,6 +40,7 @@ public class MatchingState implements GameState,Observer
         startTime = System.nanoTime();
     }
     
+    //display block image, return button, and get sessionID
     public void enter()
     {
         //for debug 
@@ -57,16 +61,18 @@ public class MatchingState implements GameState,Observer
         exit();
     }
     
+    //check for valid player every 500 mili seconds
     public void stateRun()
     {
         //check every 500 ms
         if(System.nanoTime() - startTime >= 500*1000000){
             //get player back every second
             Player you = pa.getYou(gameSession.getMe(), gameSession.getSessionID());
-            // and check if valid player update Opponent(you), and auto exit (start game);
+            // and check if valid player update Opponent(you), and auto exit (to start game);
             if (you != null && you.getName() != "")
             {
                 gameSession.setYou(you);
+                //debug
                 System.out.println("GameSessionID: " + gameSession.getSessionID());
                 System.out.println("Opponent name:  " + gameSession.getYou().getName());
                 System.out.println("secret Char: " + gameSession.getYou().getChosenChar().getClass().getName());
@@ -78,6 +84,7 @@ public class MatchingState implements GameState,Observer
         }
     }
     
+    //remove block image, return button, if there is a valid opponent this will exist to startingstate
     public void exit()
     {
         world.removeObject(blockImg);
@@ -96,6 +103,7 @@ public class MatchingState implements GameState,Observer
         System.out.println("game starts");
     }
     
+    //allow return button to call exit
     public void update(Observable o, Object arg)
     {
         if(((EnableButton)arg).getLabel().equals("return"))

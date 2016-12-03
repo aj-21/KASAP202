@@ -1,12 +1,12 @@
-import greenfoot.*;
+import greenfoot.World;
 import java.awt.Color;
 import java.util.Set;
 import java.util.HashSet;
 /**
- * Write a description of class ShowProperty here.
+ * show property values of character in play set when an option button or a suboption button is click
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class ShowProperty implements Observer
 {
@@ -25,11 +25,23 @@ public class ShowProperty implements Observer
         labels = new HashSet<DummyImage>();
     }
     
+    /**
+     * listen to 3 canvas, optBut, suboptBut, and CharCanvas and refesh every click
+     */
     public void update(Observable o, Object arg)
     {
         refresh();
     }
     
+    /**
+     * 1. remove current labels
+     * 2. check if there is an option Button is clicked, then get KEY, if no stop
+     * 3. check if there is a suboption Button is clicked, then get VALUE
+     * 4. Either 4.1 or 4.2
+     *      4.1. display character value correspond to KEY if VALUE = "" (no suboption is chosen yet)
+     *      4.2. display character value correspond to KEY if it maches VALUE (yes there is suboption)
+     * 
+     */
     public void refresh()
     {
         //remove all labels
@@ -68,7 +80,10 @@ public class ShowProperty implements Observer
         }
     }
     
-    public String refine(String value)
+    /**
+     * helper function for setting color 
+     */
+    private String refine(String value)
     {
         value = value.toUpperCase();
         switch(value)

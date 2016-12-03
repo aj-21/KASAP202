@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=ObservableSelection
+comment0.text=\n\ ObservableSelection\ will\ observe\ a\ set\ of\ selectable\ object\ and\ notify\ its\ observer\ if\ something\ new\ isclicked\n\ in\ this\ game,\ this\ is\ used\ as\ a\ pipe\ line\ to\ observe\ selection\ in\ chooseCharScreen\ and\ notify\ confirm\ button\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
+comment1.params=
+comment1.target=ObservableSelection()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ UniqueSelectionMaintainer\ either\ with\ a\ paramenter\ of\ objects\ for\ maintaining\ one\ Selection\ or\ no\ paramenter.\n
+comment2.params=observer
+comment2.target=ObservableSelection(Observer)
+comment3.params=o\ arg
+comment3.target=void\ update(Observable,\ java.lang.Object)
+numComments=4

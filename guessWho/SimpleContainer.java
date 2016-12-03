@@ -1,13 +1,17 @@
- 
-import greenfoot.*;
-import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 /**
- * Write a description of class SimpleContainer here.
+ * A helper class to uniformly perform an action on a set of Selectable
+ * it provides two categories of methods:
+ * 1. normal get and set the internal Set of Selectable
+ * 2. special get and set performed on internal Set of Selectable 
+ *      2.1 getFirstSelected and getSelected are similar
+ *      2.2 getAllSelected
+ *      2.3 selectAll
+ *      2.4 deselectAll
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class SimpleContainer <T extends Selectable> 
 {
@@ -34,19 +38,7 @@ public class SimpleContainer <T extends Selectable>
         addAll(actors);
     }
     
-    public SimpleContainer(List<T> actors)
-    {
-        addAll(actors);
-    }
-    
     public SimpleContainer addAll(Set<T> actors)
-    {
-        for (T actor:actors)
-            add(actor);
-        return this;
-    }
-    
-    public SimpleContainer addAll(List<T> actors)
     {
         for (T actor:actors)
             add(actor);

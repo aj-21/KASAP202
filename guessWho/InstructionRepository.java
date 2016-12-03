@@ -1,10 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
 /**
- * Write a description of class IntructionContainer here.
+ * class stores hints as string
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class InstructionRepository implements Container  
 {
@@ -19,11 +19,16 @@ public class InstructionRepository implements Container
                 
     }
     
+    //iterator for iterating
     public Iterator getIterator()
     {
         return new InstructionIterator();
     }
     
+    
+    /**
+     * Iterator returning one hint at a time, when it reaches the end, it goes back to the 1st hint
+     */
     private class InstructionIterator implements Iterator
     {
         int index=0;

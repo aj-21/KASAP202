@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ZoomContainer
-comment0.text=\n\ Write\ a\ description\ of\ class\ ZoomContainer\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ extends\ functionality\ of\ SimpleContainer\ to\ be\ able\ to\ uniformly\ perform\ action\ on\ ZoomActor\n\ support\ resizeOnScale,\ setZoomScale\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=
 comment1.target=ZoomContainer()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ZoomContainer\n
@@ -8,10 +8,8 @@ comment2.params=actor
 comment2.target=ZoomContainer(ZoomActor)
 comment3.params=actors
 comment3.target=ZoomContainer(java.util.Set)
-comment4.params=actors
-comment4.target=ZoomContainer(java.util.List)
+comment4.params=scale
+comment4.target=void\ resizeOnScale(double)
 comment5.params=scale
-comment5.target=void\ resizeOnScale(double)
-comment6.params=scale
-comment6.target=void\ setZoomScale(double)
-numComments=7
+comment5.target=void\ setZoomScale(double)
+numComments=6

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameStateDecorator
-comment0.text=\n\ Write\ a\ description\ of\ class\ GameStateDecorator\ here.\n\ \n\ @SPAAK\n\ @latest\ version\n
+comment0.text=\n\ class\ that\ enables\ decorating\ a\ GameState\n\ \n\ @SPAAK\n\ @latest\ version\n
 comment1.params=gameState
 comment1.target=GameStateDecorator(GameState)
 comment2.params=

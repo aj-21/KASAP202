@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GuessWhoState
-comment0.text=\n\ Write\ a\ description\ of\ class\ IGuessWhoState\ here.\n\ \n\ @author\ SPAAK\ \n\ \n
+comment0.text=\n\ responsible\ for\ display\ latest\ messages\ of\ action\ from\ both\ players\ and\ display\ hint\n\ \n\ @author\:\ SPAAK\ \n\ @version\:\ 1\n\ \n
 comment1.params=world\ gameSession
 comment1.target=GuessWhoState(GuessWho,\ GameSession)
 comment2.params=

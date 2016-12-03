@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Observer
+comment0.text=\n\ mimic\ the\ built-in\ Observer\ of\ java\ \n\ requires\ derived\ class\ to\ have\ update\ method\ which\ accepts\ observable\ and\ an\ additional\ Object\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=o\ arg
 comment1.target=void\ update(Observable,\ java.lang.Object)
 numComments=2

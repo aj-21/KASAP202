@@ -1,11 +1,10 @@
-import greenfoot.*;
 import java.util.Set;
-import java.util.List;
 /**
- * Write a description of class ZoomContainer here.
+ * extends functionality of SimpleContainer to be able to uniformly perform action on ZoomActor
+ * support resizeOnScale, setZoomScale
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class ZoomContainer<T extends ZoomActor> extends SimpleContainer<T>
 {
@@ -26,11 +25,6 @@ public class ZoomContainer<T extends ZoomActor> extends SimpleContainer<T>
     }
     
     public ZoomContainer(Set<T> actors)
-    {
-        super(actors);
-    }
-    
-    public ZoomContainer(List<T> actors)
     {
         super(actors);
     }

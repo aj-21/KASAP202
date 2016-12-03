@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.GreenfootImage; 
 
 /**
  * extension of SimpleImagesActor, ZoomActor should display itself with the same pictures but in different sizes. 

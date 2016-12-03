@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PropertyInfo
-comment0.text=\n\ PropertyInfo\ is\ a\ class\ to\ store\ Characters'\ Proteries\ Info\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ PropertyInfo\ is\ a\ class\ to\ store\ Characters'\ Proteries\ Info\n\ it\ store\ and\ return\ only\ one\ set\ of\ properties\ key-value,\ and\ properties\ Buttons\ for\ optionButton\ and\ subOptionButton\n\ it\ is\ important\ to\ access\ option\ and\ sub\ option\ buttons\ from\ one\ place\ here\ to\ have\ singleton\ sets\ of\ button\ for\ checking\ selection\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=gameSession
 comment1.target=PropertyInfo(GameSession)
 comment2.params=properties
@@ -20,6 +20,8 @@ comment6.target=java.util.Set\ getValues(java.lang.String)
 comment6.text=\n\ get\ only\ value\ info\ mapped\ with\ an\ option\ key.\ Optionkey\ is\ required\n
 comment7.params=
 comment7.target=java.util.Set\ getOptButtons()
+comment7.text=\n\ get\ current\ singleton\ Option\ Buttons\n
 comment8.params=optBut
 comment8.target=java.util.Set\ getSubOptButtons(LButton)
+comment8.text=\n\ get\ current\ singleton\ Suboption\ Buttons\ given\ an\ Option\ Button\n
 numComments=9

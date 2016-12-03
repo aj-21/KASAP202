@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CriteriaValue
-comment0.text=\n\ Write\ a\ description\ of\ class\ CriteriaValue\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ a\ class\ that\ help\ to\ filter\ out\ elements\ matching\ criteria\ from\ playSet\ in\ gameSession\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=gameSession\ filterKey
 comment1.target=CriteriaValue(GameSession,\ java.lang.String)
 comment2.params=characters

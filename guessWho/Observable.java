@@ -2,6 +2,14 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+/**
+ * mimic build in Observable built-in class of java
+ * Use LinkHashSet to retain order of observers (this is important in this game)
+ * 
+ * @author SPAAK
+ * @version 1
+ */
+
 public class Observable  
 {
     Set<Observer> observers;

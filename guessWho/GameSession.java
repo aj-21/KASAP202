@@ -1,10 +1,9 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 /**
- * Write a description of class GameSession here.
+ * GameSession is the main data base for this game. it stores all necessary fields such as 
+ * sessionID, full set of Characters, a set of character in play, two players and propertyInfo
+ * it provides basic get-set methods for each fields
  * 
  * @author SPAAK 
  * @version (a version number or a date)

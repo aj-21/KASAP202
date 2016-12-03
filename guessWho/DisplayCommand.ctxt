@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=DisplayCommand
-comment0.text=\n\ Write\ a\ description\ of\ class\ Command\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ interface\ for\ display\ command\ to\ display\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=receiver
 comment1.target=void\ setReceiver(DisplayReceiver)
 comment2.params=arg

@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Observable
+comment0.text=\n\ mimic\ build\ in\ Observable\ built-in\ class\ of\ java\n\ Use\ LinkHashSet\ to\ retain\ order\ of\ observers\ (this\ is\ important\ in\ this\ game)\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=
 comment1.target=Observable()
 comment10.params=

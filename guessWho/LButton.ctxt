@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LButton
-comment0.text=\n\ an\ extension\ of\ LabelButton\ implementing\ Invoker\ interface\ for\ Command\ Pattern\n\ support\ methods\:\ setCommand\ taking\ in\ a\ DisplayCommand,\ and\ invoke.\n\ any\ acts\ on\ select\ or\ deselect\ will\ invoke\ the\ stored\ DisplayCommand\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
+comment0.text=\n\ an\ extension\ of\ LabelButton\ implementing\ Invoker\ interface\ for\ Command\ Pattern\n\ support\ methods\:\ setCommand\ taking\ in\ a\ DisplayCommand,\ and\ invoke.\n\ any\ acts\ on\ select\ or\ deselect\ will\ automatically\ invoke\ the\ stored\ DisplayCommand\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=label\ fileName
 comment1.target=LButton(java.lang.String,\ java.lang.String)
 comment2.params=cmd

@@ -1,9 +1,7 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * an extension of LabelButton implementing Invoker interface for Command Pattern
  * support methods: setCommand taking in a DisplayCommand, and invoke.
- * any acts on select or deselect will invoke the stored DisplayCommand
+ * any acts on select or deselect will automatically invoke the stored DisplayCommand
  * 
  * @author SPAAK 
  * @version 1

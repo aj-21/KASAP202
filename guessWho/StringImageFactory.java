@@ -1,10 +1,12 @@
-import greenfoot.*;
+import greenfoot.GreenfootImage;
 import java.awt.Color;
 /**
- * Write a description of class StringImage here.
+ * able generate greenfoot image from a string based on setup
+ * setup will include text color, background color.
+ * text size and text itself will be passed into createImage methods to get back the image
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class StringImageFactory  
 {
@@ -37,10 +39,5 @@ public class StringImageFactory
     public void setBackgroundColor(Color color)
     {
         this.backgroundColor = color;
-    }
-    
-    public void setTextSize(int size)
-    {
-        this.textSize = size;
     }
 }

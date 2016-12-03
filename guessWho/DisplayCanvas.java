@@ -1,6 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;   // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Set;
-import java.util.HashSet;
 
 /**
  * DisplayCanvas is an Actor which additionally use children of DisplayBox interface to display. 

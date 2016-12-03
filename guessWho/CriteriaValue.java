@@ -1,10 +1,10 @@
 import java.util.Set;
 import java.util.HashSet;
 /**
- * Write a description of class CriteriaValue here.
+ * a class that help to filter out elements matching criteria from playSet in gameSession
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class CriteriaValue implements PropertyCriteria 
 {
@@ -14,8 +14,7 @@ public class CriteriaValue implements PropertyCriteria
     public CriteriaValue(GameSession gameSession, String filterKey) 
     {
         this.filterKey = filterKey;
-        // this.gameSession = gameSession;
-        //this.yourChar = gameSession.getYourChar();
+
         this.secretValue = gameSession.getYou().getChosenChar().getPropertyValue(filterKey);
     }
     

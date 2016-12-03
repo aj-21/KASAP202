@@ -1,10 +1,10 @@
 /**
- * Write a description of class GameStateDecorator here.
+ * class that enables decorating a GameState
  * 
  * @SPAAK
  * @latest version
  */
-public class GameStateDecorator implements GameState
+public abstract class GameStateDecorator implements GameState
 {
     GameState gameState;
     public GameStateDecorator(GameState gameState)

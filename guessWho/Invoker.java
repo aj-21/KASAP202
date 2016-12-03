@@ -1,12 +1,12 @@
 /**
- * Write a description of class Invoker here.
+ * Invoker interface for command pattern
+ * invoker will have a command and invoke it when it needs
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public interface Invoker  
 {
     public void setCommand(DisplayCommand cmd);
     public void invoke();
-    
 }

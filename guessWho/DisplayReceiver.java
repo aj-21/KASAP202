@@ -1,8 +1,8 @@
 /**
- * Write a description of class Receiver here.
+ * DisplayReceiver need to support display and undisplay so that a command can call upon
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public interface DisplayReceiver  
 {

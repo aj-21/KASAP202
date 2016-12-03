@@ -1,16 +1,20 @@
 #BlueJ class context
 comment0.target=ScoreState
-comment0.text=\n\ Write\ a\ description\ of\ class\ IScoringState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ ScoreState\ performs\ guess\ and\ filter\ tasks\ as\ well\ and\ exchanges\ info\ with\ restlet\ server\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=world\ gameSession
 comment1.target=ScoreState(GuessWho,\ GameSession)
+comment1.text=\n\ constructor\ requires\ a\ world\ which\ state\ resides\ and\ gameSession\ for\ accessing\ info\n
 comment2.params=
 comment2.target=void\ enter()
+comment2.text=\n\ when\ enter,\ displaying\ a\ block\ image\ on\ top,\ and\ investigate\ to\ see\ if\ player\ choose\ to\ guess\ or\ filter\n\ then\ update\ Me\ to\ server\n
 comment3.params=
 comment3.target=void\ stateRun()
 comment4.params=
 comment4.target=void\ exit()
+comment4.text=\n\ remove\ the\ block\ image\n\ when\ exits,\ get\ updated\ opponent,\ and\ investigate\ if\ game\ is\ finished\ (either\ player\ isfinished)\ or\ disconnected\ then\ go\ to\ result\ screen\n\ else\ go\ back\ to\ guesswho\ state\ to\ continue\ the\ game\n\ \n
 comment5.params=guessedChar
 comment5.target=void\ guess(Character)
 comment6.params=
 comment6.target=void\ filter()
+comment6.text=\n\ Three\ cases\:\n\ 1.\ not\ even\ filter\n\ 2.\ correct\ filter\n\ 3.\ incorrect\ filter\n
 numComments=7

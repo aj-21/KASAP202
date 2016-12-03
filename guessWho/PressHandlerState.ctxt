@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=PressHandlerState
-comment0.text=\n\ Write\ a\ description\ of\ class\ PressHandlerState\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ A\ decorator\ of\ GameState\ with\ ability\ to\ handle\ press\ event.\n\ support\ set\ successor,\ which\ is\ another\ PressHandler\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=gameState
 comment1.target=PressHandlerState(GameState)
+comment1.text=\n\ constructor\ takes\ in\ a\ gameState\ to\ decorate\n
 comment2.params=successor
 comment2.target=void\ setSuccessor(PressHandler)
+comment2.text=\n\ insert\ the\ new\ successor\ at\ the\ front\ in\ the\ chain\n
 comment3.params=x\ y
 comment3.target=void\ pressHandle(int,\ int)
 comment4.params=

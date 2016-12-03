@@ -1,12 +1,15 @@
 #BlueJ class context
 comment0.target=ShowProperty
-comment0.text=\n\ Write\ a\ description\ of\ class\ ShowProperty\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ show\ property\ values\ of\ character\ in\ play\ set\ when\ an\ option\ button\ or\ a\ suboption\ button\ is\ click\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
 comment1.params=world\ gameSession
 comment1.target=ShowProperty(greenfoot.World,\ GameSession)
 comment2.params=o\ arg
 comment2.target=void\ update(Observable,\ java.lang.Object)
+comment2.text=\n\ listen\ to\ 3\ canvas,\ optBut,\ suboptBut,\ and\ CharCanvas\ and\ refesh\ every\ click\n
 comment3.params=
 comment3.target=void\ refresh()
+comment3.text=\n\ 1.\ remove\ current\ labels\n\ 2.\ check\ if\ there\ is\ an\ option\ Button\ is\ clicked,\ then\ get\ KEY,\ if\ no\ stop\n\ 3.\ check\ if\ there\ is\ a\ suboption\ Button\ is\ clicked,\ then\ get\ VALUE\n\ 4.\ Either\ 4.1\ or\ 4.2\n\ \ \ \ \ \ 4.1.\ display\ character\ value\ correspond\ to\ KEY\ if\ VALUE\ \=\ ""\ (no\ suboption\ is\ chosen\ yet)\n\ \ \ \ \ \ 4.2.\ display\ character\ value\ correspond\ to\ KEY\ if\ it\ maches\ VALUE\ (yes\ there\ is\ suboption)\n\ \n
 comment4.params=value
 comment4.target=java.lang.String\ refine(java.lang.String)
+comment4.text=\n\ helper\ function\ for\ setting\ color\ \n
 numComments=5

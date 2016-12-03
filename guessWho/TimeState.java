@@ -1,11 +1,13 @@
 import greenfoot.*;
-import java.util.Timer;
-import java.util.TimerTask;
+
 /**
- * Write a description of class TimeState here.
+ * A decorator of GameState with Time.
+ * support setTime in seconds, time has to be greater than 0, default is 30 seconds
+ * support display time remaining every second, message can be set by setTimeBoxText method, input needs to have %d as a slot for second remaining
+ * location timebox need to be set via setTimeBoxLoc method for 1 time, other wise, no time message is displayed
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK
+ * @version 1
  */
 public class TimeState extends GameStateDecorator
 {  
@@ -21,6 +23,10 @@ public class TimeState extends GameStateDecorator
     long remainingTime=0;
     int secRemaining;
     long delay;
+    
+    /**
+     * constructor requires a GameState to decorate
+     */
     public TimeState(GameState gameState)
     {
         super(gameState);
@@ -29,12 +35,18 @@ public class TimeState extends GameStateDecorator
         setTimer(30);
     }
     
+    /**
+     * set Time for state in second
+     */
     public void setTimer(int seconds)
     {
         if(seconds > 0)
             delay = seconds*1000;
     }
     
+    /**
+     * set location of time Text with a world and coordinate
+     */
     public void setTimeBoxLoc(World world,int x, int y)
     {
         if(timeBox == null)
@@ -49,16 +61,26 @@ public class TimeState extends GameStateDecorator
         timeBox.setLocation(x,y);
     }
     
+    /**
+     * set size of time box text
+     */
     public void setTimeBoxSize(int size)
     {
         this.textSize = size;
     }
     
+    /**
+     * set text for time box text, 
+     * character '%d' is require, otherwise, no time left will be shown
+     */
     public void setTimeBoxText(String text)
     {
         this.timeText= text;
     }
     
+    /**
+     * helper method to update time box text
+     */
     private void updateTimeBox()
     {
         if(timeBox != null)

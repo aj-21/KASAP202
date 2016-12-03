@@ -1,10 +1,9 @@
 import greenfoot.*;
-//import java.util.Observer;
-//import java.util.Observable;
 /**
- * Write a description of class IGuessWhoState here.
+ * waiting for confirm button to be clicked and set MyChar
  * 
  * @author SPAAK 
+ * @version 1
  * 
  */
 public class ChooseCharState implements GameState,Observer
@@ -15,18 +14,11 @@ public class ChooseCharState implements GameState,Observer
     {
         this.world = world;
         this.gameSession = gameSession;
-        prepare();
+
     }
-    
-    private void prepare()
-    {
-        
-    }
-    
+
     public void enter()
-    {
-        
-        
+    {     
     }
     
     public void stateRun()
@@ -40,7 +32,6 @@ public class ChooseCharState implements GameState,Observer
   
         try{
             gameSession.getMe().setChosenChar(myChar.getClass().newInstance());
-            //Greenfoot.setWorld(new GuessWho(gameSession));
             ((ChooseCharacterScreen)world).setState("matchingState");
         }
         catch (Exception e)

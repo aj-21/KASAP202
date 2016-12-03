@@ -8,13 +8,8 @@ import greenfoot.*;
  */
 public class SimpleSelectableActor extends Actor implements Selectable
 {
-    private Selectable selectable = new SimpleSelectable();
-    
-    //just detect mouse pressed and toggle selection
-    public void act()
-    {
-        //detectPress();
-    }
+    //private Selectable selectable = new SimpleSelectable();
+    boolean selected;
     
     /**
      *  detectPress works with Greenfoot.MousePressed method to check press event on this actor.
@@ -52,18 +47,18 @@ public class SimpleSelectableActor extends Actor implements Selectable
     @Override
     public void select()
     {
-        selectable.select();
+        selected = true;
     }
     
     @Override
     public void deselect()
     {
-        selectable.deselect();
+        selected = false;
     }
     
     @Override
     public boolean isSelected()
     {
-        return selectable.isSelected();
+        return selected;
     }
 }
