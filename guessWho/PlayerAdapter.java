@@ -110,39 +110,15 @@ public class PlayerAdapter implements PlayerOperations
         returnPlayer.setLastUpdated(playerWrapper.lastUpdated);
         returnPlayer.setLastAction(playerWrapper.lastAction);
         
-        //String file = playerWrapper.name.charAt(4) + ".png";
-        switch(playerWrapper.myChar) {
-             case "Char1" :
-                returnPlayer.setChosenChar(new Char1()); 
-                break;
-             case "Char2" :
-                returnPlayer.setChosenChar(new Char2()); 
-                break;
-             case "Char3" :
-                returnPlayer.setChosenChar(new Char3()); 
-                break;
-             case "Char4" :
-                returnPlayer.setChosenChar(new Char4()); 
-                break;
-             case "Char5" :
-                returnPlayer.setChosenChar(new Char5()); 
-                break;
-             case "Char6" :
-                returnPlayer.setChosenChar(new Char6()); 
-                break;
-             case "Char7" :
-                returnPlayer.setChosenChar(new Char7()); 
-                break;
-             case "Char8" :
-                returnPlayer.setChosenChar(new Char8()); 
-                break;
-             case "Char9" :
-                returnPlayer.setChosenChar(new Char9()); 
-                break;
-             default :
-                System.out.println("Invalid character");
+        try{
+            Class<?> secretCharClass = Class.forName(playerWrapper.myChar);
+            Character secretChar = (Character)secretCharClass.newInstance();
+            returnPlayer.setChosenChar(secretChar);
         }
-        
+        catch(Exception e){
+            System.out.println(e);
+        }
+
         return returnPlayer;
     }
     
