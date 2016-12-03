@@ -23,6 +23,8 @@ public class GuessWho extends StatefulWorld
     {    
         super(1536, 864, 1); 
         this.gameSession = gameSession;
+        //delete fullSet to free memory
+        gameSession.getFullSet().clear();
         
         guessWhoState = new GuessWhoState(this,gameSession);
         scoreState = new ScoreState(this,gameSession);
