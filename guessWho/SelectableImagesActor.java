@@ -1,29 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * SelectableImagesActor extends SimpleSelectableActor.
- * it is able to represent itself with two images, one for selected and one for deselected
+ * an abstract extends SimpleSelectableActor with ablility
+ * to represent itself with two different images when it is selected/deselected
+ * this class also provides some helper function for extension such as,
+ * setSelectedImage and setDeselectedImage, which take in as inputs Greenfoot images
+ * retriveing these images via method call getSelectedImage and getDeselectedImage
  * 
  * 
  * @SPAAK
  * @version 1
  */
  
-public class SelectableImagesActor extends SimpleSelectableActor
+public abstract class SelectableImagesActor extends SimpleSelectableActor
 {
     //images for selected and deselected
     GreenfootImage deselectedImage;
     GreenfootImage selectedImage;
-    
-    /**
-     * a constructor creates the same copy of image for both selected- and deselected-Images
-     */
-    public void SelectableImagesActor()
-    {
-        setDeselectedImage(getImage());
-        setSelectedImage(new GreenfootImage(getImage()));
-    }
-    
+
     //set and update selected-Image
     public void setSelectedImage(GreenfootImage image)
     {

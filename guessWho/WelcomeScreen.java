@@ -8,13 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WelcomeScreen extends World
 {
-    GifImage gImg = new GifImage("Introduction.gif");
-    DummyImage di = new DummyImage(gImg, false);
+    DummyImage di = new DummyImage(new GifImage("Introduction.gif"));
     //GameSession gameSession;
     IntroHandler h1 = new ConcreteHandlerIntro() ; //Introduction
     IntroHandler h2 = new ConcreteHandlerSkip() ; //Skip Introduction
     IntroHandler h3 = new ConcreteHandlerQuit() ; //Quit Game
-    boolean isShowIntro = false, isFirst = false;
+    boolean isShowIntro = false;
 
     public WelcomeScreen()
     {    
@@ -36,23 +35,22 @@ public class WelcomeScreen extends World
     {
         int mouseX, mouseY ;
         
-        removeObject(di);
-        di = new DummyImage(gImg, isFirst);
-        
-        if(isShowIntro){
-            if(isFirst){
-                isFirst = false;
-            }
-            addObject(di, 761, 545);
-        }
-        
         if(Greenfoot.mousePressed(this)) 
         {  
             MouseInfo mouse = Greenfoot.getMouseInfo();  
             mouseX=mouse.getX();  
             mouseY=mouse.getY();  
-            //System.out.println( "sendingcoordinates. x: "+mouseX+" y: "+ mouseY); 
-            isShowIntro = isFirst = h1.handleIntroRequest(mouseX, mouseY);
+
+            if (h1.handleIntroRequest(mouseX, mouseY))
+            {
+                if(di.getWorld() != null)
+                    removeObject(di);
+                else
+                {
+                    addObject(di,761, 545);
+                    di.gifResetFrame();
+                }
+            }
             
         }
     }

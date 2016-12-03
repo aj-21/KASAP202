@@ -64,31 +64,28 @@ public class ResultScreen extends World implements Observer
         disconnectedResult();
  
     }
-    
-    public void act(){
-        if (currentGif != null){
-            //remove old frame b4 add the next frame
-            removeObject(currentImg);
-            currentImg = new DummyImage(currentGif,false);
-            addObject(currentImg,550,550);
-        }
-    }
+
     
     public void drawResult(){
         StringImageFactory a = new StringImageFactory();
-        DummyImage text = new DummyImage(a.createImage("You got it,\nand your friend is as smart as you!!!",40));
-        addObject(text,550,250);
+        DummyImage di = new DummyImage(a.createImage("You got it,\nand your friend is as smart as you!!!",40));
+        addObject(di,550,250);
         
-        currentGif  = new GifImage("draw.gif");
+        di = new DummyImage(new GifImage("draw.gif"));
+        addObject(di,550,550);
+        
         System.out.println("The game resulted in a draw!");
     }
     
     public void winResult(){
         StringImageFactory a = new StringImageFactory();
-        DummyImage text = new DummyImage(a.createImage("You are one step\nor perhaps two steps ahead of your friend!!!",40));
+        DummyImage di = new DummyImage(a.createImage("You are one step\nor perhaps two steps ahead of your friend!!!",40));
         a.setTextColor(Color.RED);
-        addObject(text,550,250);
-        currentGif  = new GifImage("Congrats-You-Win.gif");
+        addObject(di,550,250);
+        
+        di = new DummyImage(new GifImage("Congrats-You-Win.gif"));
+        addObject(di,550,550);
+        
         System.out.println("You win");
     }
     
@@ -97,21 +94,23 @@ public class ResultScreen extends World implements Observer
         a.setTextColor(Color.RED);
         String sss = "Your friend correctly guess your character before you!!!";
         sss += "\nAsk him for his strategy if he has one";
-        DummyImage text = new DummyImage(a.createImage(sss,40));
-        addObject(text,550,250);
+        DummyImage di = new DummyImage(a.createImage(sss,40));
+        addObject(di,550,250);
         
-        currentGif  = new GifImage("you-lose.gif");;
+        
+        di = new DummyImage(new GifImage("you-lose.gif"));
+        addObject(di,550,550);
         System.out.println("You Lose");
     }
     
     public void disconnectedResult(){
         StringImageFactory a = new StringImageFactory();
         a.setTextColor(Color.CYAN);
-        DummyImage text = new DummyImage(a.createImage("Your rival is disconected,\nask if your friend has just fleed away!!!",40));
-        addObject(text,550,250);
+        DummyImage di = new DummyImage(a.createImage("Your rival is disconected,\nask if your friend has just fleed away!!!",40));
+        addObject(di,550,250);
         
-        DummyImage dis = new DummyImage(new GreenfootImage("disconnect.png"));        
-        addObject(dis, 550,550);
+        di = new DummyImage(new GreenfootImage("disconnect.png"));        
+        addObject(di, 550,550);
         System.out.println("Player was disconnected!!");
     }
     

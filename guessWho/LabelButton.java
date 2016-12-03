@@ -14,7 +14,9 @@ public class LabelButton extends ZoomActor
     
     Color labelColor = Color.BLUE;
     
-    //construction take in label name and path to image file
+    /**
+     * construction will take in label name and path to an image file
+     */
     public LabelButton(String label, String fileName)
     {
         super(fileName,1);
@@ -22,7 +24,7 @@ public class LabelButton extends ZoomActor
         setLabel(label);
     }
     
-    //set a label for button
+    //helper setting a label for button
     protected void setLabel(String label)
     {
         this.label = label;
@@ -35,19 +37,18 @@ public class LabelButton extends ZoomActor
         return label;
     }
     
-    //two private hepler methods to draw label
+    //helper function to draw label on to images
     private void drawLabel()
     {
         drawLabelTo(getDeselectedImage());
         drawLabelTo(getSelectedImage());
     }
     
-    //draw String image with transparent background on current images 
+    //helper function to draw String image with transparent background on current images 
     private GreenfootImage drawLabelTo(GreenfootImage image)
     {
         int w = image.getWidth();
         int h = image.getHeight(); 
-        //GreenfootImage labelImage = new GreenfootImage(label,h/10*5,labelColor,new Color(0,0,0,0));
         StringImageFactory strImgFac = new StringImageFactory();
         strImgFac.setTextColor(labelColor);
         GreenfootImage labelImage = strImgFac.createImage(label,h/10*5);

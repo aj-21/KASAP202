@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Char3
-comment0.text=\n\ Write\ a\ description\ of\ class\ Char3\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Char1\ here.\n\ \n\ @Author\:\ SPAAK\ \n\ Version\:\ 1\n\ \n
 comment1.params=
 comment1.target=Char3()
 comment1.text=This\ will\ set\ the\ properties\ for\ Characters\ as\ per\ the\ images\ assigned\ to\ the\ classes.

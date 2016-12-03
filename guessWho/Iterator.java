@@ -1,8 +1,8 @@
 /**
- * Write a description of class Iterator here.
+ * interface for Iterator Pattern
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public interface Iterator  
 {

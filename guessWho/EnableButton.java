@@ -4,9 +4,9 @@ import greenfoot.*;
 
 /**
  * EnableButton is a actor that can be enabled and disabled. 
- * States of the button are display with 2 different images, usually by a partially transparent image for disable and a transparent image for enable
  * EnableButton is an observer that will disable itself if object passed from Subject/Observable is null, and enable itself if otherwise.
- * EnableButton is also an observable Object that accept Observers and notify them when the button is clicked while in enable state. The button pass itself to Observers
+ * EnableButton is also an observable Object that accept Observers and notify them when itself is clicked while in enable state. 
+ * The button also pass itself as the argument to all observers
  * 
  * @author SPAAK
  * @version 1
@@ -21,11 +21,9 @@ public class EnableButton extends Actor implements Observer
     //MyObserver is a proxy of Observer to use protected method such as setChange -> setCHANGED, clearChange -> clearCHANGED
     MyObservable o;
     
-    private EnableButton ()
-    {
-    }
-    
-    //construction needs a label and optional file to disable image and enable image
+    /**
+     * constructor needs a label, paths to disable image and enable image
+     */
     public EnableButton(String label,String disableFilename, String enableFileName)
     {
         disableImage = new GreenfootImage(disableFilename);
@@ -35,9 +33,13 @@ public class EnableButton extends Actor implements Observer
         o = new MyObservable();
     }
     
+    /**
+     * constructor requires only a label. The default images will be confirm.disable.png, and confirm.enabled.png
+     * 
+     */
     public EnableButton(String label)
     {
-        this(label,"confirmDisabled.png","confirmEnabled.png");
+        this(label,"confirm.disabled.png","confirm.enabled.png");
         disableImage.scale(300,80);
         enableImage.scale(300,80);
     }
@@ -55,6 +57,7 @@ public class EnableButton extends Actor implements Observer
         }
     }
     
+    //enable if arg not null
     @Override
     public void update(Observable o, Object arg)
     {

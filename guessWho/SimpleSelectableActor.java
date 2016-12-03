@@ -1,6 +1,7 @@
 import greenfoot.*;
 /**
- * Write a description of class SelectableActor here.
+ * an extension of greenfoot Actor which is able to be selected, deselected via methods select and deselect, respectively.
+ * use method isSelected to check if this actor is being selected.
  * 
  * @author SPAAK 
  * @version 1
@@ -17,25 +18,20 @@ public class SimpleSelectableActor extends Actor implements Selectable
     
     /**
      *  detectPress works with Greenfoot.MousePressed method to check press event on this actor.
-     *  it is important to add this method into act if method act is override, or two other helper function can be used
+     *  if this function is called, it will return whether an actor is pressed or not. If true, it will toggle selection
      */
+    
     public boolean detectPress()
     {
-        if (isPressed())
+        if (Greenfoot.mousePressed(this))
         {
             toggleSelection();
             return true;
         }
         return false;
     }
-    
-    //return true if the actor is clicked
-    protected boolean isPressed()
-    {
-        return Greenfoot.mousePressed(this);
-    }
-    
-    //if actor is selected, deselect, and vice versa
+
+    //a helper funtion for toggle Selection
     protected void toggleSelection()
     {
         if(this.isSelected())
@@ -44,7 +40,7 @@ public class SimpleSelectableActor extends Actor implements Selectable
             select();
     }
     
-    //return true if Actor in a World
+    //return true if Actor in a World, not neccessary the current world if there are multiple worlds
     public boolean isInWorld()
     {
         return getWorld() != null;

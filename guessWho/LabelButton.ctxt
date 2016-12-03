@@ -3,6 +3,7 @@ comment0.target=LabelButton
 comment0.text=\n\ LabelButton\ is\ a\ ZoomActor\ which\ able\ to\ display\ its\ label\ on\ top\ of\ its\ representational\ images\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=label\ fileName
 comment1.target=LabelButton(java.lang.String,\ java.lang.String)
+comment1.text=\n\ construction\ will\ take\ in\ label\ name\ and\ path\ to\ an\ image\ file\n
 comment2.params=label
 comment2.target=void\ setLabel(java.lang.String)
 comment3.params=

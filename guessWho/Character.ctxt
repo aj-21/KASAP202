@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=Character
-comment0.text=\n\ Character\ is\ a\ ZoomActor\ with\ descriptive\ properties\ and\ a\ name\n\ Character\ is\ the\ main\ class\ for\ this\ game\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
+comment0.text=\n\ Character\ is\ a\ ZoomActor\ with\ descriptive\ properties\ and\ a\ name\n\ Character\ is\ the\ main\ class\ for\ this\ game\n\ support\ method\ putProperty\ taking\ in\ a\ pair\ of\ String,\ key\ and\ value.Value\ will\ be\ override\ if\ new\ value\ is\ given\ to\ an\ existing\ key.\n\ support\ method\ getProperties\ which\ will\ return\ a\ map\ of\ all\ stored\ properties\n\ support\ method\ getPropertyValue\ which\ will\ return\ just\ a\ String\ value\ of\ an\ existing\ key\n\ also\ support\ setName\ and\ getName\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=filename
 comment1.target=Character(java.lang.String)
+comment1.text=\n\ constructor\ require\ path\ to\ image\ name.\ image\ will\ be\ scaledown\ 50%\n
 comment2.params=key\ value
 comment2.target=void\ putProperty(java.lang.String,\ java.lang.String)
 comment3.params=

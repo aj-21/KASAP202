@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * ZoomActor extends SimpleImagesActor
- * ZoomActor display itself with the same pictures but in different sizes. By default selected image size is 50% larger than deselected image size
- * ZoomActor supports setting method for zooming Scale image when deselected relative to selected image.
- * ZoomActor also provide a method to resize two imaging representation with a scale (ratio/percentage) rather than pixels
+ * extension of SimpleImagesActor, ZoomActor should display itself with the same pictures but in different sizes. 
+ * By default selected image size is 50% larger than deselected image size (sacle is 1.5)
+ * ZoomScale can be set via method setZoomScale
+ * ZoomActor also support resize on scale to resize both images down or up relatively
  * 
  * @author SPAAK 
  * @version 1
@@ -15,7 +15,7 @@ public class ZoomActor<T extends ZoomActor> extends SelectableImagesActor
     private double zoomScale = 1.5;
     
     /**
-     * Constructor takes in a path to image with image name and initial Scale (up or down) for both images
+     * Constructor takes in a path to an image name and initial scale (up or down) for both images
      */
     public ZoomActor(String filename,double initScale)
     {
@@ -42,12 +42,16 @@ public class ZoomActor<T extends ZoomActor> extends SelectableImagesActor
      * a scale less than 1 means selected image will be smaller than not-selected image
      */
     public void setZoomScale(double scale)
-    {        
-        relativeScale(getSelectedImage(),scale/zoomScale);
-        zoomScale=scale;
+    {   if(scale >0)
+        {
+            relativeScale(getSelectedImage(),scale/zoomScale);
+            zoomScale=scale;
+        }
     }
     
-    //resize both images bigger or smaller based on input scale
+    /**
+     * resize both images bigger or smaller based on input scale
+     */
     public void resizeOnScale(double scale)
     {
         relativeScale(getDeselectedImage(), scale);

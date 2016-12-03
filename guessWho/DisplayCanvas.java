@@ -43,7 +43,7 @@ public class DisplayCanvas<T extends Actor> extends Actor
     
     /**
      * display should be called after each setup to refect the newest set up
-     * DisplayCanvas on works if it is added in a world
+     * DisplayCanvas only works if it is added in a world
      */
     public void display()
     {
@@ -61,15 +61,17 @@ public class DisplayCanvas<T extends Actor> extends Actor
     }
   
     /**
-     * setBackground comes with 2 signatures, one taking a name of an image file, one take in greenfootImage
-     * use this function if new background is meant to be applied for this class
+     * setBackground takes in a path to an image
      */
     public DisplayCanvas setBackground(String filename)
     {
         setBackground(new GreenfootImage(filename));
         return this;
     }
-
+    
+    /**
+     * setBackground takes in an greenfootImage
+     */
     public DisplayCanvas setBackground(GreenfootImage image)
     {
         setImage(image);
@@ -104,29 +106,44 @@ public class DisplayCanvas<T extends Actor> extends Actor
         return this;
     }
     
+    /**
+     * get all actor this canvas is displaying
+     */
     public Set<T> getAll()
     {
         return disBox.getActors();
     }
     
+    /**
+     * add all actors to this canvas for displaying
+     */
     public DisplayCanvas addAll(Set<T> actors)
     {
         disBox.addAll(actors);
         return this;
     }
     
+    /**
+     * add an additional actor to this canvas for displaying
+     */
     public DisplayCanvas addActor(T actor)
     {
         disBox.addActor(actor);
         return this;
     }
     
+    /**
+     * remove all actors in this canvas
+     */
     public DisplayCanvas clearAll()
     {
         disBox.clearAll();
         return this;
     }
     
+    /**
+     * set a new set of actors for displaying, old set will be ignore
+     */
     public DisplayCanvas setActors(Set<T> actors)
     {
         disBox.setActors(actors);

@@ -4,6 +4,10 @@ import java.util.HashMap;
 /**
  * Character is a ZoomActor with descriptive properties and a name
  * Character is the main class for this game
+ * support method putProperty taking in a pair of String, key and value.Value will be override if new value is given to an existing key.
+ * support method getProperties which will return a map of all stored properties
+ * support method getPropertyValue which will return just a String value of an existing key
+ * also support setName and getName
  * 
  * @author SPAAK 
  * @version 1
@@ -14,8 +18,10 @@ public class Character extends ZoomActor
     Map<String,String> properties = new HashMap<String,String>(); 
     //name of Character
     String name = "";
-    
-    //constructor require path to image name. image will be scaledown 50%
+
+    /**
+     * constructor require path to image name. image will be scaledown 50%
+     */
     public Character(String filename)
     {
         super(filename,0.5);

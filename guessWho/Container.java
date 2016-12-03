@@ -1,8 +1,8 @@
 /**
- * Write a description of class Container here.
+ * interface for Iterator Pattern
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPPAK
+ * @version 1
  */
 public interface Container  
 {

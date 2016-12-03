@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LButton here.
+ * an extension of LabelButton implementing Invoker interface for Command Pattern
+ * support methods: setCommand taking in a DisplayCommand, and invoke.
+ * any acts on select or deselect will invoke the stored DisplayCommand
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author SPAAK 
+ * @version 1
  */
 public class LButton extends LabelButton implements Invoker
 {
