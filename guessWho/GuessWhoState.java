@@ -53,6 +53,9 @@ public class GuessWhoState implements GameState
         world.setState("scoreState");
     }
     
+    /**
+     * update 3 message, my message,your message and hint message
+     */
     private void updateMessages()
     {
         StringImageFactory a = new StringImageFactory();

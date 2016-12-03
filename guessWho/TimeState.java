@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.awt.Color;
 
 /**
  * A decorator of GameState with Time.
@@ -17,7 +18,7 @@ public class TimeState extends GameStateDecorator
     int timeBoxX;
     int timeBoxY;
     World world;
-    
+    StringImageFactory sif; 
     long startTime;
     long elapsedTime;
     long remainingTime=0;
@@ -33,6 +34,7 @@ public class TimeState extends GameStateDecorator
         timeText = "Time left\n  %d";
         textSize = 50;
         setTimer(30);
+        sif = new StringImageFactory();
     }
     
     /**
@@ -79,15 +81,24 @@ public class TimeState extends GameStateDecorator
     }
     
     /**
+     * set text for time box text, 
+     * character '%d' is require, otherwise, no time left will be shown
+     */
+    public void setTimeBoxTextColor(Color color)
+    {
+        sif.setTextColor(color);
+    }
+    
+    /**
      * helper method to update time box text
      */
     private void updateTimeBox()
     {
         if(timeBox != null)
         {
-            StringImageFactory a = new StringImageFactory();
+            
             String text = timeText.replace("%d",String.valueOf(secRemaining));
-            timeBox.setImage(a.createImage(text,textSize));   
+            timeBox.setImage(sif.createImage(text,textSize));   
         }
     }
     

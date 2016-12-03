@@ -1,4 +1,5 @@
 import greenfoot.*;
+import java.awt.Color;
 /**
  * matching state will register Me to server to get session ID, and keep checking every 0.5 second to see if there is a valid player joining the room
  * matching state allow return to chooseCharState if do not want to wait
@@ -13,7 +14,9 @@ public class MatchingState implements GameState,Observer
     World world;
     GameSession gameSession;
     DummyImage blockImg;
-    
+    DummyImage waitImg1;
+    DummyImage waitImg2;
+    DummyImage msgImg;
     //need an image for return button
     EnableButton returnBut;
     PlayerAdapter pa;
@@ -29,8 +32,14 @@ public class MatchingState implements GameState,Observer
     
     private void prepare()
     {
+        StringImageFactory sif = new StringImageFactory();
         //blocking image
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
+        waitImg1 = new DummyImage("waiting.2.png");
+        waitImg2 = new DummyImage("waiting.2.png");
+        waitImg2.getImage().scale(150,150);
+        sif.setTextColor(Color.BLUE);
+        msgImg = new DummyImage( sif.createImage("Please wait for another player to join\nclick return if no no player",80) );
         pa = new PlayerAdapter();
         //return button
         returnBut = new EnableButton("return");
@@ -47,7 +56,10 @@ public class MatchingState implements GameState,Observer
         System.out.println(gameSession.getMe().getChosenChar().getClass().getName());
 
         world.addObject(blockImg, world.getWidth()/2,world.getHeight()/2);
-        world.addObject(returnBut,world.getWidth()/2,world.getHeight()/4*3);
+        world.addObject(msgImg,world.getWidth()/2,100);
+        world.addObject(waitImg1,world.getWidth()/2,world.getHeight()/2);
+        world.addObject(waitImg2,world.getWidth()/2,world.getHeight()/2);
+        world.addObject(returnBut,world.getWidth()/2,750);
         
         String sessionID = pa.registerMe(gameSession.getMe());
         //if valid ID
@@ -64,6 +76,8 @@ public class MatchingState implements GameState,Observer
     //check for valid player every 500 mili seconds
     public void stateRun()
     {
+        waitImg1.setRotation(waitImg1.getRotation() +1 );
+        waitImg2.setRotation(waitImg2.getRotation() -1 );
         //check every 500 ms
         if(System.nanoTime() - startTime >= 500*1000000){
             //get player back every second
@@ -88,7 +102,11 @@ public class MatchingState implements GameState,Observer
     public void exit()
     {
         world.removeObject(blockImg);
+        world.removeObject(msgImg);
+        world.removeObject(waitImg1);
+        world.removeObject(waitImg2);
         world.removeObject(returnBut);
+        
         //no player -> delete instance on server, flip back to choose char screen
         if(gameSession.getYou() == null)
         {

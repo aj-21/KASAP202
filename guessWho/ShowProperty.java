@@ -20,8 +20,7 @@ public class ShowProperty implements Observer
         this.world = world;
         this.gameSession = gameSession;
         sif = new StringImageFactory();
-        sif.setTextColor(Color.WHITE);
-        sif.setBackgroundColor(new Color(0,0,0,120));
+        
         labels = new HashSet<DummyImage>();
     }
     
@@ -88,17 +87,54 @@ public class ShowProperty implements Observer
         value = value.toUpperCase();
         switch(value)
         {
-            case "YES": {sif.setTextColor(Color.GREEN);return "V";}
-            case "NO": {sif.setTextColor(Color.RED);return "X";}
-            case "GREY": {sif.setTextColor(Color.LIGHT_GRAY);return value;}
-            case "YELLOW": {sif.setTextColor(Color.YELLOW);return value;}
-            case "GREEN": {sif.setTextColor(Color.GREEN);return value;}
-            case "PURPLE": {sif.setTextColor(new Color(128,0,128));return value;}
-            case "BROWN": {sif.setTextColor(new Color(165,42,42));return value;}
-            case "RED": {sif.setTextColor(Color.RED);return value;}
-            case "BLACK": {sif.setTextColor(Color.BLACK);return value;}
+            case "YES":{
+                sif.setTextColor(Color.GREEN);
+                sif.setBackgroundColor(new Color(0,0,0,200));
+                return "V";}
             
-            default: {sif.setTextColor(Color.WHITE);return value;}
+            case "NO":{
+                sif.setTextColor(Color.RED);
+                sif.setBackgroundColor(new Color(255,255,255,200));
+                return "X";}
+                
+            case "GREY": {
+                sif.setTextColor(Color.LIGHT_GRAY);
+                sif.setBackgroundColor(new Color(0,0,0,200));
+                return value;}
+                
+            case "YELLOW": {
+                sif.setTextColor(Color.YELLOW);
+                sif.setBackgroundColor(new Color(0,0,0,200));
+                return value;}
+                
+            case "GREEN": {
+                sif.setTextColor(Color.GREEN);
+                sif.setBackgroundColor(new Color(0,0,0,200));
+                return value;}
+                
+            case "PURPLE": {
+                sif.setTextColor(new Color(128,0,128));
+                sif.setBackgroundColor(new Color(255,255,255,200));
+                return value;}
+                
+            case "BROWN": {
+                sif.setTextColor(new Color(165,42,42));
+                sif.setBackgroundColor(new Color(255,255,255,200));
+                return value;}
+                
+            case "RED": {
+                sif.setTextColor(Color.RED);
+                sif.setBackgroundColor(new Color(255,255,255,200));
+                return value;}
+                
+            case "BLACK": {
+                sif.setTextColor(Color.BLACK);
+                sif.setBackgroundColor(new Color(255,255,255,200));
+                return value;}
+            
+            default: {
+                sif.setTextColor(Color.WHITE);
+                return value;}
         }
     }
 }

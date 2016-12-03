@@ -106,7 +106,7 @@ public class ResultScreen extends World implements Observer
     public void disconnectedResult(){
         StringImageFactory a = new StringImageFactory();
         a.setTextColor(Color.CYAN);
-        DummyImage di = new DummyImage(a.createImage("Your rival is disconected,\nask if your friend has just fleed away!!!",40));
+        DummyImage di = new DummyImage(a.createImage("Your friend is disconected,\nask if he has just gave up and fleed away!!!",40));
         addObject(di,550,250);
         
         di = new DummyImage(new GreenfootImage("disconnect.png"));        

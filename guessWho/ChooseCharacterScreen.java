@@ -40,12 +40,11 @@ public class ChooseCharacterScreen extends StatefulWorld
     {              
         //get the Name
         String name = "";
-        while((gameSession.getMe().getName() == null) || (gameSession.getMe().getName().equals("")))
+        while( (name == null) || name.equals(""))
         {
-            name = Greenfoot.ask("Please choose a name for yourself"); 
-            //capilize the first letter
-            
+            name = Greenfoot.ask("Please choose a name for yourself");       
         }
+        //capilize the first letter
         gameSession.getMe().setName(name.substring(0,1).toUpperCase()+name.substring(1));
 
               
@@ -87,7 +86,7 @@ public class ChooseCharacterScreen extends StatefulWorld
         ((TimeState)startingState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
         
         //start with chooseCharState
-        currentState = chooseCharState;
+        setState("chooseCharState");
         
     }
     
@@ -115,16 +114,6 @@ public class ChooseCharacterScreen extends StatefulWorld
         
         //for debug
         System.out.println(currentState.getClass().getName());
-    }
-    
-    public GameState getCurrentState()
-    {
-        return null;
-    }
-    
-    public boolean isCurrentState(GameState gameState)
-    {
-        return false;
     }
     
 }

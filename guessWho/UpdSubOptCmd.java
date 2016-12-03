@@ -9,17 +9,12 @@ import java.util.Set;
 public class UpdSubOptCmd implements DisplayCommand 
 {
     DisplayReceiver receiver;
-    DisplayCmd displayCmd;
-    UndisplayCmd undisplayCmd;
-    Set<LabelButton> butSet;
     PropertyInfo propertyInfo;
     
     //constructor requires PropertyInfo for singleton SubOptionButtons
     public UpdSubOptCmd (PropertyInfo propertyInfo)
     {
         this.propertyInfo = propertyInfo;
-        displayCmd = new DisplayCmd();
-        undisplayCmd = new UndisplayCmd();
     }
     
     @Override 
@@ -32,11 +27,14 @@ public class UpdSubOptCmd implements DisplayCommand
         // call displayCmd to display  suboption buttons when a new option button is selected
         if(but.isSelected())
         {
-            displayCmd.execute(propertyInfo.getSubOptButtons(but));
+            if(receiver != null)
+                receiver.display(propertyInfo.getSubOptButtons(but));
             return;
         }
+        
         // call displayCmd to remove  suboption buttons when a new option button is deselected
-        undisplayCmd.execute(propertyInfo.getSubOptButtons(but));
+        if(receiver != null)
+            receiver.undisplay(propertyInfo.getSubOptButtons(but));
         
     }
     
@@ -45,8 +43,6 @@ public class UpdSubOptCmd implements DisplayCommand
     public void setReceiver(DisplayReceiver receiver)
     {
         this.receiver = receiver;
-        displayCmd.setReceiver(receiver);
-        undisplayCmd.setReceiver(receiver);
     }
     
 }

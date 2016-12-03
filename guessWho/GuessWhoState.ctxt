@@ -11,4 +11,5 @@ comment4.params=
 comment4.target=void\ exit()
 comment5.params=
 comment5.target=void\ updateMessages()
+comment5.text=\n\ upd\n
 numComments=6
