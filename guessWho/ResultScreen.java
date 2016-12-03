@@ -41,8 +41,10 @@ public class ResultScreen extends World implements Observer
         text = new DummyImage(a.createImage("YoUr ReSuLt",100));
         addObject(text,getWidth()/2,80);
         
-        EnableButton rtBut = new EnableButton("return");
+        EnableButton rtBut = new EnableButton("return","return.png","return.png");
+        rtBut.getImage().scale(150,150);
         rtBut.enable();
+        rtBut.getImage().scale(150,150);
         rtBut.addObserver(this);
         addObject(rtBut,1200,750);
         

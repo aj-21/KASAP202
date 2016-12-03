@@ -115,7 +115,7 @@ public class GuessWho extends StatefulWorld
         ((TimeState)scoreState).setTimer(5);
         ((TimeState)scoreState).setTimeBoxLoc(this,getWidth()/2,getHeight()/2);
         ((TimeState)scoreState).setTimeBoxTextColor(Color.YELLOW);
-        ((TimeState)scoreState).setTimeBoxText("Be patient and strategic\nin %d second(s)\nyou will know your result");
+        ((TimeState)scoreState).setTimeBoxText("Be patient and strategic,\nin %d second(s)\nyou will know your result");
         ((TimeState)scoreState).setTimeBoxSize(100);
         
         //setting timer for guessWhoState

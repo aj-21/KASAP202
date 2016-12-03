@@ -11,5 +11,5 @@ comment4.params=
 comment4.target=void\ exit()
 comment5.params=
 comment5.target=void\ updateMessages()
-comment5.text=\n\ upd\n
+comment5.text=\n\ update\ 3\ message,\ my\ message,your\ message\ and\ hint\ message\n
 numComments=6

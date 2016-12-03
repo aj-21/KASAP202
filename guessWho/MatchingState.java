@@ -39,11 +39,13 @@ public class MatchingState implements GameState,Observer
         waitImg2 = new DummyImage("waiting.2.png");
         waitImg2.getImage().scale(150,150);
         sif.setTextColor(Color.BLUE);
-        msgImg = new DummyImage( sif.createImage("Please wait for another player to join\nclick return if no no player",80) );
+        msgImg = new DummyImage( sif.createImage("Please wait for another player to join\nclick return if you wish",80) );
         pa = new PlayerAdapter();
         //return button
-        returnBut = new EnableButton("return");
+        returnBut = new EnableButton("return","return.png","return.png");
+        returnBut.getImage().scale(150,150);
         returnBut.enable();
+        returnBut.getImage().scale(150,150);
         returnBut.addObserver(this);
         //set start time
         startTime = System.nanoTime();
