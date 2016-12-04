@@ -44,6 +44,7 @@ public class IDisplayCanvas<T extends SimpleSelectableActor> extends DisplayCanv
                 if(each.detectPress() == true)
                     break;
             }
+            //send the whole set to observers
             myOb.setCHANGED();
             myOb.notifyObservers(getAll());
             myOb.clearCHANGED();
