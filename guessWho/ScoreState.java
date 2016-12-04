@@ -136,30 +136,34 @@ public class ScoreState implements GameState
         //if no suboption is currently selected >> no guess no filter
         if(filterSubOptBut == null)
             return;
-
+            
+        //if a suboption button is selected, start filtering out
         String filterKey = filterOptBut.getLabel();
         String filterValue = filterSubOptBut.getLabel();
-        PropertyCriteria valueFilter = new CriteriaValue(gameSession,filterKey);
-        Set<Character> rmSet = null; 
+        String secretValue = gameSession.getYou().getChosenChar().getPropertyValue(filterKey);
+        PropertyCriteria propFilter = null;
+        String msg = "";
         
         //if filterValue matches secrete value -> correct filter, remove all that don't match secretValue
-        if(filterValue.equals(gameSession.getYou().getChosenChar().getPropertyValue(filterKey)))
+        if(filterValue.equals(secretValue))
         {
-            rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet());
-            String msg = "had a CORRECT filter, and eliminate " + rmSet.size()+" tile";
-            if(rmSet.size() >1)
-                msg+="s";
-            gameSession.getMe().setLastAction( msg);
+            propFilter = new NotMatchPropertyValue();
+            msg = "had a CORRECT filter";
         }
         //if filterValue doesn't match secrete value -> inccorect filter, remove only those who matches selected filter suboption
         else
         {
-            rmSet = valueFilter.meetCriteria(gameSession.getPlaySet(),filterValue);
-            String msg = "had an INCCORECT filter, and eliminate " + rmSet.size()+" tile";
-            if(rmSet.size() >1)
-                msg+="s";
-            gameSession.getMe().setLastAction( msg);
+            propFilter = new MatchPropertyValue();
+            msg = "had an INCCORECT filter";
         }
+        
+        //update message
+        Set<Character> rmSet = propFilter.meetCriteria(gameSession.getPlaySet(),filterKey,filterValue);
+        msg += ", and elimiate" + rmSet.size() + " tile";
+        if(rmSet.size() >1)
+                msg+="s";
+        gameSession.getMe().setLastAction( msg);
+            
         //two step remove
         if(rmSet != null)
         {

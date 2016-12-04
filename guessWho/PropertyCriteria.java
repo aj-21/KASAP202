@@ -7,8 +7,5 @@ import java.util.Set;
  */
 public interface PropertyCriteria  
 {
-    public Set<Character> meetCriteria(Set<Character> characters);
-    public Set<Character> meetCriteria(Set<Character> characters,String filterValue);
-    public Set<Character> notMeetCriteria(Set<Character> characters);
-    public Set<Character> notMeetCriteria(Set<Character> characters,String filterValue);
+    public Set<Character> meetCriteria(Set<Character> characters, String key, String value );
 }

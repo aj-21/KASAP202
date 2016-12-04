@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=NotMatchPropertyValue
+comment0.text=\n\ Write\ a\ description\ of\ class\ NotMatchPropertyValue\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=characters\ key\ value
+comment1.target=java.util.Set\ meetCriteria(java.util.Set,\ java.lang.String,\ java.lang.String)
+numComments=2

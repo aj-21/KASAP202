@@ -1,12 +1,6 @@
 #BlueJ class context
 comment0.target=PropertyCriteria
 comment0.text=\n\ interface\ for\ filtering\ CriteriaValue,\ implements\ Filter\ pattern\n\ \n\ @author\ SPAAK\n\ @version\ 1\n
-comment1.params=characters
-comment1.target=java.util.Set\ meetCriteria(java.util.Set)
-comment2.params=characters\ filterValue
-comment2.target=java.util.Set\ meetCriteria(java.util.Set,\ java.lang.String)
-comment3.params=characters
-comment3.target=java.util.Set\ notMeetCriteria(java.util.Set)
-comment4.params=characters\ filterValue
-comment4.target=java.util.Set\ notMeetCriteria(java.util.Set,\ java.lang.String)
-numComments=5
+comment1.params=characters\ key\ value
+comment1.target=java.util.Set\ meetCriteria(java.util.Set,\ java.lang.String,\ java.lang.String)
+numComments=2
