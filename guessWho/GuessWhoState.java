@@ -10,15 +10,15 @@ import java.awt.Color;
  */
 public class GuessWhoState implements GameState
 {
-    PressHandler successor;
-    GuessWho world;
+    StatefulWorld world;
     GameSession gameSession;
+    
     Iterator insIter;
     DummyImage myMsg;
     DummyImage yourMsg;
     DummyImage insMsg;
     
-    public GuessWhoState(GuessWho world,GameSession gameSession)
+    public GuessWhoState(StatefulWorld world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;

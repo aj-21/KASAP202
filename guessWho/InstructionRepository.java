@@ -6,7 +6,8 @@ import java.util.ArrayList;
  * @author SPAAK 
  * @version 1
  */
-public class InstructionRepository implements Container  
+public class InstructionRepository implements Repository
+  
 {
     List<String> ins = new ArrayList<String>();
     
@@ -31,7 +32,7 @@ public class InstructionRepository implements Container
      */
     private class InstructionIterator implements Iterator
     {
-        int index=0;
+        private int index=0;
         @Override
         public boolean hasNext()
         {

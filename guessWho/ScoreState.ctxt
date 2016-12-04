@@ -2,7 +2,7 @@
 comment0.target=ScoreState
 comment0.text=\n\ ScoreState\ performs\ guess\ and\ filter\ tasks\ as\ well\ and\ exchanges\ info\ with\ restlet\ server\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n
 comment1.params=world\ gameSession
-comment1.target=ScoreState(GuessWho,\ GameSession)
+comment1.target=ScoreState(StatefulWorld,\ GameSession)
 comment1.text=\n\ constructor\ requires\ a\ world\ which\ state\ resides\ and\ gameSession\ for\ accessing\ info\n
 comment2.params=
 comment2.target=void\ enter()

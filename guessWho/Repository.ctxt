@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=Container
+comment0.target=Repository
 comment0.text=\n\ interface\ for\ Iterator\ Pattern\n\ \n\ @author\ SPPAK\n\ @version\ 1\n
 comment1.params=
 comment1.target=Iterator\ getIterator()

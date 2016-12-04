@@ -2,7 +2,7 @@
 comment0.target=MatchingState
 comment0.text=\n\ matching\ state\ will\ register\ Me\ to\ server\ to\ get\ session\ ID,\ and\ keep\ checking\ every\ 0.5\ second\ to\ see\ if\ there\ is\ a\ valid\ player\ joining\ the\ room\n\ matching\ state\ allow\ return\ to\ chooseCharState\ if\ do\ not\ want\ to\ wait\n\ \n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n\ \n
 comment1.params=world\ gameSession
-comment1.target=MatchingState(greenfoot.World,\ GameSession)
+comment1.target=MatchingState(StatefulWorld,\ GameSession)
 comment2.params=
 comment2.target=void\ prepare()
 comment3.params=

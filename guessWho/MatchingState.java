@@ -11,18 +11,19 @@ import java.awt.Color;
  */
 public class MatchingState implements GameState,Observer
 {
-    World world;
+    StatefulWorld world;
     GameSession gameSession;
     DummyImage blockImg;
     DummyImage waitImg1;
     DummyImage waitImg2;
+    DummyImage waitImg3;
     DummyImage msgImg;
     //need an image for return button
     EnableButton returnBut;
     PlayerAdapter pa;
     
     long startTime;
-    public MatchingState(World world,GameSession gameSession)
+    public MatchingState(StatefulWorld world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
@@ -37,7 +38,9 @@ public class MatchingState implements GameState,Observer
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
         waitImg1 = new DummyImage("waiting.2.png");
         waitImg2 = new DummyImage("waiting.2.png");
-        waitImg2.getImage().scale(150,150);
+        waitImg2.getImage().scale(256,256);
+        waitImg3 = new DummyImage("waiting.2.png");
+        waitImg3.getImage().scale(128,128);
         sif.setTextColor(Color.BLUE);
         msgImg = new DummyImage( sif.createImage("Please wait for another player to join\nclick return if you wish",80) );
         pa = new PlayerAdapter();
@@ -61,6 +64,7 @@ public class MatchingState implements GameState,Observer
         world.addObject(msgImg,world.getWidth()/2,100);
         world.addObject(waitImg1,world.getWidth()/2,world.getHeight()/2);
         world.addObject(waitImg2,world.getWidth()/2,world.getHeight()/2);
+        world.addObject(waitImg3,world.getWidth()/2,world.getHeight()/2);
         world.addObject(returnBut,world.getWidth()/2,750);
         
         String sessionID = pa.registerMe(gameSession.getMe());
@@ -80,6 +84,7 @@ public class MatchingState implements GameState,Observer
     {
         waitImg1.setRotation(waitImg1.getRotation() +1 );
         waitImg2.setRotation(waitImg2.getRotation() -1 );
+        waitImg3.setRotation(waitImg3.getRotation() +1 );
         //check every 500 ms
         if(System.nanoTime() - startTime >= 500*1000000){
             //get player back every second
@@ -107,13 +112,14 @@ public class MatchingState implements GameState,Observer
         world.removeObject(msgImg);
         world.removeObject(waitImg1);
         world.removeObject(waitImg2);
+        world.removeObject(waitImg3);
         world.removeObject(returnBut);
         
         //no player -> delete instance on server, flip back to choose char screen
         if(gameSession.getYou() == null)
         {
             System.out.println("no player");
-            ((ChooseCharacterScreen)world).setState("chooseCharState");
+            world.setState("chooseCharState");
             pa.delete(gameSession.getSessionID());
             return;
         }

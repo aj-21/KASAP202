@@ -2,7 +2,7 @@
 comment0.target=ChooseCharState
 comment0.text=\n\ waiting\ for\ confirm\ button\ to\ be\ clicked\ and\ set\ MyChar\n\ \n\ @author\ SPAAK\ \n\ @version\ 1\n\ \n
 comment1.params=world\ gameSession
-comment1.target=ChooseCharState(greenfoot.World,\ GameSession)
+comment1.target=ChooseCharState(StatefulWorld,\ GameSession)
 comment2.params=
 comment2.target=void\ enter()
 comment3.params=

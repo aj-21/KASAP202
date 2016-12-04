@@ -8,13 +8,12 @@ import greenfoot.*;
  */
 public class ChooseCharState implements GameState,Observer
 {
-    World world;
+    StatefulWorld world;
     GameSession gameSession;
-    public ChooseCharState(World world,GameSession gameSession)
+    public ChooseCharState(StatefulWorld world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
-
     }
 
     public void enter()
@@ -32,7 +31,7 @@ public class ChooseCharState implements GameState,Observer
   
         try{
             gameSession.getMe().setChosenChar(myChar.getClass().newInstance());
-            ((ChooseCharacterScreen)world).setState("matchingState");
+            world.setState("matchingState");
         }
         catch (Exception e)
         {

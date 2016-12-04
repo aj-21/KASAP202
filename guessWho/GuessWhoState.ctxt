@@ -2,7 +2,7 @@
 comment0.target=GuessWhoState
 comment0.text=\n\ responsible\ for\ display\ latest\ messages\ of\ action\ from\ both\ players\ and\ display\ hint\n\ \n\ @author\:\ SPAAK\ \n\ @version\:\ 1\n\ \n
 comment1.params=world\ gameSession
-comment1.target=GuessWhoState(GuessWho,\ GameSession)
+comment1.target=GuessWhoState(StatefulWorld,\ GameSession)
 comment2.params=
 comment2.target=void\ enter()
 comment3.params=

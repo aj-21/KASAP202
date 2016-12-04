@@ -8,9 +8,8 @@ import java.util.Set;
  */
 public class ScoreState implements GameState
 {
-    GuessWho world;
+    StatefulWorld world;
     GameSession gameSession;
-    Character yourChar;
     DummyImage blockImg;
     
     PlayerAdapter pa;
@@ -19,11 +18,11 @@ public class ScoreState implements GameState
     /**
      * constructor requires a world which state resides and gameSession for accessing info
      */
-    public ScoreState(GuessWho world,GameSession gameSession)
+    public ScoreState(StatefulWorld world,GameSession gameSession)
     {
         this.world = world;
         this.gameSession = gameSession;
-        yourChar = gameSession.getYou().getChosenChar();
+        
         pa = new PlayerAdapter();
         blockImg = new DummyImage("backgroundGreyDimCanvas.png");
         startTime = System.nanoTime();
@@ -93,7 +92,7 @@ public class ScoreState implements GameState
         
     }
        
-    public void guess(Character guessedChar)
+    private void guess(Character guessedChar)
     {
         //debug
         System.out.println("guessing");
@@ -103,10 +102,10 @@ public class ScoreState implements GameState
         gameSession.getPlaySet().remove(guessedChar);
         
         //if same class -> win
-        System.out.println("guessedChar: " + guessedChar.getClass().getName());
-        System.out.println("yourChar: " + yourChar.getClass().getName());
-        System.out.println("guessing correct: " + guessedChar.getClass().getName().equals(yourChar.getClass().getName()));
-        if(guessedChar.getClass().getName().equals(yourChar.getClass().getName()))
+        //System.out.println("guessedChar: " + guessedChar.getClass().getName());
+        //System.out.println("yourChar: " + yourChar.getClass().getName());
+        //System.out.println("guessing correct: " + guessedChar.getClass().getName().equals(yourChar.getClass().getName()));
+        if(guessedChar.getClass() == gameSession.getYou().getChosenChar().getClass())
         
             gameSession.getMe().setIsFinished(true);
         
@@ -119,7 +118,7 @@ public class ScoreState implements GameState
      * 2. correct filter
      * 3. incorrect filter
      */
-    public void filter()
+    private void filter()
     {
         //debug
         System.out.println("filter");
@@ -144,7 +143,7 @@ public class ScoreState implements GameState
         Set<Character> rmSet = null; 
         
         //if filterValue matches secrete value -> correct filter, remove all that don't match secretValue
-        if(filterValue.equals(yourChar.getPropertyValue(filterKey)))
+        if(filterValue.equals(gameSession.getYou().getChosenChar().getPropertyValue(filterKey)))
         {
             rmSet = valueFilter.notMeetCriteria(gameSession.getPlaySet());
             String msg = "had a CORRECT filter, and eliminate " + rmSet.size()+" tile";

@@ -4,7 +4,7 @@
  * @author SPPAK
  * @version 1
  */
-public interface Container  
+public interface Repository
 {
     public Iterator getIterator();
 }
