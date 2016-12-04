@@ -124,6 +124,8 @@ public class GuessWho extends StatefulWorld
         guessWhoState = new TimeState( guessWhoState);
         ((TimeState)guessWhoState).setTimeBoxLoc(this,1370,260);
         ((TimeState)guessWhoState).setTimer(25);
+        ((TimeState)guessWhoState).setTimeBoxBkgrndColor(new Color(128,0,128,128));
+        ((TimeState)guessWhoState).setTimeBoxText(" TIME LEFT \n%d");
         
         //start game with guessWhoState
         setState("guessWhoState");

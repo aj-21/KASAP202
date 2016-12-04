@@ -4,7 +4,7 @@ import java.awt.Color;
 /**
  * A decorator of GameState with Time.
  * support setTime in seconds, time has to be greater than 0, default is 30 seconds
- * support display time remaining every second, message can be set by setTimeBoxText method, input needs to have %d as a slot for second remaining
+ * support display time remaining every second, message can be set by setTimeBoxText method, input needs to have %d as a slot for second remaining, otherwise time remain will be added at the end
  * location timebox need to be set via setTimeBoxLoc method for 1 time, other wise, no time message is displayed
  * 
  * @author SPAAK
@@ -89,6 +89,11 @@ public class TimeState extends GameStateDecorator
         sif.setTextColor(color);
     }
     
+    public void setTimeBoxBkgrndColor(Color color)
+    {
+        sif.setBackgroundColor(color);
+    }
+    
     /**
      * helper method to update time box text
      */
@@ -96,7 +101,8 @@ public class TimeState extends GameStateDecorator
     {
         if(timeBox != null)
         {
-            
+            if(!timeText.contains("%d"))
+                timeText += "\n%d";
             String text = timeText.replace("%d",String.valueOf(secRemaining));
             timeBox.setImage(sif.createImage(text,textSize));   
         }

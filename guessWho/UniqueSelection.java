@@ -8,7 +8,7 @@ import java.util.Set;
  */
 public class UniqueSelection<T extends Selectable> implements Observer
 {
-    protected T lastSelected;
+    private T lastSelected;
     /**
      * Constructor for objects of class UniqueSelectionMaintainer either with a paramenter of objects for maintaining one Selection or no paramenter.
      */

@@ -12,7 +12,7 @@ import java.util.LinkedHashSet;
 
 public class Observable  
 {
-    Set<Observer> observers;
+    LinkedHashSet<Observer> observers;
     boolean changed = false;
     
     public Observable()
