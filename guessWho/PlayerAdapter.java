@@ -102,7 +102,7 @@ public class PlayerAdapter implements PlayerOperations
         }
     }
     
-    public Player mapPlayerWrapperToPlayer(PlayerWrapper playerWrapper)
+    private Player mapPlayerWrapperToPlayer(PlayerWrapper playerWrapper)
     {
         Player returnPlayer = new Player();
         returnPlayer.setName(playerWrapper.name);
@@ -122,7 +122,7 @@ public class PlayerAdapter implements PlayerOperations
         return returnPlayer;
     }
     
-    public PlayerWrapper mapPlayerToPlayerWrapper(Player player)
+    private PlayerWrapper mapPlayerToPlayerWrapper(Player player)
     {
         PlayerWrapper returnPlayer = new PlayerWrapper();
         returnPlayer.name = player.getName();

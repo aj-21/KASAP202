@@ -41,7 +41,8 @@ until the player is able to accurately guess their opponent’s character.
 
 ## Our design:
 ### Software:
-Our game is implemented on Greenfoot application, you can learn more about greenfoot and download the application from their website (http://www.greenfoot.org).
+- Our game is implemented on Greenfoot application, you can learn more about greenfoot and download the application from their website (http://www.greenfoot.org).
+- To gain the most insight of our design, one needs to visit our UML diagram before proceeding to go through design patterns:
 
 ### State pattern:
 - To start with, our game has 4 main greenfoot worlds, which can be seen as outermost states of the game. They are WelcomeScreen, ChooseCharacterScreen,GuessWho,
@@ -61,7 +62,20 @@ We have two extensions for GameStateDecorator TimeState and PressHandlerState.
 - TimeState enables a GameState to exit after a period of time, and PressHandlerState is used in combination with Chain of Responsibility pattern
 to enables a state to detect press events.
 ![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Chain%20of%20Responsibility.png)
-### Display module:
+
+### Command pattern:
+- In our main game screen GuessWho, we have three main display canvas, option button canvas, suboption button canvas, and character canvas. 
+A command is invoked from within an option button (LButton class) when it is selected/deselected and it call display/undisplay on DisplayReceiver UpdSubOptRcv
+to dynamically display/remove suboption buttons based on which option button is selected/deselected.
+
+### Observer pattern:
+- We use Observer pattern for the ease of communication between classes. We have two classes Observable and Observer which mimic built-in java classes with the same names.
+- EnableButton and IDisplayCanvas are our two main observable objects, and observers include ChooseCharState, MatchingState, ResultScreen, UniqueSelection, and ShowProperty classes.
+- EnableButton and IDisplayCanvas are also two observers, so they play two roles both observable and observer.
+
+
+### Other pattern:
+- We also implemented Factory, Filter, and Iterator patterns as utility in our game. 
 
 ## Server deployment:
 
