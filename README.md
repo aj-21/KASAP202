@@ -57,7 +57,8 @@ CoR is also used in PressHandlerState as decorator for GameStates ChooseCharStat
 We have two extensions for GameStateDecorator TimeState and PressHandlerState.
 - TimeState enables a GameState to exit after a period of time, and PressHandlerState is used in combination with Chain of Responsibility pattern
 to enables a state to detect press events.
-### 
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Chain%20of%20Responsibility.png)
+### Display module:
 
 ## Server deployment:
 
