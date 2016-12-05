@@ -82,7 +82,6 @@ The docker image of the server implementation is on docker hub. To deploy and ru
 ### Delpoyment
 1. Create a new Linux instance on AWS EC2.
 2. Connect to the AWS EC2 instance using ssh.
-<<<<<<< HEAD
 3. Update the installed packages and package cache on your instance:
  sudo yum update -y
 4. Install Docker on EC2:
