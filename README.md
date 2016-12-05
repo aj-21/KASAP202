@@ -1,7 +1,7 @@
 # SPAAK Team
-Our group repository for our CMPE 202 project
-Members:
-Member 1: Anthony Bell 
+Our group repository for our CMPE 202 project.
+Members:\n
+Member 1: Anthony Bell \n
 Member 2: Prachi Hada
 Member 3: Khoa Le
 Member 4: Azhad Mahmood
