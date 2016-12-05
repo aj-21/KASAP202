@@ -88,6 +88,7 @@ The docker image of the server implementation is on docker hub. To deploy and ru
 ### Delpoyment
 1. Create a new Linux instance on AWS EC2.
 2. Connect to the AWS EC2 instance using ssh.
+<<<<<<< HEAD
 3. Update the installed packages and package cache on your instance:
  sudo yum update -y
 4. Install Docker on EC2:
@@ -99,6 +100,19 @@ The docker image of the server implementation is on docker hub. To deploy and ru
 7. Run the docker container:
  docker run azhad/guesswho -td -p 8080:8080 azhad/guesswho:1.12
 8. Check the successful deployment using the EC2 instance public IP:
+=======
+3. Update the installed packages and package cache on your instance.
+ sudo yum update -y
+4. Install Docker on EC2
+ sudo yum install -y docker
+5. Start the Docker service
+ sudo service docker start
+6. Pull the latest image from Docker Hub
+ docker pull azhad/guesswho:1.12
+7. Run the docker container
+ docker run azhad/guesswho -td -p 8080:8080 azhad/guesswho:1.12
+8. Check the successful deployment using the EC2 instance public IP
+>>>>>>> 04795ab151f58a641bf9e1d2c23cd1d4f8e0c153
  http://{Your EC2 public IP}/GuessWho:8080/
 
 ## Future Development:
