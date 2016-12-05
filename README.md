@@ -50,8 +50,15 @@ This can cause boredom after try the game for a couple of time.
 Future developer can improve this by better design allowing real interaction of ask and answer.
 
 ## Design:
- Our game is implemented on Greenfoot application, you can visit and download the application from their website (http://www.greenfoot.org).
-   
+### Software:
+Our game is implemented on Greenfoot application, you can learn more about greenfoot and download the application from their website (http://www.greenfoot.org).
+### State pattern:
+- To start with, our game has 4 main greenfoot worlds, which can be seen as outermost states of the game. They are WelcomeScreen, ChooseCharacterScreen,GuessWho,
+GuessWho, and ResultScreen, all of which a player needs to go through and in the order as listed.
+- We also have GameState interface which is can be used as inner states. In particular, ChooseCharState, MatchingState, StartingState, GuessWhoState, and ScoreState
+implement GameState, and are used in StatefulWorld classes ChooseCharacterScreen and GuessWho.
+### Chain of Responsibility:
+
 
 ## Server deployment:
 
