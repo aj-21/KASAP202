@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
 /**
- * Write a description of class ResultScreen here.
+ * This class handles the screens for the game result. Such as when a player wins, loses or draws with their opponent.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @SPAAK 
+ * 12/4/16
  */
 public class ResultScreen extends World implements Observer
 {
