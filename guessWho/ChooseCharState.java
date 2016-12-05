@@ -1,4 +1,4 @@
-import greenfoot.*;
+import greenfoot.*;  
 /**
  * waiting for confirm button to be clicked and set MyChar
  * 
