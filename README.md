@@ -49,33 +49,37 @@ until the player is able to accurately guess their opponent’s character.
 GuessWho, and ResultScreen, all of which a player needs to go through and in the order as listed.
 - We also have GameState interface which is can be used as inner states. In particular, ChooseCharState, MatchingState, StartingState, GuessWhoState, and ScoreState
 implement GameState, and are used in StatefulWorld classes ChooseCharacterScreen and GuessWho.
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/State%20pattern.png)
 
 ### Chain of Responsibility pattern (CoR):
 - There are two way we use to handle a press event, check for a pressing in a greenfoot Actor, 
 and check for valid pressing coordinates via CoR.
 - We use CoR for WelcomeScreen for SkipIntro, Intro, or Quit button. 
 CoR is also used in PressHandlerState as decorator for GameStates ChooseCharState and GuessWhoState, as well as in IDisplayCanvas class.
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Chain%20of%20Responsibility%20pattern.png)
 
 ### Decorator pattern:
 - This came up when we want to extends the ability of a GameState without desire extending related classes.
 We have two extensions for GameStateDecorator TimeState and PressHandlerState.
 - TimeState enables a GameState to exit after a period of time, and PressHandlerState is used in combination with Chain of Responsibility pattern
 to enables a state to detect press events.
-![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Chain%20of%20Responsibility.png)
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Decorator%20pattern.png)
 
 ### Command pattern:
 - In our main game screen GuessWho, we have three main display canvas, option button canvas, suboption button canvas, and character canvas. 
 A command is invoked from within an option button (LButton class) when it is selected/deselected and it call display/undisplay on DisplayReceiver UpdSubOptRcv
 to dynamically display/remove suboption buttons based on which option button is selected/deselected.
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Command%20pattern.png)
 
 ### Observer pattern:
 - We use Observer pattern for the ease of communication between classes. We have two classes Observable and Observer which mimic built-in java classes with the same names.
 - EnableButton and IDisplayCanvas are our two main observable objects, and observers include ChooseCharState, MatchingState, ResultScreen, UniqueSelection, and ShowProperty classes.
 - EnableButton and IDisplayCanvas are also two observers, so they play two roles both observable and observer.
-
+![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Observer%20pattern.png)
 
 ### Other pattern:
-- We also implemented Factory, Filter, and Iterator patterns as utility in our game. 
+- We also implemented StringImageFactory as Factory pattern, PropertyCriteria, MatchPropertyValue, and NotMatchPropertyValue as Filter pattern,
+and InstructionRepository and Iterator as Iterator pattern. 
 
 ## Server deployment:
 
