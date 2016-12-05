@@ -42,16 +42,19 @@ until the player is able to accurately guess their opponent’s character.
 ## Our design:
 ### Software:
 Our game is implemented on Greenfoot application, you can learn more about greenfoot and download the application from their website (http://www.greenfoot.org).
+
 ### State pattern:
 - To start with, our game has 4 main greenfoot worlds, which can be seen as outermost states of the game. They are WelcomeScreen, ChooseCharacterScreen,GuessWho,
 GuessWho, and ResultScreen, all of which a player needs to go through and in the order as listed.
 - We also have GameState interface which is can be used as inner states. In particular, ChooseCharState, MatchingState, StartingState, GuessWhoState, and ScoreState
 implement GameState, and are used in StatefulWorld classes ChooseCharacterScreen and GuessWho.
+
 ### Chain of Responsibility pattern (CoR):
 - There are two way we use to handle a press event, check for a pressing in a greenfoot Actor, 
 and check for valid pressing coordinates via CoR.
 - We use CoR for WelcomeScreen for SkipIntro, Intro, or Quit button. 
 CoR is also used in PressHandlerState as decorator for GameStates ChooseCharState and GuessWhoState, as well as in IDisplayCanvas class.
+
 ### Decorator pattern:
 - This came up when we want to extends the ability of a GameState without desire extending related classes.
 We have two extensions for GameStateDecorator TimeState and PressHandlerState.
