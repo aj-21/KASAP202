@@ -78,11 +78,28 @@ to dynamically display/remove suboption buttons based on which option button is 
 ![alt tag](https://github.com/aj-21/SPAAK202/blob/master/documentation/Observer%20pattern.png)
 
 ### Other pattern:
-- We also implemented StringImageFactory as Factory pattern, PropertyCriteria, MatchPropertyValue, and NotMatchPropertyValue as Filter pattern,
+We also implemented StringImageFactory as Factory pattern, PropertyCriteria, MatchPropertyValue, and NotMatchPropertyValue as Filter pattern,
 and InstructionRepository and Iterator as Iterator pattern. 
 
 ## Server deployment:
-
+### Prerequisite:
+Knowledge of connecting to AWS using SSH and creation of EC2 instance
+The docker image of the server implementation is on docker hub. To deploy and run the server implementation in AWS, follow the below steps:
+### Delpoyment
+1. Create a new Linux instance on AWS EC2.
+2. Connect to the AWS EC2 instance using ssh.
+3. Update the installed packages and package cache on your instance.
+sudo yum update -y
+4. Install Docker on EC2
+sudo yum install -y docker
+5. Start the Docker service
+sudo service docker start
+6. Pull the latest image from Docker Hub
+docker pull azhad/guesswho:1.12
+7. Run the docker container
+docker run azhad/guesswho -td -p 8080:8080 azhad/guesswho:1.12
+8. Check the successful deployment using the EC2 instance public IP
+http://{Your EC2 public IP}/GuessWho:8080/
 
 ## Future Development:
 1. Our project is an oppotunity for us to learn and gain more insight of Object Oriented Programming.
